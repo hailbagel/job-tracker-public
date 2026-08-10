@@ -123,8 +123,30 @@ Loads config from `configs/companies.json` and runs the following steps for each
 ### Usage
 
 ```bash
-python run_pipeline.py
+python3 run_pipeline.py
 ```
+
+---
+
+# 🛠️ Setup
+
+This project requires Python 3.12 or a compatible Python 3 runtime.
+
+Create a virtual environment and install the required Python packages:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
+The detail scraper uses Selenium with Microsoft Edge:
+
+- install Microsoft Edge
+- install a matching Edge WebDriver
+- make `msedgedriver` available on `PATH`
+
+The Tesla overview scraper uses a public JSON API and does not require Selenium.
 
 ---
 
@@ -207,11 +229,11 @@ Options:
 
 ```bash
 # Tesla detail scraper (max 5 jobs, ~20 seconds)
-python scrapers/job_details_scraper.py tesla
+python3 scrapers/job_details_scraper.py tesla
 
 # Scrape all Tesla jobs (unlimited)
 # Change TEST_LIMIT to 0
-python scrapers/job_details_scraper.py tesla
+python3 scrapers/job_details_scraper.py tesla
 ```
 
 ### Features
@@ -297,7 +319,7 @@ Untouched:
 ### Usage
 
 ```bash
-python setup/init_scraper_architecture.py
+python3 setup/init_scraper_architecture.py
 ```
 
 ---
@@ -361,18 +383,18 @@ TEST_LIMIT = 5  # Change here for test limit
 
 1. **Scrape Tesla overview** (5 seconds)
    ```bash
-   python scrapers/runner.py tesla
+   python3 scrapers/runner.py tesla
    ```
 
 2. **Only 5 details** (20 seconds)
    ```bash
    # TEST_LIMIT = 5 in job_details_scraper.py
-   python scrapers/job_details_scraper.py tesla
+   python3 scrapers/job_details_scraper.py tesla
    ```
 
 3. **Test export** (1 second)
    ```bash
-   python analysis/export_txt.py tesla
+   python3 analysis/export_txt.py tesla
    ```
 
 **Total time:** ~26 seconds
@@ -409,7 +431,7 @@ Only companies with `"enabled": true` will be executed.
 To reset all data:
 
 ```bash
-python setup/init_scraper_architecture.py
+python3 setup/init_scraper_architecture.py
 ```
 
 This deletes and recreates:

@@ -269,3 +269,7 @@ print(
         "%Y-%m-%d %H:%M:%S"
     )
 )
+
+if not overall_success:
+
+    sys.exit(1)

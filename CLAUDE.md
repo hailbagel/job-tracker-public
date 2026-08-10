@@ -167,7 +167,7 @@ After modifying pipeline logic:
 
 Run:
 
-python run_pipeline.py
+python3 run_pipeline.py
 
 Verify:
 
