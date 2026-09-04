@@ -11,6 +11,11 @@ __pycache__/
 # Logs
 *.log
 
-# Runtime data
-data/
+# Runtime state
 state.json
+
+# Ignore raw crawler data
+data/**/raw/
+
+# Ignore exported detail dumps
+data/**/exports/
