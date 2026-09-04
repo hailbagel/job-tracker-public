@@ -11,6 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scrapers.providers.neura_scraper import NeuraScraper
 from scrapers.providers.tesla_scraper import TeslaScraper
 from scrapers.providers.jacobs_scraper import JacobsScraper
+from scrapers.providers.spacex_scraper import SpaceXScraper
 
 # ========================================
 # SCRAPER MAP
@@ -19,7 +20,8 @@ from scrapers.providers.jacobs_scraper import JacobsScraper
 SCRAPER_MAP = {
     "neura": NeuraScraper,
     "tesla": TeslaScraper,
-    "jacobs": JacobsScraper
+    "jacobs": JacobsScraper,
+    "spacex": SpaceXScraper
 }
 
 # ========================================
