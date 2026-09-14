@@ -1,90 +1,94 @@
 location,count
-"Denver, Colorado, United States",47
-"Philadelphia, Pennsylvania, United States",33
+"Denver, Colorado, United States",48
+"Philadelphia, Pennsylvania, United States",34
+"Portland, Oregon, United States",29
 "Bellevue, Washington, United States",29
-"Portland, Oregon, United States",26
-"Boston, Massachusetts, United States",20
+"Boston, Massachusetts, United States",22
+"Dallas, Texas, United States",21
 "Conshohocken, Pennsylvania, United States",20
-"Dallas, Texas, United States",19
-"Atlanta, Georgia, United States",18
-"New York, New York, United States",18
+"Atlanta, Georgia, United States",19
+"New York, New York, United States",19
 "Corpus Christi, Texas, United States",18
-"Arlington, Virginia, United States",17
+"Arlington, Virginia, United States",18
+"Boise, Idaho, United States",17
 "Honolulu, Hawaii, United States",17
-"Boise, Idaho, United States",16
+"Chicago, Illinois, United States",16
+"Cary, North Carolina, United States",16
+"Greenville, South Carolina, United States",15
 "St. Louis, Missouri, United States",15
-"Greenville, South Carolina, United States",13
-"Los Angeles, California, United States",13
-"Cary, North Carolina, United States",13
-"Chicago, Illinois, United States",12
-"Houston, Texas, United States",12
-"Pittsburgh, Pennsylvania, United States",11
+"Los Angeles, California, United States",14
+"Houston, Texas, United States",13
+"Pittsburgh, Pennsylvania, United States",12
+"Columbus, Ohio, United States",12
+"Saint Francisville, Louisiana, United States",11
 "Tampa, Florida, United States",11
+"Orlando, Florida, United States",11
 "Austin, Texas, United States",10
-"Orlando, Florida, United States",10
-"Columbus, Ohio, United States",10
+"Chantilly, Virginia, United States",10
 "San Francisco, California, United States",9
-"Saint Francisville, Louisiana, United States",9
-"Chantilly, Virginia, United States",9
+"FPO, All US Regions, United States",9
+"Nashua, New Hampshire, United States",9
+"Nashville, Tennessee, United States",9
+"Syracuse, New York, United States",9
 "Oklahoma City, Oklahoma, United States",8
 "The Villages, Florida, United States",8
 "Holladay, Utah, United States",8
 "Tempe, Arizona, United States",8
 "Spartanburg, South Carolina, United States",7
+"Baton Rouge, Louisiana, United States",7
+"San Diego, California, United States",7
 "Cincinnati, Ohio, United States",7
-"Nashua, New Hampshire, United States",7
-"Nashville, Tennessee, United States",7
 "Irvine, California, United States",7
 "Corvallis, Oregon, United States",6
 "Guaynabo, Puerto Rico, United States",6
 "Albany, New York, United States",6
-"Baton Rouge, Louisiana, United States",6
-"San Diego, California, United States",6
+"Richmond, Virginia, United States",6
 "Wethersfield, Connecticut, United States",5
 "Anchorage, Alaska, United States",5
-"FPO, All US Regions, United States",5
+"Omaha, Nebraska, United States",5
 "Washington, District of Columbia, United States",5
-"Richmond, Virginia, United States",5
+"Cleveland, Ohio, United States",5
 "Milwaukee, Wisconsin, United States",5
 "Redding, California, United States",5
 "Oakland, California, United States",5
-"Syracuse, New York, United States",5
 "Reston, Virginia, United States",5
 "Kansas City, Missouri, United States",4
-"Omaha, Nebraska, United States",4
 "Miami, Florida, United States",4
 "Baltimore, Maryland, United States",4
 "Chandler, Arizona, United States",4
 "Indianapolis, Indiana, United States",4
-"Cleveland, Ohio, United States",4
+"Knoxville, Tennessee, United States",4
+"Detroit, Michigan, United States",4
 "Chattanooga, Tennessee, United States",4
 "Jackson, Mississippi, United States",4
+"Hillsboro, Oregon, United States",4
 "Sacramento, California, United States",4
+"Hoboken, New Jersey, United States",3
 "Las Vegas, Nevada, United States",3
-"Knoxville, Tennessee, United States",3
-"Detroit, Michigan, United States",3
+"Pembroke Pines, Florida, United States",3
+"Morristown, New Jersey, United States",3
 "Fort Lauderdale, Florida, United States",3
+"Madison, Wisconsin, United States",3
 "Gainesville, Florida, United States",3
-"Hillsboro, Oregon, United States",3
+"Fort Worth, Texas, United States",3
 "Seattle, Washington, United States",3
+"Huntsville, Alabama, United States",3
+"Key West, Florida, United States",2
 "Pensacola, Florida, United States",2
-"Hoboken, New Jersey, United States",2
 "Centennial, Colorado, United States",2
-"Pembroke Pines, Florida, United States",2
 "West Palm Beach, Florida, United States",2
 "Newark, New Jersey, United States",2
 "Woodland, California, United States",2
 "Davie, Florida, United States",2
-"Morristown, New Jersey, United States",2
 "Englewood, Colorado, United States",2
-"Madison, Wisconsin, United States",2
 "Jacksonville, Florida, United States",2
-"Fort Worth, Texas, United States",2
+"Torrance, California, United States",2
+"Little Rock, Arkansas, United States",2
 "Spokane, Washington, United States",2
 "Santa Clara, California, United States",2
 "El Paso, Texas, United States",2
+"West Des Moines, Iowa, United States",2
 "Essex Junction, Vermont, United States",1
-"Key West, Florida, United States",1
 "Hood River, Oregon, United States",1
 "West Melbourne, Florida, United States",1
 "Salt Lake City, Utah, United States",1
@@ -107,9 +111,7 @@ location,count
 "Beacon, New York, United States",1
 "Rochester, New York, United States",1
 "Hampton, Virginia, United States",1
-"Torrance, California, United States",1
 "Poughkeepsie, New York, United States",1
-"Little Rock, Arkansas, United States",1
 "Ocoee, Florida, United States",1
 "Renton, Washington, United States",1
 "Fayetteville, Arkansas, United States",1
@@ -128,6 +130,16 @@ location,count
 "Ontario, California, United States",1
 "Manassas, Virginia, United States",1
 "Pompano Beach, Florida, United States",1
-"Huntsville, Alabama, United States",1
-"West Des Moines, Iowa, United States",1
-TOTAL,742
+"Monterey Park, California, United States",1
+"Fremont, California, United States",1
+"Stockton, California, United States",1
+"Hartford, Connecticut, United States",1
+"Albuquerque, New Mexico, United States",1
+"Bakersfield, California, United States",1
+"Santa Monica, California, United States",1
+"Saint Thomas, Virgin Islands, United States",1
+"Rome, Georgia, United States",1
+"Tallapoosa, Georgia, United States",1
+"Moon Township, Pennsylvania, United States",1
+"Bingham Farms, Michigan, United States",1
+TOTAL,816

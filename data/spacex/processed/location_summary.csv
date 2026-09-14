@@ -1,4 +1,36 @@
 location,count
-"Hawthorne, CA",2
-"Palo Alto, CA",1
-TOTAL,3
+"Hawthorne, CA",658
+"Bastrop, TX",495
+"Redmond, WA",352
+"Starbase, TX",334
+"Cape Canaveral, FL",103
+"Palo Alto, CA",94
+"McGregor, TX",76
+"Woodinville, WA",68
+"Washington, DC",41
+"Austin, TX",37
+"Memphis, TN",32
+"Vandenberg, CA",30
+"Irvine, CA",22
+Flexible - Any SpaceX Site,12
+"Canandaigua, NY",11
+"Anderson, TX",10
+"Sunnyvale, CA",10
+"Bloomfield, CT",5
+"Westminster, MD",4
+"Long Beach, CA",3
+Remote - WA,2
+"New York City, NY",2
+"Bellevue, WA",2
+Remote - TX,2
+Remote - CA,2
+Remote - IL,1
+Remote - MI,1
+Remote - FL,1
+Remote - OH,1
+Remote - NY,1
+Remote - PA,1
+Remote - TN,1
+Remote - NC,1
+Remote - CO,1
+TOTAL,2416
