@@ -1,0 +1,445 @@
+{
+  "louisiana_subset": [
+    {
+      "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "department": "Facilities",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://example.invalid/jobs/9001"
+        },
+        "profile": {
+          "evidence_version": "synthetic-v1",
+          "profile_id": "synthetic-example"
+        }
+      },
+      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "first_published": "2026-01-01T00:00:00Z",
+      "fit_reasons": [
+        {
+          "candidate_evidence": {
+            "evidence_version": "synthetic-v1",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Construction Project Manager",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-001",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "construction",
+            "field execution",
+            "project management"
+          ],
+          "reason": "Synthetic construction project delivery evidence"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-002",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "cost",
+            "schedule"
+          ],
+          "reason": "Synthetic project controls evidence"
+        },
+        {
+          "candidate_evidence": {
+            "field": "preferred_locations",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Pecan Island, Louisiana",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 71,
+      "hard_gates": [
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "work_authorization",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "job_id": "9001",
+      "location": "Pecan Island, Louisiana",
+      "potentially_relevant": true,
+      "preferred_qualifications": "Bluebeam and welding.",
+      "recommended_profile_focus": "A",
+      "requisition_id": "SYN-REQ",
+      "role_family": "Construction Project Management",
+      "salary": "$100,000 - $120,000/year",
+      "shift_expectations": null,
+      "soft_gaps": [
+        {
+          "requirement": "Bluebeam and welding.",
+          "section": "preferred qualifications",
+          "source": "job_posting"
+        }
+      ],
+      "software_requirements": [
+        "bluebeam"
+      ],
+      "status": "UNKNOWN",
+      "title": "Construction Project Manager",
+      "trade_requirements": [
+        "welding"
+      ],
+      "travel_expectations": null,
+      "updated_at": "2026-01-02T00:00:00Z",
+      "url": "https://example.invalid/jobs/9001",
+      "work_authorization_signal": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "years": 8
+    }
+  ],
+  "materially_changed_relevant": [],
+  "metadata": {
+    "counts": {
+      "louisiana_pecan_island": 1,
+      "potentially_relevant": 1,
+      "scanned": 2,
+      "strong_match": 0
+    },
+    "coverage_complete": true,
+    "generated_at": "2026-01-02T12:00:00Z",
+    "history_limitation": null,
+    "input_hash": "4abf59023a932bc6fd7f13ead53a6c354111842051a930e0026ace9719d75a2b",
+    "profile_display_name": "Synthetic Example",
+    "profile_evidence_version": "synthetic-v1",
+    "profile_id": "synthetic-example",
+    "rubric_version": "1.0",
+    "semantic_hash": "11ff97ab2794053cca4db3b137051ca3f7557f85af798c48863323cd5fe8c22b",
+    "source_data_changed_at": "2026-01-02T00:00:00Z",
+    "source_snapshot_observed_at": "2026-01-02T00:00:00Z"
+  },
+  "new_relevant": [],
+  "rankings": [
+    {
+      "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "department": "Facilities",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://example.invalid/jobs/9001"
+        },
+        "profile": {
+          "evidence_version": "synthetic-v1",
+          "profile_id": "synthetic-example"
+        }
+      },
+      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "first_published": "2026-01-01T00:00:00Z",
+      "fit_reasons": [
+        {
+          "candidate_evidence": {
+            "evidence_version": "synthetic-v1",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Construction Project Manager",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-001",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "construction",
+            "field execution",
+            "project management"
+          ],
+          "reason": "Synthetic construction project delivery evidence"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-002",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "cost",
+            "schedule"
+          ],
+          "reason": "Synthetic project controls evidence"
+        },
+        {
+          "candidate_evidence": {
+            "field": "preferred_locations",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Pecan Island, Louisiana",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 71,
+      "hard_gates": [
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "work_authorization",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "job_id": "9001",
+      "location": "Pecan Island, Louisiana",
+      "potentially_relevant": true,
+      "preferred_qualifications": "Bluebeam and welding.",
+      "recommended_profile_focus": "A",
+      "requisition_id": "SYN-REQ",
+      "role_family": "Construction Project Management",
+      "salary": "$100,000 - $120,000/year",
+      "shift_expectations": null,
+      "soft_gaps": [
+        {
+          "requirement": "Bluebeam and welding.",
+          "section": "preferred qualifications",
+          "source": "job_posting"
+        }
+      ],
+      "software_requirements": [
+        "bluebeam"
+      ],
+      "status": "UNKNOWN",
+      "title": "Construction Project Manager",
+      "trade_requirements": [
+        "welding"
+      ],
+      "travel_expectations": null,
+      "updated_at": "2026-01-02T00:00:00Z",
+      "url": "https://example.invalid/jobs/9001",
+      "work_authorization_signal": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "years": 8
+    },
+    {
+      "basic_qualifications": "Customer service experience.",
+      "degree_rule": null,
+      "department": "Hospitality",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://example.invalid/jobs/9002"
+        },
+        "profile": {
+          "evidence_version": "synthetic-v1",
+          "profile_id": "synthetic-example"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": "2026-01-01T00:00:00Z",
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "9002",
+      "location": "Hawthorne, California",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "SYN-REQ",
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "status": "RED",
+      "title": "Barista",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": "2026-01-02T00:00:00Z",
+      "url": "https://example.invalid/jobs/9002",
+      "work_authorization_signal": null,
+      "years": null
+    }
+  ],
+  "removed_relevant": [],
+  "schema_version": "1.0",
+  "top_25": [
+    {
+      "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "department": "Facilities",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://example.invalid/jobs/9001"
+        },
+        "profile": {
+          "evidence_version": "synthetic-v1",
+          "profile_id": "synthetic-example"
+        }
+      },
+      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "first_published": "2026-01-01T00:00:00Z",
+      "fit_reasons": [
+        {
+          "candidate_evidence": {
+            "evidence_version": "synthetic-v1",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Construction Project Manager",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-001",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "construction",
+            "field execution",
+            "project management"
+          ],
+          "reason": "Synthetic construction project delivery evidence"
+        },
+        {
+          "candidate_evidence": {
+            "claim_id": "SYN-002",
+            "source": "synthetic-profile",
+            "statement": "Fictional example evidence for tests and documentation only."
+          },
+          "job_evidence": [
+            "cost",
+            "schedule"
+          ],
+          "reason": "Synthetic project controls evidence"
+        },
+        {
+          "candidate_evidence": {
+            "field": "preferred_locations",
+            "source": "profile:synthetic-example"
+          },
+          "job_evidence": "Pecan Island, Louisiana",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 71,
+      "hard_gates": [
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "work_authorization",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_evidence": null,
+          "candidate_status": "unknown",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "ce in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "job_id": "9001",
+      "location": "Pecan Island, Louisiana",
+      "potentially_relevant": true,
+      "preferred_qualifications": "Bluebeam and welding.",
+      "recommended_profile_focus": "A",
+      "requisition_id": "SYN-REQ",
+      "role_family": "Construction Project Management",
+      "salary": "$100,000 - $120,000/year",
+      "shift_expectations": null,
+      "soft_gaps": [
+        {
+          "requirement": "Bluebeam and welding.",
+          "section": "preferred qualifications",
+          "source": "job_posting"
+        }
+      ],
+      "software_requirements": [
+        "bluebeam"
+      ],
+      "status": "UNKNOWN",
+      "title": "Construction Project Manager",
+      "trade_requirements": [
+        "welding"
+      ],
+      "travel_expectations": null,
+      "updated_at": "2026-01-02T00:00:00Z",
+      "url": "https://example.invalid/jobs/9001",
+      "work_authorization_signal": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "years": 8
+    }
+  ],
+  "verified_strong_targets": []
+}
