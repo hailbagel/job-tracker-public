@@ -2,44 +2,160 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Job Tracker Evidence Profile",
   "type": "object",
-  "required": ["schema_version", "profile_id", "display_name", "evidence_version", "role_families", "capabilities", "eligibility"],
+  "required": [
+    "schema_version",
+    "profile_id",
+    "display_name",
+    "evidence_version",
+    "role_families",
+    "capabilities",
+    "eligibility"
+  ],
   "properties": {
-    "schema_version": {"const": 1},
-    "profile_id": {"type": "string", "minLength": 1},
-    "display_name": {"type": "string", "minLength": 1},
-    "evidence_version": {"type": "string", "minLength": 1},
-    "role_families": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
-    "preferred_locations": {"type": "array", "items": {"type": "string"}},
-    "strong_match_threshold": {"type": "integer", "minimum": 0, "maximum": 100},
+    "schema_version": {
+      "const": 1
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role_families": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "preferred_locations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "strong_match_threshold": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
     "capabilities": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["name", "keywords", "evidence"],
+        "required": [
+          "name",
+          "keywords",
+          "evidence"
+        ],
         "properties": {
-          "name": {"type": "string"},
-          "keywords": {"type": "array", "items": {"type": "string"}, "minItems": 1},
-          "evidence": {"type": "object"}
+          "name": {
+            "type": "string"
+          },
+          "keywords": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "evidence": {
+            "type": "object"
+          }
         }
       }
     },
     "eligibility": {
       "type": "object",
-      "required": ["work_authorization", "itar"],
+      "required": [
+        "work_authorization",
+        "itar"
+      ],
       "properties": {
-        "work_authorization": {"$ref": "#/$defs/eligibility"},
-        "itar": {"$ref": "#/$defs/eligibility"},
-        "degree": {"$ref": "#/$defs/eligibility"}
+        "work_authorization": {
+          "$ref": "#/$defs/eligibility"
+        },
+        "itar": {
+          "$ref": "#/$defs/eligibility"
+        },
+        "degree": {
+          "$ref": "#/$defs/eligibility"
+        }
+      }
+    },
+    "qualification_evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "name",
+          "status",
+          "evidence"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "experience",
+              "software",
+              "trade"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "years": {
+            "type": "number",
+            "minimum": 0
+          },
+          "leadership": {
+            "type": "boolean"
+          },
+          "status": {
+            "enum": [
+              "verified",
+              "unsupported",
+              "unknown"
+            ]
+          },
+          "evidence": {
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        }
       }
     }
   },
   "$defs": {
     "eligibility": {
       "type": "object",
-      "required": ["status", "evidence"],
+      "required": [
+        "status",
+        "evidence"
+      ],
       "properties": {
-        "status": {"enum": ["verified", "unsupported", "unknown"]},
-        "evidence": {"type": ["object", "null"]}
+        "status": {
+          "enum": [
+            "verified",
+            "unsupported",
+            "unknown"
+          ]
+        },
+        "evidence": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
       }
     }
   }

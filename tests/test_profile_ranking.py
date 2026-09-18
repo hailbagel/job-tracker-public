@@ -1,13 +1,16 @@
 import csv
 import hashlib
 import json
+import os
 import subprocess
 import sys
+import shutil
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
-from analysis.profile_ranking import generate, rank_job, split_qualifications
+from analysis.profile_ranking import classify_family, generate, rank_job, split_qualifications
 
 
 REQUIRED_KEYS = {
@@ -73,7 +76,7 @@ class RankingSemanticsTests(unittest.TestCase):
         self.assertIsNone(additional)
         result = rank_job(item, detail(item), profile("unknown", threshold=1))
         self.assertEqual("UNKNOWN", result["status"])
-        self.assertEqual({"work_authorization", "itar", "degree"}, {gate["gate"] for gate in result["hard_gates"]})
+        self.assertEqual({"work_authorization", "itar", "degree_or_experience"}, {gate["gate"] for gate in result["hard_gates"]})
         self.assertTrue(all(gate["candidate_status"] == "unknown" for gate in result["hard_gates"]))
         self.assertIn("AutoCAD", result["soft_gaps"][0]["requirement"])
 
@@ -93,6 +96,91 @@ class RankingSemanticsTests(unittest.TestCase):
         result = rank_job(item, details, profile())
         self.assertNotIn("degree", {gate["gate"] for gate in result["hard_gates"]})
         self.assertIn("Bachelor", result["soft_gaps"][0]["requirement"])
+    def test_required_years_domain_software_trade_and_leadership_are_hard_gates(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = "BASIC QUALIFICATIONS:\n10+ years civil construction leadership. Expert AutoCAD required. Welding and piping required."
+        result = rank_job(item, details, profile(threshold=1))
+        gate_names = {gate["gate"] for gate in result["hard_gates"]}
+        self.assertEqual("UNKNOWN", result["status"])
+        self.assertTrue({
+            "required_years", "required_domain", "required_leadership",
+            "required_software:autocad", "required_trade:welding", "required_trade:piping",
+        }.issubset(gate_names))
+        self.assertTrue(all(gate["candidate_status"] == "unknown" for gate in result["hard_gates"]))
+
+        known = profile(threshold=1)
+        known["qualification_evidence"] = [
+            {"kind": "experience", "name": "civil construction", "years": 5, "leadership": False, "status": "verified", "evidence": {"source": "fixture", "claim_id": "EXP-LOW"}},
+            {"kind": "software", "name": "autocad", "status": "unsupported", "evidence": {"source": "fixture", "claim_id": "SW-NO"}},
+            {"kind": "trade", "name": "welding", "status": "unsupported", "evidence": {"source": "fixture", "claim_id": "TR-NO-1"}},
+            {"kind": "trade", "name": "piping", "status": "unsupported", "evidence": {"source": "fixture", "claim_id": "TR-NO-2"}},
+        ]
+        known_result = rank_job(item, details, known)
+        self.assertEqual("RED", known_result["status"])
+        self.assertIn("unsupported", {gate["candidate_status"] for gate in known_result["hard_gates"]})
+
+    def test_explicit_verified_qualification_claims_can_satisfy_required_facts(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = "BASIC QUALIFICATIONS:\n10+ years civil construction leadership. Expert AutoCAD required. Welding and piping required."
+        qualified = profile(threshold=1)
+        qualified["qualification_evidence"] = [
+            {"kind": "experience", "name": "civil construction", "years": 12, "leadership": True, "status": "verified", "evidence": {"source": "fixture", "claim_id": "EXP-12"}},
+            {"kind": "software", "name": "autocad", "status": "verified", "evidence": {"source": "fixture", "claim_id": "SW-1"}},
+            {"kind": "trade", "name": "welding", "status": "verified", "evidence": {"source": "fixture", "claim_id": "TR-1"}},
+            {"kind": "trade", "name": "piping", "status": "verified", "evidence": {"source": "fixture", "claim_id": "TR-2"}},
+        ]
+        result = rank_job(item, details, qualified)
+        self.assertEqual("GREEN", result["status"])
+        self.assertEqual([], result["hard_gates"])
+
+    def test_degree_or_eight_years_experience_is_a_real_alternative(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = "BASIC QUALIFICATIONS:\nBachelor degree or 8 years civil construction experience in lieu of degree."
+        candidate = profile("unknown", threshold=1)
+        candidate["eligibility"]["work_authorization"] = profile()["eligibility"]["work_authorization"]
+        candidate["eligibility"]["itar"] = profile()["eligibility"]["itar"]
+        candidate["qualification_evidence"] = [
+            {"kind": "experience", "name": "civil construction", "years": 8, "leadership": False, "status": "verified", "evidence": {"source": "fixture", "claim_id": "EXP-8"}},
+        ]
+        result = rank_job(item, details, candidate)
+        self.assertNotIn("degree_or_experience", {gate["gate"] for gate in result["hard_gates"]})
+        self.assertEqual("GREEN", result["status"])
+
+        candidate["qualification_evidence"][0]["years"] = 7
+        insufficient = rank_job(item, details, candidate)
+        self.assertIn("degree_or_experience", {gate["gate"] for gate in insufficient["hard_gates"]})
+        self.assertNotEqual("GREEN", insufficient["status"])
+
+        details["requirements"] = "BASIC QUALIFICATIONS:\nBachelor degree or 8 years civil construction experience in lieu of degree. 10+ years civil construction leadership required."
+        candidate["qualification_evidence"][0]["years"] = 8
+        boundary = rank_job(item, details, candidate)
+        boundary_gates = {gate["gate"] for gate in boundary["hard_gates"]}
+        self.assertNotIn("degree_or_experience", boundary_gates)
+        self.assertTrue({"required_years", "required_leadership"}.issubset(boundary_gates))
+
+        candidate["qualification_evidence"][0].update({"name": "mechanical construction", "years": 12, "leadership": True})
+        wrong_domain = rank_job(item, details, candidate)
+        self.assertIn("degree_or_experience", {gate["gate"] for gate in wrong_domain["hard_gates"]})
+
+    def test_specific_family_precedence_and_all_required_families(self):
+        cases = {
+            "Mechanical Construction Manager": "Mechanical Construction",
+            "Construction Project Manager": "Construction Project Management",
+            "Construction Superintendent": "Construction Superintendent / Field Execution",
+            "Structural Steel Engineer": "Structural / Steel",
+            "Facilities Infrastructure Engineer": "Facilities / Infrastructure",
+            "Project Controls Scheduler": "Project Controls",
+            "Quality Control Inspector": "QA/QC",
+            "Commissioning Turnover Manager": "Commissioning / Turnover",
+            "Utilities Power Engineer": "Utilities / Power",
+            "Tooling Installation Manager": "Tooling / Installation",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(expected, classify_family(title, title))
 
 
 class ExportContractTests(unittest.TestCase):
@@ -138,6 +226,7 @@ class ExportContractTests(unittest.TestCase):
     def test_unchanged_semantics_preserve_all_bytes_and_generation_time(self):
         first = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
         before = self._hashes()
+        before_mtimes = {path.name: path.stat().st_mtime_ns for path in self.output.iterdir()}
         self.details[0]["scrape_timestamp"] = "execution-clock-changed"
         self._write_snapshot("hash-1", "2026-01-03T00:00:00Z")
         second = generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
@@ -145,6 +234,7 @@ class ExportContractTests(unittest.TestCase):
         self.assertFalse(second["changed"])
         self.assertEqual(before, self._hashes())
         self.assertEqual("2026-01-02T00:00:00Z", second["document"]["metadata"]["generated_at"])
+        self.assertEqual(before_mtimes, {path.name: path.stat().st_mtime_ns for path in self.output.iterdir()})
 
     def test_profile_and_rubric_inputs_invalidate_cached_result(self):
         generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
@@ -180,6 +270,77 @@ class ExportContractTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "incomplete"):
             generate(self.profile_path, self.data, self.output, "2026-01-06T00:00:00Z")
         self.assertEqual(before, self._hashes())
+
+    def test_markdown_has_required_detail_for_every_displayed_role(self):
+        document = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")["document"]
+        markdown = (self.output / "spacex_targets.md").read_text(encoding="utf-8")
+        for label in ("Role family:", "Profile focus:", "Hard gates:", "Soft gaps:", "Fit reasons:"):
+            self.assertEqual(sum(len(document[key]) for key in (
+                "top_25", "verified_strong_targets", "louisiana_subset",
+                "new_relevant", "materially_changed_relevant", "removed_relevant",
+            )), markdown.count(label))
+
+    def test_missing_or_corrupt_companions_and_canonical_json_recover(self):
+        first = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        original_json = (self.output / "spacex_targets.json").read_bytes()
+        original_timestamp = first["document"]["metadata"]["generated_at"]
+        (self.output / "spacex_targets.csv").unlink()
+        (self.output / "spacex_targets.md").write_text("corrupt", encoding="utf-8")
+        recovered = generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+        self.assertTrue(recovered["recovered"])
+        self.assertEqual(original_json, (self.output / "spacex_targets.json").read_bytes())
+        self.assertEqual(original_timestamp, recovered["document"]["metadata"]["generated_at"])
+        self.assertTrue((self.output / "spacex_targets.csv").is_file())
+        self.assertIn("Role family:", (self.output / "spacex_targets.md").read_text(encoding="utf-8"))
+
+        (self.output / "spacex_targets.json").write_text("{broken", encoding="utf-8")
+        canonical_recovery = generate(self.profile_path, self.data, self.output, "2026-01-04T00:00:00Z")
+        self.assertTrue(canonical_recovery["recovered"])
+        self.assertEqual(original_json, (self.output / "spacex_targets.json").read_bytes())
+
+    def test_processed_csv_semantic_mutation_invalidates_cache(self):
+        first = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        self.details[0]["requirements"] = self.details[0]["requirements"].replace(
+            "Bachelor's degree", "Bachelor's degree and expert AutoCAD"
+        )
+        self._write_snapshot("hash-1", "2026-01-03T00:00:00Z")
+        second = generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+        self.assertTrue(second["changed"])
+        self.assertNotEqual(
+            first["document"]["metadata"]["processed_input_hash"],
+            second["document"]["metadata"]["processed_input_hash"],
+        )
+        self.assertIn("required_software:autocad", {
+            gate["gate"] for gate in second["document"]["rankings"][0]["hard_gates"]
+        })
+
+    def test_publication_failure_keeps_complete_legacy_generation(self):
+        generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        current = self.output.resolve()
+        self.output.unlink()
+        shutil.copytree(current, self.output)
+        before = self._hashes()
+        changed_profile = profile()
+        changed_profile["evidence_version"] = "fixture-v2"
+        self.profile_path.write_text(json.dumps(changed_profile), encoding="utf-8")
+        real_replace = os.replace
+        call_count = [0]
+
+        def fail_second_replace(source, destination):
+            call_count[0] += 1
+            if call_count[0] == 2:
+                raise OSError("injected publication failure")
+            return real_replace(source, destination)
+
+        with patch("analysis.profile_ranking.os.replace", side_effect=fail_second_replace):
+            with self.assertRaisesRegex(OSError, "injected publication failure"):
+                generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+        self.assertEqual(3, call_count[0])
+        self.assertTrue(self.output.is_dir())
+        self.assertEqual(before, self._hashes())
+        with (self.output / "spacex_targets.json").open(encoding="utf-8") as handle:
+            self.assertEqual("fixture-v1", json.load(handle)["metadata"]["profile_evidence_version"])
+
 
     def test_deterministic_tie_breaker(self):
         self.jobs = [job("200", title="Construction Project Manager B"), job("199", title="Construction Project Manager A")]

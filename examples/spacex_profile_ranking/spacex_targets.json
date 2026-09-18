@@ -2,7 +2,7 @@
   "louisiana_subset": [
     {
       "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
-      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree",
       "department": "Facilities",
       "evidence_provenance": {
         "job": {
@@ -15,7 +15,7 @@
           "profile_id": "synthetic-example"
         }
       },
-      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "experience_in_lieu": "8 years experience in lieu",
       "first_published": "2026-01-01T00:00:00Z",
       "fit_reasons": [
         {
@@ -34,7 +34,6 @@
           },
           "job_evidence": [
             "construction",
-            "field execution",
             "project management"
           ],
           "reason": "Synthetic construction project delivery evidence"
@@ -60,7 +59,7 @@
           "reason": "Preferred location"
         }
       ],
-      "fit_score": 71,
+      "fit_score": 69,
       "hard_gates": [
         {
           "candidate_evidence": null,
@@ -85,9 +84,9 @@
         {
           "candidate_evidence": null,
           "candidate_status": "unknown",
-          "gate": "degree",
+          "gate": "degree_or_experience",
           "requirement_evidence": {
-            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree / 8 years experience in lieu",
             "section": "required qualifications",
             "source": "job_posting"
           }
@@ -101,7 +100,7 @@
       "recommended_profile_focus": "A",
       "requisition_id": "SYN-REQ",
       "role_family": "Construction Project Management",
-      "salary": "$100,000 - $120,000/year",
+      "salary": null,
       "shift_expectations": null,
       "soft_gaps": [
         {
@@ -127,6 +126,7 @@
   ],
   "materially_changed_relevant": [],
   "metadata": {
+    "acquisition_data_hash": "synthetic-v2",
     "counts": {
       "louisiana_pecan_island": 1,
       "potentially_relevant": 1,
@@ -134,22 +134,23 @@
       "strong_match": 0
     },
     "coverage_complete": true,
-    "generated_at": "2026-01-02T12:00:00Z",
-    "history_limitation": null,
-    "input_hash": "4abf59023a932bc6fd7f13ead53a6c354111842051a930e0026ace9719d75a2b",
+    "generated_at": "2026-09-18T06:00:00Z",
+    "history_limitation": "First generated feed; no prior personalized snapshot was available for comparison.",
+    "input_hash": "e74f8c5d56a6cebdedb1be0601fbc0dc839f5a95346a949fc4e5b223276979db",
+    "processed_input_hash": "eed9930bcaeb8367d2f33a1cecaba1666e7f74deb5d0793b7059bb2a628bc948",
     "profile_display_name": "Synthetic Example",
     "profile_evidence_version": "synthetic-v1",
     "profile_id": "synthetic-example",
-    "rubric_version": "1.0",
-    "semantic_hash": "11ff97ab2794053cca4db3b137051ca3f7557f85af798c48863323cd5fe8c22b",
-    "source_data_changed_at": "2026-01-02T00:00:00Z",
-    "source_snapshot_observed_at": "2026-01-02T00:00:00Z"
+    "rubric_version": "2.0",
+    "semantic_hash": "ca42ec729dacc3ad3d672da8d0141b8454fef6dd0d0e99f391a882e402b8dfe0",
+    "source_data_changed_at": "2026-09-18T06:00:00Z",
+    "source_snapshot_observed_at": "2026-09-18T06:00:00Z"
   },
   "new_relevant": [],
   "rankings": [
     {
       "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
-      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree",
       "department": "Facilities",
       "evidence_provenance": {
         "job": {
@@ -162,7 +163,7 @@
           "profile_id": "synthetic-example"
         }
       },
-      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "experience_in_lieu": "8 years experience in lieu",
       "first_published": "2026-01-01T00:00:00Z",
       "fit_reasons": [
         {
@@ -181,7 +182,6 @@
           },
           "job_evidence": [
             "construction",
-            "field execution",
             "project management"
           ],
           "reason": "Synthetic construction project delivery evidence"
@@ -207,7 +207,7 @@
           "reason": "Preferred location"
         }
       ],
-      "fit_score": 71,
+      "fit_score": 69,
       "hard_gates": [
         {
           "candidate_evidence": null,
@@ -232,9 +232,9 @@
         {
           "candidate_evidence": null,
           "candidate_status": "unknown",
-          "gate": "degree",
+          "gate": "degree_or_experience",
           "requirement_evidence": {
-            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree / 8 years experience in lieu",
             "section": "required qualifications",
             "source": "job_posting"
           }
@@ -248,7 +248,7 @@
       "recommended_profile_focus": "A",
       "requisition_id": "SYN-REQ",
       "role_family": "Construction Project Management",
-      "salary": "$100,000 - $120,000/year",
+      "salary": null,
       "shift_expectations": null,
       "soft_gaps": [
         {
@@ -318,7 +318,7 @@
   "top_25": [
     {
       "basic_qualifications": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
-      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "degree_rule": "Bachelor's degree or 8 years experience in lieu of degree",
       "department": "Facilities",
       "evidence_provenance": {
         "job": {
@@ -331,7 +331,7 @@
           "profile_id": "synthetic-example"
         }
       },
-      "experience_in_lieu": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+      "experience_in_lieu": "8 years experience in lieu",
       "first_published": "2026-01-01T00:00:00Z",
       "fit_reasons": [
         {
@@ -350,7 +350,6 @@
           },
           "job_evidence": [
             "construction",
-            "field execution",
             "project management"
           ],
           "reason": "Synthetic construction project delivery evidence"
@@ -376,7 +375,7 @@
           "reason": "Preferred location"
         }
       ],
-      "fit_score": 71,
+      "fit_score": 69,
       "hard_gates": [
         {
           "candidate_evidence": null,
@@ -401,9 +400,9 @@
         {
           "candidate_evidence": null,
           "candidate_status": "unknown",
-          "gate": "degree",
+          "gate": "degree_or_experience",
           "requirement_evidence": {
-            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree. Must be authorized to work in the U.S. and eligible under ITAR as a U.S. person.",
+            "excerpt": "Bachelor's degree or 8 years experience in lieu of degree / 8 years experience in lieu",
             "section": "required qualifications",
             "source": "job_posting"
           }
@@ -417,7 +416,7 @@
       "recommended_profile_focus": "A",
       "requisition_id": "SYN-REQ",
       "role_family": "Construction Project Management",
-      "salary": "$100,000 - $120,000/year",
+      "salary": null,
       "shift_expectations": null,
       "soft_gaps": [
         {

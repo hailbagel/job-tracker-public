@@ -9,12 +9,19 @@
     "Facilities / Infrastructure",
     "Project Controls"
   ],
-  "preferred_locations": ["Louisiana", "Pecan Island"],
+  "preferred_locations": [
+    "Louisiana",
+    "Pecan Island"
+  ],
   "strong_match_threshold": 70,
   "capabilities": [
     {
       "name": "Synthetic construction project delivery evidence",
-      "keywords": ["construction", "project management", "field execution"],
+      "keywords": [
+        "construction",
+        "project management",
+        "field execution"
+      ],
       "evidence": {
         "source": "synthetic-profile",
         "claim_id": "SYN-001",
@@ -23,7 +30,11 @@
     },
     {
       "name": "Synthetic project controls evidence",
-      "keywords": ["project controls", "schedule", "cost"],
+      "keywords": [
+        "project controls",
+        "schedule",
+        "cost"
+      ],
       "evidence": {
         "source": "synthetic-profile",
         "claim_id": "SYN-002",
@@ -32,8 +43,18 @@
     }
   ],
   "eligibility": {
-    "work_authorization": {"status": "unknown", "evidence": null},
-    "itar": {"status": "unknown", "evidence": null},
-    "degree": {"status": "unknown", "evidence": null}
-  }
+    "work_authorization": {
+      "status": "unknown",
+      "evidence": null
+    },
+    "itar": {
+      "status": "unknown",
+      "evidence": null
+    },
+    "degree": {
+      "status": "unknown",
+      "evidence": null
+    }
+  },
+  "qualification_evidence": []
 }
