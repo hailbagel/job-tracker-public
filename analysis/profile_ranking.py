@@ -17,6 +17,7 @@ from pathlib import Path
 
 SCHEMA_VERSION = "1.0"
 RUBRIC_VERSION = "2.0"
+PROFILE_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "configs" / "profiles" / "schema.json"
 ROLE_FAMILIES = (
     "Construction Project Management",
     "Construction Superintendent / Field Execution",
@@ -92,6 +93,26 @@ def _load_json(path):
 def _read_csv(path):
     with Path(path).open(newline="", encoding="utf-8-sig") as handle:
         return list(csv.DictReader(handle))
+
+
+def _load_profile_schema(path=None):
+    path = Path(path or PROFILE_SCHEMA_PATH)
+    try:
+        schema = _load_json(path)
+    except FileNotFoundError as exc:
+        raise RuntimeError(f"Profile schema is missing: {path}; preserving the previous personalized feed") from exc
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Profile schema is malformed JSON: {path}; preserving the previous personalized feed") from exc
+    except OSError as exc:
+        raise RuntimeError(f"Profile schema cannot be read: {path}; preserving the previous personalized feed") from exc
+    if (
+        not isinstance(schema, dict)
+        or schema.get("type") != "object"
+        or not isinstance(schema.get("required"), list)
+        or not isinstance(schema.get("properties"), dict)
+    ):
+        raise RuntimeError(f"Profile schema has an invalid structure: {path}; preserving the previous personalized feed")
+    return schema
 
 
 def validate_profile(profile):
@@ -482,7 +503,13 @@ def _publish_generation(output_dir, files, replace=None):
             handle.flush()
             os.fsync(handle.fileno())
     next_link = output_dir.parent / f".{output_dir.name}.next-{uuid.uuid4().hex}"
-    os.symlink(os.path.relpath(stage, output_dir.parent), next_link, target_is_directory=True)
+    try:
+        os.symlink(os.path.relpath(stage, output_dir.parent), next_link, target_is_directory=True)
+    except OSError as exc:
+        raise RuntimeError(
+            "Atomic export publication requires directory symlink support; "
+            "the previous personalized feed was preserved"
+        ) from exc
     legacy = None
     try:
         if output_dir.exists() and not output_dir.is_symlink():
@@ -520,6 +547,7 @@ def _outputs_match(output_dir, files):
 
 
 def generate(profile_path, data_dir="data/spacex", output_dir=None, generated_at=None):
+    profile_schema = _load_profile_schema()
     profile, data_dir = load_profile(profile_path), Path(data_dir)
     acquisition = _load_json(data_dir / "processed" / "acquisition.json")
     jobs = _read_csv(data_dir / "processed" / "jobs_latest.csv")
@@ -543,8 +571,10 @@ def generate(profile_path, data_dir="data/spacex", output_dir=None, generated_at
         output_dir / "spacex_targets.md",
     )
     previous = _load_previous(output_dir)
+    profile_schema_hash = _sha(profile_schema)
     input_hash = _sha({
         "schema_version": SCHEMA_VERSION,
+        "profile_schema_hash": profile_schema_hash,
         "rubric_version": RUBRIC_VERSION,
         "profile_hash": _sha(profile),
         "processed_input_hash": processed_input_hash,
@@ -560,6 +590,7 @@ def generate(profile_path, data_dir="data/spacex", output_dir=None, generated_at
     relevant = [row for row in records if row["potentially_relevant"]]
     semantic = {
         "schema_version": SCHEMA_VERSION,
+        "profile_schema_hash": profile_schema_hash,
         "rubric_version": RUBRIC_VERSION,
         "profile_hash": _sha(profile),
         "processed_input_hash": processed_input_hash,
@@ -579,6 +610,7 @@ def generate(profile_path, data_dir="data/spacex", output_dir=None, generated_at
             "profile_id": profile["profile_id"],
             "profile_display_name": profile["display_name"],
             "profile_evidence_version": profile["evidence_version"],
+            "profile_schema_hash": profile_schema_hash,
             "rubric_version": RUBRIC_VERSION,
             "input_hash": input_hash,
             "processed_input_hash": processed_input_hash,

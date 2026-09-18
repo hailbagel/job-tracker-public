@@ -58,9 +58,29 @@ Basic/minimum qualifications create hard-gate evidence. Preferred qualifications
 
 The provider replaces current acquisition files only when every nonempty API listing becomes a unique valid record. Empty, failed, or incomplete acquisition exits nonzero before replacing the prior good snapshot. Ranking also refuses incomplete or count-mismatched metadata and therefore cannot erase a valid prior feed.
 
-`observed_at` records the latest successful acquisition clock. `data_changed_at` changes only when semantic job/detail content changes. Ranking hashes the semantic rows it actually reads from `jobs_latest.csv` and `job_details.csv`, plus profile evidence, rubric version, and schema version. Acquisition metadata is recorded but is not trusted as the cache identity. If meaning is unchanged, it preserves all three output files and their prior generation/source timestamps byte-for-byte. Execution-only scrape clocks are excluded. Material title, location, department, qualification, gate, years, trade/software, travel, or shift changes invalidate the result. Missing or corrupt CSV/Markdown companions are rebuilt from the canonical JSON without changing a valid generation timestamp; a damaged public JSON is recovered from the generation's private canonical copy.
+`observed_at` records the latest successful acquisition clock. `data_changed_at` changes only when semantic job/detail content changes. Ranking hashes the semantic rows it actually reads from `jobs_latest.csv` and `job_details.csv`, plus profile evidence, rubric version, schema version, and the parsed semantics of `configs/profiles/schema.json`. Acquisition metadata is recorded but is not trusted as the cache identity. If meaning is unchanged, it preserves all three output files and their prior generation/source timestamps byte-for-byte. Execution-only scrape clocks and schema formatting-only changes are excluded. Material title, location, department, qualification, gate, years, trade/software, travel, shift, or profile-schema changes invalidate the result. A missing, unreadable, malformed, or structurally invalid profile schema fails the ranking run before publication and preserves the last good feed. Missing or corrupt CSV/Markdown companions are rebuilt from the canonical JSON without changing a valid generation timestamp; a damaged public JSON is recovered from the generation's private canonical copy.
 
-Each export is written to an immutable sibling generation directory. The documented `data/spacex/exports/<profile-id>` path is an atomically replaced directory symlink, so readers opening any of the three documented files see one complete generation. A failed pointer replacement leaves the prior directory or symlink coherent; sequential file renames are not used as a set-atomicity claim.
+Each export is written to an immutable sibling generation directory. The documented `data/spacex/exports/<profile-id>` path is an atomically replaced directory symlink. One open of the authoritative JSON is coherent by itself. A consumer that needs JSON, CSV, and Markdown from the same generation must resolve the directory symlink exactly once and use that pinned immutable directory for every open; resolving the moving symlink separately for each file can cross a publication.
+
+Runnable multi-file consumer example:
+
+```python
+import csv
+import json
+from pathlib import Path
+
+export_link = Path("data/spacex/exports/patrick")
+generation = export_link.resolve(strict=True)  # Pin exactly once.
+with (generation / "spacex_targets.json").open(encoding="utf-8") as handle:
+    document = json.load(handle)
+with (generation / "spacex_targets.csv").open(newline="", encoding="utf-8") as handle:
+    rows = list(csv.DictReader(handle))
+markdown = (generation / "spacex_targets.md").read_text(encoding="utf-8")
+```
+
+Keep the pinned generation directory until all reads finish. Retention or cleanup must not remove a generation while any consumer may still be using its pinned path. A fresh consumer resolves the documented export link again and sees the generation current at that time.
+
+Atomic publication is supported on Linux/POSIX filesystems that permit directory symlinks and atomic replacement of a directory entry in the export parent. The generation directories, temporary link, and documented export link must remain in that same filesystem parent. This implementation was tested on Linux only. On Windows, directory symlink creation may require Developer Mode or an appropriately privileged process, and filesystem replacement semantics may differ; Windows behavior was not validated. If symlink creation or replacement is unsupported or denied, the ranking command exits with an explicit error. With an existing feed, its last good pointer and generation remain available; without one, no documented feed path is published. A fully written but unreferenced staging generation may remain for later operational cleanup. The implementation does not silently fall back to sequential copies and does not instruct operators to change permissions. Use a supported environment instead. A failed pointer replacement likewise leaves the prior directory or symlink coherent.
 
 The first personalized feed reports that prior personalized history is unavailable and does not label every existing role NEW. Later feeds report relevant jobs added, materially changed, and removed. Removed jobs remain only in the removal section and never in current strong targets. Ties are ordered by score descending, then title, location, source job ID, and URL.
 

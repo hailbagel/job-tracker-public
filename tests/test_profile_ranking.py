@@ -190,6 +190,8 @@ class ExportContractTests(unittest.TestCase):
         self.data = self.root / "data" / "spacex"
         self.output = self.root / "private-output"
         self.profile_path = self.root / "profile.json"
+        self.schema_path = self.root / "schema.json"
+        self.schema_path.write_bytes(Path("configs/profiles/schema.json").read_bytes())
         self.profile_path.write_text(json.dumps(profile()), encoding="utf-8")
         self.jobs = [job("100", requisition="DUP"), job("101", title="Project Controls Manager", location="Brownsville, Texas", requisition="DUP")]
         self.details = [detail(self.jobs[0], "one"), detail(self.jobs[1], "two")]
@@ -244,6 +246,41 @@ class ExportContractTests(unittest.TestCase):
         result = generate(self.profile_path, self.data, self.output, "2026-01-04T00:00:00Z")
         self.assertTrue(result["changed"])
         self.assertEqual("fixture-v2", result["document"]["metadata"]["profile_evidence_version"])
+
+    def test_actual_schema_semantics_invalidate_cache_and_unchanged_schema_does_not(self):
+        with patch("analysis.profile_ranking.PROFILE_SCHEMA_PATH", self.schema_path):
+            first = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+            replay = generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+            self.assertFalse(replay["changed"])
+
+            schema = json.loads(self.schema_path.read_text(encoding="utf-8"))
+            schema["required"].append("new_semantic_field")
+            self.schema_path.write_text(json.dumps(schema, indent=2), encoding="utf-8")
+            changed = generate(self.profile_path, self.data, self.output, "2026-01-04T00:00:00Z")
+
+        self.assertTrue(changed["changed"])
+        self.assertNotEqual(
+            first["document"]["metadata"]["profile_schema_hash"],
+            changed["document"]["metadata"]["profile_schema_hash"],
+        )
+        self.assertNotEqual(
+            first["document"]["metadata"]["input_hash"],
+            changed["document"]["metadata"]["input_hash"],
+        )
+
+    def test_missing_or_malformed_schema_preserves_previous_good_feed(self):
+        with patch("analysis.profile_ranking.PROFILE_SCHEMA_PATH", self.schema_path):
+            generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+            before = self._hashes()
+            self.schema_path.unlink()
+            with self.assertRaisesRegex(RuntimeError, "Profile schema is missing"):
+                generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+            self.assertEqual(before, self._hashes())
+
+            self.schema_path.write_text("{malformed", encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "Profile schema is malformed JSON"):
+                generate(self.profile_path, self.data, self.output, "2026-01-04T00:00:00Z")
+            self.assertEqual(before, self._hashes())
 
     def test_new_changed_removed_and_removed_not_current_strong(self):
         generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
@@ -341,6 +378,40 @@ class ExportContractTests(unittest.TestCase):
         with (self.output / "spacex_targets.json").open(encoding="utf-8") as handle:
             self.assertEqual("fixture-v1", json.load(handle)["metadata"]["profile_evidence_version"])
 
+    def test_pinned_generation_stays_consistent_while_fresh_reader_sees_update(self):
+        generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        generation_a = self.output.resolve(strict=True)
+        names = ("spacex_targets.json", "spacex_targets.csv", "spacex_targets.md")
+        expected_a = {name: (generation_a / name).read_bytes() for name in names}
+
+        changed_profile = profile()
+        changed_profile["evidence_version"] = "fixture-v2"
+        self.profile_path.write_text(json.dumps(changed_profile), encoding="utf-8")
+        generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+
+        self.assertEqual(expected_a, {name: (generation_a / name).read_bytes() for name in names})
+        generation_b = self.output.resolve(strict=True)
+        self.assertNotEqual(generation_a, generation_b)
+        with (generation_b / "spacex_targets.json").open(encoding="utf-8") as handle:
+            self.assertEqual("fixture-v2", json.load(handle)["metadata"]["profile_evidence_version"])
+
+    def test_symlink_creation_failure_is_explicit_and_preserves_existing_feed(self):
+        with patch("analysis.profile_ranking.os.symlink", side_effect=OSError("operation not permitted")):
+            with self.assertRaisesRegex(RuntimeError, "requires directory symlink support"):
+                generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        self.assertFalse(self.output.exists())
+
+        generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        before = self._hashes()
+        changed_profile = profile()
+        changed_profile["evidence_version"] = "fixture-v2"
+        self.profile_path.write_text(json.dumps(changed_profile), encoding="utf-8")
+        with patch("analysis.profile_ranking.os.symlink", side_effect=OSError("operation not permitted")):
+            with self.assertRaisesRegex(RuntimeError, "requires directory symlink support"):
+                generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+        self.assertEqual(before, self._hashes())
+        with (self.output / "spacex_targets.json").open(encoding="utf-8") as handle:
+            self.assertEqual("fixture-v1", json.load(handle)["metadata"]["profile_evidence_version"])
 
     def test_deterministic_tie_breaker(self):
         self.jobs = [job("200", title="Construction Project Manager B"), job("199", title="Construction Project Manager A")]
