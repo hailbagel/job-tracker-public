@@ -126,6 +126,8 @@ Loads config from `configs/companies.json` and runs the following steps for each
 python run_pipeline.py
 ```
 
+SpaceX evidence-profile ranking, private setup, deterministic exports, and the provider filter are documented in [docs/spacex_profile_ranking.md](docs/spacex_profile_ranking.md).
+
 ---
 
 ## `scrapers/runner.py`

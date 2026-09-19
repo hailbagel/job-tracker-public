@@ -19,3 +19,8 @@ data/**/raw/
 
 # Ignore exported detail dumps
 data/**/exports/
+
+# Private candidate evidence and generated personalized feeds
+configs/private_profiles/
+data/**/private/
+data/**/exports/*/

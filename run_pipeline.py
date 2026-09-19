@@ -1,3 +1,4 @@
+import argparse
 import subprocess
 import importlib
 import sys
@@ -49,6 +50,18 @@ active_companies = [
     if c["enabled"]
 
 ]
+
+parser = argparse.ArgumentParser(description="Run the job intelligence pipeline")
+parser.add_argument(
+    "--company",
+    action="append",
+    choices=sorted(c["name"] for c in companies_config),
+    help="Run only the selected configured company; repeat for multiple companies.",
+)
+args = parser.parse_args()
+if args.company:
+    selected = set(args.company)
+    active_companies = [company for company in active_companies if company in selected]
 
 # ========================================
 # PIPELINE STEPS
@@ -132,7 +145,13 @@ for company in active_companies:
     print("========================================")
 
     company_success = True
-    total_steps = len(steps)
+    company_steps = list(steps)
+    if company.lower() == "spacex":
+        company_steps.append({
+            "name": "PROFILE RANKING EXPORT",
+            "script": "analysis/profile_ranking.py",
+        })
+    total_steps = len(company_steps)
 
     pipeline_bar = tqdm(
         total=total_steps,
@@ -141,7 +160,7 @@ for company in active_companies:
     )
 
     for current_step, step in enumerate(
-        steps,
+        company_steps,
         start=1
     ):
 
