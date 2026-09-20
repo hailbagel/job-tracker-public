@@ -1,12 +1,18 @@
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
 
 # VS Code
 .vscode/
 
 # Environment variables
 .env
+.env.*
+!.env.example
 
 # Logs
 *.log
@@ -14,6 +20,9 @@ __pycache__/
 # Runtime state
 state.json
 .runtime/
+*.pid
+*.session
+*.cookies.json
 
 # Ignore raw crawler data
 data/**/raw/
@@ -25,3 +34,9 @@ data/**/exports/
 configs/private_profiles/
 data/**/private/
 data/**/exports/*/
+
+# Local credentials and machine-specific files
+credentials.json
+secrets.json
+*.pem
+*.key

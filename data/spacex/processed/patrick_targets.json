@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "publication_status": "awaiting_first_verified_production_run",
+    "coverage_complete": false,
+    "profile_id": "patrick",
+    "counts": {
+      "scanned": 0,
+      "potentially_relevant": 0,
+      "strong_match": 0,
+      "louisiana_pecan_island": 0
+    }
+  },
+  "rankings": [],
+  "top_25": [],
+  "verified_strong_targets": [],
+  "louisiana_subset": [],
+  "new_relevant": [],
+  "materially_changed_relevant": [],
+  "removed_relevant": []
+}

@@ -156,6 +156,15 @@ def require_clean_git():
         raise PublicationError("Refusing to collect with existing worktree changes: " + ", ".join(sorted(dirty)))
 
 
+def require_tracked_allowlist():
+    result = run(["git", "ls-files", "--error-unmatch", "--", *OUTPUT_ALLOWLIST], check=False)
+    if result.returncode:
+        raise PublicationError(
+            "Every public output must be reviewed and tracked before unattended publication; "
+            "the output allowlist contains an untracked path"
+        )
+
+
 def validate_enabled_providers(repo):
     try:
         config = json.loads((repo / "configs/companies.json").read_text(encoding="utf-8"))
@@ -206,6 +215,7 @@ def commit_and_push(counts, feed_count, publish_ref):
 
 def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
     git_prepare(expected_branch)
+    require_tracked_allowlist()
     validate_enabled_providers(repo)
     collection_started = time.time()
     command = [sys.executable, "run_pipeline.py"]

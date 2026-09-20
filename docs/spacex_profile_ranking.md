@@ -1,6 +1,6 @@
 # SpaceX evidence-profile ranking
 
-The normal SpaceX tracker path now writes a stable, versioned personalized feed after successful acquisition, detail extraction, and tracker analysis. The public repository contains only the generic engine, schema, synthetic profile, tests, and synthetic outputs. Candidate profiles and actual feeds stay ignored.
+The normal SpaceX tracker path writes a stable, versioned personalized feed after successful acquisition, detail extraction, and tracker analysis. Candidate profiles and immutable private generations stay ignored. The unattended publisher validates an approved Patrick feed and copies its JSON/CSV/Markdown views to the tracked public processed-output paths defined by the repository policy.
 
 ## Dependency setup
 

@@ -70,28 +70,64 @@ class GitPublicationTests(unittest.TestCase):
         self.assertIn("without force", str(raised.exception))
 
 
+    @patch.object(publication, "run", return_value=completed([], returncode=1))
+    def test_untracked_allowlist_is_rejected_before_collection(self, command):
+        with self.assertRaisesRegex(publication.PublicationError, "reviewed and tracked"):
+            publication.require_tracked_allowlist()
+        self.assertEqual(command.call_args.args[0][:4], ["git", "ls-files", "--error-unmatch", "--"])
+
+
+class GitPreparationTests(unittest.TestCase):
+    @patch.object(publication, "changed_paths", return_value={"README.md"})
+    @patch.object(publication, "run", return_value=completed([], stdout="main\n"))
+    def test_dirty_worktree_fails_before_fetch(self, command, _changed):
+        with self.assertRaisesRegex(publication.PublicationError, "existing worktree changes"):
+            publication.git_prepare("main")
+        commands = [item.args[0] for item in command.call_args_list]
+        self.assertFalse(any(item[:2] == ["git", "fetch"] for item in commands))
+
+    @patch.object(publication, "changed_paths", return_value=set())
+    @patch.object(publication, "run")
+    def test_diverged_history_fails_before_pull(self, command, _changed):
+        def behavior(args, check=True):
+            if args[:3] == ["git", "branch", "--show-current"]:
+                return completed(args, stdout="main\n")
+            if args[:2] == ["git", "rev-list"]:
+                return completed(args, stdout="1 1\n")
+            return completed(args)
+        command.side_effect = behavior
+        with self.assertRaisesRegex(publication.PublicationError, "diverges"):
+            publication.git_prepare("main")
+        commands = [item.args[0] for item in command.call_args_list]
+        self.assertFalse(any(item[:2] == ["git", "pull"] for item in commands))
+
+
 class OrchestrationTests(unittest.TestCase):
     @patch.object(publication, "git_prepare")
+    @patch.object(publication, "require_tracked_allowlist")
     @patch.object(publication, "validate_enabled_providers")
     @patch.object(publication, "run")
-    def test_provider_stage_failure_propagates_before_validation(self, command, _enabled, _git):
+    def test_provider_stage_failure_propagates_before_validation(self, command, _enabled, tracked, _git):
         command.side_effect = publication.PublicationError("provider failed")
         with self.assertRaisesRegex(publication.PublicationError, "provider failed"):
             publication.collect_and_publish(Path("."), Path("runtime"), Path("profile"), "main", "main")
         invoked = command.call_args.args[0]
         for provider in publication.REQUIRED_PROVIDERS:
             self.assertIn(provider, invoked)
+        tracked.assert_called_once()
 
     @patch.object(publication, "git_prepare")
+    @patch.object(publication, "require_tracked_allowlist")
     @patch.object(publication, "validate_enabled_providers")
     @patch.object(publication, "validate_datasets", return_value={name: 2 for name in publication.REQUIRED_PROVIDERS})
     @patch.object(publication, "publish_patrick_feed", return_value=2)
     @patch.object(publication, "commit_and_push", return_value=True)
     @patch.object(publication, "run", return_value=completed([]))
-    def test_deterministic_success_reaches_commit_and_push(self, _run, commit, feed, datasets, enabled, git):
+    def test_deterministic_success_reaches_commit_and_push(self, _run, commit, feed, datasets, enabled, tracked, git):
         result = publication.collect_and_publish(Path("."), Path("runtime"), Path("profile"), "main", "main")
         self.assertTrue(result)
         git.assert_called_once_with("main")
+        tracked.assert_called_once()
         enabled.assert_called_once()
         datasets.assert_called_once()
         feed.assert_called_once()

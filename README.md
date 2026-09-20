@@ -2,6 +2,8 @@
 
 An automated Python-based pipeline for collecting, structuring, and analyzing public job postings — designed for AI-powered hiring intelligence and market research.
 
+This public repository is the source of truth for the working application, reproducible public-data pipeline, approved public datasets and feeds, operating documentation, roadmap, and engineering history. The boundary between versioned public material and prohibited private/runtime material is defined in [PUBLIC_REPOSITORY_POLICY.md](PUBLIC_REPOSITORY_POLICY.md). Current delivery status and evidence are in [ROADMAP.md](ROADMAP.md).
+
 ---
 
 ## ✨ What This Project Does
@@ -128,7 +130,13 @@ python run_pipeline.py
 
 SpaceX evidence-profile ranking, private setup, deterministic exports, and the provider filter are documented in [docs/spacex_profile_ranking.md](docs/spacex_profile_ranking.md).
 
-The serialized manual/scheduled production command for validated public datasets and the Patrick feed is documented in [docs/public_data_publication.md](docs/public_data_publication.md).
+For production collection and publication, both manual operators and the scheduler use exactly:
+
+```bash
+python3 scripts/publish_public_data.py
+```
+
+Run it from `/opt/vutrulabs/job-tracker-public`. It serializes executions, fast-forwards safely, validates every required provider and approved output, commits only the tracked public-output allowlist, and pushes without force. See [docs/public_data_publication.md](docs/public_data_publication.md) for the complete Operations contract and recovery procedure.
 
 ---
 
