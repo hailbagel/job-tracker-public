@@ -288,3 +288,5 @@ print(
         "%Y-%m-%d %H:%M:%S"
     )
 )
+
+sys.exit(0 if overall_success else 1)

@@ -13,6 +13,7 @@ __pycache__/
 
 # Runtime state
 state.json
+.runtime/
 
 # Ignore raw crawler data
 data/**/raw/

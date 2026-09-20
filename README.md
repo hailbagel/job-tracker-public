@@ -128,6 +128,8 @@ python run_pipeline.py
 
 SpaceX evidence-profile ranking, private setup, deterministic exports, and the provider filter are documented in [docs/spacex_profile_ranking.md](docs/spacex_profile_ranking.md).
 
+The serialized manual/scheduled production command for validated public datasets and the Patrick feed is documented in [docs/public_data_publication.md](docs/public_data_publication.md).
+
 ---
 
 ## `scrapers/runner.py`
