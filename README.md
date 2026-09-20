@@ -125,8 +125,14 @@ Loads config from `configs/companies.json` and runs the following steps for each
 ### Usage
 
 ```bash
-python run_pipeline.py
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 run_pipeline.py
 ```
+
+The detail scraper also requires Microsoft Edge and a matching Edge WebDriver
+available on `PATH`. The public API overview scrapers do not require a browser.
 
 SpaceX evidence-profile ranking, private setup, deterministic exports, and the provider filter are documented in [docs/spacex_profile_ranking.md](docs/spacex_profile_ranking.md).
 
