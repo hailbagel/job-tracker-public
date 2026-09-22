@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -32,3 +33,23 @@ def run_registry(registry_path="configs/sources.json", data_root="data", source_
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"schema_version": 1, "sources": statuses}, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return statuses
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Run registry-backed public job acquisition")
+    parser.add_argument("--registry", default="configs/sources.json")
+    parser.add_argument("--data-root", default="data")
+    parser.add_argument("--source", action="append", dest="source_ids")
+    args = parser.parse_args(argv)
+    statuses = run_registry(args.registry, args.data_root, args.source_ids)
+    failed = [item for item in statuses if item["status"] in {"failed", "incomplete"}]
+    for item in statuses:
+        print(
+            f"{item['source_id']}: {item['status']} "
+            f"({item['records_written']} jobs; complete={item['coverage_complete']})"
+        )
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

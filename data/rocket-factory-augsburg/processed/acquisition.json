@@ -1,0 +1,12 @@
+{
+  "acquisition_mode": "ats",
+  "adapter": "greenhouse",
+  "company": "Rocket Factory Augsburg",
+  "coverage_complete": true,
+  "data_hash": "a85fe0062be6ff01980ca4a9ccfd7d6b760aa402958da461372ff62283046fbc",
+  "observed_at": "2026-09-22T12:21:44.793831Z",
+  "reason": null,
+  "records_written": 50,
+  "source_id": "rocket-factory-augsburg",
+  "status": "success"
+}

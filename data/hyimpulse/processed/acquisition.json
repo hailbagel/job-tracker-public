@@ -1,0 +1,12 @@
+{
+  "acquisition_mode": "web",
+  "adapter": "html_job_links",
+  "company": "HyImpulse",
+  "coverage_complete": true,
+  "data_hash": "fc02c31be28f19884dd3b949ab05af5ab270b61bcf2471e6eed827f3897a6c1a",
+  "observed_at": "2026-09-22T12:21:45.071166Z",
+  "reason": null,
+  "records_written": 12,
+  "source_id": "hyimpulse",
+  "status": "success"
+}

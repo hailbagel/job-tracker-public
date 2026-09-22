@@ -15,6 +15,10 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+from jobtracker.patrick import generate_multi
+from jobtracker.registry import RegistryError, sources
+
+
 REQUIRED_PROVIDERS = ("neura", "spacex", "tesla", "jacobs")
 COMMON_OUTPUTS = (
     "department_summary.csv", "job_changes.csv", "job_details.csv",
@@ -26,10 +30,27 @@ DETAIL_FIELDS = JOB_FIELDS | {"mission", "requirements", "benefits"}
 
 
 def output_allowlist():
-    paths = [f"data/{provider}/processed/{name}" for provider in REQUIRED_PROVIDERS for name in COMMON_OUTPUTS]
+    try:
+        configured = sources("configs/sources.json", enabled_only=True)
+        automated = [
+            item for item in configured
+            if item["acquisition_mode"] != "manual_discovery"
+        ]
+    except RegistryError:
+        automated = [{"id": provider, "acquisition_mode": "existing_provider"} for provider in REQUIRED_PROVIDERS]
+    paths = [
+        f"data/{item['id']}/processed/{name}"
+        for item in automated for name in COMMON_OUTPUTS
+    ]
+    paths += [
+        f"data/{item['id']}/processed/acquisition.json"
+        for item in automated if item["acquisition_mode"] != "existing_provider"
+    ]
+    paths += ["data/source_status.json"]
     paths += ["data/neura/processed/jobs_structured.csv", "data/spacex/processed/acquisition.json"]
     paths += [f"data/spacex/processed/{name}" for name in PUBLIC_FEED_FILES]
-    return tuple(paths)
+    paths += [f"data/patrick/processed/{name}" for name in PUBLIC_FEED_FILES]
+    return tuple(dict.fromkeys(paths))
 
 
 OUTPUT_ALLOWLIST = output_allowlist()
@@ -136,7 +157,22 @@ def publish_patrick_feed(repo, runtime, profile, counts):
             os.replace(temporary, destination / destination_name)
         finally:
             temporary.unlink(missing_ok=True)
-    return len(rankings)
+    space_sources = [
+        item for item in sources(repo / "configs/sources.json", enabled_only=True)
+        if item["sector"] == "Space/Rocket"
+        and "patrick" in item["tags"]
+        and item["acquisition_mode"] != "manual_discovery"
+    ]
+    multi = generate_multi(
+        profile, space_sources, repo / "data", repo / "data/patrick/processed"
+    )
+    if not multi["metadata"]["coverage_complete"]:
+        incomplete = [
+            item["source_id"] for item in multi["metadata"]["source_coverage"]
+            if not item["coverage_complete"]
+        ]
+        raise PublicationError("Patrick feed has incomplete source coverage: " + ", ".join(incomplete))
+    return len(multi["rankings"])
 
 
 def changed_paths():
@@ -167,10 +203,14 @@ def require_tracked_allowlist():
 
 def validate_enabled_providers(repo):
     try:
-        config = json.loads((repo / "configs/companies.json").read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        raise PublicationError(f"Cannot load provider configuration: {exc}") from exc
-    enabled = {item.get("name") for item in config if item.get("enabled") is True}
+        registry_path = repo / "configs/sources.json"
+        if registry_path.exists():
+            enabled = {item["id"] for item in sources(registry_path, enabled_only=True)}
+        else:
+            config = json.loads((repo / "configs/companies.json").read_text(encoding="utf-8"))
+            enabled = {item.get("name") for item in config if item.get("enabled") is True}
+    except (OSError, json.JSONDecodeError, RegistryError) as exc:
+        raise PublicationError(f"Cannot load source registry: {exc}") from exc
     missing = set(REQUIRED_PROVIDERS) - enabled
     if missing:
         raise PublicationError("Required providers are disabled: " + ", ".join(sorted(missing)))
@@ -222,6 +262,15 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
     for provider in REQUIRED_PROVIDERS:
         command.extend(("--company", provider))
     run(command)
+    registry_sources = [
+        item for item in sources(repo / "configs/sources.json", enabled_only=True)
+        if item["acquisition_mode"] not in {"existing_provider", "manual_discovery"}
+    ]
+    if registry_sources:
+        registry_command = [sys.executable, "-m", "jobtracker.pipeline"]
+        for item in registry_sources:
+            registry_command.extend(("--source", item["id"]))
+        run(registry_command)
     counts = validate_datasets(repo, collection_started)
     feed_count = publish_patrick_feed(repo, runtime, profile, counts)
     committed = commit_and_push(counts, feed_count, publish_ref)
