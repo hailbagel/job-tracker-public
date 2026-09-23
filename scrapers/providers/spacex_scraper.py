@@ -174,27 +174,34 @@ class SpaceXScraper(BaseScraper):
             sys.exit(1)
 
         jobs, details, seen_links = [], [], set()
-        for listing in listings:
-            job_id = listing.get("id")
-            title = str(listing.get("title") or "").strip()
-            location = str((listing.get("location") or {}).get("name") or "Unknown").strip()
-            department = _metadata_value(listing, "Discipline") or "Unknown"
-            link = str(listing.get("absolute_url") or "").strip()
-            if not job_id or not title or not link or link in seen_links:
-                continue
-            seen_links.add(link)
-            jobs.append({
-                "id": job_id, "title": title, "location": location, "company": "SpaceX",
-                "department": department, "link": link, "requisition_id": listing.get("requisition_id", ""),
-                "first_published": listing.get("first_published", ""), "updated_at": listing.get("updated_at", ""),
-                "scrape_timestamp": timestamp,
-            })
-            mission, requirements, benefits = _content_sections(listing.get("content"))
-            details.append({
-                "title": title, "location": location, "company": "SpaceX", "department": department,
-                "link": link, "mission": mission, "requirements": requirements, "benefits": benefits,
-                "scrape_timestamp": timestamp,
-            })
+        try:
+            for listing in listings:
+                job_id = listing.get("id")
+                title = str(listing.get("title") or "").strip()
+                location = str((listing.get("location") or {}).get("name") or "Unknown").strip()
+                department = _metadata_value(listing, "Discipline") or "Unknown"
+                link = str(listing.get("absolute_url") or "").strip()
+                if not job_id or not title or not link or link in seen_links:
+                    continue
+                seen_links.add(link)
+                jobs.append({
+                    "id": job_id, "title": title, "location": location, "company": "SpaceX",
+                    "department": department, "link": link, "requisition_id": listing.get("requisition_id", ""),
+                    "first_published": listing.get("first_published", ""), "updated_at": listing.get("updated_at", ""),
+                    "scrape_timestamp": timestamp,
+                })
+                mission, requirements, benefits = _content_sections(listing.get("content"))
+                details.append({
+                    "title": title, "location": location, "company": "SpaceX", "department": department,
+                    "link": link, "mission": mission, "requirements": requirements, "benefits": benefits,
+                    "scrape_timestamp": timestamp,
+                })
+        except Exception as exc:
+            _record_incomplete(
+                acquisition_file, previous, observed_at,
+                f"Normalization failed: {type(exc).__name__}: {exc}", len(listings), status="failed",
+            )
+            raise
 
         if len(jobs) != len(listings) or len(details) != len(listings):
             _record_incomplete(
@@ -214,13 +221,21 @@ class SpaceXScraper(BaseScraper):
             if previous.get("data_hash") == data_hash else observed_at
         )
         jobs_df, details_df = pd.DataFrame(jobs), pd.DataFrame(details)
-        _atomic_frame(jobs_df, raw_file)
-        _atomic_frame(jobs_df, latest_file)
-        _atomic_frame(details_df, details_file)
+        try:
+            _atomic_frame(jobs_df, raw_file)
+            _atomic_frame(jobs_df, latest_file)
+            _atomic_frame(details_df, details_file)
+            records_written = _csv_record_count(latest_file)
+        except Exception as exc:
+            _record_incomplete(
+                acquisition_file, previous, observed_at,
+                f"Dataset write failed: {type(exc).__name__}: {exc}", len(listings), status="failed",
+            )
+            raise
         acquisition = {
             "provider": "spacex", "source": API_URL, "status": "success", "reason": None,
             "observed_at": observed_at, "data_changed_at": data_changed_at, "data_hash": data_hash,
-            "source_records": len(listings), "records_written": _csv_record_count(latest_file),
+            "source_records": len(listings), "records_written": records_written,
             "coverage_complete": True,
         }
         _atomic_json(acquisition, acquisition_file)
