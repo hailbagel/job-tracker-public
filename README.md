@@ -99,6 +99,50 @@ job-tracker/
 
 ---
 
+## Source registry and public feed
+
+The scalable path is:
+
+```text
+configs/sources.json
+        ↓
+Reusable acquisition adapter
+        ↓
+Normalized outputs + history/change detection
+        ↓
+Evidence-backed Patrick ranking
+        ↓
+Public datasets/feed
+        ↓
+GitHub publication
+```
+
+`configs/sources.json` is the versioned authority for source identity, enablement,
+acquisition mode and adapter selection. Acquisition mode describes the source
+contract (`existing_provider`, `api`, `ats`, `web`, or
+`manual_discovery`); `adapter` names the reusable implementation. Sources
+that cannot be acquired completely and reliably remain `manual_discovery` with
+an explicit reason.
+
+To onboard a compatible company, add and validate one registry entry with the
+required identity fields, choose an existing adapter and its configuration, and
+verify a non-empty complete acquisition. The next registry run then writes the
+six standard files under `data/<source-id>/processed/` without a per-company
+pipeline edit:
+`jobs_latest.csv`, `job_details.csv`, `job_history.csv`,
+`job_changes.csv`, `department_summary.csv`, and
+`location_summary.csv`.
+
+Run selected registry sources with
+`python3 -m jobtracker.pipeline --source <source-id>`. Each source also writes
+`acquisition.json`, and the run writes `data/source_status.json`. Failed,
+incomplete and manual acquisitions report incomplete coverage and never replace
+the last good normalized snapshot. The consolidated approved public ranking is
+written to `data/patrick/processed/patrick_targets.{csv,json,md}`; private
+profile evidence is not included.
+
+---
+
 # ⚙️ Core Components
 
 ## `run_pipeline.py`

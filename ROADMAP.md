@@ -4,6 +4,8 @@ Status is evidence-based. “Implemented” means repository behavior is covered
 
 | Milestone | Status | Evidence / remaining gate |
 | --- | --- | --- |
+| Versioned source registry and reusable acquisition | Implemented | `configs/sources.json` contains the initial company pack plus legacy sources; API, ATS, web, existing-provider and honest manual-discovery dispatch are deterministic and tested. |
+| Multi-company Patrick Space/Rocket feed | Implemented | Source-qualified aggregation reuses the evidence-backed rubric and hard gates, reports per-source coverage, preserves the SpaceX Louisiana subset, and strips private profile evidence from public exports. |
 | Multi-provider public collection | Implemented | Required providers are explicit in `scripts/publish_public_data.py`; pipeline failures return nonzero. |
 | SpaceX normalized acquisition and ranking | Implemented | Atomic acquisition/ranking code and focused tests are versioned on `main`. |
 | Unattended public dataset and Patrick feed publisher | Implemented; awaiting technical acceptance | Serialized wrapper validates Git state, provider enablement, freshness, schema, coherence, tracked allowlist, commit behavior, and non-force push behavior. |

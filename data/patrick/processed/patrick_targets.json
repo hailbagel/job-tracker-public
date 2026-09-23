@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "metadata": {
+    "status": "bootstrap",
+    "coverage_complete": false,
+    "generated_at": null,
+    "reason": "Awaiting a run with the approved profile; this bootstrap does not claim current coverage.",
+    "source_coverage": [],
+    "counts": {
+      "scanned": 0,
+      "potentially_relevant": 0,
+      "strong_match": 0,
+      "louisiana_pecan_island": 0
+    },
+    "history_limitation": "No consolidated approved-profile snapshot has been published yet."
+  },
+  "rankings": [],
+  "top_25": [],
+  "strongest_targets": [],
+  "new_relevant": [],
+  "materially_changed_relevant": [],
+  "removed_relevant": [],
+  "spacex_louisiana_subset": []
+}
