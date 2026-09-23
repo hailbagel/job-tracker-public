@@ -1,3 +1,21 @@
+# Mandatory Engineering Governance
+
+Before implementing, reviewing, deploying, or operating this repository, read and follow [ENGINEERING_PRINCIPLES.md](ENGINEERING_PRINCIPLES.md).
+
+Those principles are mandatory for Builder, CTO, Engineering Operations, and human-operated production work. If older guidance in this file conflicts with ENGINEERING_PRINCIPLES.md or the current registry-backed architecture, the engineering principles and current reviewed architecture take precedence.
+
+In particular:
+
+- Design for scale, test small, verify, then scale out.
+- Prefer registry/configuration and reusable adapters over one-off provider code.
+- Preserve output parity and working behavior.
+- Never fabricate successful acquisition or complete coverage.
+- Keep private profile evidence and credentials out of the public repository.
+- Do not deploy or schedule unverified code.
+- Fix the narrowest layer that is actually broken.
+- Keep one blocker with one responsible owner.
+- Stop at explicit acceptance gates.
+
 # Engineering Rules
 
 Prefer:
