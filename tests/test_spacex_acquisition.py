@@ -121,5 +121,53 @@ class SpaceXAcquisitionTests(unittest.TestCase):
         self.assertEqual(prior["data_hash"], failed["data_hash"])
 
 
+    @patch("scrapers.providers.spacex_scraper._fetch_jobs")
+    def test_malformed_normalization_marks_failed_and_preserves_prior_snapshot(self, fetch):
+        self._run_at(fetch, [listing()], "2026-09-23T10:00:00Z")
+        target = Path("data/spacex/processed/jobs_latest.csv")
+        prior_bytes = target.read_bytes()
+        prior = json.loads(Path("data/spacex/processed/acquisition.json").read_text(encoding="utf-8"))
+
+        fetch.return_value = Response([None])
+        with patch("scrapers.providers.spacex_scraper.datetime") as clock:
+            clock.now.return_value = real_datetime.fromisoformat("2026-09-23T11:00:00+00:00")
+            with self.assertRaises(AttributeError):
+                SpaceXScraper("spacex").run()
+
+        failed = json.loads(Path("data/spacex/processed/acquisition.json").read_text(encoding="utf-8"))
+        self.assertEqual(prior_bytes, target.read_bytes())
+        self.assertEqual("failed", failed["status"])
+        self.assertFalse(failed["coverage_complete"])
+        self.assertEqual(0, failed["records_written"])
+        self.assertEqual(1, failed["source_records"])
+        self.assertEqual("2026-09-23T11:00:00Z", failed["observed_at"])
+        self.assertEqual(prior["data_changed_at"], failed["data_changed_at"])
+        self.assertEqual(prior["data_hash"], failed["data_hash"])
+
+    @patch("scrapers.providers.spacex_scraper._fetch_jobs")
+    def test_dataset_write_failure_cannot_retain_complete_metadata(self, fetch):
+        self._run_at(fetch, [listing()], "2026-09-23T10:00:00Z")
+        target = Path("data/spacex/processed/jobs_latest.csv")
+        prior_bytes = target.read_bytes()
+        prior = json.loads(Path("data/spacex/processed/acquisition.json").read_text(encoding="utf-8"))
+
+        fetch.return_value = Response([listing("56")])
+        with patch("scrapers.providers.spacex_scraper.datetime") as clock, \
+                patch("scrapers.providers.spacex_scraper._atomic_frame", side_effect=OSError("disk full")):
+            clock.now.return_value = real_datetime.fromisoformat("2026-09-23T11:00:00+00:00")
+            with self.assertRaises(OSError):
+                SpaceXScraper("spacex").run()
+
+        failed = json.loads(Path("data/spacex/processed/acquisition.json").read_text(encoding="utf-8"))
+        self.assertEqual(prior_bytes, target.read_bytes())
+        self.assertEqual("failed", failed["status"])
+        self.assertFalse(failed["coverage_complete"])
+        self.assertEqual(0, failed["records_written"])
+        self.assertEqual(1, failed["source_records"])
+        self.assertEqual("2026-09-23T11:00:00Z", failed["observed_at"])
+        self.assertEqual(prior["data_changed_at"], failed["data_changed_at"])
+        self.assertEqual(prior["data_hash"], failed["data_hash"])
+
+
 if __name__ == "__main__":
     unittest.main()
