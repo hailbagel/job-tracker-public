@@ -1,3 +1,4 @@
+import csv
 import hashlib
 import html
 import json
@@ -98,6 +99,29 @@ def _atomic_json(value, path):
             os.unlink(handle.name)
 
 
+def _read_acquisition(path):
+    try:
+        with open(path, encoding="utf-8") as handle:
+            return json.load(handle)
+    except (OSError, ValueError):
+        return {}
+
+
+def _record_incomplete(path, previous, observed_at, reason, source_records=0, status="incomplete"):
+    acquisition = {
+        "provider": "spacex", "source": API_URL, "status": status, "reason": reason,
+        "observed_at": observed_at, "data_changed_at": previous.get("data_changed_at"),
+        "data_hash": previous.get("data_hash"), "source_records": source_records,
+        "records_written": 0, "coverage_complete": False,
+    }
+    _atomic_json(acquisition, path)
+
+
+def _csv_record_count(path):
+    with open(path, newline="", encoding="utf-8") as handle:
+        return sum(1 for _ in csv.DictReader(handle))
+
+
 class SpaceXScraper(BaseScraper):
 
     def run(self):
@@ -118,19 +142,34 @@ class SpaceXScraper(BaseScraper):
         print("SPACEX SCRAPER")
         print("========================================")
         print("Lade Greenhouse Jobs API...")
-        response = _fetch_jobs(API_URL)
+        previous = _read_acquisition(acquisition_file)
+        try:
+            response = _fetch_jobs(API_URL)
+        except Exception as exc:
+            _record_incomplete(
+                acquisition_file, previous, observed_at, f"{type(exc).__name__}: {exc}", status="failed",
+            )
+            raise
         if response.status_code != 200:
+            _record_incomplete(
+                acquisition_file, previous, observed_at,
+                f"Greenhouse API returned HTTP {response.status_code}", status="failed",
+            )
             print(f"FEHLER: Greenhouse API antwortet mit Status {response.status_code}")
             print(response.text[:500])
             sys.exit(1)
         try:
             payload = response.json()
         except ValueError:
+            _record_incomplete(
+                acquisition_file, previous, observed_at, "Greenhouse API returned invalid JSON", status="failed",
+            )
             print("FEHLER: Greenhouse API lieferte kein JSON")
             sys.exit(1)
 
         listings = payload.get("jobs") or []
         if not listings:
+            _record_incomplete(acquisition_file, previous, observed_at, "Greenhouse API returned zero jobs")
             print("FEHLER: Keine SpaceX Listings gefunden; bestehende Dateien bleiben erhalten")
             sys.exit(1)
 
@@ -158,6 +197,10 @@ class SpaceXScraper(BaseScraper):
             })
 
         if len(jobs) != len(listings) or len(details) != len(listings):
+            _record_incomplete(
+                acquisition_file, previous, observed_at,
+                f"Normalized {len(jobs)} of {len(listings)} source records", len(listings),
+            )
             print(f"FEHLER: Unvollstaendige SpaceX Erfassung ({len(jobs)}/{len(listings)}); bestehende Dateien bleiben erhalten")
             sys.exit(1)
 
@@ -166,23 +209,20 @@ class SpaceXScraper(BaseScraper):
             "details": [{key: value for key, value in row.items() if key != "scrape_timestamp"} for row in details],
         }
         data_hash = hashlib.sha256(json.dumps(semantic, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
-        previous = {}
-        if os.path.exists(acquisition_file):
-            try:
-                with open(acquisition_file, encoding="utf-8") as handle:
-                    previous = json.load(handle)
-            except (OSError, ValueError):
-                previous = {}
-        data_changed_at = previous.get("data_changed_at") if previous.get("data_hash") == data_hash else observed_at
-        acquisition = {
-            "provider": "spacex", "source": API_URL, "observed_at": observed_at,
-            "data_changed_at": data_changed_at, "data_hash": data_hash,
-            "source_records": len(listings), "records_written": len(jobs), "coverage_complete": True,
-        }
+        data_changed_at = (
+            previous.get("data_changed_at") or observed_at
+            if previous.get("data_hash") == data_hash else observed_at
+        )
         jobs_df, details_df = pd.DataFrame(jobs), pd.DataFrame(details)
         _atomic_frame(jobs_df, raw_file)
         _atomic_frame(jobs_df, latest_file)
         _atomic_frame(details_df, details_file)
+        acquisition = {
+            "provider": "spacex", "source": API_URL, "status": "success", "reason": None,
+            "observed_at": observed_at, "data_changed_at": data_changed_at, "data_hash": data_hash,
+            "source_records": len(listings), "records_written": _csv_record_count(latest_file),
+            "coverage_complete": True,
+        }
         _atomic_json(acquisition, acquisition_file)
 
         print("\nSCRAPING ERFOLGREICH")
