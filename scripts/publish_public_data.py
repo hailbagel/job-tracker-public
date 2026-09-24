@@ -15,6 +15,13 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+# Direct script execution adds scripts/ rather than the repository root to
+# sys.path. Add the root explicitly so the documented invocation can import the
+# in-repository package from a clean checkout.
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from jobtracker.patrick import generate_multi
 from jobtracker.registry import RegistryError, sources
 
@@ -386,7 +393,7 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
 
 
 def main():
-    repo = Path(__file__).resolve().parents[1]
+    repo = REPO_ROOT
     os.chdir(repo)
     runtime = Path(os.environ.get("JOB_TRACKER_RUNTIME_DIR", ".runtime/publication")).resolve()
     runtime.mkdir(parents=True, exist_ok=True)

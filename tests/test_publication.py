@@ -1,4 +1,5 @@
 import json
+import os
 import subprocess
 import tempfile
 import unittest
@@ -10,6 +11,30 @@ from scripts import publish_public_data as publication
 
 def completed(command, returncode=0, stdout=""):
     return subprocess.CompletedProcess(command, returncode, stdout=stdout)
+
+
+class ScriptEntrypointTests(unittest.TestCase):
+    def test_documented_command_imports_package_without_pythonpath(self):
+        repo = Path(__file__).resolve().parents[1]
+        environment = os.environ.copy()
+        environment.pop("PYTHONPATH", None)
+        environment.pop("PYTHONHOME", None)
+        environment["PYTHONNOUSERSITE"] = "1"
+        environment["JOB_TRACKER_PUBLISH_BRANCH"] = "__import_contract_test__"
+        with tempfile.TemporaryDirectory() as runtime:
+            environment["JOB_TRACKER_RUNTIME_DIR"] = runtime
+            result = subprocess.run(
+                ["python3", "scripts/publish_public_data.py"],
+                cwd=repo,
+                env=environment,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+            )
+
+        self.assertEqual(1, result.returncode)
+        self.assertNotIn("ModuleNotFoundError", result.stdout)
+        self.assertIn("Expected publication branch __import_contract_test__", result.stdout.replace(chr(39), ""))
 
 
 class ProviderConfigurationTests(unittest.TestCase):
