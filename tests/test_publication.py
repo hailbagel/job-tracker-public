@@ -13,14 +13,11 @@ def completed(command, returncode=0, stdout=""):
 
 
 class ProviderConfigurationTests(unittest.TestCase):
-    def test_required_provider_cannot_be_disabled(self):
-        with tempfile.TemporaryDirectory() as directory:
-            repo = Path(directory)
-            (repo / "configs").mkdir()
-            config = [{"name": name, "enabled": name != "tesla"} for name in publication.REQUIRED_PROVIDERS]
-            (repo / "configs/companies.json").write_text(json.dumps(config), encoding="utf-8")
-            with self.assertRaisesRegex(publication.PublicationError, "tesla"):
-                publication.validate_enabled_providers(repo)
+    @patch.object(publication, "sources", return_value=[{"id": "spacex"}])
+    def test_registry_enabled_sources_are_authoritative(self, configured):
+        enabled = publication.validate_enabled_providers(Path("."))
+        self.assertEqual([{"id": "spacex"}], enabled)
+        configured.assert_called_once_with(Path("configs/sources.json"), enabled_only=True)
 
 
 class GitPublicationTests(unittest.TestCase):
@@ -103,35 +100,97 @@ class GitPreparationTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
-    @patch.object(publication, "git_prepare")
-    @patch.object(publication, "require_tracked_allowlist")
-    @patch.object(publication, "validate_enabled_providers")
-    @patch.object(publication, "run")
-    def test_provider_stage_failure_propagates_before_validation(self, command, _enabled, tracked, _git):
-        command.side_effect = publication.PublicationError("provider failed")
-        with self.assertRaisesRegex(publication.PublicationError, "provider failed"):
-            publication.collect_and_publish(Path("."), Path("runtime"), Path("profile"), "main", "main")
-        invoked = command.call_args.args[0]
-        for provider in publication.REQUIRED_PROVIDERS:
-            self.assertIn(provider, invoked)
-        tracked.assert_called_once()
+    def test_failed_source_restores_partial_tracked_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            processed = repo / "data/tesla/processed"
+            processed.mkdir(parents=True)
+            latest = processed / "jobs_latest.csv"
+            acquisition = processed / "acquisition.json"
+            latest.write_text("last-known-good\n", encoding="utf-8")
+            acquisition.write_text('{"status":"success"}\n', encoding="utf-8")
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=repo, check=True)
+            subprocess.run(["git", "add", "."], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "fixture"], cwd=repo, check=True)
+            latest.write_text("partial-current-run\n", encoding="utf-8")
+            acquisition.write_text(
+                '{"status":"failed","coverage_complete":false,"reason":"fixture failure"}\n',
+                encoding="utf-8",
+            )
+            source = {
+                "id": "tesla", "company": "Tesla",
+                "acquisition_mode": "existing_provider",
+            }
+            real_run = publication.run
 
-    @patch.object(publication, "git_prepare")
-    @patch.object(publication, "require_tracked_allowlist")
-    @patch.object(publication, "validate_enabled_providers")
-    @patch.object(publication, "validate_datasets", return_value={name: 2 for name in publication.REQUIRED_PROVIDERS})
-    @patch.object(publication, "publish_patrick_feed", return_value=2)
-    @patch.object(publication, "commit_and_push", return_value=True)
-    @patch.object(publication, "run", return_value=completed([]))
-    def test_deterministic_success_reaches_commit_and_push(self, _run, commit, feed, datasets, enabled, tracked, git):
-        result = publication.collect_and_publish(Path("."), Path("runtime"), Path("profile"), "main", "main")
-        self.assertTrue(result)
+            def behavior(args, check=True):
+                if args[:3] == [publication.sys.executable, "run_pipeline.py", "--company"]:
+                    return completed(args, returncode=1)
+                return real_run(args, check=check)
+
+            with patch.object(publication, "run", side_effect=behavior):
+                result = publication.collect_source(repo, source, 0)
+
+            self.assertEqual("failed", result["status"])
+            self.assertFalse(result["coverage_complete"])
+            self.assertEqual("last-known-good\n", latest.read_text(encoding="utf-8"))
+            self.assertEqual("failed", json.loads(acquisition.read_text(encoding="utf-8"))["status"])
+
+    def test_noncontributing_tesla_failure_does_not_block_healthy_patrick_feed(self):
+        tesla = {"id": "tesla", "company": "Tesla", "acquisition_mode": "existing_provider"}
+        spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}
+        results = [
+            publication.source_result(tesla, "failed", False, reason="fixture failure"),
+            publication.source_result(spacex, "success", True, records_written=3),
+        ]
+        feed_metadata = {
+            "coverage_complete": True,
+            "source_coverage": [{"source_id": "spacex", "coverage_complete": True}],
+        }
+        with patch.object(publication, "git_prepare") as git, \
+                patch.object(publication, "require_tracked_allowlist") as tracked, \
+                patch.object(publication, "validate_enabled_providers", return_value=[tesla, spacex]), \
+                patch.object(publication, "collect_source", side_effect=results), \
+                patch.object(publication, "publish_patrick_feed", return_value=(3, feed_metadata)) as feed, \
+                patch.object(publication, "write_publication_status", return_value={"patrick_feed_coverage_complete": True}) as status, \
+                patch.object(publication, "commit_and_push", return_value=True) as commit:
+            self.assertTrue(publication.collect_and_publish(
+                Path("."), Path("runtime"), Path("profile"), "main", "main"
+            ))
         git.assert_called_once_with("main")
         tracked.assert_called_once()
-        enabled.assert_called_once()
-        datasets.assert_called_once()
-        feed.assert_called_once()
-        commit.assert_called_once()
+        published_results = feed.call_args.args[4]
+        self.assertEqual("failed", published_results["tesla"]["status"])
+        self.assertFalse(published_results["tesla"]["coverage_complete"])
+        commit.assert_called_once_with({"spacex": 3}, 3, "main")
+        status.assert_called_once()
+
+    def test_required_contributor_failure_records_incomplete_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            (repo / "data").mkdir()
+            results = {
+                "spacex": {"source_id": "spacex", "status": "success", "coverage_complete": True},
+                "rocket-factory-augsburg": {
+                    "source_id": "rocket-factory-augsburg", "status": "failed",
+                    "coverage_complete": False, "reason": "fixture failure",
+                },
+            }
+            metadata = {
+                "coverage_complete": False,
+                "source_coverage": [
+                    {"source_id": "spacex", "coverage_complete": True},
+                    {"source_id": "rocket-factory-augsburg", "coverage_complete": False},
+                ],
+            }
+            coverage = publication.write_publication_status(repo, results, metadata)
+            self.assertFalse(coverage["patrick_feed_coverage_complete"])
+            self.assertEqual(["spacex"], coverage["published_feed_contributors"])
+            self.assertEqual(
+                ["rocket-factory-augsburg"], coverage["failed_or_incomplete_sources"]
+            )
 
 
 if __name__ == "__main__":
