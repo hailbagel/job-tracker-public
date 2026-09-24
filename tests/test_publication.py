@@ -100,6 +100,44 @@ class GitPreparationTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
+    def test_failed_source_restores_partial_tracked_outputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            processed = repo / "data/tesla/processed"
+            processed.mkdir(parents=True)
+            latest = processed / "jobs_latest.csv"
+            acquisition = processed / "acquisition.json"
+            latest.write_text("last-known-good\n", encoding="utf-8")
+            acquisition.write_text('{"status":"success"}\n', encoding="utf-8")
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=repo, check=True)
+            subprocess.run(["git", "config", "user.name", "Test"], cwd=repo, check=True)
+            subprocess.run(["git", "add", "."], cwd=repo, check=True)
+            subprocess.run(["git", "commit", "-qm", "fixture"], cwd=repo, check=True)
+            latest.write_text("partial-current-run\n", encoding="utf-8")
+            acquisition.write_text(
+                '{"status":"failed","coverage_complete":false,"reason":"fixture failure"}\n',
+                encoding="utf-8",
+            )
+            source = {
+                "id": "tesla", "company": "Tesla",
+                "acquisition_mode": "existing_provider",
+            }
+            real_run = publication.run
+
+            def behavior(args, check=True):
+                if args[:3] == [publication.sys.executable, "run_pipeline.py", "--company"]:
+                    return completed(args, returncode=1)
+                return real_run(args, check=check)
+
+            with patch.object(publication, "run", side_effect=behavior):
+                result = publication.collect_source(repo, source, 0)
+
+            self.assertEqual("failed", result["status"])
+            self.assertFalse(result["coverage_complete"])
+            self.assertEqual("last-known-good\n", latest.read_text(encoding="utf-8"))
+            self.assertEqual("failed", json.loads(acquisition.read_text(encoding="utf-8"))["status"])
+
     def test_noncontributing_tesla_failure_does_not_block_healthy_patrick_feed(self):
         tesla = {"id": "tesla", "company": "Tesla", "acquisition_mode": "existing_provider"}
         spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}

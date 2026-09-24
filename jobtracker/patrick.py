@@ -186,7 +186,17 @@ def generate_multi(
         for job, details in rows:
             records.append(_public_record(rank_job(job, details, profile), source))
     records = _sort(records)
-    added, changed, removed, limitation = _changes(previous, records)
+    incomplete_sources = {
+        item["source_id"] for item in coverage if not item["coverage_complete"]
+    }
+    comparable_previous = previous
+    if previous is not None and incomplete_sources:
+        comparable_previous = dict(previous)
+        comparable_previous["rankings"] = [
+            row for row in previous.get("rankings", [])
+            if row.get("source_id") not in incomplete_sources
+        ]
+    added, changed, removed, limitation = _changes(comparable_previous, records)
     relevant = [row for row in records if row["potentially_relevant"]]
     counts = _counts(records)
     document = {

@@ -289,6 +289,20 @@ def current_acquisition_metadata(repo, source, collection_started):
     return document if isinstance(document, dict) else None
 
 
+def restore_failed_source_outputs(repo, source):
+    """Preserve tracked source datasets when the current collection is unusable."""
+    prefix = f"data/{source['id']}/processed/"
+    tracked = run([
+        "git", "-C", str(repo), "ls-files", "-z", "--", prefix,
+    ]).stdout.split("\0")
+    paths = [
+        path for path in tracked
+        if path and path != prefix + "acquisition.json"
+    ]
+    if paths:
+        run(["git", "-C", str(repo), "restore", "--source=HEAD", "--", *paths])
+
+
 def collect_source(repo, source, collection_started):
     if source["acquisition_mode"] == "existing_provider":
         command = [sys.executable, "run_pipeline.py", "--company", source["id"]]
@@ -301,10 +315,12 @@ def collect_source(repo, source, collection_started):
         status = (metadata or {}).get("status")
         if status not in {"failed", "incomplete"}:
             status = "failed"
+        restore_failed_source_outputs(repo, source)
         return source_result(source, status, False, reason=reason, metadata=metadata)
     try:
         count = validate_source_dataset(repo, source, collection_started)
     except PublicationError as exc:
+        restore_failed_source_outputs(repo, source)
         return source_result(source, "incomplete", False, reason=str(exc), metadata=metadata)
     return source_result(source, "success", True, records_written=count, metadata=metadata)
 

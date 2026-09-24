@@ -85,6 +85,37 @@ class MultiCompanyPatrickTests(unittest.TestCase):
             self.assertFalse(coverage["beta"]["coverage_complete"])
             self.assertEqual(0, coverage["beta"]["jobs"])
 
+    def test_incomplete_source_does_not_infer_removals_from_previous_feed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            alpha, beta = source("alpha", "Alpha Space"), source("beta", "Beta Rocket")
+            process_success(root, alpha, result("alpha", "Alpha Space", "Texas"), "2026-01-01T00:00:00Z")
+            process_success(root, beta, result("beta", "Beta Rocket", "Berlin"), "2026-01-01T00:00:00Z")
+            generate_multi(
+                "configs/profiles/example.json", [alpha, beta], root, root / "patrick",
+                "2026-01-02T00:00:00Z",
+            )
+
+            replacement = result("alpha", "Alpha Space", "Florida")
+            replacement.jobs[0]["id"] = "alpha:8"
+            replacement.jobs[0]["source_job_id"] = "8"
+            replacement.jobs[0]["link"] = "https://alpha.test/8"
+            process_success(root, alpha, replacement, "2026-01-03T00:00:00Z")
+            document = generate_multi(
+                "configs/profiles/example.json", [alpha, beta], root, root / "patrick",
+                "2026-01-04T00:00:00Z",
+                coverage_overrides={
+                    "beta": {
+                        "status": "failed", "coverage_complete": False,
+                        "reason": "deterministic fixture failure",
+                    }
+                },
+            )
+
+            self.assertEqual(["alpha:8"], [row["job_id"] for row in document["new_relevant"]])
+            self.assertEqual(["alpha:7"], [row["job_id"] for row in document["removed_relevant"]])
+            self.assertNotIn("beta:7", {row["job_id"] for row in document["removed_relevant"]})
+
 
 if __name__ == "__main__":
     unittest.main()
