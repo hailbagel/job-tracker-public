@@ -374,6 +374,18 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
         source["id"]: collect_source(repo, source, collection_started)
         for source in attempted
     }
+    failed = {
+        source_id: item for source_id, item in results.items()
+        if item.get("status") != "success" or item.get("coverage_complete") is not True
+    }
+    if failed:
+        summary = "; ".join(
+            f"{source_id}: {item.get('reason') or item.get('status') or 'incomplete'}"
+            for source_id, item in failed.items()
+        )
+        raise PublicationError(
+            "Required source collection failed or was incomplete; refusing publication: " + summary
+        )
     counts = {
         source_id: item["records_written"]
         for source_id, item in results.items() if item["coverage_complete"]
@@ -381,6 +393,10 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
     feed_count, feed_metadata = publish_patrick_feed(
         repo, runtime, profile, counts, results
     )
+    if feed_metadata.get("coverage_complete") is not True:
+        raise PublicationError(
+            "Patrick feed generation was incomplete; refusing publication"
+        )
     coverage = write_publication_status(repo, results, feed_metadata)
     committed = commit_and_push(counts, feed_count, publish_ref)
     action = "committed and pushed" if committed else "validated with no public changes"
