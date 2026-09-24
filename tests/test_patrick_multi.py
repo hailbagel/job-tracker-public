@@ -62,5 +62,29 @@ class MultiCompanyPatrickTests(unittest.TestCase):
             self.assertFalse(coverage["missing"]["coverage_complete"])
 
 
+    def test_current_failure_overrides_stale_success_and_prevents_complete_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            alpha, beta = source("alpha", "Alpha Space"), source("beta", "Beta Rocket")
+            process_success(root, alpha, result("alpha", "Alpha Space", "Texas"), "2026-01-01T00:00:00Z")
+            process_success(root, beta, result("beta", "Beta Rocket", "Berlin"), "2026-01-01T00:00:00Z")
+            document = generate_multi(
+                "configs/profiles/example.json", [alpha, beta], root, root / "patrick",
+                coverage_overrides={
+                    "beta": {
+                        "source_id": "beta", "company": "Beta Rocket",
+                        "status": "failed", "coverage_complete": False,
+                        "reason": "deterministic fixture failure",
+                    }
+                },
+            )
+            self.assertFalse(document["metadata"]["coverage_complete"])
+            self.assertEqual(["alpha:7"], [row["job_id"] for row in document["rankings"]])
+            coverage = {item["source_id"]: item for item in document["metadata"]["source_coverage"]}
+            self.assertEqual("failed", coverage["beta"]["status"])
+            self.assertFalse(coverage["beta"]["coverage_complete"])
+            self.assertEqual(0, coverage["beta"]["jobs"])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -17,7 +17,10 @@ Host installation, the timer, repository credentials, and the private Patrick pr
 
 ## Contract
 
-- Exactly `neura`, `spacex`, `tesla`, and `jacobs` are required. A disabled required provider or any failed pipeline stage fails the command.
+- Enabled, automated sources in `configs/sources.json` are attempted independently. A failed source remains explicitly failed/incomplete; it does not block healthy sources outside its coverage scope.
+- Patrick-feed contributors are enabled, automated `Space/Rocket` sources tagged `patrick`. Only successful contributors are published, and any failed contributor makes overall Patrick-feed coverage incomplete.
+- Existing provider support for `neura`, `spacex`, `tesla`, and `jacobs` is preserved. Tesla, Jacobs, or NEURA failures do not block a healthy Patrick feed because they are not Patrick contributors.
+- `data/source_status.json` and logs report attempted, successful, failed/incomplete, and published contributor source IDs plus overall Patrick-feed coverage.
 - A nonblocking lock under `.runtime/publication/` serializes invocations.
 - The command requires a clean worktree on `main` by default, fetches `origin/main`, rejects divergence, and performs only `git pull --ff-only origin main` before collection.
 - Fresh, nonempty, schema-valid and link-coherent processed datasets are required. SpaceX acquisition metadata and the Patrick JSON/CSV/Markdown feed must agree with the collected SpaceX count.

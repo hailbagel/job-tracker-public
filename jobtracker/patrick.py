@@ -163,7 +163,10 @@ def _markdown(document):
     return "\n".join(lines).rstrip() + "\n"
 
 
-def generate_multi(profile_path, sources, data_root="data", output_dir="data/patrick/processed", generated_at=None):
+def generate_multi(
+    profile_path, sources, data_root="data", output_dir="data/patrick/processed",
+    generated_at=None, coverage_overrides=None,
+):
     profile = load_profile(profile_path)
     output_dir = Path(output_dir)
     previous = None
@@ -174,6 +177,11 @@ def generate_multi(profile_path, sources, data_root="data", output_dir="data/pat
     records, coverage = [], []
     for source in sources:
         rows, item = _source_rows(source, data_root)
+        override = (coverage_overrides or {}).get(source["id"])
+        if override and not override.get("coverage_complete", False):
+            rows = []
+            item.update(override)
+            item.update(source_id=source["id"], company=source["company"], jobs=0)
         coverage.append(item)
         for job, details in rows:
             records.append(_public_record(rank_job(job, details, profile), source))

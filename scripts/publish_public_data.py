@@ -19,7 +19,10 @@ from jobtracker.patrick import generate_multi
 from jobtracker.registry import RegistryError, sources
 
 
-REQUIRED_PROVIDERS = ("neura", "spacex", "tesla", "jacobs")
+LEGACY_PROVIDERS = ("neura", "spacex", "tesla", "jacobs")
+# Compatibility alias: all four providers remain supported, but the registry now
+# determines which sources contribute to Patrick-feed coverage.
+REQUIRED_PROVIDERS = LEGACY_PROVIDERS
 COMMON_OUTPUTS = (
     "department_summary.csv", "job_changes.csv", "job_details.csv",
     "job_history.csv", "jobs_latest.csv", "location_summary.csv",
@@ -85,44 +88,54 @@ def read_csv(path, required):
     return rows
 
 
-def validate_datasets(repo, collection_started):
-    counts = {}
-    for provider in REQUIRED_PROVIDERS:
-        processed = repo / "data" / provider / "processed"
-        latest_path = processed / "jobs_latest.csv"
-        try:
-            fresh = latest_path.stat().st_mtime >= collection_started
-        except OSError as exc:
-            raise PublicationError(f"Missing current {provider} collection: {latest_path}") from exc
-        if not fresh:
-            raise PublicationError(f"Stale {provider} collection: jobs_latest.csv was not refreshed")
-        jobs = read_csv(latest_path, JOB_FIELDS)
-        details = read_csv(processed / "job_details.csv", DETAIL_FIELDS)
-        job_links = {row["link"].strip() for row in jobs if row.get("link", "").strip()}
-        detail_links = {row["link"].strip() for row in details if row.get("link", "").strip()}
-        missing = job_links - detail_links
-        if missing:
-            raise PublicationError(f"{provider} details are incoherent: {len(missing)} current jobs lack details")
-        for name in COMMON_OUTPUTS:
-            path = processed / name
-            if not path.is_file() or path.stat().st_size == 0:
-                raise PublicationError(f"Required processed output is missing or empty: {path}")
-        counts[provider] = len(jobs)
-
-    acquisition_path = repo / "data/spacex/processed/acquisition.json"
+def validate_source_dataset(repo, source, collection_started):
+    source_id = source["id"]
+    processed = repo / "data" / source_id / "processed"
+    latest_path = processed / "jobs_latest.csv"
     try:
-        acquisition = json.loads(acquisition_path.read_text(encoding="utf-8"))
-        observed = datetime.fromisoformat(acquisition["observed_at"].replace("Z", "+00:00")).timestamp()
-    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
-        raise PublicationError(f"Invalid SpaceX acquisition metadata: {exc}") from exc
-    if acquisition.get("coverage_complete") is not True or acquisition.get("records_written") != counts["spacex"]:
-        raise PublicationError("SpaceX acquisition metadata does not match the processed dataset")
-    if observed < collection_started:
-        raise PublicationError("SpaceX acquisition metadata is stale")
-    return counts
+        fresh = latest_path.stat().st_mtime >= collection_started
+    except OSError as exc:
+        raise PublicationError(f"Missing current {source_id} collection: {latest_path}") from exc
+    if not fresh:
+        raise PublicationError(f"Stale {source_id} collection: jobs_latest.csv was not refreshed")
+    jobs = read_csv(latest_path, JOB_FIELDS)
+    details = read_csv(processed / "job_details.csv", DETAIL_FIELDS)
+    job_links = {row["link"].strip() for row in jobs if row.get("link", "").strip()}
+    detail_links = {row["link"].strip() for row in details if row.get("link", "").strip()}
+    missing = job_links - detail_links
+    if missing:
+        raise PublicationError(f"{source_id} details are incoherent: {len(missing)} current jobs lack details")
+    for name in COMMON_OUTPUTS:
+        path = processed / name
+        if not path.is_file() or path.stat().st_size == 0:
+            raise PublicationError(f"Required processed output is missing or empty: {path}")
+
+    acquisition_path = processed / "acquisition.json"
+    if acquisition_path.exists():
+        try:
+            acquisition = json.loads(acquisition_path.read_text(encoding="utf-8"))
+            observed = datetime.fromisoformat(acquisition["observed_at"].replace("Z", "+00:00")).timestamp()
+        except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
+            raise PublicationError(f"Invalid {source_id} acquisition metadata: {exc}") from exc
+        if acquisition.get("status", "success") != "success" or acquisition.get("coverage_complete") is not True:
+            raise PublicationError(f"{source_id} acquisition is failed or incomplete")
+        if acquisition.get("records_written") != len(jobs):
+            raise PublicationError(f"{source_id} acquisition metadata does not match the processed dataset")
+        if observed < collection_started:
+            raise PublicationError(f"{source_id} acquisition metadata is stale")
+    return len(jobs)
 
 
-def publish_patrick_feed(repo, runtime, profile, counts):
+def validate_datasets(repo, collection_started):
+    """Compatibility validator for the four legacy providers."""
+    configured = {item["id"]: item for item in sources(repo / "configs/sources.json")}
+    return {
+        provider: validate_source_dataset(repo, configured[provider], collection_started)
+        for provider in LEGACY_PROVIDERS
+    }
+
+
+def publish_spacex_feed(repo, runtime, profile, counts):
     output = runtime / "patrick-feed"
     run([
         sys.executable, "analysis/profile_ranking.py", "spacex",
@@ -157,22 +170,30 @@ def publish_patrick_feed(repo, runtime, profile, counts):
             os.replace(temporary, destination / destination_name)
         finally:
             temporary.unlink(missing_ok=True)
-    space_sources = [
+
+
+def patrick_contributors(repo):
+    return [
         item for item in sources(repo / "configs/sources.json", enabled_only=True)
         if item["sector"] == "Space/Rocket"
         and "patrick" in item["tags"]
         and item["acquisition_mode"] != "manual_discovery"
     ]
+
+
+def publish_patrick_feed(repo, runtime, profile, counts, results=None):
+    results = results or {
+        source_id: {"status": "success", "coverage_complete": True}
+        for source_id in counts
+    }
+    if results.get("spacex", {}).get("coverage_complete"):
+        publish_spacex_feed(repo, runtime, profile, counts)
+    space_sources = patrick_contributors(repo)
     multi = generate_multi(
-        profile, space_sources, repo / "data", repo / "data/patrick/processed"
+        profile, space_sources, repo / "data", repo / "data/patrick/processed",
+        coverage_overrides=results,
     )
-    if not multi["metadata"]["coverage_complete"]:
-        incomplete = [
-            item["source_id"] for item in multi["metadata"]["source_coverage"]
-            if not item["coverage_complete"]
-        ]
-        raise PublicationError("Patrick feed has incomplete source coverage: " + ", ".join(incomplete))
-    return len(multi["rankings"])
+    return len(multi["rankings"]), multi["metadata"]
 
 
 def changed_paths():
@@ -203,17 +224,10 @@ def require_tracked_allowlist():
 
 def validate_enabled_providers(repo):
     try:
-        registry_path = repo / "configs/sources.json"
-        if registry_path.exists():
-            enabled = {item["id"] for item in sources(registry_path, enabled_only=True)}
-        else:
-            config = json.loads((repo / "configs/companies.json").read_text(encoding="utf-8"))
-            enabled = {item.get("name") for item in config if item.get("enabled") is True}
+        enabled = sources(repo / "configs/sources.json", enabled_only=True)
     except (OSError, json.JSONDecodeError, RegistryError) as exc:
         raise PublicationError(f"Cannot load source registry: {exc}") from exc
-    missing = set(REQUIRED_PROVIDERS) - enabled
-    if missing:
-        raise PublicationError("Required providers are disabled: " + ", ".join(sorted(missing)))
+    return enabled
 
 
 def git_prepare(expected_branch):
@@ -240,7 +254,7 @@ def commit_and_push(counts, feed_count, publish_ref):
     if run(["git", "diff", "--cached", "--quiet"], check=False).returncode == 0:
         print("No public dataset or feed changes; no commit created.")
         return False
-    summary = " ".join(f"{provider}={counts[provider]}" for provider in REQUIRED_PROVIDERS)
+    summary = " ".join(f"{source_id}={count}" for source_id, count in counts.items())
     run(["git", "commit", "-m", f"Publish datasets ({summary}; patrick={feed_count})"])
     try:
         run(["git", "push", "origin", f"HEAD:{publish_ref}"])
@@ -253,29 +267,105 @@ def commit_and_push(counts, feed_count, publish_ref):
     return True
 
 
+def source_result(source, status, coverage_complete, records_written=0, reason=None, metadata=None):
+    result = dict(metadata or {})
+    result.update({
+        "source_id": source["id"], "company": source["company"],
+        "acquisition_mode": source["acquisition_mode"], "adapter": source.get("adapter"),
+        "status": status, "coverage_complete": coverage_complete,
+        "records_written": records_written, "reason": reason,
+    })
+    return result
+
+
+def current_acquisition_metadata(repo, source, collection_started):
+    path = repo / "data" / source["id"] / "processed/acquisition.json"
+    try:
+        if path.stat().st_mtime < collection_started:
+            return None
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    return document if isinstance(document, dict) else None
+
+
+def collect_source(repo, source, collection_started):
+    if source["acquisition_mode"] == "existing_provider":
+        command = [sys.executable, "run_pipeline.py", "--company", source["id"]]
+    else:
+        command = [sys.executable, "-m", "jobtracker.pipeline", "--source", source["id"]]
+    completed = run(command, check=False)
+    metadata = current_acquisition_metadata(repo, source, collection_started)
+    if completed.returncode:
+        reason = (metadata or {}).get("reason") or f"collection command exited {completed.returncode}"
+        status = (metadata or {}).get("status")
+        if status not in {"failed", "incomplete"}:
+            status = "failed"
+        return source_result(source, status, False, reason=reason, metadata=metadata)
+    try:
+        count = validate_source_dataset(repo, source, collection_started)
+    except PublicationError as exc:
+        return source_result(source, "incomplete", False, reason=str(exc), metadata=metadata)
+    return source_result(source, "success", True, records_written=count, metadata=metadata)
+
+
+def write_publication_status(repo, results, feed_metadata):
+    coverage = feed_metadata["source_coverage"]
+    document = {
+        "schema_version": 1,
+        "publication": {
+            "attempted_sources": list(results),
+            "successful_sources": [key for key, item in results.items() if item["coverage_complete"]],
+            "failed_or_incomplete_sources": [key for key, item in results.items() if not item["coverage_complete"]],
+            "published_feed_contributors": [item["source_id"] for item in coverage if item["coverage_complete"]],
+            "patrick_feed_coverage_complete": feed_metadata["coverage_complete"],
+        },
+        "sources": list(results.values()),
+    }
+    path = repo / "data/source_status.json"
+    handle = tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=path.parent, delete=False)
+    temporary = Path(handle.name)
+    try:
+        with handle:
+            json.dump(document, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
+    print("Publication coverage: " + json.dumps(document["publication"], sort_keys=True))
+    return document["publication"]
+
+
 def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
     git_prepare(expected_branch)
     require_tracked_allowlist()
-    validate_enabled_providers(repo)
-    collection_started = time.time()
-    command = [sys.executable, "run_pipeline.py"]
-    for provider in REQUIRED_PROVIDERS:
-        command.extend(("--company", provider))
-    run(command)
-    registry_sources = [
-        item for item in sources(repo / "configs/sources.json", enabled_only=True)
-        if item["acquisition_mode"] not in {"existing_provider", "manual_discovery"}
+    configured = validate_enabled_providers(repo)
+    attempted = [
+        item for item in configured
+        if item["acquisition_mode"] != "manual_discovery"
     ]
-    if registry_sources:
-        registry_command = [sys.executable, "-m", "jobtracker.pipeline"]
-        for item in registry_sources:
-            registry_command.extend(("--source", item["id"]))
-        run(registry_command)
-    counts = validate_datasets(repo, collection_started)
-    feed_count = publish_patrick_feed(repo, runtime, profile, counts)
+    collection_started = time.time()
+    results = {
+        source["id"]: collect_source(repo, source, collection_started)
+        for source in attempted
+    }
+    counts = {
+        source_id: item["records_written"]
+        for source_id, item in results.items() if item["coverage_complete"]
+    }
+    feed_count, feed_metadata = publish_patrick_feed(
+        repo, runtime, profile, counts, results
+    )
+    coverage = write_publication_status(repo, results, feed_metadata)
     committed = commit_and_push(counts, feed_count, publish_ref)
     action = "committed and pushed" if committed else "validated with no public changes"
-    print(f"Publication {action}: " + " ".join(f"{key}={value}" for key, value in counts.items()))
+    print(
+        f"Publication {action}: "
+        + " ".join(f"{key}={value}" for key, value in counts.items())
+        + f" patrick_complete={coverage['patrick_feed_coverage_complete']}"
+    )
     return committed
 
 
