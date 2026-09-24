@@ -1,10 +1,30 @@
 # Unattended public data publication
 
-The manual and scheduled interface is the same command:
+## Clean checkout and production command
+
+Create the dedicated checkout once:
 
 ```bash
-python3 scripts/publish_public_data.py
+git clone --branch main --single-branch https://github.com/hailbagel/job-tracker-public.git /opt/vutrulabs/job-tracker-public
 ```
+
+Before installing or changing the host schedule, confirm that the checkout is on
+the accepted `main` tip using fast-forward-only update semantics:
+
+```bash
+git -C /opt/vutrulabs/job-tracker-public switch main
+git -C /opt/vutrulabs/job-tracker-public pull --ff-only origin main
+```
+
+The exact manual and scheduled production command is:
+
+```bash
+cd /opt/vutrulabs/job-tracker-public && /usr/bin/python3 scripts/publish_public_data.py
+```
+
+The publisher independently checks for a clean `main` checkout, fetches
+`origin/main`, rejects divergence, and runs `git pull --ff-only origin main`
+before collection. Do not replace this with a merge, reset, or force push.
 
 Engineering Operations should run it with `/opt/vutrulabs/job-tracker-public` as the working directory. For example, a systemd service uses:
 
@@ -14,6 +34,14 @@ ExecStart=/usr/bin/python3 scripts/publish_public_data.py
 ```
 
 Host installation, the timer, repository credentials, and the private Patrick profile are Operations-owned. Provision the profile outside Git at `configs/private_profiles/patrick.json`, or set `JOB_TRACKER_PROFILE_PATH` to its absolute path. Do not put profile evidence or credentials in the repository or logs.
+
+On success, verify the non-sensitive publication summary in
+`data/source_status.json`. Its `publication` object reports attempted,
+successful, failed/incomplete, and published contributor source IDs plus
+`patrick_feed_coverage_complete`. Provider datasets are under
+`data/<source-id>/processed/`; the consolidated feed is written to
+`data/patrick/processed/patrick_targets.{csv,json,md}`. The compatibility
+SpaceX feed remains under `data/spacex/processed/`.
 
 ## Contract
 
