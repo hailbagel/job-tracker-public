@@ -1,15 +1,83 @@
 {
+  "publication": {
+    "attempted_sources": [
+      "neura",
+      "tesla",
+      "jacobs",
+      "spacex",
+      "rocket-factory-augsburg",
+      "exolaunch",
+      "hyimpulse"
+    ],
+    "failed_or_incomplete_sources": [
+      "neura",
+      "tesla",
+      "jacobs",
+      "spacex"
+    ],
+    "patrick_feed_coverage_complete": false,
+    "published_feed_contributors": [
+      "rocket-factory-augsburg",
+      "exolaunch",
+      "hyimpulse"
+    ],
+    "successful_sources": [
+      "rocket-factory-augsburg",
+      "exolaunch",
+      "hyimpulse"
+    ]
+  },
   "schema_version": 1,
   "sources": [
+    {
+      "acquisition_mode": "existing_provider",
+      "adapter": "existing_provider",
+      "company": "NEURA Robotics",
+      "coverage_complete": false,
+      "reason": "collection command exited 1",
+      "records_written": 0,
+      "source_id": "neura",
+      "status": "failed"
+    },
+    {
+      "acquisition_mode": "existing_provider",
+      "adapter": "existing_provider",
+      "company": "Tesla",
+      "coverage_complete": false,
+      "reason": "collection command exited 1",
+      "records_written": 0,
+      "source_id": "tesla",
+      "status": "failed"
+    },
+    {
+      "acquisition_mode": "existing_provider",
+      "adapter": "existing_provider",
+      "company": "Jacobs",
+      "coverage_complete": false,
+      "reason": "collection command exited 1",
+      "records_written": 0,
+      "source_id": "jacobs",
+      "status": "failed"
+    },
+    {
+      "acquisition_mode": "existing_provider",
+      "adapter": "existing_provider",
+      "company": "SpaceX",
+      "coverage_complete": false,
+      "reason": "collection command exited 1",
+      "records_written": 0,
+      "source_id": "spacex",
+      "status": "failed"
+    },
     {
       "acquisition_mode": "ats",
       "adapter": "greenhouse",
       "company": "Rocket Factory Augsburg",
       "coverage_complete": true,
-      "data_hash": "a85fe0062be6ff01980ca4a9ccfd7d6b760aa402958da461372ff62283046fbc",
-      "observed_at": "2026-09-22T12:21:44.793831Z",
+      "data_hash": "c75509d6eb3e9a807aa5a22dd685635814866805c51a1850523d0307fa86693d",
+      "observed_at": "2026-09-24T14:24:22.291092Z",
       "reason": null,
-      "records_written": 50,
+      "records_written": 49,
       "source_id": "rocket-factory-augsburg",
       "status": "success"
     },
@@ -19,7 +87,7 @@
       "company": "Exolaunch",
       "coverage_complete": true,
       "data_hash": "935bfa3c06c5651dc02297f0e9bddb5aaeb284f7d9d17b89777ff5614cd8a46a",
-      "observed_at": "2026-09-22T12:21:44.979985Z",
+      "observed_at": "2026-09-24T14:24:22.831353Z",
       "reason": null,
       "records_written": 11,
       "source_id": "exolaunch",
@@ -31,7 +99,7 @@
       "company": "HyImpulse",
       "coverage_complete": true,
       "data_hash": "fc02c31be28f19884dd3b949ab05af5ab270b61bcf2471e6eed827f3897a6c1a",
-      "observed_at": "2026-09-22T12:21:45.071166Z",
+      "observed_at": "2026-09-24T14:24:23.087095Z",
       "reason": null,
       "records_written": 12,
       "source_id": "hyimpulse",

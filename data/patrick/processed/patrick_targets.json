@@ -1,24 +1,4108 @@
 {
-  "schema_version": "1.0",
-  "metadata": {
-    "status": "bootstrap",
-    "coverage_complete": false,
-    "generated_at": null,
-    "reason": "Awaiting a run with the approved profile; this bootstrap does not claim current coverage.",
-    "source_coverage": [],
-    "counts": {
-      "scanned": 0,
-      "potentially_relevant": 0,
-      "strong_match": 0,
-      "louisiana_pecan_island": 0
-    },
-    "history_limitation": "No consolidated approved-profile snapshot has been published yet."
-  },
-  "rankings": [],
-  "top_25": [],
-  "strongest_targets": [],
-  "new_relevant": [],
   "materially_changed_relevant": [],
+  "metadata": {
+    "counts": {
+      "louisiana_pecan_island": 0,
+      "potentially_relevant": 1,
+      "scanned": 72,
+      "strong_match": 1
+    },
+    "coverage_complete": false,
+    "generated_at": "2026-09-24T14:24:23.306269Z",
+    "history_limitation": null,
+    "source_coverage": [
+      {
+        "acquisition_mode": "existing_provider",
+        "adapter": "existing_provider",
+        "company": "SpaceX",
+        "coverage_complete": false,
+        "jobs": 0,
+        "observed_at": null,
+        "reason": "collection command exited 1",
+        "records_written": 0,
+        "source_id": "spacex",
+        "status": "failed"
+      },
+      {
+        "acquisition_mode": "ats",
+        "adapter": "greenhouse",
+        "company": "Rocket Factory Augsburg",
+        "coverage_complete": true,
+        "jobs": 49,
+        "observed_at": "2026-09-24T14:24:22.291092Z",
+        "reason": null,
+        "source_id": "rocket-factory-augsburg",
+        "status": "success"
+      },
+      {
+        "acquisition_mode": "api",
+        "adapter": "personio_xml",
+        "company": "Exolaunch",
+        "coverage_complete": true,
+        "jobs": 11,
+        "observed_at": "2026-09-24T14:24:22.831353Z",
+        "reason": null,
+        "source_id": "exolaunch",
+        "status": "success"
+      },
+      {
+        "acquisition_mode": "web",
+        "adapter": "html_job_links",
+        "company": "HyImpulse",
+        "coverage_complete": true,
+        "jobs": 12,
+        "observed_at": "2026-09-24T14:24:23.087095Z",
+        "reason": null,
+        "source_id": "hyimpulse",
+        "status": "success"
+      }
+    ]
+  },
+  "new_relevant": [
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Institutional Project Manager (m/f/d)",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 73,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4944174101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": true,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "C",
+      "requisition_id": null,
+      "role_family": "Construction Project Management",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "GREEN",
+      "title": "Institutional Project Manager (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101",
+      "work_authorization_signal": null,
+      "years": null
+    }
+  ],
+  "rankings": [
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Institutional Project Manager (m/f/d)",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 73,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4944174101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": true,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "C",
+      "requisition_id": null,
+      "role_family": "Construction Project Management",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "GREEN",
+      "title": "Institutional Project Manager (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Quality Assurance",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4943429101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "defects",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 38,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4943429101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Head of Quality (f/m/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4943429101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4947686101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 36,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4947686101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Head of Production (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4947686101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829285101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "installation",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 34,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4829285101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Avionics Hardware Technician (f/m/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829285101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Procurement",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4979565101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 34,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4979565101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Procurement Manager (f/m/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4979565101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4914898101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "defects",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 30,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4914898101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Avionics Quality Engineer (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "ics Quality Engineer (m/f/d)</strong>. Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <h2 style=\"color: #0047ff; margin-top: 30px;\">Your Tasks</h2> <ul style=&quo",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4914898101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944342101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 30,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4944342101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Utilities / Power",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Harness & Electrical Assembly Technician (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944342101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826694101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 30,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4826694101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (f/m/d) Avionics Production",
+      "trade_requirements": [],
+      "travel_expectations": "a .......................................... Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826694101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Propulsion Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4877177101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 30,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4877177101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Propulsion Production Engineer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": "rgets in a fast-paced, evolving environment..Do you want to revolutionize space travel in New Space? Then you've come to the right place.</span></p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-s",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4877177101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Launch Operations & Quality",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4833743101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "commissioning"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 30,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4833743101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Propulsion Test Technician",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "gineering solutions in aerospace technology? Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4833743101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Engine Assembly",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828946101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4828946101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Engine Assembly Technician (m/f/d) - Rocket Engines",
+      "trade_requirements": [],
+      "travel_expectations": "t-size: 12pt;\">Nice to have: Forklift and crane license, willingness to travel, and fluency in English for daily collaboration in an international environment.</li> </ul> <h2 style=\"color: #0047ff; margin-top: 30px;\">We Offer</h2> <table style=\"width: 100%",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828946101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4982385101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4982385101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Full-Stack Software Engineer (f/m/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4982385101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Additive Manufacturing",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823887101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4823887101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) 3D Printing/Additive Manufacturing",
+      "trade_requirements": [],
+      "travel_expectations": "ted, dynamic, and international environment? Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823887101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4917841101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4917841101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Development Engineer",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4917841101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4878506101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4878506101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Institutional Projects",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4878506101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960892101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4960892101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Institutional Projects (LCA)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960892101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4934392101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4934392101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "PLM Administrator (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4934392101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Launch",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4973276101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "installation"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "commissioning"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 28,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4973276101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Utilities / Power",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Senior Electrical Engineer - Launch (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4973276101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Production",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829139101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 26,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4829139101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Welder (m/f/d)",
+      "trade_requirements": [
+        "welding",
+        "steel",
+        "piping"
+      ],
+      "travel_expectations": "ng reliable hardware for New Space missions. Do you want to revolutionize space travel? Then you've come to the right place.</p> <h2 style=\"color: #0047ff; margin-top: 30px;\">Your Tasks</h2> <ul style=&quo",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829139101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4978745101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 24,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4978745101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Development Engineer - Valves (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4978745101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826223101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "installation",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 24,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4826223101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "EWIS Design Engineer (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "ted, dynamic, and international environment? Do you want to revolutionize space travel in New Space? Then you've come to the right place.</span></p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-s",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826223101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Propulsion",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828909101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 24,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4828909101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Propulsion Development Engineer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828909101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4978675101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 24,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4978675101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Senior Development Engineer - Umbilicals (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": "t;/li> <li><span style=\"font-size: 12pt;\">Occasionally travel to launch site</span></li> </ul> <h2 style=\"color: #0047ff; margin-top: 30px;\">Your Qualifications</h2> <ul> &l",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4978675101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Stage Assembly",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829103101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 24,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4829103101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Stage Assembly & Integration Technician (m/f/d)",
+      "trade_requirements": [
+        "welding"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4829103101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828814101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 22,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4828814101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Avionics Engineer - Design (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "your hardware, send us an application today..Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828814101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Manufacturing",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823908101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 22,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4823908101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "CNC Operator (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": "ted, dynamic, and international environment? Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823908101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828781101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "installation"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "commissioning"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4828781101",
+      "location": "Shetland Islands, Scotland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Assembly Technician (f/m/d) – Shetland UK",
+      "trade_requirements": [],
+      "travel_expectations": "of systems at our Launch site on the Shetland Islands, with the opportunity to travel to our other sites across Europe should the need arise. You will have the choice of either being based at the launch site in Unst, or working on a rotation pattern. If you enjoy working in a dyn",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828781101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4933765101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4933765101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Development Engineer - Orbital Stage (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4933765101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Propulsion",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4837700101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4837700101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Propulsion Engineering",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4837700101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Design",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4888885101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4888885101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Senior Fluidic Component Design Engineer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4888885101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4929561101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "installation"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "commissioning",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4929561101",
+      "location": "Shetland Islands, Scotland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Welder (m/f/d) UK/Shetlands",
+      "trade_requirements": [
+        "welding",
+        "steel"
+      ],
+      "travel_expectations": "of systems at our Launch site on the Shetland Islands, with the opportunity to travel to our other sites across Europe should the need arise. If you enjoy working in a dynamic and international team of dedicated people, then apply.</span></p> <h2 style=\"color:",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4929561101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4843587101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "installation"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "commissioning"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 18,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4843587101",
+      "location": "Shetland Islands, Scotland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Utilities / Power",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Electrical Technician - UK/Shetlands",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "of systems at our Launch site on the Shetland Islands, with the opportunity to travel to our other sites across Europe should the need arise. You will have the choice of either being based at the launch site in Unst, or working on a rotation pattern. If you enjoy working in a dyn",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4843587101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960338101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 16,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4960338101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) GNC - Reusable Launch Vehicles",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960338101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4907968101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 16,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4907968101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "LabVIEW Programming Engineer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4907968101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Launch Operations & Quality",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4964986101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 16,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4964986101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Propulsion Test Engineer (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": "y activities are performed in English)</li> <li>High willingness to travel between RFAs test and launch sites in different countries in Europe for extended periods of time</li> </ul> <p style=\"font-size: 11pt; color: #666666;\"><span style=\"font-size: 11pt; color: #666666;\"",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4964986101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Avionics",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4918738101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 16,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4918738101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "RF Design Engineer (m/f/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4918738101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Legal & Contracts",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960166101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4960166101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Contracts Manager (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960166101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4969536101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4969536101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "GNC Test Engineer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4969536101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4954683101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4954683101",
+      "location": "Inverness, Highland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Group Lead UK Test Site (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": "This role will require you to relocate to the test site location, with possible travel to our launch site and other locations as required.</span></p> <h2 style=\"color: #0047ff; margin-top: 30px;\">Your Tasks</h2> <p style=\"font-size: 11",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4954683101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Chief Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826227101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4826227101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (f/m/d) Simulation Engineer Mission Analysis",
+      "trade_requirements": [],
+      "travel_expectations": "a .......................................... Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4826227101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Finance",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4966913101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4966913101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Accounting",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4966913101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4878647101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4878647101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) LabVIEW Programming",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4878647101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4824842101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4824842101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Mathematical Modeling",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4824842101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Propulsion",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4830984101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4830984101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Propulsion Test Data Engineer",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4830984101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Software",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960401101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4960401101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Redundant Flight Software Development",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960401101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Chief Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828112101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4828112101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Intern (m/f/d) Software Engineer Mission Analysis",
+      "trade_requirements": [],
+      "travel_expectations": "a .......................................... Do you want to revolutionize space travel in New Space? Then you've come to the right place.</p> <table style=\"border-collapse: collapse; width: 99%; border-width: 0px; border-style: hidden;",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4828112101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823448101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "commissioning"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4823448101",
+      "location": "Shetland Islands, Scotland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Launch Site Health & Safety Lead",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4823448101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Supply Chain Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4845549101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4845549101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Einkäufer (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4845549101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2504337"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2504337",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Engineering Technician (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2504337",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2535135"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2535135",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Future Opportunities – Open Application",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2535135",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Logistics & Supply Chain",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2799954"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2799954",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "International Logistics Specialist (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2799954",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Operations",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2803946"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2803946",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Marketing Director (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2803946",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Launch & Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2782697"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2782697",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Mechanical Design Engineer - EXOtube (CAD Specialist)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2782697",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Operations",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2571248"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2571248",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Office Coordinator (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2571248",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Logistics & Supply Chain",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2570347"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2570347",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Operativer Einkäufer / Technical Buyer (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2570347",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Product Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2782501"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2782501",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Product Manager - EXOtube",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2782501",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Electronics",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2632283"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2632283",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Technical Product Manager, Electronics (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2632283",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2504264"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2504264",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Test Engineer - Mechanical Space Systems (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2504264",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "UK",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960147101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 6,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4960147101",
+      "location": "Shetland Islands, Scotland, United Kingdom",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "Inter (m/f/d) Supply Chain Coordinator",
+      "trade_requirements": [],
+      "travel_expectations": "ocations, including the SaxaVord Launch Site.Do you want to revolutionize space travel in New Space? Then you've come to the right place.</span></p> <h2 style=\"color: #0047ff; margin-top: 30px;\">Your Tasks</h2> <",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4960147101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2449978"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2449978",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2449978",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2457493"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2457493",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2457493",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2463567"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2463567",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2463567",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2502029"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2502029",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2502029",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2502452"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2502452",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2502452",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2515664"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2515664",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2515664",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2546581"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2546581",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2546581",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2546611"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2546611",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2546611",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2611021",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2700685"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2700685",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2700685",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2748877"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2748877",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2748877",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "HyImpulse",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2762828"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "hyimpulse:2762828",
+      "location": "Unknown",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "hyimpulse",
+      "status": "RED",
+      "title": "APPLY NOW",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2762828",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Exolaunch",
+      "degree_rule": null,
+      "department": "Unknown",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2615234"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "exolaunch:2615234",
+      "location": "Denver, USA",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Future Opportunities – Open Application",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2615234",
+      "work_authorization_signal": null,
+      "years": null
+    }
+  ],
   "removed_relevant": [],
-  "spacex_louisiana_subset": []
+  "schema_version": "1.0",
+  "spacex_louisiana_subset": [],
+  "strongest_targets": [
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Institutional Project Manager (m/f/d)",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 73,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4944174101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": true,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "C",
+      "requisition_id": null,
+      "role_family": "Construction Project Management",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "GREEN",
+      "title": "Institutional Project Manager (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101",
+      "work_authorization_signal": null,
+      "years": null
+    }
+  ],
+  "top_25": [
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "Program Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": "Institutional Project Manager (m/f/d)",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "job_evidence": [
+            "project management"
+          ],
+          "reason": "Industrial construction and project leadership"
+        },
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 73,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:4944174101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": true,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "C",
+      "requisition_id": null,
+      "role_family": "Construction Project Management",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "rocket-factory-augsburg",
+      "status": "GREEN",
+      "title": "Institutional Project Manager (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101",
+      "work_authorization_signal": null,
+      "years": null
+    }
+  ]
 }
