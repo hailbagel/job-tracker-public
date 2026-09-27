@@ -163,34 +163,68 @@ class OrchestrationTests(unittest.TestCase):
             self.assertEqual("last-known-good\n", latest.read_text(encoding="utf-8"))
             self.assertEqual("failed", json.loads(acquisition.read_text(encoding="utf-8"))["status"])
 
-    def test_noncontributing_tesla_failure_does_not_block_healthy_patrick_feed(self):
+    def test_required_provider_failure_blocks_all_publication_stages(self):
         tesla = {"id": "tesla", "company": "Tesla", "acquisition_mode": "existing_provider"}
         spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}
         results = [
             publication.source_result(tesla, "failed", False, reason="fixture failure"),
             publication.source_result(spacex, "success", True, records_written=3),
         ]
-        feed_metadata = {
-            "coverage_complete": True,
-            "source_coverage": [{"source_id": "spacex", "coverage_complete": True}],
-        }
         with patch.object(publication, "git_prepare") as git, \
                 patch.object(publication, "require_tracked_allowlist") as tracked, \
                 patch.object(publication, "validate_enabled_providers", return_value=[tesla, spacex]), \
                 patch.object(publication, "collect_source", side_effect=results), \
-                patch.object(publication, "publish_patrick_feed", return_value=(3, feed_metadata)) as feed, \
-                patch.object(publication, "write_publication_status", return_value={"patrick_feed_coverage_complete": True}) as status, \
+                patch.object(publication, "publish_patrick_feed") as feed, \
+                patch.object(publication, "write_publication_status") as status, \
+                patch.object(publication, "commit_and_push") as commit:
+            with self.assertRaisesRegex(publication.PublicationError, "tesla: fixture failure"):
+                publication.collect_and_publish(
+                    Path("."), Path("runtime"), Path("profile"), "main", "main"
+                )
+        git.assert_called_once_with("main")
+        tracked.assert_called_once()
+        feed.assert_not_called()
+        status.assert_not_called()
+        commit.assert_not_called()
+
+    def test_all_required_providers_succeed_and_publish(self):
+        spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}
+        result = publication.source_result(spacex, "success", True, records_written=3)
+        feed_metadata = {
+            "coverage_complete": True,
+            "source_coverage": [{"source_id": "spacex", "coverage_complete": True}],
+        }
+        coverage = {"patrick_feed_coverage_complete": True}
+        with patch.object(publication, "git_prepare"), \
+                patch.object(publication, "require_tracked_allowlist"), \
+                patch.object(publication, "validate_enabled_providers", return_value=[spacex]), \
+                patch.object(publication, "collect_source", return_value=result), \
+                patch.object(publication, "publish_patrick_feed", return_value=(3, feed_metadata)), \
+                patch.object(publication, "write_publication_status", return_value=coverage) as status, \
                 patch.object(publication, "commit_and_push", return_value=True) as commit:
             self.assertTrue(publication.collect_and_publish(
                 Path("."), Path("runtime"), Path("profile"), "main", "main"
             ))
-        git.assert_called_once_with("main")
-        tracked.assert_called_once()
-        published_results = feed.call_args.args[4]
-        self.assertEqual("failed", published_results["tesla"]["status"])
-        self.assertFalse(published_results["tesla"]["coverage_complete"])
-        commit.assert_called_once_with({"spacex": 3}, 3, "main")
         status.assert_called_once()
+        commit.assert_called_once_with({"spacex": 3}, 3, "main")
+
+    def test_incomplete_feed_blocks_status_staging_commit_and_push(self):
+        spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}
+        result = publication.source_result(spacex, "success", True, records_written=3)
+        feed_metadata = {"coverage_complete": False, "source_coverage": []}
+        with patch.object(publication, "git_prepare"), \
+                patch.object(publication, "require_tracked_allowlist"), \
+                patch.object(publication, "validate_enabled_providers", return_value=[spacex]), \
+                patch.object(publication, "collect_source", return_value=result), \
+                patch.object(publication, "publish_patrick_feed", return_value=(3, feed_metadata)), \
+                patch.object(publication, "write_publication_status") as status, \
+                patch.object(publication, "commit_and_push") as commit:
+            with self.assertRaisesRegex(publication.PublicationError, "feed generation was incomplete"):
+                publication.collect_and_publish(
+                    Path("."), Path("runtime"), Path("profile"), "main", "main"
+                )
+        status.assert_not_called()
+        commit.assert_not_called()
 
     def test_required_contributor_failure_records_incomplete_coverage(self):
         with tempfile.TemporaryDirectory() as directory:
