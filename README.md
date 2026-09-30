@@ -2,6 +2,8 @@
 
 An automated Python-based pipeline for collecting, structuring, and analyzing public job postings — designed for AI-powered hiring intelligence and market research.
 
+This public repository is the source of truth for the working application, reproducible public-data pipeline, approved public datasets and feeds, operating documentation, roadmap, and engineering history. The boundary between versioned public material and prohibited private/runtime material is defined in [PUBLIC_REPOSITORY_POLICY.md](PUBLIC_REPOSITORY_POLICY.md). Current delivery status and evidence are in [ROADMAP.md](ROADMAP.md).
+
 ---
 
 ## ✨ What This Project Does
@@ -97,6 +99,50 @@ job-tracker/
 
 ---
 
+## Source registry and public feed
+
+The scalable path is:
+
+```text
+configs/sources.json
+        ↓
+Reusable acquisition adapter
+        ↓
+Normalized outputs + history/change detection
+        ↓
+Evidence-backed Patrick ranking
+        ↓
+Public datasets/feed
+        ↓
+GitHub publication
+```
+
+`configs/sources.json` is the versioned authority for source identity, enablement,
+acquisition mode and adapter selection. Acquisition mode describes the source
+contract (`existing_provider`, `api`, `ats`, `web`, or
+`manual_discovery`); `adapter` names the reusable implementation. Sources
+that cannot be acquired completely and reliably remain `manual_discovery` with
+an explicit reason.
+
+To onboard a compatible company, add and validate one registry entry with the
+required identity fields, choose an existing adapter and its configuration, and
+verify a non-empty complete acquisition. The next registry run then writes the
+six standard files under `data/<source-id>/processed/` without a per-company
+pipeline edit:
+`jobs_latest.csv`, `job_details.csv`, `job_history.csv`,
+`job_changes.csv`, `department_summary.csv`, and
+`location_summary.csv`.
+
+Run selected registry sources with
+`python3 -m jobtracker.pipeline --source <source-id>`. Each source also writes
+`acquisition.json`, and the run writes `data/source_status.json`. Failed,
+incomplete and manual acquisitions report incomplete coverage and never replace
+the last good normalized snapshot. The consolidated approved public ranking is
+written to `data/patrick/processed/patrick_targets.{csv,json,md}`; private
+profile evidence is not included.
+
+---
+
 # ⚙️ Core Components
 
 ## `run_pipeline.py`
@@ -123,35 +169,24 @@ Loads config from `configs/companies.json` and runs the following steps for each
 ### Usage
 
 ```bash
-python3 run_pipeline.py
-```
-
----
-
-# 🛠️ Setup
-
-This project requires Python 3.12 or a compatible Python 3 runtime.
-
-Create a virtual environment and install the required Python packages:
-
-```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
+python3 run_pipeline.py
 ```
 
-The browser-backed scrapers use Selenium with Microsoft Edge:
+The detail scraper also requires Microsoft Edge and a matching Edge WebDriver
+available on `PATH`. The public API overview scrapers do not require a browser.
 
-- install Microsoft Edge
-- install a matching Edge WebDriver
-- make `msedgedriver` available on `PATH`
-- Edge is launched headlessly with Linux-compatible sandbox and shared-memory
-  settings; no browser profile, cookies, or credentials are used
+SpaceX evidence-profile ranking, private setup, deterministic exports, and the provider filter are documented in [docs/spacex_profile_ranking.md](docs/spacex_profile_ranking.md).
 
-The Tesla overview scraper uses a public JSON API and does not require Selenium.
-HTTP 403 from that endpoint is classified as `upstream_access_denied` and fails
-the provider closed. There is currently no verified alternate public collection
-path, so Tesla remains unavailable on hosts denied by the upstream service.
+For production collection and publication, both manual operators and the scheduler use exactly:
+
+```bash
+python3 scripts/publish_public_data.py
+```
+
+Run it from `/opt/vutrulabs/job-tracker-public`. It serializes executions, fast-forwards safely, validates every required provider and approved output, commits only the tracked public-output allowlist, and pushes without force. See [docs/public_data_publication.md](docs/public_data_publication.md) for the complete Operations contract and recovery procedure.
 
 ---
 
@@ -234,11 +269,11 @@ Options:
 
 ```bash
 # Tesla detail scraper (max 5 jobs, ~20 seconds)
-python3 scrapers/job_details_scraper.py tesla
+python scrapers/job_details_scraper.py tesla
 
 # Scrape all Tesla jobs (unlimited)
 # Change TEST_LIMIT to 0
-python3 scrapers/job_details_scraper.py tesla
+python scrapers/job_details_scraper.py tesla
 ```
 
 ### Features
@@ -324,7 +359,7 @@ Untouched:
 ### Usage
 
 ```bash
-python3 setup/init_scraper_architecture.py
+python setup/init_scraper_architecture.py
 ```
 
 ---
@@ -388,18 +423,18 @@ TEST_LIMIT = 5  # Change here for test limit
 
 1. **Scrape Tesla overview** (5 seconds)
    ```bash
-   python3 scrapers/runner.py tesla
+   python scrapers/runner.py tesla
    ```
 
 2. **Only 5 details** (20 seconds)
    ```bash
    # TEST_LIMIT = 5 in job_details_scraper.py
-   python3 scrapers/job_details_scraper.py tesla
+   python scrapers/job_details_scraper.py tesla
    ```
 
 3. **Test export** (1 second)
    ```bash
-   python3 analysis/export_txt.py tesla
+   python analysis/export_txt.py tesla
    ```
 
 **Total time:** ~26 seconds
@@ -436,7 +471,7 @@ Only companies with `"enabled": true` will be executed.
 To reset all data:
 
 ```bash
-python3 setup/init_scraper_architecture.py
+python setup/init_scraper_architecture.py
 ```
 
 This deletes and recreates:
