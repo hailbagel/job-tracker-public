@@ -37,6 +37,7 @@ COMMON_OUTPUTS = (
 PUBLIC_FEED_FILES = ("patrick_targets.csv", "patrick_targets.json", "patrick_targets.md")
 JOB_FIELDS = {"title", "location", "company", "department", "link"}
 DETAIL_FIELDS = JOB_FIELDS | {"mission", "requirements", "benefits"}
+PROVIDER_FAILURE_PREFIX = "PROVIDER_FAILURE: "
 
 
 def output_allowlist():
@@ -310,6 +311,22 @@ def restore_failed_source_outputs(repo, source):
         run(["git", "-C", str(repo), "restore", "--source=HEAD", "--", *paths])
 
 
+def classified_provider_failure(output):
+    for line in reversed(output.splitlines()):
+        if not line.startswith(PROVIDER_FAILURE_PREFIX):
+            continue
+        try:
+            failure = json.loads(line[len(PROVIDER_FAILURE_PREFIX):])
+        except json.JSONDecodeError:
+            return None
+        classification = failure.get("classification")
+        reason = failure.get("reason")
+        if isinstance(classification, str) and isinstance(reason, str):
+            return {"failure_classification": classification, "reason": reason}
+        return None
+    return None
+
+
 def collect_source(repo, source, collection_started):
     if source["acquisition_mode"] == "existing_provider":
         command = [sys.executable, "run_pipeline.py", "--company", source["id"]]
@@ -318,6 +335,9 @@ def collect_source(repo, source, collection_started):
     completed = run(command, check=False)
     metadata = current_acquisition_metadata(repo, source, collection_started)
     if completed.returncode:
+        classified = classified_provider_failure(completed.stdout)
+        if classified:
+            metadata = {**(metadata or {}), **classified}
         reason = (metadata or {}).get("reason") or f"collection command exited {completed.returncode}"
         status = (metadata or {}).get("status")
         if status not in {"failed", "incomplete"}:

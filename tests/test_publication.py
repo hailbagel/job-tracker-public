@@ -125,6 +125,16 @@ class GitPreparationTests(unittest.TestCase):
 
 
 class OrchestrationTests(unittest.TestCase):
+    def test_provider_failure_classification_is_parsed(self):
+        output = (
+            'traceback\nPROVIDER_FAILURE: {"classification": '
+            '"upstream_access_challenge", "reason": "HTTP 202"}\n'
+        )
+        self.assertEqual(
+            {"failure_classification": "upstream_access_challenge", "reason": "HTTP 202"},
+            publication.classified_provider_failure(output),
+        )
+
     def test_failed_source_restores_partial_tracked_outputs(self):
         with tempfile.TemporaryDirectory() as directory:
             repo = Path(directory)

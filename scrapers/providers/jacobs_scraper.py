@@ -1,231 +1,133 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
-import importlib
-import pandas as pd
-import time
-import os
 import json
-
+import os
+import time
 from datetime import datetime
+from html.parser import HTMLParser
+from urllib.parse import urljoin
 
-try:
-    tqdm_module = importlib.import_module("tqdm")
-    tqdm = tqdm_module.tqdm
-except Exception:
+import pandas as pd
+import requests
 
-    class tqdm:
-
-        def __init__(self, iterable=None, **kwargs):
-            self._iterable = iterable
-
-        def __iter__(self):
-            return iter(self._iterable)
-
-        @staticmethod
-        def write(msg):
-            print(msg)
+from scrapers.base.base_scraper import BaseScraper
 
 
-class JacobsScraper:
+class JacobsSourceUnavailable(RuntimeError):
+    def __init__(self, classification, detail):
+        self.classification = classification
+        super().__init__(f"Jacobs source unavailable [{classification}]: {detail}")
 
-    def __init__(self, company):
 
-        self.company = company
+def _fetch_search_page(url, timeout=20):
+    return requests.get(
+        url,
+        headers={"Accept": "text/html", "User-Agent": "VuTruLabs-public-job-tracker/1.0"},
+        timeout=timeout,
+    )
 
+
+class _JobLinkParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.current = None
+        self.text = []
+        self.links = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            href = dict(attrs).get("href", "")
+            if "/JobDetail/" in href:
+                self.current = href
+                self.text = []
+
+    def handle_data(self, data):
+        if self.current:
+            self.text.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self.current:
+            self.links.append((self.current, " ".join(self.text).strip()))
+            self.current = None
+            self.text = []
+
+
+def _parse_jobs(html, base_url):
+    parser = _JobLinkParser()
+    parser.feed(html)
+    return [
+        {
+            "title": " ".join(title.split()),
+            "location": "Unknown",
+            "company": "Jacobs",
+            "department": "Unknown",
+            "link": urljoin(base_url, link),
+        }
+        for link, title in parser.links if title
+    ]
+
+
+class JacobsScraper(BaseScraper):
     def run(self):
-
-        with open(
-            "configs/jacobs.json",
-            "r",
-            encoding="utf-8"
-        ) as f:
-
-            config = json.load(f)
-
-        country = config["country"]
-        country_id = config["country_id"]
-        records_per_page = config["records_per_page"]
+        with open("configs/jacobs.json", encoding="utf-8") as handle:
+            config = json.load(handle)
 
         start_time = time.time()
+        records_per_page = config["records_per_page"]
+        jobs = []
+        seen = set()
+        offset = 0
 
-        print("\n========================================")
-        print("JACOBS SCRAPER")
-        print("========================================")
-        print(f"Land: {country}")
-        print(f"Records/Page: {records_per_page}")
-
-        driver = webdriver.Edge()
-
-        try:
-
-            jobs = []
-
-            offset = 0
-
-            while True:
-
-                url = (
-                    "https://careers.jacobs.com/en_US/careers/SearchJobs/"
-                    f"?4182=%5B{country_id}%5D"
-                    "&4182_format=4422"
-                    "&listFilterMode=1"
-                    f"&jobRecordsPerPage={records_per_page}"
-                    f"&jobOffset={offset}"
+        while True:
+            url = (
+                "https://careers.jacobs.com/en_US/careers/SearchJobs/"
+                f"?4182=%5B{config['country_id']}%5D&4182_format=4422"
+                f"&listFilterMode=1&jobRecordsPerPage={records_per_page}"
+                f"&jobOffset={offset}"
+            )
+            response = _fetch_search_page(url)
+            if response.status_code == 202:
+                raise JacobsSourceUnavailable(
+                    "upstream_access_challenge",
+                    "public careers search returned HTTP 202 access-control challenge",
+                )
+            if response.status_code in {401, 403}:
+                raise JacobsSourceUnavailable(
+                    "upstream_access_denied",
+                    f"public careers search returned HTTP {response.status_code}",
+                )
+            if response.status_code != 200:
+                raise JacobsSourceUnavailable(
+                    "upstream_http_error",
+                    f"public careers search returned HTTP {response.status_code}",
                 )
 
-                driver.get(url)
+            page_jobs = _parse_jobs(response.text, url)
+            added = 0
+            for job in page_jobs:
+                if job["link"] not in seen:
+                    seen.add(job["link"])
+                    jobs.append(job)
+                    added += 1
+            if not page_jobs or added == 0 or len(page_jobs) < records_per_page:
+                break
+            offset += records_per_page
 
-                time.sleep(5)
-
-                job_links = driver.find_elements(
-                    By.XPATH,
-                    "//a[contains(@href,'/JobDetail/')]"
-                )
-
-                if len(job_links) == 0:
-
-                    print("\nKeine weiteren Jobs gefunden.")
-                    break
-
-                jobs_before = len(jobs)
-
-                for job in job_links:
-
-                    try:
-
-                        link = job.get_attribute(
-                            "href"
-                        )
-
-                        parent = job.find_element(
-                            By.XPATH,
-                            "./ancestor::*[self::li or self::div][1]"
-                        )
-
-                        parent_text = parent.text
-
-                        parts = [
-                            p.strip()
-                            for p in parent_text.split("|")
-                        ]
-
-                        header = parts[0]
-
-                        lines = [
-                            l.strip()
-                            for l in header.split("\n")
-                            if l.strip()
-                        ]
-
-                        if len(lines) < 2:
-                            continue
-
-                        title = lines[0]
-                        location = lines[1]
-
-                        department = ""
-
-                        if len(parts) >= 4:
-                            department = parts[3]
-
-                        jobs.append({
-                            "title": title,
-                            "location": location,
-                            "company": "Jacobs",
-                            "department": department,
-                            "link": link
-                        })
-
-                    except Exception as e:
-
-                        print(
-                            f"Fehler beim Job: {e}"
-                        )
-
-                page_jobs = len(jobs) - jobs_before
-
-                page_number = (
-                    offset // records_per_page
-                ) + 1
-
-                tqdm.write(
-                    f"JACOBS Overview | "
-                    f"Seite {page_number} | "
-                    f"+{page_jobs} Jobs | "
-                    f"Gesamt: {len(jobs)}"
-                )
-
-                if page_jobs == 0:
-                    break
-
-                offset += records_per_page
-
-            jobs_df = pd.DataFrame(jobs)
-
-            jobs_df = jobs_df.drop_duplicates(
-                subset=["link"]
+        if not jobs:
+            raise JacobsSourceUnavailable(
+                "upstream_invalid_response", "public careers search returned zero jobs"
             )
 
-            raw_path = "data/jacobs/raw"
-            processed_path = "data/jacobs/processed"
+        frame = pd.DataFrame(jobs).drop_duplicates(subset=["link"])
+        raw_path = "data/jacobs/raw"
+        processed_path = "data/jacobs/processed"
+        os.makedirs(raw_path, exist_ok=True)
+        os.makedirs(processed_path, exist_ok=True)
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        raw_file = os.path.join(raw_path, f"jacobs_jobs_raw_{timestamp}.csv")
+        latest_file = os.path.join(processed_path, "jobs_latest.csv")
+        frame.to_csv(raw_file, index=False)
+        frame.to_csv(latest_file, index=False)
 
-            os.makedirs(
-                raw_path,
-                exist_ok=True
-            )
-
-            os.makedirs(
-                processed_path,
-                exist_ok=True
-            )
-
-            timestamp = datetime.now().strftime(
-                "%Y-%m-%d_%H-%M-%S"
-            )
-
-            raw_file = os.path.join(
-                raw_path,
-                f"jacobs_jobs_raw_{timestamp}.csv"
-            )
-
-            latest_file = os.path.join(
-                processed_path,
-                "jobs_latest.csv"
-            )
-
-            jobs_df.to_csv(
-                raw_file,
-                index=False
-            )
-
-            jobs_df.to_csv(
-                latest_file,
-                index=False
-            )
-
-            runtime = round(
-                time.time() - start_time,
-                1
-            )
-
-            print("\n========================================")
-            print("SCRAPING ERFOLGREICH")
-            print("========================================")
-            print("Firma: Jacobs")
-            print(f"Land: {country}")
-            print(f"Jobs gesamt: {len(jobs_df)}")
-            print(f"Laufzeit: {runtime} Sekunden")
-
-            print("\nRaw Datei:")
-            print(raw_file)
-
-            print("\nLatest Datei:")
-            print(latest_file)
-
-        finally:
-
-            driver.quit()
+        print("\nSCRAPING ERFOLGREICH")
+        print(f"Firma: Jacobs\nJobs gesamt: {len(frame)}")
+        print(f"Laufzeit: {round(time.time() - start_time, 1)} Sekunden")
+        print(f"Raw Datei:\n{raw_file}\nLatest Datei:\n{latest_file}")
