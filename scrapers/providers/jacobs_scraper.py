@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 from selenium.webdriver.support.ui import WebDriverWait
@@ -11,6 +10,8 @@ import os
 import json
 
 from datetime import datetime
+
+from scrapers.browser import create_edge_driver
 
 try:
     tqdm_module = importlib.import_module("tqdm")
@@ -58,7 +59,7 @@ class JacobsScraper:
         print(f"Land: {country}")
         print(f"Records/Page: {records_per_page}")
 
-        driver = webdriver.Edge()
+        driver = create_edge_driver()
 
         try:
 

@@ -1,7 +1,8 @@
 from scrapers.base.base_scraper import BaseScraper
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
+
+from scrapers.browser import create_edge_driver
 
 import pandas as pd
 import time
@@ -42,7 +43,7 @@ class NeuraScraper(BaseScraper):
             "jobs_latest.csv"
         )
 
-        driver = webdriver.Edge()
+        driver = create_edge_driver()
 
         try:
 
