@@ -9,6 +9,12 @@ import requests
 from scrapers.base.base_scraper import BaseScraper
 
 
+class TeslaSourceUnavailable(RuntimeError):
+    def __init__(self, classification, detail):
+        self.classification = classification
+        super().__init__(f"Tesla source unavailable [{classification}]: {detail}")
+
+
 def _fetch_state_json(url, timeout=20):
     session = requests.Session()
     headers = {
@@ -44,10 +50,17 @@ class TeslaScraper(BaseScraper):
         print("\nLade Tesla State API...")
         response = _fetch_state_json(url)
 
+        if response.status_code == 403:
+            raise TeslaSourceUnavailable(
+                "upstream_access_denied",
+                "public State API returned HTTP 403",
+            )
+
         if response.status_code != 200:
-            print(f"FEHLER: State API antwortet mit Status {response.status_code}")
-            print(response.text[:500])
-            sys.exit(1)
+            raise TeslaSourceUnavailable(
+                "upstream_http_error",
+                f"public State API returned HTTP {response.status_code}",
+            )
 
         try:
             state = response.json()

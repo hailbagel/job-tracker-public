@@ -140,13 +140,18 @@ source .venv/bin/activate
 python3 -m pip install -r requirements.txt
 ```
 
-The detail scraper uses Selenium with Microsoft Edge:
+The browser-backed scrapers use Selenium with Microsoft Edge:
 
 - install Microsoft Edge
 - install a matching Edge WebDriver
 - make `msedgedriver` available on `PATH`
+- Edge is launched headlessly with Linux-compatible sandbox and shared-memory
+  settings; no browser profile, cookies, or credentials are used
 
 The Tesla overview scraper uses a public JSON API and does not require Selenium.
+HTTP 403 from that endpoint is classified as `upstream_access_denied` and fails
+the provider closed. There is currently no verified alternate public collection
+path, so Tesla remains unavailable on hosts denied by the upstream service.
 
 ---
 
