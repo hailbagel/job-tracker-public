@@ -173,21 +173,77 @@ class OrchestrationTests(unittest.TestCase):
             self.assertEqual("last-known-good\n", latest.read_text(encoding="utf-8"))
             self.assertEqual("failed", json.loads(acquisition.read_text(encoding="utf-8"))["status"])
 
-    def test_required_provider_failure_blocks_all_publication_stages(self):
-        tesla = {"id": "tesla", "company": "Tesla", "acquisition_mode": "existing_provider"}
-        spacex = {"id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider"}
+    def _assert_legacy_failure_does_not_block(self, source_id, company):
+        failed_source = {
+            "id": source_id, "company": company, "acquisition_mode": "existing_provider",
+            "sector": "Technology", "tags": ["legacy"],
+        }
+        spacex = {
+            "id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider",
+            "sector": "Space/Rocket", "tags": ["patrick"],
+        }
         results = [
-            publication.source_result(tesla, "failed", False, reason="fixture failure"),
+            publication.source_result(failed_source, "failed", False, reason="fixture failure"),
             publication.source_result(spacex, "success", True, records_written=3),
         ]
+        feed_metadata = {
+            "coverage_complete": True,
+            "source_coverage": [{"source_id": "spacex", "coverage_complete": True}],
+        }
+        coverage = {"patrick_feed_coverage_complete": True}
+        with patch.object(publication, "git_prepare"), \
+                patch.object(publication, "require_tracked_allowlist"), \
+                patch.object(
+                    publication, "validate_enabled_providers",
+                    return_value=[failed_source, spacex],
+                ), \
+                patch.object(publication, "collect_source", side_effect=results), \
+                patch.object(
+                    publication, "publish_patrick_feed", return_value=(3, feed_metadata),
+                ) as feed, \
+                patch.object(
+                    publication, "write_publication_status", return_value=coverage,
+                ) as status, \
+                patch.object(publication, "commit_and_push", return_value=True) as commit, \
+                patch("builtins.print") as output:
+            self.assertTrue(publication.collect_and_publish(
+                Path("."), Path("runtime"), Path("profile"), "main", "main"
+            ))
+
+        feed_results = feed.call_args.args[4]
+        self.assertFalse(feed_results[source_id]["coverage_complete"])
+        status.assert_called_once_with(Path("."), feed_results, feed_metadata)
+        commit.assert_called_once_with({"spacex": 3}, 3, "main")
+        self.assertTrue(any(
+            f"{source_id}: fixture failure" in call.args[0]
+            for call in output.call_args_list
+        ))
+
+    def test_neura_failure_does_not_block_publication(self):
+        self._assert_legacy_failure_does_not_block("neura", "NEURA Robotics")
+
+    def test_tesla_failure_does_not_block_publication(self):
+        self._assert_legacy_failure_does_not_block("tesla", "Tesla")
+
+    def test_jacobs_failure_does_not_block_publication(self):
+        self._assert_legacy_failure_does_not_block("jacobs", "Jacobs")
+
+    def test_failed_patrick_contributor_blocks_all_publication_stages(self):
+        spacex = {
+            "id": "spacex", "company": "SpaceX", "acquisition_mode": "existing_provider",
+            "sector": "Space/Rocket", "tags": ["patrick"],
+        }
+        result = publication.source_result(spacex, "failed", False, reason="fixture failure")
         with patch.object(publication, "git_prepare") as git, \
                 patch.object(publication, "require_tracked_allowlist") as tracked, \
-                patch.object(publication, "validate_enabled_providers", return_value=[tesla, spacex]), \
-                patch.object(publication, "collect_source", side_effect=results), \
+                patch.object(publication, "validate_enabled_providers", return_value=[spacex]), \
+                patch.object(publication, "collect_source", return_value=result), \
                 patch.object(publication, "publish_patrick_feed") as feed, \
                 patch.object(publication, "write_publication_status") as status, \
                 patch.object(publication, "commit_and_push") as commit:
-            with self.assertRaisesRegex(publication.PublicationError, "tesla: fixture failure"):
+            with self.assertRaisesRegex(
+                publication.PublicationError, "Patrick contributor.*spacex: fixture failure"
+            ):
                 publication.collect_and_publish(
                     Path("."), Path("runtime"), Path("profile"), "main", "main"
                 )
