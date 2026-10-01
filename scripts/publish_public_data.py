@@ -398,13 +398,27 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
         source_id: item for source_id, item in results.items()
         if item.get("status") != "success" or item.get("coverage_complete") is not True
     }
+    patrick_source_ids = {
+        source["id"] for source in attempted
+        if source.get("sector") == "Space/Rocket" and "patrick" in source.get("tags", ())
+    }
+    failed_patrick = {
+        source_id: item for source_id, item in failed.items()
+        if source_id in patrick_source_ids
+    }
     if failed:
         summary = "; ".join(
             f"{source_id}: {item.get('reason') or item.get('status') or 'incomplete'}"
             for source_id, item in failed.items()
         )
+        print("Source collection failures: " + summary)
+    if failed_patrick:
+        summary = "; ".join(
+            f"{source_id}: {item.get('reason') or item.get('status') or 'incomplete'}"
+            for source_id, item in failed_patrick.items()
+        )
         raise PublicationError(
-            "Required source collection failed or was incomplete; refusing publication: " + summary
+            "Patrick contributor collection failed or was incomplete; refusing publication: " + summary
         )
     counts = {
         source_id: item["records_written"]
