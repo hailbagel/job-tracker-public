@@ -1,4 +1,14 @@
 id,source_id,change,title,location,observed_at
-rocket-factory-augsburg:4982385101,rocket-factory-augsburg,new,Full-Stack Software Engineer (f/m/d),"Augsburg, Bavaria, Germany",2026-09-24T14:24:22.291092Z
-rocket-factory-augsburg:4947288101,rocket-factory-augsburg,removed,Composite Production Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-09-24T14:24:22.291092Z
-rocket-factory-augsburg:4947658101,rocket-factory-augsburg,removed,Vehicle Production Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-09-24T14:24:22.291092Z
+rocket-factory-augsburg:4988432101,rocket-factory-augsburg,new,CNC/CAM Programmer (f/m/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4969536101,rocket-factory-augsburg,changed,GNC Test Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4987738101,rocket-factory-augsburg,new,Intern (f/m/d) Payload Accommodation Mechanical Engineer,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4960338101,rocket-factory-augsburg,changed,Intern (m/f/d) GNC - Reusable Launch Vehicles,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4878647101,rocket-factory-augsburg,changed,Intern (m/f/d) LabVIEW Programming,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4824842101,rocket-factory-augsburg,changed,Intern (m/f/d) Mathematical Modeling,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4960401101,rocket-factory-augsburg,changed,Intern (m/f/d) Redundant Flight Software Development,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4960147101,rocket-factory-augsburg,changed,Intern (m/f/d) Supply Chain Coordinator,"Shetland Islands, Scotland, United Kingdom",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4907968101,rocket-factory-augsburg,changed,LabVIEW Programming Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4989825101,rocket-factory-augsburg,new,Propulsion Valve Development Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4989722101,rocket-factory-augsburg,new,Systems Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4982385101,rocket-factory-augsburg,removed,Full-Stack Software Engineer (f/m/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:4960892101,rocket-factory-augsburg,removed,Intern (m/f/d) Institutional Projects (LCA),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z

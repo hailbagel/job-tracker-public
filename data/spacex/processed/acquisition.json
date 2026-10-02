@@ -1,9 +1,12 @@
 {
-  "schema_version": "1.0",
-  "publication_status": "awaiting_first_verified_production_run",
-  "coverage_complete": false,
-  "records_written": 0,
-  "observed_at": null,
-  "data_changed_at": null,
-  "data_hash": null
+  "coverage_complete": true,
+  "data_changed_at": "2026-10-02T04:16:34.967044Z",
+  "data_hash": "167b675f1331e2ecc478323a3bac7b5121cd9a8de4593d93ea62c1cbb672f174",
+  "observed_at": "2026-10-02T04:16:34.967044Z",
+  "provider": "spacex",
+  "reason": null,
+  "records_written": 2635,
+  "source": "https://boards-api.greenhouse.io/v1/boards/spacex/jobs?content=true",
+  "source_records": 2635,
+  "status": "success"
 }

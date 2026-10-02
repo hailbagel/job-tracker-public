@@ -1,7 +1,9 @@
 department,count
 Additive Manufacturing,1
 Avionics,3
+Avionics & Software,6
 Avionics Production,4
+BD & Sales,1
 Chief Engineering,2
 Design,6
 Engine Assembly,1
@@ -9,15 +11,15 @@ Finance,1
 Launch,1
 Launch Operations & Quality,2
 Legal & Contracts,1
-Manufacturing,1
+Manufacturing,2
 Procurement,1
 Production,2
-Program Management,3
-Propulsion,3
+Program Management,2
+Propulsion,4
 Propulsion Production,1
 Quality Assurance,1
-Software,7
 Stage Assembly,1
 Supply Chain Management,1
+Systems Engineering,1
 UK,6
-TOTAL,49
+TOTAL,51

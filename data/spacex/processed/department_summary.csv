@@ -1,43 +1,42 @@
 department,count
-Engineering - Software & Analytics,331
-Engineering - Aerospace & Mechanical,327
-Engineering - Electrical,172
-Corporate - Sales & Business Operations,170
-Supply Chain & Logistics - Sourcing & Planning,139
-Engineering - Silicon,90
-Manufacturing - Assembly & Integration,84
-Operations - Facilities,76
-Engineering - Information Technology,61
+Engineering - Software & Analytics,351
+Engineering - Aerospace & Mechanical,333
+Corporate - Sales & Business Operations,186
+Engineering - Electrical,182
+Supply Chain & Logistics - Sourcing & Planning,149
+Operations - Facilities,96
+Manufacturing - Assembly & Integration,86
+Engineering - Silicon,84
+Engineering - Information Technology,84
+Corporate - Environmental Health & Safety,71
+Engineering - Security,67
 Manufacturing - Machining,61
-Engineering - Security,57
-Corporate - Environmental Health & Safety,56
-Supply Chain & Logistics - Materials Management & Warehouse,52
-Manufacturing - Other Manufacturing,50
-Corporate - Human Resources,46
-Manufacturing - Leadership,46
-Operations - Food Services,45
-"Manufacturing - PCB, Silicon, and Solar",43
-Operations - Construction,40
-Engineering - Materials,40
-Manufacturing - Welding,38
-Engineering - Industrial & Operations,38
-Supply Chain & Logistics - Supply Chain Engineering,35
-Engineering - Civil,33
-Operations - Physical Security,33
-Manufacturing - Automation & Controls and Maintenance,32
-Engineering - Automation & Controls,30
-Corporate - Finance & Accounting,29
+Operations - Construction,60
+Supply Chain & Logistics - Materials Management & Warehouse,57
+Manufacturing - Other Manufacturing,54
+Engineering - Industrial & Operations,52
+Corporate - Human Resources,52
+Manufacturing - Leadership,47
+Operations - Food Services,46
+"Manufacturing - PCB, Silicon, and Solar",45
+Supply Chain & Logistics - Supply Chain Engineering,44
+Manufacturing - Welding,42
+Engineering - Materials,41
+Engineering - Civil,35
+Manufacturing - Automation & Controls and Maintenance,34
+Engineering - Automation & Controls,32
+Operations - Physical Security,31
+Engineering - Network,29
+Corporate - Finance & Accounting,25
+Manufacturing - Electronics,25
 Manufacturing - Quality,25
-Manufacturing - Electronics,22
-Engineering - Network,20
-Corporate - Government Affairs,20
-Corporate - Marketing & Communications,14
-Corporate - Legal,14
-Manufacturing - Entry Level Manufacturing,13
+Corporate - Government Affairs,23
+Corporate - Legal,22
+Manufacturing - Entry Level Manufacturing,15
+Corporate - Marketing & Communications,15
 Manufacturing - NonDestructive Evaluation,12
 College and University - Internships and Co-Ops,12
 Manufacturing - Environmental Health & Safety,4
-Other - Other,3
+Other - Other,4
 Corporate - Customer Support,2
-Operations - Marine,1
-TOTAL,2416
+TOTAL,2635

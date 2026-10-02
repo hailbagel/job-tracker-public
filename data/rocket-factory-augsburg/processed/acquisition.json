@@ -3,10 +3,10 @@
   "adapter": "greenhouse",
   "company": "Rocket Factory Augsburg",
   "coverage_complete": true,
-  "data_hash": "c75509d6eb3e9a807aa5a22dd685635814866805c51a1850523d0307fa86693d",
-  "observed_at": "2026-09-24T14:24:22.291092Z",
+  "data_hash": "116a3cf08b6072ceaac46fd023dc3cd03e5191af8c14b71159a74eedb7de009e",
+  "observed_at": "2026-10-02T04:16:48.769621Z",
   "reason": null,
-  "records_written": 49,
+  "records_written": 51,
   "source_id": "rocket-factory-augsburg",
   "status": "success"
 }

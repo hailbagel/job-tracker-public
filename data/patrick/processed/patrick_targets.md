@@ -1,23 +1,167 @@
 # Patrick Space/Rocket targets
 
-Generated: 2026-09-24T14:24:23.306269Z
-Scanned: 72 | Potentially relevant: 1 | Strong: 1
+Generated: 2026-10-02T04:16:58.138805Z
+Scanned: 2711 | Potentially relevant: 346 | Strong: 1
 
 ## Source coverage
 
-- SpaceX (`spacex`): failed; complete=false; jobs=0
-- Rocket Factory Augsburg (`rocket-factory-augsburg`): success; complete=true; jobs=49
+- SpaceX (`spacex`): success; complete=true; jobs=2635
+- Rocket Factory Augsburg (`rocket-factory-augsburg`): success; complete=true; jobs=51
 - Exolaunch (`exolaunch`): success; complete=true; jobs=11
-- HyImpulse (`hyimpulse`): success; complete=true; jobs=12
+- HyImpulse (`hyimpulse`): success; complete=true; jobs=14
 
 ## Top 25
 
+- [SpaceX: Sr. Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8780761002?gh_jid=8780761002) — Starbase, TX — RED 79
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil/Structural Engineer](https://boards.greenhouse.io/spacex/jobs/8672666002?gh_jid=8672666002) — McGregor, TX — RED 75
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8734515002?gh_jid=8734515002) — Starbase, TX — UNKNOWN 75
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Control Scheduler (Falcon)](https://boards.greenhouse.io/spacex/jobs/8717607002?gh_jid=8717607002) — Hawthorne, CA — UNKNOWN 75
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Structural Engineer](https://boards.greenhouse.io/spacex/jobs/8512920002?gh_jid=8512920002) — Hawthorne, CA — RED 75
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer (Critical Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8595083002?gh_jid=8595083002) — Hawthorne, CA — RED 75
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Starbase Infrastructure](https://boards.greenhouse.io/spacex/jobs/8727965002?gh_jid=8727965002) — Starbase, TX — RED 73
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
 - [Rocket Factory Augsburg: Institutional Project Manager (m/f/d)](https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101) — Augsburg, Bavaria, Germany — GREEN 73
   - Role family: Construction Project Management
   - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation, Preferred location
   - Hard gates: none
   - Soft gaps: []
   - Recommended profile focus: C
+- [SpaceX: Production Scheduler (Starship Mechanisms)](https://boards.greenhouse.io/spacex/jobs/8646129002?gh_jid=8646129002) — Hawthorne, CA — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Project Manager, Tooling (Starship)](https://boards.greenhouse.io/spacex/jobs/8777657002?gh_jid=8777657002) — Starbase, TX — RED 73
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown, required_trade:electrical=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8708746002?gh_jid=8708746002) — Starbase, TX — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8788235002?gh_jid=8788235002) — Starbase, TX — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8565650002?gh_jid=8565650002) — Austin, TX — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8565644002?gh_jid=8565644002) — Bastrop, TX — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8654508002?gh_jid=8654508002) — Redmond, WA — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Machine Design (Starship)](https://boards.greenhouse.io/spacex/jobs/8559178002?gh_jid=8559178002) — Starbase, TX — RED 71
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Operations (Starship)](https://boards.greenhouse.io/spacex/jobs/8703208002?gh_jid=8703208002) — Starbase, TX — RED 71
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown, required_software:excel=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Architectural Project Manager](https://boards.greenhouse.io/spacex/jobs/8592302002?gh_jid=8592302002) — Bastrop, TX — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Architectural Project Manager](https://boards.greenhouse.io/spacex/jobs/8653639002?gh_jid=8653639002) — McGregor, TX — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development](https://boards.greenhouse.io/spacex/jobs/8769051002?gh_jid=8769051002) — College Station, TX — RED 69
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Critical Lift (Starship)](https://boards.greenhouse.io/spacex/jobs/8612800002?gh_jid=8612800002) — Starbase, TX — UNKNOWN 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Warranties (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8812482002?gh_jid=8812482002) — Starbase, TX — UNKNOWN 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8694690002?gh_jid=8694690002) — Starbase, TX — RED 69
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Project Manager (Starship Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814705002?gh_jid=8814705002) — Pecan Island, LA — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer, Launch Infrastructure (Starship)](https://boards.greenhouse.io/spacex/jobs/8737416002?gh_jid=8737416002) — Cape Canaveral, FL — RED 69
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
 
 ## Strongest targets
 
@@ -30,12 +174,2076 @@ Scanned: 72 | Potentially relevant: 1 | Strong: 1
 
 ## New relevant jobs
 
-- [Rocket Factory Augsburg: Institutional Project Manager (m/f/d)](https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4944174101) — Augsburg, Bavaria, Germany — GREEN 73
+- [SpaceX: Sr. Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8780761002?gh_jid=8780761002) — Starbase, TX — RED 79
   - Role family: Construction Project Management
-  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation, Preferred location
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil/Structural Engineer](https://boards.greenhouse.io/spacex/jobs/8672666002?gh_jid=8672666002) — McGregor, TX — RED 75
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8734515002?gh_jid=8734515002) — Starbase, TX — UNKNOWN 75
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Control Scheduler (Falcon)](https://boards.greenhouse.io/spacex/jobs/8717607002?gh_jid=8717607002) — Hawthorne, CA — UNKNOWN 75
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Structural Engineer](https://boards.greenhouse.io/spacex/jobs/8512920002?gh_jid=8512920002) — Hawthorne, CA — RED 75
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer (Critical Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8595083002?gh_jid=8595083002) — Hawthorne, CA — RED 75
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Starbase Infrastructure](https://boards.greenhouse.io/spacex/jobs/8727965002?gh_jid=8727965002) — Starbase, TX — RED 73
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler (Starship Mechanisms)](https://boards.greenhouse.io/spacex/jobs/8646129002?gh_jid=8646129002) — Hawthorne, CA — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Project Manager, Tooling (Starship)](https://boards.greenhouse.io/spacex/jobs/8777657002?gh_jid=8777657002) — Starbase, TX — RED 73
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown, required_trade:electrical=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8708746002?gh_jid=8708746002) — Starbase, TX — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8788235002?gh_jid=8788235002) — Starbase, TX — UNKNOWN 73
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8565650002?gh_jid=8565650002) — Austin, TX — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8565644002?gh_jid=8565644002) — Bastrop, TX — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8654508002?gh_jid=8654508002) — Redmond, WA — UNKNOWN 71
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Machine Design (Starship)](https://boards.greenhouse.io/spacex/jobs/8559178002?gh_jid=8559178002) — Starbase, TX — RED 71
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Operations (Starship)](https://boards.greenhouse.io/spacex/jobs/8703208002?gh_jid=8703208002) — Starbase, TX — RED 71
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown, required_software:excel=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Architectural Project Manager](https://boards.greenhouse.io/spacex/jobs/8592302002?gh_jid=8592302002) — Bastrop, TX — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Architectural Project Manager](https://boards.greenhouse.io/spacex/jobs/8653639002?gh_jid=8653639002) — McGregor, TX — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development](https://boards.greenhouse.io/spacex/jobs/8769051002?gh_jid=8769051002) — College Station, TX — RED 69
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Critical Lift (Starship)](https://boards.greenhouse.io/spacex/jobs/8612800002?gh_jid=8612800002) — Starbase, TX — UNKNOWN 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Warranties (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8812482002?gh_jid=8812482002) — Starbase, TX — UNKNOWN 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8694690002?gh_jid=8694690002) — Starbase, TX — RED 69
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Project Manager (Starship Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814705002?gh_jid=8814705002) — Pecan Island, LA — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer, Launch Infrastructure (Starship)](https://boards.greenhouse.io/spacex/jobs/8737416002?gh_jid=8737416002) — Cape Canaveral, FL — RED 69
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Automation & Controls Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8546353002?gh_jid=8546353002) — Hawthorne, CA — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Campus Infrastructure Project Manager](https://boards.greenhouse.io/spacex/jobs/8488317002?gh_jid=8488317002) — Bastrop, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starbase Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814619002?gh_jid=8814619002) — Pecan Island, LA — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starlink)](https://boards.greenhouse.io/spacex/jobs/8731020002?gh_jid=8731020002) — Bastrop, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starship Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8673971002?gh_jid=8673971002) — Cape Canaveral, FL — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: [{"requirement": "Proficiency in technical skills in storm water management, hydraulics, hydrological analysis, grading and other site development related designs Understanding of other disciplines such as electrical, piping, geotechnical, electrical and surveying EIT or Professional Engineering (PE) license Ability to rapidly change roles/responsibilities while maintaining a high sense of urgency in a high-paced, challenging work environment Experience with project management of major construction projects including estimating, cost control, schedule, and contractor management", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starship Launch Pad)](https://boards.greenhouse.io/spacex/jobs/8609445002?gh_jid=8609445002) — Cape Canaveral, FL — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starship Launch Pad)](https://boards.greenhouse.io/spacex/jobs/8483977002?gh_jid=8483977002) — Starbase, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Starbase Infrastructure (Starship)](https://boards.greenhouse.io/spacex/jobs/8583754002?gh_jid=8583754002) — Starbase, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Project Manager, Starbase Development](https://boards.greenhouse.io/spacex/jobs/8719818002?gh_jid=8719818002) — Starbase, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Facilities Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8623616002?gh_jid=8623616002) — Cape Canaveral, FL — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Facilities Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8785075002?gh_jid=8785075002) — Starbase, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starship Launch Pad)](https://boards.greenhouse.io/spacex/jobs/8521444002?gh_jid=8521444002) — Starbase, TX — UNKNOWN 67
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8505377002?gh_jid=8505377002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent (Starship Pad Build)](https://boards.greenhouse.io/spacex/jobs/8693196002?gh_jid=8693196002) — Cape Canaveral, FL — UNKNOWN 67
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:welding=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Electrical Superintendent](https://boards.greenhouse.io/spacex/jobs/8579716002?gh_jid=8579716002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Structures), Starship Infrastructure](https://boards.greenhouse.io/spacex/jobs/8617175002?gh_jid=8617175002) — Starbase, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:revit=unknown, required_trade:welding=unknown, required_trade:steel=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Super Heavy Booster)](https://boards.greenhouse.io/spacex/jobs/8558219002?gh_jid=8558219002) — Starbase, TX — RED 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Printer Design & Manufacturing (Raptor)](https://boards.greenhouse.io/spacex/jobs/8607193002?gh_jid=8607193002) — Hawthorne, CA — RED 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: [{"requirement": "Experience with Verisurf or other model-based metrology software Experience analyzing data and generating data reports Experience with CAD software design package (e.g. NX, CATIA, or ProE) and PLM/PDM software (e.g. Teamcenter) Experience performing structural analysis in FEMAP, NASTRAN, ANSYS or NX Advance Simulation Process integration and electromechanical/mechatronic systems experience Prior experience applying common manufacturing processes (such as welding, machining, assembly, laser tracking, and inspection) Experience with custom machine design; electromechanical systems, motors, actuators, linear rails, bearings, lifting/rigging, etc. Experience with manufacturing process development, facility/line layouts and common inspection methods Experience with production tooling or product design in either prototype or high-volume environments Strong understanding and application of drafting standards and GD&T (ASME Y14.5) in creating drawings Ability to work well in an integrated collaborative team environment including daily interactions with technicians, engineers, and managers", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Facilities Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8831357002?gh_jid=8831357002) — Bastrop, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Superintendent (HVAC)](https://boards.greenhouse.io/spacex/jobs/8579719002?gh_jid=8579719002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Piping Technician (Starlink)](https://boards.greenhouse.io/spacex/jobs/8672255002?gh_jid=8672255002) — Bastrop, TX — RED 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown, required_trade:steel=unknown, required_trade:piping=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Precision Inspector (Machining)](https://boards.greenhouse.io/spacex/jobs/8771989002?gh_jid=8771989002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Precision Inspector (Rocket Valves) - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8767752002?gh_jid=8767752002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler, Starship](https://boards.greenhouse.io/spacex/jobs/8581270002?gh_jid=8581270002) — Hawthorne, CA — RED 67
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler, Starship Components](https://boards.greenhouse.io/spacex/jobs/8601631002?gh_jid=8601631002) — Hawthorne, CA — RED 67
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Project Controls Engineer, Starship Infrastructure](https://boards.greenhouse.io/spacex/jobs/8838385002?gh_jid=8838385002) — Cape Canaveral, FL — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:primavera p6=unknown, required_software:p6=unknown, required_software:bluebeam=unknown, required_software:procore=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector, Solar Cells (Starlink)](https://boards.greenhouse.io/spacex/jobs/8647490002?gh_jid=8647490002) — Bastrop, TX — UNKNOWN 67
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Automation & Controls Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8526294002?gh_jid=8526294002) — Hawthorne, CA — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Civil Engineer](https://boards.greenhouse.io/spacex/jobs/8651331002?gh_jid=8651331002) — McGregor, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Civil Engineer, Land Development (Starlink)](https://boards.greenhouse.io/spacex/jobs/8571999002?gh_jid=8571999002) — Bastrop, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Civil Engineer, Offsite Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8497586002?gh_jid=8497586002) — Bastrop, TX — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8501150002?gh_jid=8501150002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Electrical Superintendent (Construction)](https://boards.greenhouse.io/spacex/jobs/8501697002?gh_jid=8501697002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Facilities Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8575823002?gh_jid=8575823002) — Redmond, WA — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. HVAC and Mechanical Piping Superintendent](https://boards.greenhouse.io/spacex/jobs/8501694002?gh_jid=8501694002) — Hawthorne, CA — UNKNOWN 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Facilities (Starlink)](https://boards.greenhouse.io/spacex/jobs/8531605002?gh_jid=8531605002) — Redmond, WA — RED 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Quality Assurance (Falcon) - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8839682002?gh_jid=8839682002) — Hawthorne, CA — RED 67
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supplier Development Engineer (Mechanical Engineering)](https://boards.greenhouse.io/spacex/jobs/8710126002?gh_jid=8710126002) — Starbase, TX — RED 67
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Water Resources](https://boards.greenhouse.io/spacex/jobs/8827637002?gh_jid=8827637002) — Bastrop, TX — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager (Starship Launch Pads)](https://boards.greenhouse.io/spacex/jobs/8685087002?gh_jid=8685087002) — Cape Canaveral, FL — RED 65
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8488374002?gh_jid=8488374002) — Starbase, TX — RED 65
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:procore=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Electrical Engineer, Facilities Infrastructure](https://boards.greenhouse.io/spacex/jobs/8583707002?gh_jid=8583707002) — Cape Canaveral, FL — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Coordinator, Solar Cells (Starlink)](https://boards.greenhouse.io/spacex/jobs/8687551002?gh_jid=8687551002) — Bastrop, TX — UNKNOWN 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: [{"requirement": "Associate’s degree or higher in a related field (architecture, engineering, project management, or construction management preferred) 3+ years of facilities or project/program management experience FMP, PMP, or similar certification Working knowledge of WARP/ERP systems and ability to read basic floor plans Experience in a manufacturing environment with strong safety awareness Exceptional organization, problem-solving, and ability to manage multiple priorities under pressure Strong proficiency in Microsoft Office (Excel, Outlook, Word, PowerPoint) Proven ability to multi-task, stay organized, and deliver excellent customer service in a fast-paced environment Strong written and verbal communication Ability to work independently or as part of a team", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: Facilities Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8831439002?gh_jid=8831439002) — Bastrop, TX — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Mechanical Specialist](https://boards.greenhouse.io/spacex/jobs/8756157002?gh_jid=8756157002) — Bastrop, TX — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Engineer](https://boards.greenhouse.io/spacex/jobs/8570046002?gh_jid=8570046002) — Hawthorne, CA — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Flight Termination System (Starship)](https://boards.greenhouse.io/spacex/jobs/8604710002?gh_jid=8604710002) — Hawthorne, CA — RED 65
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Machine Design (Starship)](https://boards.greenhouse.io/spacex/jobs/8559200002?gh_jid=8559200002) — Starbase, TX — RED 65
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler, Precision Machining (Starlink)](https://boards.greenhouse.io/spacex/jobs/8604712002?gh_jid=8604712002) — Woodinville, WA — RED 65
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Production Scheduler, Starlink Machining Operations](https://boards.greenhouse.io/spacex/jobs/8597840002?gh_jid=8597840002) — Bastrop, TX — RED 65
+  - Role family: Project Controls
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Aviation Supply Chain)](https://boards.greenhouse.io/spacex/jobs/8623403002?gh_jid=8623403002) — Woodinville, WA — UNKNOWN 65
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Falcon & Dragon)](https://boards.greenhouse.io/spacex/jobs/8613004002?gh_jid=8613004002) — Hawthorne, CA — RED 65
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Starlink Aviation)](https://boards.greenhouse.io/spacex/jobs/8445549002?gh_jid=8445549002) — Woodinville, WA — RED 65
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Valves) - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8639251002?gh_jid=8639251002) — Hawthorne, CA — UNKNOWN 65
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Architectural Project Manager (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8720187002?gh_jid=8720187002) — Starbase, TX — RED 65
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Flight Termination System (Starship)](https://boards.greenhouse.io/spacex/jobs/8604752002?gh_jid=8604752002) — Hawthorne, CA — RED 65
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer, Launch Pad (Starship)](https://boards.greenhouse.io/spacex/jobs/8573793002?gh_jid=8573793002) — Starbase, TX — RED 65
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:solidworks=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, IT Network Infrastructure - 1st Shift](https://boards.greenhouse.io/spacex/jobs/8818961002?gh_jid=8818961002) — Starbase, TX — UNKNOWN 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, IT Network Infrastructure - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8818980002?gh_jid=8818980002) — Starbase, TX — UNKNOWN 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Tooling Engineer, AI Satellites (Starmind)](https://boards.greenhouse.io/spacex/jobs/8727903002?gh_jid=8727903002) — Bastrop, TX — RED 65
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Tooling Inspector (Starship) - Level 4/5](https://boards.greenhouse.io/spacex/jobs/8716792002?gh_jid=8716792002) — Hawthorne, CA — UNKNOWN 65
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Starbase Development (Residential)](https://boards.greenhouse.io/spacex/jobs/8854013002?gh_jid=8854013002) — Starbase, TX — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_software:autocad=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8769069002?gh_jid=8769069002) — College Station, TX — UNKNOWN 63
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Dimensional Inspector - Supply Chain](https://boards.greenhouse.io/spacex/jobs/8815844002?gh_jid=8815844002) — Hawthorne, CA — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Environmental Health & Safety Engineer (Civil)](https://boards.greenhouse.io/spacex/jobs/8763932002?gh_jid=8763932002) — Memphis, TN — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown, required_trade:electrical=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Engineer (Fluids & Cryogenics)](https://boards.greenhouse.io/spacex/jobs/8762054002?gh_jid=8762054002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Gateway Site Development Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8577167002?gh_jid=8577167002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: [{"requirement": "Experience with electrical, mechanical, or structural design and analysis Experience with build, production, or integration of components into an assembly, structure, vehicle, or site Demonstrated success in multidisciplinary project execution Experience with any of the following is a bonus: Producing construction drawings or plans SQL, Matlab, Python, C++, or similar Producing dashboards or analytical and statistical models (Ex: Tableau, PowerBI) Physical network infrastructure design or planning", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: Global Supply Manager, Fleet, Waste, and Facilities](https://boards.greenhouse.io/spacex/jobs/8550748002?gh_jid=8550748002) — McGregor, TX — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Infrastructure Engineer](https://boards.greenhouse.io/spacex/jobs/8604308002?gh_jid=8604308002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: [{"requirement": "Experience with electrical, mechanical, or structural design and analysis Experience with build, production, or integration of components into an assembly, structure, vehicle, or site Demonstrated success in multidisciplinary project execution Experience with any of the following is a bonus: Producing construction drawings or plans SQL, Matlab, Python, C++, or similar Producing dashboards or analytical and statistical models (Ex: Tableau, PowerBI) Physical network infrastructure design or planning", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Specialist](https://boards.greenhouse.io/spacex/jobs/8751830002?gh_jid=8751830002) — Starbase, TX — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Technician](https://boards.greenhouse.io/spacex/jobs/8827863002?gh_jid=8827863002) — Redmond, WA — UNKNOWN 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Technician](https://boards.greenhouse.io/spacex/jobs/8459561002?gh_jid=8459561002) — Starbase, TX — UNKNOWN 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, HVAC (Facilities)](https://boards.greenhouse.io/spacex/jobs/8698666002?gh_jid=8698666002) — Cape Canaveral, FL — RED 63
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_software:autocad=unknown, required_software:revit=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Propellant Generation (Starship)](https://boards.greenhouse.io/spacex/jobs/8535169002?gh_jid=8535169002) — Cape Canaveral, FL — RED 63
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Starship Launch Hardware](https://boards.greenhouse.io/spacex/jobs/8782441002?gh_jid=8782441002) — Cape Canaveral, FL — RED 63
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: New Graduate Engineer, Civil/Structural (Starship)](https://boards.greenhouse.io/spacex/jobs/8731991002?gh_jid=8731991002) — Starbase, TX — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:excel=unknown, required_software:solidworks=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Starlink)](https://boards.greenhouse.io/spacex/jobs/8623557002?gh_jid=8623557002) — Woodinville, WA — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Starship)](https://boards.greenhouse.io/spacex/jobs/8483428002?gh_jid=8483428002) — Westminster, MD — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Supply Chain)](https://boards.greenhouse.io/spacex/jobs/8721126002?gh_jid=8721126002) — Starbase, TX — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector - Supply Chain Avionics](https://boards.greenhouse.io/spacex/jobs/8741929002?gh_jid=8741929002) — Hawthorne, CA — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Receiving Inspector (Starlink)](https://boards.greenhouse.io/spacex/jobs/8533607002?gh_jid=8533607002) — Bastrop, TX — UNKNOWN 63
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sourcing Manager, Ground Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8619968002?gh_jid=8619968002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8731104002?gh_jid=8731104002) — Bastrop, TX — RED 63
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8834059002?gh_jid=8834059002) — College Station, TX — UNKNOWN 63
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8734530002?gh_jid=8734530002) — Starbase, TX — RED 63
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Facilities Engineer (Fluids & Cryogenics)](https://boards.greenhouse.io/spacex/jobs/8611235002?gh_jid=8611235002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Gateway Site Development Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8577318002?gh_jid=8577318002) — Redmond, WA — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: [{"requirement": "Experience with electrical, mechanical, or structural design and analysis Experience with build, production, or integration of components into an assembly, structure, vehicle, or site Demonstrated success in multidisciplinary project execution Experience with any of the following is a bonus: Producing construction drawings or plans SQL, Matlab, Python, C++, or similar Producing dashboards or analytical and statistical models (Ex: Tableau, PowerBI) Physical network infrastructure design or planning", "source": "job_posting", "section": "preferred qualifications"}]
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8731140002?gh_jid=8731140002) — Bastrop, TX — RED 63
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:bluebeam=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Facilities (Starlink) - Split Shift](https://boards.greenhouse.io/spacex/jobs/8546298002?gh_jid=8546298002) — Bastrop, TX — RED 63
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Automation & Controls Specialist, Infrastructure & Utility (Starship) - Level 4/5](https://boards.greenhouse.io/spacex/jobs/8730117002?gh_jid=8730117002) — Starbase, TX — UNKNOWN 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager](https://boards.greenhouse.io/spacex/jobs/8734214002?gh_jid=8734214002) — Starbase, TX — UNKNOWN 61
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent (Starship Pad Build)](https://boards.greenhouse.io/spacex/jobs/8797742002?gh_jid=8797742002) — Starbase, TX — RED 61
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:welding=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent (Starship)](https://boards.greenhouse.io/spacex/jobs/8609140002?gh_jid=8609140002) — Starbase, TX — UNKNOWN 61
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent - Welding (Starbase)](https://boards.greenhouse.io/spacex/jobs/8645226002?gh_jid=8645226002) — Starbase, TX — RED 61
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:welding=unknown, required_trade:piping=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Supervisor, Facilities](https://boards.greenhouse.io/spacex/jobs/8843104002?gh_jid=8843104002) — Starbase, TX — UNKNOWN 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Specialist](https://boards.greenhouse.io/spacex/jobs/8727564002?gh_jid=8727564002) — Hawthorne, CA — UNKNOWN 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer - Satellite Payload (Starlink)](https://boards.greenhouse.io/spacex/jobs/8612742002?gh_jid=8612742002) — Redmond, WA — RED 61
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Insource Manufacturing (Starlink)](https://boards.greenhouse.io/spacex/jobs/8552671002?gh_jid=8552671002) — Bastrop, TX — RED 61
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Satellites (Starlink)](https://boards.greenhouse.io/spacex/jobs/8612730002?gh_jid=8612730002) — Redmond, WA — RED 61
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Superintendent, Starbase Infrastructure](https://boards.greenhouse.io/spacex/jobs/8815831002?gh_jid=8815831002) — Starbase, TX — UNKNOWN 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Facilities Specialist](https://boards.greenhouse.io/spacex/jobs/8727922002?gh_jid=8727922002) — Hawthorne, CA — UNKNOWN 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, Insource Manufacturing (Starlink)](https://boards.greenhouse.io/spacex/jobs/8552991002?gh_jid=8552991002) — Bastrop, TX — RED 61
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:welding=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Engineer (Starship Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8790404002?gh_jid=8790404002) — Starbase, TX — RED 61
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_software:solidworks=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent (Night Shift)](https://boards.greenhouse.io/spacex/jobs/8720160002?gh_jid=8720160002) — Bastrop, TX — UNKNOWN 59
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:procore=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Electrical Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8686707002?gh_jid=8686707002) — Hawthorne, CA — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Electrical Engineer, Facilities (Starlink)](https://boards.greenhouse.io/spacex/jobs/8546238002?gh_jid=8546238002) — Bastrop, TX — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Operations Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8635006002?gh_jid=8635006002) — Redmond, WA — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Field Engineer (Site Development)](https://boards.greenhouse.io/spacex/jobs/8726249002?gh_jid=8726249002) — McGregor, TX — UNKNOWN 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_software:autocad=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Fueling Facilities Technician (Starship)](https://boards.greenhouse.io/spacex/jobs/8826324002?gh_jid=8826324002) — Starbase, TX — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [Rocket Factory Augsburg: Intern (f/m/d) Payload Accommodation Mechanical Engineer](https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4987738101) — Augsburg, Bavaria, Germany — YELLOW 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation, Preferred location
   - Hard gates: none
   - Soft gaps: []
-  - Recommended profile focus: C
+  - Recommended profile focus: B-C Hybrid
+- [SpaceX: IT Network Infrastructure Engineer, Launch](https://boards.greenhouse.io/spacex/jobs/8458745002?gh_jid=8458745002) — Starbase, TX — UNKNOWN 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Mechanical Engineer, Hardware Reliability (Starlink)](https://boards.greenhouse.io/spacex/jobs/8633437002?gh_jid=8633437002) — Bastrop, TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Structural Welder - Night Shift](https://boards.greenhouse.io/spacex/jobs/8800760002?gh_jid=8800760002) — Starbase, TX — RED 59
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starlink Components)](https://boards.greenhouse.io/spacex/jobs/8537914002?gh_jid=8537914002) — Redmond, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer - Optical, Satellites (Starlink)](https://boards.greenhouse.io/spacex/jobs/8747961002?gh_jid=8747961002) — Redmond, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer - Satellite Solar Array (Starlink)](https://boards.greenhouse.io/spacex/jobs/8692296002?gh_jid=8692296002) — Redmond, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer - Tooling/Controls, Satellites (Starlink)](https://boards.greenhouse.io/spacex/jobs/8732313002?gh_jid=8732313002) — Redmond, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, AI Satellites (Starmind)](https://boards.greenhouse.io/spacex/jobs/8642529002?gh_jid=8642529002) — Bastrop, TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Aviation Hardware (Starlink)](https://boards.greenhouse.io/spacex/jobs/8735363002?gh_jid=8735363002) — Woodinville, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Aviation Integration (Starlink)](https://boards.greenhouse.io/spacex/jobs/8737666002?gh_jid=8737666002) — Woodinville, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Precision Machining (Starlink)](https://boards.greenhouse.io/spacex/jobs/8552471002?gh_jid=8552471002) — Woodinville, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Satellite Harnessing (Starlink)](https://boards.greenhouse.io/spacex/jobs/8612766002?gh_jid=8612766002) — Redmond, WA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Solar Cell Factory (Starlink)](https://boards.greenhouse.io/spacex/jobs/8672706002?gh_jid=8672706002) — Bastrop, TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Level II Inspector (Starship Mechanisms)](https://boards.greenhouse.io/spacex/jobs/8594811002?gh_jid=8594811002) — Hawthorne, CA — UNKNOWN 59
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Level II Inspector (Starship Mechanisms) - Split Shift](https://boards.greenhouse.io/spacex/jobs/8594825002?gh_jid=8594825002) — Hawthorne, CA — UNKNOWN 59
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Level II Inspector, Certified Welding Inspector (Starship Mechanisms) - 1st Shift](https://boards.greenhouse.io/spacex/jobs/8594822002?gh_jid=8594822002) — Hawthorne, CA — UNKNOWN 59
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Operations Engineer, Facilities (Starlink)](https://boards.greenhouse.io/spacex/jobs/8634955002?gh_jid=8634955002) — Redmond, WA — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Principal Mechanical Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8550018002?gh_jid=8550018002) — Hawthorne, CA — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Principal Mechanical Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8841819002?gh_jid=8841819002) — Remote - TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Principal Mechanical Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8493609002?gh_jid=8493609002) — Starbase, TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Starfall)](https://boards.greenhouse.io/spacex/jobs/8805290002?gh_jid=8805290002) — Bloomfield, CT — UNKNOWN 59
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Valves)](https://boards.greenhouse.io/spacex/jobs/8709658002?gh_jid=8709658002) — Hawthorne, CA — UNKNOWN 59
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer, AI Satellites (Starmind)](https://boards.greenhouse.io/spacex/jobs/8642545002?gh_jid=8642545002) — Bastrop, TX — RED 59
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Facilities Maintenance, Solar Cell Factory (Starlink)](https://boards.greenhouse.io/spacex/jobs/8656828002?gh_jid=8656828002) — Bastrop, TX — RED 59
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557110002?gh_jid=8557110002) — Palo Alto, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557252002?gh_jid=8557252002) — Washington, DC — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Automation & Controls Engineer, Infrastructure & Utility (Starship)](https://boards.greenhouse.io/spacex/jobs/8727906002?gh_jid=8727906002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:autocad=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Automation & Controls Technician, Infrastructure & Utility (Starship)](https://boards.greenhouse.io/spacex/jobs/8730577002?gh_jid=8730577002) — Starbase, TX — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:autocad=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Certified Welding Inspector, NDE (Launch)](https://boards.greenhouse.io/spacex/jobs/8470464002?gh_jid=8470464002) — Cape Canaveral, FL — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: CMM Inspector (Starship)](https://boards.greenhouse.io/spacex/jobs/8703558002?gh_jid=8703558002) — Starbase, TX — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Compressed Air Technician (Facilities)](https://boards.greenhouse.io/spacex/jobs/8605112002?gh_jid=8605112002) — Hawthorne, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Project Manager, MEP](https://boards.greenhouse.io/spacex/jobs/8492506002?gh_jid=8492506002) — McGregor, TX — UNKNOWN 57
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8651400002?gh_jid=8651400002) — McGregor, TX — UNKNOWN 57
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8488362002?gh_jid=8488362002) — Starbase, TX — RED 57
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:bluebeam=unknown, required_software:procore=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Data Infrastructure Operations Manager (Starlink)](https://boards.greenhouse.io/spacex/jobs/8703559002?gh_jid=8703559002) — Sunnyvale, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Data Infrastructure Operations Manager II (Starlink)](https://boards.greenhouse.io/spacex/jobs/8510434002?gh_jid=8510434002) — Sunnyvale, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Data Infrastructure Operations Specialist II (Starlink)](https://boards.greenhouse.io/spacex/jobs/8508424002?gh_jid=8508424002) — Redmond, WA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Dimensional Inspector (CMM Programmer)](https://boards.greenhouse.io/spacex/jobs/8741932002?gh_jid=8741932002) — Hawthorne, CA — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Dimensional Inspector - Supply Chain (Starship)](https://boards.greenhouse.io/spacex/jobs/8633899002?gh_jid=8633899002) — Starbase, TX — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Engineer, Mechanical (Starlink)](https://boards.greenhouse.io/spacex/jobs/8540341002?gh_jid=8540341002) — Bastrop, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Engineer, MEP](https://boards.greenhouse.io/spacex/jobs/8580838002?gh_jid=8580838002) — McGregor, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician](https://boards.greenhouse.io/spacex/jobs/8760867002?gh_jid=8760867002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician - Temporary](https://boards.greenhouse.io/spacex/jobs/8703599002?gh_jid=8703599002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician - Temporary](https://boards.greenhouse.io/spacex/jobs/8792136002?gh_jid=8792136002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician - Temporary (College Station)](https://boards.greenhouse.io/spacex/jobs/8763458002?gh_jid=8763458002) — College Station, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Global Supply Manager, Ground Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8604026002?gh_jid=8604026002) — Redmond, WA — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician](https://boards.greenhouse.io/spacex/jobs/8457155002?gh_jid=8457155002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician](https://boards.greenhouse.io/spacex/jobs/8815459002?gh_jid=8815459002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician (College Station)](https://boards.greenhouse.io/spacex/jobs/8825647002?gh_jid=8825647002) — College Station, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician (Facilities)](https://boards.greenhouse.io/spacex/jobs/8595156002?gh_jid=8595156002) — Cape Canaveral, FL — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician (Facilities) - 1st Shift](https://boards.greenhouse.io/spacex/jobs/8765632002?gh_jid=8765632002) — Hawthorne, CA — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician (Facilities) - 3rd Shift](https://boards.greenhouse.io/spacex/jobs/8654421002?gh_jid=8654421002) — Cape Canaveral, FL — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician (Starlink) - Level 4/5](https://boards.greenhouse.io/spacex/jobs/8696950002?gh_jid=8696950002) — Bastrop, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8605108002?gh_jid=8605108002) — Hawthorne, CA — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician - Level 4/5 (Starlink)](https://boards.greenhouse.io/spacex/jobs/8576014002?gh_jid=8576014002) — Woodinville, WA — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Technician, Solar Cells (Starlink) - Day Shift](https://boards.greenhouse.io/spacex/jobs/8530746002?gh_jid=8530746002) — Bastrop, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Infrastructure Engineer, Virtualization & Storage](https://boards.greenhouse.io/spacex/jobs/8451903002?gh_jid=8451903002) — Hawthorne, CA — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Engineer, Outside Plant](https://boards.greenhouse.io/spacex/jobs/8815068002?gh_jid=8815068002) — Starbase, TX — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Technician](https://boards.greenhouse.io/spacex/jobs/8707320002?gh_jid=8707320002) — Cape Canaveral, FL — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Facilities Technician (College Station)](https://boards.greenhouse.io/spacex/jobs/8825649002?gh_jid=8825649002) — College Station, TX — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead HVAC Technician (Starship)](https://boards.greenhouse.io/spacex/jobs/8614911002?gh_jid=8614911002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Mechanical Engineer (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8523847002?gh_jid=8523847002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Mechanical Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8627660002?gh_jid=8627660002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Mechanical Engineer, MEP](https://boards.greenhouse.io/spacex/jobs/8653471002?gh_jid=8653471002) — McGregor, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Data Center Hardware & Infrastructure (TS/SCI)](https://boards.greenhouse.io/spacex/jobs/8738842002?gh_jid=8738842002) — Hawthorne, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, IT Infrastructure (Storage, Compute, & Virtualization)](https://boards.greenhouse.io/spacex/jobs/8787749002?gh_jid=8787749002) — Hawthorne, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Mechanical Engineering (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8531644002?gh_jid=8531644002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Data Center MEP Systems)](https://boards.greenhouse.io/spacex/jobs/8623383002?gh_jid=8623383002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Gas/Steam Turbines)](https://boards.greenhouse.io/spacex/jobs/8623145002?gh_jid=8623145002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starship Structures)](https://boards.greenhouse.io/spacex/jobs/8728634002?gh_jid=8728634002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Fluid Systems (Design & Build)](https://boards.greenhouse.io/spacex/jobs/8578082002?gh_jid=8578082002) — McGregor, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:piping=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Hardware Reliability (Starlink)](https://boards.greenhouse.io/spacex/jobs/8521383002?gh_jid=8521383002) — Bastrop, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Heatshield (Starship)](https://boards.greenhouse.io/spacex/jobs/8603366002?gh_jid=8603366002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Infrastructure](https://boards.greenhouse.io/spacex/jobs/8735901002?gh_jid=8735901002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Optical & Space Lasers Manufacturing (Starlink)](https://boards.greenhouse.io/spacex/jobs/8594150002?gh_jid=8594150002) — Redmond, WA — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Tower/Launch and Test](https://boards.greenhouse.io/spacex/jobs/8504788002?gh_jid=8504788002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Technician (Facilities)](https://boards.greenhouse.io/spacex/jobs/8604948002?gh_jid=8604948002) — Hawthorne, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector (Starship)](https://boards.greenhouse.io/spacex/jobs/8565363002?gh_jid=8565363002) — Starbase, TX — RED 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector (Starship)](https://boards.greenhouse.io/spacex/jobs/8483539002?gh_jid=8483539002) — Westminster, MD — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector (Starship) - Digital Radiography](https://boards.greenhouse.io/spacex/jobs/8628661002?gh_jid=8628661002) — Starbase, TX — RED 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector (Starship) - Phased Array](https://boards.greenhouse.io/spacex/jobs/8628664002?gh_jid=8628664002) — Starbase, TX — RED 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector, Certified Welding Inspector (CWI)](https://boards.greenhouse.io/spacex/jobs/8557560002?gh_jid=8557560002) — Starbase, TX — RED 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Level II Inspector - Multiple Shifts](https://boards.greenhouse.io/spacex/jobs/8748892002?gh_jid=8748892002) — Hawthorne, CA — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Plumbing Technician - 2nd Shift (Facilities)](https://boards.greenhouse.io/spacex/jobs/8605109002?gh_jid=8605109002) — Hawthorne, CA — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Quality Inspector (Starshield)](https://boards.greenhouse.io/spacex/jobs/8674498002?gh_jid=8674498002) — Hawthorne, CA — UNKNOWN 57
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557126002?gh_jid=8557126002) — Palo Alto, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557262002?gh_jid=8557262002) — Washington, DC — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Automation & Controls Engineer, Infrastructure & Utility (Starship)](https://boards.greenhouse.io/spacex/jobs/8743394002?gh_jid=8743394002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:autocad=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Counsel, Real Estate & Infrastructure](https://boards.greenhouse.io/spacex/jobs/8806151002?gh_jid=8806151002) — Bastrop, TX — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Counsel, Real Estate & Infrastructure](https://boards.greenhouse.io/spacex/jobs/8808149002?gh_jid=8808149002) — Pecan Island, LA — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Counsel, Real Estate & Infrastructure](https://boards.greenhouse.io/spacex/jobs/8806122002?gh_jid=8806122002) — Starbase, TX — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (Data Center MEP Systems)](https://boards.greenhouse.io/spacex/jobs/8836922002?gh_jid=8836922002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (Gas/Steam Turbines)](https://boards.greenhouse.io/spacex/jobs/8829704002?gh_jid=8829704002) — Starbase, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:solidworks=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (MEP/Construction)](https://boards.greenhouse.io/spacex/jobs/8729104002?gh_jid=8729104002) — Bastrop, TX — RED 57
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Structural Engineer, Structural Test (Starship)](https://boards.greenhouse.io/spacex/jobs/8682899002?gh_jid=8682899002) — Starbase, TX — RED 57
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_trade:steel=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Tooling Engineer, Plastic Injection Molding (Starlink)](https://boards.greenhouse.io/spacex/jobs/8574347002?gh_jid=8574347002) — Bastrop, TX — UNKNOWN 57
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_domain=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Analyst (Raptor Combustion Devices)](https://boards.greenhouse.io/spacex/jobs/8679371002?gh_jid=8679371002) — Hawthorne, CA — RED 57
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Welder, Ground Support Equipment - Night Shift](https://boards.greenhouse.io/spacex/jobs/8455876002?gh_jid=8455876002) — Starbase, TX — RED 57
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Welder, Massey's Test Site - Night Shift](https://boards.greenhouse.io/spacex/jobs/8555271002?gh_jid=8555271002) — Starbase, TX — RED 57
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Facilities](https://boards.greenhouse.io/spacex/jobs/8815319002?gh_jid=8815319002) — Palo Alto, CA — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Facilities](https://boards.greenhouse.io/spacex/jobs/8694679002?gh_jid=8694679002) — Starbase, TX — RED 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Technician, Starbase Infrastructure](https://boards.greenhouse.io/spacex/jobs/8846172002?gh_jid=8846172002) — Starbase, TX — UNKNOWN 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_trade:welding=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Maintenance Technician, Solar Cells (Starlink) - Day Shift](https://boards.greenhouse.io/spacex/jobs/8530696002?gh_jid=8530696002) — Bastrop, TX — RED 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Facilities Operations (Starlink)](https://boards.greenhouse.io/spacex/jobs/8634692002?gh_jid=8634692002) — Bastrop, TX — RED 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer](https://boards.greenhouse.io/spacex/jobs/8648969002?gh_jid=8648969002) — McGregor, TX — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_trade:piping=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Dragon)](https://boards.greenhouse.io/spacex/jobs/8649465002?gh_jid=8649465002) — Hawthorne, CA — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starlink Mobile)](https://boards.greenhouse.io/spacex/jobs/8558427002?gh_jid=8558427002) — Redmond, WA — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8727087002?gh_jid=8727087002) — Hawthorne, CA — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8626648002?gh_jid=8626648002) — Starbase, TX — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer - Battery Pack, Satellites (Starlink)](https://boards.greenhouse.io/spacex/jobs/8716210002?gh_jid=8716210002) — Redmond, WA — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, PCB (Starlink)](https://boards.greenhouse.io/spacex/jobs/8559982002?gh_jid=8559982002) — Bastrop, TX — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Operations Engineer, Starbase Infrastructure](https://boards.greenhouse.io/spacex/jobs/8780717002?gh_jid=8780717002) — Starbase, TX — RED 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Receiving Inspector (Starfall)](https://boards.greenhouse.io/spacex/jobs/8805292002?gh_jid=8805292002) — Bloomfield, CT — UNKNOWN 53
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Site Reliability Engineer (Manufacturing Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8776746002?gh_jid=8776746002) — Bastrop, TX — UNKNOWN 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, Manufacturing Infrastructure](https://boards.greenhouse.io/spacex/jobs/8848613002?gh_jid=8848613002) — Starbase, TX — UNKNOWN 53
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8521329002?gh_jid=8521329002) — Hawthorne, CA — RED 53
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Tooling Design Engineer, Investment Casting](https://boards.greenhouse.io/spacex/jobs/8493185002?gh_jid=8493185002) — Bastrop, TX — RED 53
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Tooling Designer, Investment Casting](https://boards.greenhouse.io/spacex/jobs/8818102002?gh_jid=8818102002) — Bastrop, TX — RED 53
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Tooling Designer, High Pressure Die Casting](https://boards.greenhouse.io/spacex/jobs/8828838002?gh_jid=8828838002) — Bastrop, TX — RED 53
+  - Role family: Tooling / Installation
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8769143002?gh_jid=8769143002) — College Station, TX — UNKNOWN 51
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Data Center Facilities Specialist](https://boards.greenhouse.io/spacex/jobs/8782746002?gh_jid=8782746002) — Hawthorne, CA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Data Center Facilities Technician](https://boards.greenhouse.io/spacex/jobs/8782372002?gh_jid=8782372002) — Hawthorne, CA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Electrician, Facilities (Multiple Shifts)](https://boards.greenhouse.io/spacex/jobs/8747636002?gh_jid=8747636002) — Cape Canaveral, FL — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Engineer, Solar Cell Factory (Starlink)](https://boards.greenhouse.io/spacex/jobs/8524791002?gh_jid=8524791002) — Bastrop, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician (MEP)](https://boards.greenhouse.io/spacex/jobs/8815474002?gh_jid=8815474002) — Starbase, TX — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician (Starlink/Akoustis) - Night Shift](https://boards.greenhouse.io/spacex/jobs/8574251002?gh_jid=8574251002) — Canandaigua, NY — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician, Mechanical (Starlink)](https://boards.greenhouse.io/spacex/jobs/8696942002?gh_jid=8696942002) — Bastrop, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Facilities Technician, WW Hauler - Temporary (College Station)](https://boards.greenhouse.io/spacex/jobs/8842168002?gh_jid=8842168002) — College Station, TX — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Flight Software Infrastructure Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8692260002?gh_jid=8692260002) — Redmond, WA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Design Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8560125002?gh_jid=8560125002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Supervisor (Starship)](https://boards.greenhouse.io/spacex/jobs/8614735002?gh_jid=8614735002) — Starbase, TX — UNKNOWN 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: International Infrastructure Operations Specialist (Starlink)](https://boards.greenhouse.io/spacex/jobs/8766913002?gh_jid=8766913002) — Redmond, WA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Facilities Infrastructure](https://boards.greenhouse.io/spacex/jobs/8784894002?gh_jid=8784894002) — Starbase, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Supply Chain - Datacenter Compute Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8648031002?gh_jid=8648031002) — Austin, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Supply Chain - Datacenter Compute Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8647973002?gh_jid=8647973002) — Palo Alto, CA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Designer (HVAC)](https://boards.greenhouse.io/spacex/jobs/8727987002?gh_jid=8727987002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer](https://boards.greenhouse.io/spacex/jobs/8812047002?gh_jid=8812047002) — College Station, TX — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8491883002?gh_jid=8491883002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starshield)](https://boards.greenhouse.io/spacex/jobs/8540372002?gh_jid=8540372002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8728568002?gh_jid=8728568002) — Starbase, TX — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer (Starship Components Manufacturing)](https://boards.greenhouse.io/spacex/jobs/8661010002?gh_jid=8661010002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: NDE Inspector Trainee (Starship) - Temporary](https://boards.greenhouse.io/spacex/jobs/8731136002?gh_jid=8731136002) — Starbase, TX — RED 51
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Precision Inspector (Starlink)](https://boards.greenhouse.io/spacex/jobs/8769646002?gh_jid=8769646002) — Bastrop, TX — UNKNOWN 51
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, Test Infrastructure (Application Software)](https://boards.greenhouse.io/spacex/jobs/8585072002?gh_jid=8585072002) — Hawthorne, CA — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, Test Infrastructure (C/C++)](https://boards.greenhouse.io/spacex/jobs/8637049002?gh_jid=8637049002) — Hawthorne, CA — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Infrastructure Engineer, Flight Software (Starlink)](https://boards.greenhouse.io/spacex/jobs/8692270002?gh_jid=8692270002) — Redmond, WA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sourcing Manager, Food & Facilities](https://boards.greenhouse.io/spacex/jobs/8822435002?gh_jid=8822435002) — Anderson, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sourcing Manager, Food & Facilities](https://boards.greenhouse.io/spacex/jobs/8673066002?gh_jid=8673066002) — McGregor, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Spring 2027 Civil Engineering Internship](https://boards.greenhouse.io/spacex/jobs/8636143002?gh_jid=8636143002) — Flexible - Any SpaceX Site — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8834081002?gh_jid=8834081002) — College Station, TX — UNKNOWN 51
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Facilities Assurance Analyst, Data Centers](https://boards.greenhouse.io/spacex/jobs/8857071002?gh_jid=8857071002) — Memphis, TN — UNKNOWN 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Facilities Engineer, Solar Cell Factory (Starlink)](https://boards.greenhouse.io/spacex/jobs/8524824002?gh_jid=8524824002) — Bastrop, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. HVAC Design Engineer](https://boards.greenhouse.io/spacex/jobs/8579763002?gh_jid=8579763002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Supply Chain - Datacenter Compute Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8648026002?gh_jid=8648026002) — Austin, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Supply Chain - Datacenter Compute Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8646604002?gh_jid=8646604002) — Palo Alto, CA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer](https://boards.greenhouse.io/spacex/jobs/8834095002?gh_jid=8834095002) — College Station, TX — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (HVAC)](https://boards.greenhouse.io/spacex/jobs/8579761002?gh_jid=8579761002) — Hawthorne, CA — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Mechanical Engineer (Starship Avionics)](https://boards.greenhouse.io/spacex/jobs/8456811002?gh_jid=8456811002) — Starbase, TX — RED 51
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Sourcing Specialist, Food & Facilities](https://boards.greenhouse.io/spacex/jobs/8842735002?gh_jid=8842735002) — McGregor, TX — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Test Engineer (Starship)](https://boards.greenhouse.io/spacex/jobs/8782041002?gh_jid=8782041002) — Starbase, TX — RED 51
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Summer 2027 Civil Engineering Internship](https://boards.greenhouse.io/spacex/jobs/8636144002?gh_jid=8636144002) — Flexible - Any SpaceX Site — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Supervisor, Facilities - 2nd Shift](https://boards.greenhouse.io/spacex/jobs/8801224002?gh_jid=8801224002) — Hawthorne, CA — RED 51
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Welding Inspector Specialist](https://boards.greenhouse.io/spacex/jobs/8498812002?gh_jid=8498812002) — Starbase, TX — RED 51
+  - Role family: QA/QC
+  - Fit reasons: Role family is configured as an interest, Structural steel execution
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_software:excel=unknown, required_trade:welding=unknown, required_trade:steel=unknown, required_trade:concrete=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8720164002?gh_jid=8720164002) — Bastrop, TX — UNKNOWN 45
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Government Program Development Manager (Federal Civil Agencies)](https://boards.greenhouse.io/spacex/jobs/8647718002?gh_jid=8647718002) — Washington, DC — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Programmer](https://boards.greenhouse.io/spacex/jobs/8814662002?gh_jid=8814662002) — Starbase, TX — RED 45
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: HVAC Programmer (Starbase)](https://boards.greenhouse.io/spacex/jobs/8825659002?gh_jid=8825659002) — Starbase, TX — RED 45
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: IT Network Infrastructure Engineer, Data Centers](https://boards.greenhouse.io/spacex/jobs/8814943002?gh_jid=8814943002) — Starbase, TX — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Kubernetes Platform Infrastructure Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8573281002?gh_jid=8573281002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Lead Development Test Technician (Starship Structural Test) - 1st Shift](https://boards.greenhouse.io/spacex/jobs/8746215002?gh_jid=8746215002) — Starbase, TX — RED 45
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:electrical=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Facilities](https://boards.greenhouse.io/spacex/jobs/8814951002?gh_jid=8814951002) — Austin, TX — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Manager, Facilities](https://boards.greenhouse.io/spacex/jobs/8815100002?gh_jid=8815100002) — New York City, NY — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:excel=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Cabin Structures (Crew Starship)](https://boards.greenhouse.io/spacex/jobs/8716953002?gh_jid=8716953002) — Starbase, TX — RED 45
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Electro-Mechanical (Starlink)](https://boards.greenhouse.io/spacex/jobs/8628971002?gh_jid=8628971002) — Redmond, WA — RED 45
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Mechanical Engineer, Mechanisms (Crew Starship)](https://boards.greenhouse.io/spacex/jobs/8692371002?gh_jid=8692371002) — Starbase, TX — RED 45
+  - Role family: Mechanical Construction
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808150002?gh_jid=8808150002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8829675002?gh_jid=8829675002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808184002?gh_jid=8808184002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808182002?gh_jid=8808182002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807493002?gh_jid=8807493002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8829681002?gh_jid=8829681002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807795002?gh_jid=8807795002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807783002?gh_jid=8807783002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861900002?gh_jid=8861900002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861903002?gh_jid=8861903002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861902002?gh_jid=8861902002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861901002?gh_jid=8861901002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Engineer, Platform / Infrastructure (Starlink)](https://boards.greenhouse.io/spacex/jobs/8632322002?gh_jid=8632322002) — Palo Alto, CA — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Infrastructure Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8584920002?gh_jid=8584920002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Software Infrastructure Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8573279002?gh_jid=8573279002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Superintendent](https://boards.greenhouse.io/spacex/jobs/8563021002?gh_jid=8563021002) — Bastrop, TX — UNKNOWN 45
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Construction Superintendent - Texas Construction Projects](https://boards.greenhouse.io/spacex/jobs/8734120002?gh_jid=8734120002) — Starbase, TX — UNKNOWN 45
+  - Role family: Construction Superintendent / Field Execution
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown, required_software:bluebeam=unknown, required_trade:concrete=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Hardware / Infrastructure Site Reliability Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8573251002?gh_jid=8573251002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Starlink Enterprise Accounts (Civilian Government Programs)](https://boards.greenhouse.io/spacex/jobs/8784651002?gh_jid=8784651002) — Bastrop, TX — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Starlink Enterprise Accounts (Civilian Government Programs)](https://boards.greenhouse.io/spacex/jobs/8784807002?gh_jid=8784807002) — Hawthorne, CA — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Starlink Enterprise Accounts (Civilian Government Programs)](https://boards.greenhouse.io/spacex/jobs/8784806002?gh_jid=8784806002) — Redmond, WA — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Manager, Starlink Enterprise Accounts (Civilian Government Programs)](https://boards.greenhouse.io/spacex/jobs/8784808002?gh_jid=8784808002) — Washington, DC — RED 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808186002?gh_jid=8808186002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8829677002?gh_jid=8829677002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808194002?gh_jid=8808194002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Network Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8808192002?gh_jid=8808192002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807816002?gh_jid=8807816002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8829684002?gh_jid=8829684002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807840002?gh_jid=8807840002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Site Reliability Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8807844002?gh_jid=8807844002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861764002?gh_jid=8861764002) — Hawthorne, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861768002?gh_jid=8861768002) — Palo Alto, CA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861751002?gh_jid=8861751002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Software Engineer, AI Infrastructure (Starshield)](https://boards.greenhouse.io/spacex/jobs/8861767002?gh_jid=8861767002) — Washington, DC — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Software Infrastructure Engineer (Starlink)](https://boards.greenhouse.io/spacex/jobs/8573254002?gh_jid=8573254002) — Redmond, WA — UNKNOWN 45
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree_or_experience=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Structural Welder, Stage 0 Ground Fabrication (Starship)](https://boards.greenhouse.io/spacex/jobs/8831630002?gh_jid=8831630002) — Starbase, TX — RED 45
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_trade:welding=unknown, required_trade:rigging=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
 
 ## Materially changed jobs
 
@@ -47,4 +2255,21 @@ _None._
 
 ## SpaceX Louisiana / Pecan Island
 
-_None._
+- [SpaceX: Sr. Construction Project Manager (Starship Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814705002?gh_jid=8814705002) — Pecan Island, LA — RED 69
+  - Role family: Construction Project Management
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:steel=unknown, required_trade:concrete=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Civil Engineer, Land Development (Starbase Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814619002?gh_jid=8814619002) — Pecan Island, LA — RED 67
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
+  - Hard gates: itar=unknown, degree=unsupported, required_years=unknown, required_domain=unknown, required_software:autocad=unknown, required_software:revit=unknown, required_trade:piping=unknown, required_trade:electrical=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
+- [SpaceX: Sr. Counsel, Real Estate & Infrastructure](https://boards.greenhouse.io/spacex/jobs/8808149002?gh_jid=8808149002) — Pecan Island, LA — UNKNOWN 57
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution, Planning and technical documentation
+  - Hard gates: itar=unknown, required_years=unknown, required_domain=unknown, required_leadership=unknown
+  - Soft gaps: []
+  - Recommended profile focus: A
