@@ -1,16 +1,14 @@
 # SpaceX targets — Patrick
 
-Generated: 2026-10-02T04:16:53.248891Z
-Source snapshot observed: 2026-10-02T04:16:34.967044Z
-Source data changed: 2026-10-02T04:16:34.967044Z
+Generated: 2026-10-08T17:58:07.977314Z
+Source snapshot observed: 2026-10-08T17:55:10.594831Z
+Source data changed: 2026-10-08T17:55:10.594831Z
 
 Coverage: complete
 
-Scanned: 2635 | Potentially relevant: 344 | Strong: 0 | Louisiana/Pecan Island: 3
+Scanned: 2688 | Potentially relevant: 336 | Strong: 0 | Louisiana/Pecan Island: 3
 
 GREEN requires direct candidate evidence for every detected required gate. UNKNOWN never qualifies as a verified strong target.
-
-History limitation: First generated feed; no prior personalized snapshot was available for comparison.
 
 ## Top 25
 
@@ -56,6 +54,12 @@ History limitation: First generated feed; no prior personalized snapshot was ava
   - Hard gates: ["itar=unknown (sical to confirm these capabilities, which may include a medical history review ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree 3+ years of professional experience in construction management or engineering PREFERRED SKILLS AND EXPERIENCE: Bachelor’s degree in architecture, construction management,)","required_domain=unknown (construction)","required_software:autocad=unknown (autocad)","required_trade:electrical=unknown (electrical)"]
   - Soft gaps: none
   - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [Lead Production Control Scheduler](https://boards.greenhouse.io/spacex/jobs/8861237002?gh_jid=8861237002) — Hawthorne, CA — RED 73 — `8861237002`
+  - Role family: Project Controls
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in aerospace, business, manufacturing, mechanical or industrial engineering)","required_years=unknown (1+ years (project management))","required_domain=unknown (project management)","required_leadership=unknown (leadership (project management))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
 - [Production Scheduler (Starship Mechanisms)](https://boards.greenhouse.io/spacex/jobs/8646129002?gh_jid=8646129002) — Hawthorne, CA — UNKNOWN 73 — `8646129002`
   - Role family: Project Controls
   - Profile focus: A
@@ -66,12 +70,6 @@ History limitation: First generated feed; no prior personalized snapshot was ava
   - Role family: Tooling / Installation
   - Profile focus: A
   - Hard gates: ["itar=unknown (sical to confirm these capabilities, which may include a medical history review ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in construction management, engineering, architecture, or a related field Experience with heavy lifts, rigging, access systems, crane/jib installs, or similar industrial)","required_years=unknown (2+ years (construction))","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:solidworks=unknown (solidworks)","required_trade:electrical=unknown (electrical)","required_trade:rigging=unknown (rigging)"]
-  - Soft gaps: none
-  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
-- [Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8708746002?gh_jid=8708746002) — Starbase, TX — UNKNOWN 73 — `8708746002`
-  - Role family: Project Controls
-  - Profile focus: A
-  - Hard gates: ["itar=unknown (25 lbs. unassisted Must be able to stand for extended periods - 8 hours minimum ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree_or_experience=unknown (Bachelor’s degree and 5+ years of manufacturing scheduling, planning, or operations experience / experience in manufacturing scheduling, planning, or operations in lieu)","required_years=unknown (8+ years (project management))","required_domain=unknown (project management)","required_leadership=unknown (leadership (project management))"]
   - Soft gaps: none
   - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
 - [Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8788235002?gh_jid=8788235002) — Starbase, TX — UNKNOWN 73 — `8788235002`
@@ -146,6 +144,12 @@ History limitation: First generated feed; no prior personalized snapshot was ava
   - Hard gates: ["itar=unknown (25 lbs. unassisted Must be able to stand for extended periods - 8 hours minimum ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree and 1+ years of manufacturing scheduling, planning or operations)","required_years=unknown (3+ years (project management))","required_domain=unknown (project management)","required_leadership=unknown (leadership (project management))"]
   - Soft gaps: none
   - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Large industrial project execution","Planning and technical documentation"]
+- [Sr. Civil Engineer, Land Development](https://boards.greenhouse.io/spacex/jobs/8864340002?gh_jid=8864340002) — College Station, TX — RED 69 — `8864340002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ollege Station, TX facility (Remote work not considered) Valid driver’s license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in civil engineering or other engineering discipline 5+ years of professional experience in civil engineering design, analysis, and drafting PREFERRED SKILLS AND EXPERIEN)","required_years=unknown (4+ years (construction))","required_domain=unknown (construction)","required_software:autocad=unknown (autocad)","required_trade:piping=unknown (piping)","required_trade:electrical=unknown (electrical)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Large industrial project execution","Planning and technical documentation"]
 - [Sr. Construction Project Manager (Starship Infrastructure - Louisiana)](https://boards.greenhouse.io/spacex/jobs/8814705002?gh_jid=8814705002) — Pecan Island, LA — RED 69 — `8814705002`
   - Role family: Construction Project Management
   - Profile focus: A
@@ -158,12 +162,6 @@ History limitation: First generated feed; no prior personalized snapshot was ava
   - Hard gates: ["itar=unknown (sonal protective equipment Must be available to work extended hours on occasion ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in structural engineering, civil engineering, or other engineering discipline 1+ years of professional experience as an engineer with a focus in design or build of struct)","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)","required_software:revit=unknown (revit)","required_trade:steel=unknown (steel)","required_trade:concrete=unknown (concrete)","required_trade:piping=unknown (piping)","required_trade:electrical=unknown (electrical)"]
   - Soft gaps: none
   - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Planning and technical documentation"]
-- [Automation & Controls Engineer (Facilities)](https://boards.greenhouse.io/spacex/jobs/8546353002?gh_jid=8546353002) — Hawthorne, CA — RED 67 — `8546353002`
-  - Role family: Facilities / Infrastructure
-  - Profile focus: A
-  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in an engineering discipline 1+ years of professional experience in the design and commissioning of automation and controls systems for industrial applications PREFERRED)","required_leadership=unknown (leadership (general))","required_software:excel=unknown (excel)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
-  - Soft gaps: none
-  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
 
 ## Verified strong targets (up to 10)
 
@@ -192,12 +190,177 @@ _None._
 
 ## New relevant
 
-_None._
+- [Lead Production Control Scheduler](https://boards.greenhouse.io/spacex/jobs/8861237002?gh_jid=8861237002) — Hawthorne, CA — RED 73 — `8861237002`
+  - Role family: Project Controls
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in aerospace, business, manufacturing, mechanical or industrial engineering)","required_years=unknown (1+ years (project management))","required_domain=unknown (project management)","required_leadership=unknown (leadership (project management))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [Sr. Civil Engineer, Land Development](https://boards.greenhouse.io/spacex/jobs/8864340002?gh_jid=8864340002) — College Station, TX — RED 69 — `8864340002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ollege Station, TX facility (Remote work not considered) Valid driver’s license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in civil engineering or other engineering discipline 5+ years of professional experience in civil engineering design, analysis, and drafting PREFERRED SKILLS AND EXPERIEN)","required_years=unknown (4+ years (construction))","required_domain=unknown (construction)","required_software:autocad=unknown (autocad)","required_trade:piping=unknown (piping)","required_trade:electrical=unknown (electrical)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Large industrial project execution","Planning and technical documentation"]
+- [Sr. Structural Engineer (Starship Launch Pad )](https://boards.greenhouse.io/spacex/jobs/8573859002?gh_jid=8573859002) — Starbase, TX — RED 65 — `8573859002`
+  - Role family: Structural / Steel
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ical to confirm these capabilities, which may include a medical history review. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in civil engineering, structural engineering, or other engineering discipline 5+ years of professional experience in civil or structural design, analysis, construction, a)","required_domain=unknown (construction)","required_software:autocad=unknown (autocad)","required_software:revit=unknown (revit)","required_software:solidworks=unknown (solidworks)","required_trade:steel=unknown (steel)","required_trade:concrete=unknown (concrete)","required_trade:piping=unknown (piping)","required_trade:electrical=unknown (electrical)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [Mechanical Engineer, Tower & Launch Mount (Starship)](https://boards.greenhouse.io/spacex/jobs/8869115002?gh_jid=8869115002) — Cape Canaveral, FL — RED 63 — `8869115002`
+  - Role family: Mechanical Construction
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (lexibility required Flexibility to travel to other SpaceX sites (less than 25%) ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in mechanical engineering, aerospace engineering, or other engineering discipline 1+ year(s) of hands-on project experience with mechanical systems (internship and projec)","required_years=unknown (2+ years (construction))","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_trade:welding=unknown (welding)","required_trade:steel=unknown (steel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [CMM Source Inspector](https://boards.greenhouse.io/spacex/jobs/8871075002?gh_jid=8871075002) — Hawthorne, CA — UNKNOWN 57 — `8871075002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (3+ years (general))","required_leadership=unknown (leadership (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [IT Infrastructure Engineer, Virtualization & Storage](https://boards.greenhouse.io/spacex/jobs/8875925002?gh_jid=8875925002) — Hawthorne, CA — UNKNOWN 57 — `8875925002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree_or_experience=unknown (Bachelor’s degree in information systems, computer science, engineering or related technical field and 3+ years of engineering experience in an enterprise environment / experience in lieu)","required_years=unknown (1+ years (general))","required_leadership=unknown (leadership (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [IT Network Infrastructure Engineer, Outside Plant](https://boards.greenhouse.io/spacex/jobs/8869044002?gh_jid=8869044002) — Starbase, TX — UNKNOWN 57 — `8869044002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (. Ability to work at heights. Ability to drive (active valid driver's license). ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree_or_experience=unknown (Bachelor’s degree in mechanical engineering, telecommunications engineering, or other STEM discipline with 2+ years experience / 6+ years experience in lieu)","required_domain=unknown (construction)","required_software:autocad=unknown (autocad)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Large industrial project execution","Planning and technical documentation"]
+- [IT Network Infrastructure Technician (Night Shift)](https://boards.greenhouse.io/spacex/jobs/8869126002?gh_jid=8869126002) — Cape Canaveral, FL — UNKNOWN 57 — `8869126002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ols, wire stripping techniques, Ohm’s law, continuity testing, pinning out a military type connector, routing and tie wrapping cables, drilling and tapping holes, and building junction boxes Experience with DC power supplies)","required_years=unknown (2+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Facilities Technician (Starlink/Akoustis) - Day Shift](https://boards.greenhouse.io/spacex/jobs/8870690002?gh_jid=8870690002) — Canandaigua, NY — UNKNOWN 51 — `8870690002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (2+ years (general))","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Planning and technical documentation"]
 
 ## Materially changed relevant
 
-_None._
+- [HVAC Technician (College Station)](https://boards.greenhouse.io/spacex/jobs/8825647002?gh_jid=8825647002) — College Station, TX — RED 57 — `8825647002`
+  - Role family: Mechanical Construction
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (per day Ability to work in temperatures over 80 degrees: up to 3 hours per day ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Associate degree in HVAC technology Knowledge in the following areas: HVAC, electrical safety, pneumatic principles, tubing, pipe-fittings, rotating machinery (pumps, air compressors, etc)","required_years=unknown (3+ years (general))","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Lead Facilities Technician (College Station)](https://boards.greenhouse.io/spacex/jobs/8825649002?gh_jid=8825649002) — College Station, TX — UNKNOWN 57 — `8825649002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (hand tools, and power equipment Ability to work in extreme outdoor environments ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (3+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
 
 ## Removed relevant
 
-_None._
+- [Sr. Scheduler (Starship)](https://boards.greenhouse.io/spacex/jobs/8708746002?gh_jid=8708746002) — Starbase, TX — UNKNOWN 73 — `8708746002`
+  - Role family: Project Controls
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (25 lbs. unassisted Must be able to stand for extended periods - 8 hours minimum ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree_or_experience=unknown (Bachelor’s degree and 5+ years of manufacturing scheduling, planning, or operations experience / experience in manufacturing scheduling, planning, or operations in lieu)","required_years=unknown (8+ years (project management))","required_domain=unknown (project management)","required_leadership=unknown (leadership (project management))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [Construction Project Manager (Facilities Infrastructure)](https://boards.greenhouse.io/spacex/jobs/8785075002?gh_jid=8785075002) — Starbase, TX — RED 67 — `8785075002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in architecture, construction management, or an engineering discipline 2+ years of professional experience in architecture, engineering, construction management and/or fa)","required_years=unknown (1+ years (construction))","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)","required_software:revit=unknown (revit)","required_software:bluebeam=unknown (bluebeam)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Large industrial project execution","Planning and technical documentation"]
+- [Sr. Civil Engineer](https://boards.greenhouse.io/spacex/jobs/8651331002?gh_jid=8651331002) — McGregor, TX — RED 67 — `8651331002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (d noise Must be willing to travel to other SpaceX sites when needed (up to 30%) ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in engineering 6+ years of professional experience in civil engineering design, analysis, and drafting PREFERRED SKILLS AND EXPERIENCE: Basic proficiency with AutoCAD/Civ)","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Planning and technical documentation"]
+- [Construction Project Manager, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8488374002?gh_jid=8488374002) — Starbase, TX — RED 65 — `8488374002`
+  - Role family: Construction Project Management
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in architecture, construction management, or engineering 3+ years of hands-on professional experience in residential architecture, engineering, construction management, o)","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)","required_software:procore=unknown (procore)","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Planning and technical documentation"]
+- [Quality Inspector (Starship)](https://boards.greenhouse.io/spacex/jobs/8483428002?gh_jid=8483428002) — Westminster, MD — UNKNOWN 63 — `8483428002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (1+ years (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
+- [Quality Inspector (Valves)](https://boards.greenhouse.io/spacex/jobs/8709658002?gh_jid=8709658002) — Hawthorne, CA — UNKNOWN 59 — `8709658002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (r equivalency certificate 2+ years of inspection experience in an aerospace, military or manufacturing environment PREFERRED SKILLS AND EXPERIENCE: Experience with aerospace standards Experience using calibrated inspection t)","required_years=unknown (2+ years (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution"]
+- [AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557110002?gh_jid=8557110002) — Palo Alto, CA — RED 57 — `8557110002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in computer science, mathematics, computer engineering, physics, data science, or engineering discipline)","required_years=unknown (1+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557252002?gh_jid=8557252002) — Washington, DC — RED 57 — `8557252002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in computer science, mathematics, computer engineering, physics, data science, or engineering discipline)","required_years=unknown (1+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Construction Superintendent, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8488362002?gh_jid=8488362002) — Starbase, TX — RED 57 — `8488362002`
+  - Role family: Construction Superintendent / Field Execution
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (d Valid driver’s license and dependable transportation for getting around sites ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in civil engineering, construction management, architecture, or other technical discipline OSHA 30-hour certification or equivalent safety training, with a history of mai)","required_years=unknown (3+ years (construction))","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)","required_software:bluebeam=unknown (bluebeam)","required_software:procore=unknown (procore)","required_software:excel=unknown (excel)","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution"]
+- [IT Infrastructure Engineer, Virtualization & Storage](https://boards.greenhouse.io/spacex/jobs/8451903002?gh_jid=8451903002) — Hawthorne, CA — UNKNOWN 57 — `8451903002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree_or_experience=unknown (Bachelor’s degree in information systems, computer science, engineering or related technical field and 3+ years of engineering experience in an enterprise environment / experience in lieu)","required_years=unknown (1+ years (general))","required_leadership=unknown (leadership (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [IT Network Infrastructure Technician](https://boards.greenhouse.io/spacex/jobs/8707320002?gh_jid=8707320002) — Cape Canaveral, FL — UNKNOWN 57 — `8707320002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ols, wire stripping techniques, Ohm’s law, continuity testing, pinning out a military type connector, routing and tie wrapping cables, drilling and tapping holes, and building junction boxes Experience with DC power supplies)","required_years=unknown (2+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Quality Inspector (Starshield)](https://boards.greenhouse.io/spacex/jobs/8674498002?gh_jid=8674498002) — Hawthorne, CA — UNKNOWN 57 — `8674498002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (1+ years (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution"]
+- [Sr. AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557126002?gh_jid=8557126002) — Palo Alto, CA — RED 57 — `8557126002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in computer science, mathematics, computer engineering, physics, data science, or engineering discipline)","required_years=unknown (5+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Sr. AI Engineer, Platform Infrastructure, Special Programs](https://boards.greenhouse.io/spacex/jobs/8557262002?gh_jid=8557262002) — Washington, DC — RED 57 — `8557262002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in computer science, mathematics, computer engineering, physics, data science, or engineering discipline)","required_years=unknown (5+ years (general))"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
+- [Sr. Tooling Design Engineer, Investment Casting](https://boards.greenhouse.io/spacex/jobs/8493185002?gh_jid=8493185002) — Bastrop, TX — RED 53 — `8493185002`
+  - Role family: Tooling / Installation
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (willing to travel (up to 25%) to external suppliers and other SpaceX facilities ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in mechanical engineering, manufacturing engineering, or an engineering discipline 5+ years of professional experience designing high-precision injection molds for wax pa)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Large industrial project execution"]
+- [Manager, Facilities Infrastructure](https://boards.greenhouse.io/spacex/jobs/8784894002?gh_jid=8784894002) — Starbase, TX — RED 51 — `8784894002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (eeds; flexibility required Must be available to travel to other sites as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in mechanical engineering Knowledge and understanding of building management, automated facilities monitoring systems and processes including HVAC systems, plumbing syste)","required_years=unknown (3+ years (construction))","required_domain=unknown (construction)","required_software:excel=unknown (excel)","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution"]
+- [Manager, Facilities](https://boards.greenhouse.io/spacex/jobs/8814951002?gh_jid=8814951002) — Austin, TX — RED 45 — `8814951002`
+  - Role family: Facilities / Infrastructure
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor's degree in mechanical engineering Knowledge and understanding of building management, automated facilities monitoring systems and processes including HVAC systems, plumbing syste)","required_years=unknown (3+ years (construction))","required_domain=unknown (construction)","required_software:excel=unknown (excel)","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest"]

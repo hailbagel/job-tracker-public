@@ -1,14 +1,12 @@
 id,source_id,change,title,location,observed_at
-rocket-factory-augsburg:4988432101,rocket-factory-augsburg,new,CNC/CAM Programmer (f/m/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4969536101,rocket-factory-augsburg,changed,GNC Test Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4987738101,rocket-factory-augsburg,new,Intern (f/m/d) Payload Accommodation Mechanical Engineer,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4960338101,rocket-factory-augsburg,changed,Intern (m/f/d) GNC - Reusable Launch Vehicles,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4878647101,rocket-factory-augsburg,changed,Intern (m/f/d) LabVIEW Programming,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4824842101,rocket-factory-augsburg,changed,Intern (m/f/d) Mathematical Modeling,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4960401101,rocket-factory-augsburg,changed,Intern (m/f/d) Redundant Flight Software Development,"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4960147101,rocket-factory-augsburg,changed,Intern (m/f/d) Supply Chain Coordinator,"Shetland Islands, Scotland, United Kingdom",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4907968101,rocket-factory-augsburg,changed,LabVIEW Programming Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4989825101,rocket-factory-augsburg,new,Propulsion Valve Development Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4989722101,rocket-factory-augsburg,new,Systems Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4982385101,rocket-factory-augsburg,removed,Full-Stack Software Engineer (f/m/d),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
-rocket-factory-augsburg:4960892101,rocket-factory-augsburg,removed,Intern (m/f/d) Institutional Projects (LCA),"Augsburg, Bavaria, Germany",2026-10-02T04:16:48.769621Z
+rocket-factory-augsburg:5000366101,rocket-factory-augsburg,new,Administrative & Business Support Officer (f/m/d) – Shetland UK,"Shetland Islands, Scotland, United Kingdom",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4997023101,rocket-factory-augsburg,new,Avionics AIT Technician (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4830435101,rocket-factory-augsburg,new,Intern (f/m/d) Launch Operations Engineering,"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4953643101,rocket-factory-augsburg,new,Intern (m/f/d) Systems Engineering,"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4997134101,rocket-factory-augsburg,new,Quality Assurance Inspector (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4932359101,rocket-factory-augsburg,new,Talent Acquisition Specialist (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4829285101,rocket-factory-augsburg,removed,Avionics Hardware Technician (f/m/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4823908101,rocket-factory-augsburg,removed,CNC Operator (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4969536101,rocket-factory-augsburg,removed,GNC Test Engineer (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4944342101,rocket-factory-augsburg,removed,Harness & Electrical Assembly Technician (m/f/d),"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
+rocket-factory-augsburg:4823887101,rocket-factory-augsburg,removed,Intern (m/f/d) 3D Printing/Additive Manufacturing,"Augsburg, Bavaria, Germany",2026-10-08T17:57:17.895911Z
