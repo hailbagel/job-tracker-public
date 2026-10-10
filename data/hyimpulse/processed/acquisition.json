@@ -3,10 +3,10 @@
   "adapter": "html_job_links",
   "company": "HyImpulse",
   "coverage_complete": true,
-  "data_hash": "29ff141d3adb0729df541bcdb80d558f930a77d9598197ff7d8cf8bddce786f4",
-  "observed_at": "2026-10-08T17:57:19.648815Z",
+  "data_hash": "e687c649fd0f488295e5a5d23f2f927dd4e42ae71abe554879671736bbc37cab",
+  "observed_at": "2026-10-10T18:01:20.848214Z",
   "reason": null,
-  "records_written": 17,
+  "records_written": 21,
   "source_id": "hyimpulse",
   "status": "success"
 }
