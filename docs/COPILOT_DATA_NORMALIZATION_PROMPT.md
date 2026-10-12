@@ -387,3 +387,23 @@ If all checks pass, commit the corrections to the SAME feature branch and push i
 Do not merge and do not deploy.
 Stop after pushing the corrected review branch.
 ```
+
+
+---
+
+## Clarification — HyImpulse Legacy Garbage May Be Discarded
+
+```text
+Clarification for the review-blocker fix:
+
+The legacy HyImpulse processed data is known bad data (for example APPLY NOW titles, Unknown locations/departments, and empty detail fields). Preserving that historical HyImpulse change/history data is NOT a requirement.
+
+For HyImpulse specifically:
+- it is acceptable to start the normalized history/change tracking from the first successful clean Personio-based acquisition;
+- do not spend effort migrating or preserving legacy HyImpulse garbage;
+- do not carry APPLY NOW / Unknown legacy records into the new canonical history.
+
+The historical-change preservation blocker applies to valuable legacy datasets from existing_provider sources such as SpaceX, NEURA, Jacobs, and Tesla where prior tracked history may contain useful evidence.
+
+Keep the SpaceX metadata preservation requirement unchanged.
+```
