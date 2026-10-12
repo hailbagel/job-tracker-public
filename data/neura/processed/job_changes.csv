@@ -744,3 +744,178 @@ date,change_type,title,location,timestamp
 2026-09-14,NEW,Structural Analysis Engineer (Human),Riederich,2026-09-14_14-43-37
 2026-09-14,NEW,Software Engineer - DDS expert (human),Riederich,2026-09-14_14-43-37
 2026-09-14,NEW,E/E Components Engineer (Human),Riederich,2026-09-14_14-43-37
+2026-10-12,NEW,"AI, PLA & NeuraGym Demo Coordinator (human)",Aachen,2026-10-12_18-02-17
+2026-10-12,NEW,Teamlead Physical AI Data Operations - RoboGym (human),Aachen,2026-10-12_18-02-17
+2026-10-12,NEW,Edge AI Engineer (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Group Lead Edge AI (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotic Perception Expert - Arms (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotic Perception Intern – Arms (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Vision Engineer – Synthetic 3D Data (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Lead Reinforcement Learning Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,NEW,Reinforcement Learning Expert - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,NEW,CEO Office - Technical Project Manager (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Enterprise Solution Architect (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Executive Assistant to the CEO (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,(Senior) Account Executive - (human),Paris,2026-10-12_18-02-17
+2026-10-12,NEW,(Senior) Account Executive - (human),Roma,2026-10-12_18-02-17
+2026-10-12,NEW,Design Engineer – Peripherals: Cables & Interfaces (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Technical Drafter – Drawings & Tolerancing (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Produkt & Industrieller Designer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,System Integrator - Smart Factory (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Tolerance Management Engineer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,(Senior) Robotics Commissioning & Service Engineer (human),Aachen,2026-10-12_18-02-17
+2026-10-12,NEW,Intern Service & Academy - Quality & Process Management (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotics Product Service Specialist / Power User (human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotics Training Engineer - Industry & Automation (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotics Training Engineer - Python & AI (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Robotics Training Engineer - Python & AI (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Spare Parts Manager (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Team Lead Academy (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,NEW,Locomotion & Whole-Body Control Engineer (human),Bielefeld,2026-10-12_18-02-17
+2026-10-12,NEW,Robotics Control Engineer (human),Bielefeld,2026-10-12_18-02-17
+2026-10-12,REMOVED,AI Engineering Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,"AI, PLA & NeuraGym Performance Manager (Human)",Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,MLOps Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,NeuraGym Location Scout (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Reinforcement Learning Research Scientist for Dexterous Manipulation (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Perception Expert (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Manipulation Engineer - Mobile Robotics (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teleoperation Software Engineer - NEURAGym (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Data/Robot Operator Intern (Teleops)(human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Group Lead AI Engineering - RoboGym (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Group Lead Data Operations (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robotic Foundation Model Engineer - RoboGym (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Reinforcement Learning Expert - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Vision & Perception Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,IT Modern Workplace Administrator (human),Detroit,2026-10-12_18-02-17
+2026-10-12,REMOVED,AI Automation Engineer People & Culture (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Business Central Developer - Microsoft Dynamics 365 (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,ERP & Business Applications Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,First Level Support (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Intern COO Office / Project Management (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Legal Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Modern Workplace Administrator (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Manager - COO Office / Production Scaling & Operations Excellence (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Manager Strategy (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Network Engineer (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Head of Business Development (human),Detroit,2026-10-12_18-02-17
+2026-10-12,REMOVED,Manager Ecosystem Integration & Certification (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Pre Sales / Solution Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Director Cloud (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Account Executive (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Contract Management Specialist - (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Ecommerce Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior GTM Commercial Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Product GTM Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Account Executive (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Account Executive remote (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Ecommerce Manager (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior GTM Commercial Manager (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Product GTM Manager (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Advanced Materials Engineer, Humanoid Systems (human)",Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Engineering Data & Change Management Specialist (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Mechanics / Mechatronics Engineer - Humanoid (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Advanced Materials Engineer, Humanoid Systems (human)",Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Mechanical Design Engineer, Injection Molding – Humanoid (human)",Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Mechanical Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Mechanical Technician - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robotics Exterior Technical Designer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Electric Motor Design Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Technical Purchasing Specialist – Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Marketing Manager (human),Detroit,2026-10-12_18-02-17
+2026-10-12,REMOVED,3D Artist / Generalist (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Event Marketing Internship (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Content Platform & Toolchain Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Content Platform & Toolchain Engineer(human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Head of Business Unit - Arms (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Product Owner (human) - NeuraGym Platform and Integration,Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Project Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Strategy Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Technical Writer - Content Delivery and Multi-Channel Publishing (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Technical Writer - Docs-as-Code and Software Documentation (Human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Design Engineer - Manufacturing Optimization of Robotic Systems (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Logistics Planner (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Production Engineer for Robotic Systems (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Supply Chain Operations Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Quality Project Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Quality Technician (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Advanced Training Engineer – APIs & Industrial Interfaces (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Junior Training Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Service Expert (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Training Engineer – NeuraPy & External Device Integration (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Training Engineer – NeuraPy AI API, ROS & Applications (human)",Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Cloud Foundations Engineer - Account & Landing Zone (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Engineering Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Fullstack Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Functional Safety Engineer - Robotics (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Group Manager – Functional Safety (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Head of Frontend & UX (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior UI/UX Designer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Software Engineering Intern (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Team Lead UI/UX Design (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Client SDK Engineer (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Test Engineer — Dexterous Humanoid Hand (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Dynamics, System Identification & Estimation Engineer - PLA (human)",Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Locomotion & Whole-Body Control Engineer (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Client SDK Engineer (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Platform Engineer (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Buyer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Buyer Mechanics (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Supply Chain Specialist – Logistics & Production (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Software Support L2 Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Data/Robot Operator (Teleops)(human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Mechanical Engineer – Mobile Robotics (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Mechanical and Simulation Engineer (URDF/Digital Twin) - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Group Lead – Cybersecurity Engineering (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Account Executive remote (human),Detroit,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teleoperation Software Engineer - NEURAGym (human),Bielefeld,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robot Client SDK Engineer (human),Bielefeld,2026-10-12_18-02-17
+2026-10-12,REMOVED,RT Communication Bus Engineer (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robotics Middleware Engineer (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Audio AI Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,IT Modern Workplace Manager (human),Detroit,2026-10-12_18-02-17
+2026-10-12,REMOVED,External Affairs Manager (Human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Logistics Specialist – Shipping & Customs (Human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Value Stream Manager (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robotic Foundation Model Engineer – RoboGym (Human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teamlead AI Engineering - RoboGym (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teamlead Data Operations (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Private Cloud engineer (Human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,PR and International Communications Specialist (Human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Group Manager Cybersecurity — Engineer the Future of Safe, Intelligent Robotic Systems (human)",Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Senior Robotics Middleware Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Physical AI Data Operations Expert (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teamlead Physical AI Data Operations - RoboGym (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,IoT & Connectivity Engineer (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Platform Engineer - Neuraverse (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Test & System Engineer - Quadruped (human),Metzingen,2026-10-12_18-02-17
+2026-10-12,REMOVED,IoT & Connectivity Engineer (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Platform Engineer - Neuraverse (human),Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Group Lead AI Engineering - NEURAGym (human),Aachen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teamlead AI Engineering - NeuraGym (human),Aachen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Teamlead Data Operations (human),Aachen,2026-10-12_18-02-17
+2026-10-12,REMOVED,AI Infrastructure & Robotics DevOps Intern (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Robotics Perception & State Estimation Engineer - Humanoid (human),Zurich,2026-10-12_18-02-17
+2026-10-12,REMOVED,NEURAGym Manager - NEURAGym (human),Aachen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Network Engineer (human) – RoboGym,Aachen,2026-10-12_18-02-17
+2026-10-12,REMOVED,Inside Sales Manager (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Business Unit Head - Sensors (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Technical Writer - Robotics (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Manager Industrialization (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Frontend Architect (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Strategic Inteligence Analyst (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Mechanical Architect (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Simulation Engineer - Electromagnetics (human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Plant Project Manager (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Plant Project Manager (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Intern Logistics (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,E/E Architect (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Simulation Engineer, Gearbox & Bearings (Human)",Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"Simulation Engineer, Thermal (Human)",Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Structural Analysis Engineer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,"AI, PLA & NeuraGym Demo Coordinator (human) RoboGym",Munich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Project Buyer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Electric Machine Design Engineer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Gearbox Design Engineer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,Structural Analysis Engineer (Human),Riederich,2026-10-12_18-02-17
+2026-10-12,REMOVED,E/E Components Engineer (Human),Riederich,2026-10-12_18-02-17

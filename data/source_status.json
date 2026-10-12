@@ -10,7 +10,6 @@
       "hyimpulse"
     ],
     "failed_or_incomplete_sources": [
-      "neura",
       "tesla",
       "jacobs"
     ],
@@ -22,6 +21,7 @@
       "hyimpulse"
     ],
     "successful_sources": [
+      "neura",
       "spacex",
       "rocket-factory-augsburg",
       "exolaunch",
@@ -34,11 +34,11 @@
       "acquisition_mode": "existing_provider",
       "adapter": "existing_provider",
       "company": "NEURA Robotics",
-      "coverage_complete": false,
-      "reason": "collection command exited 1",
-      "records_written": 0,
+      "coverage_complete": true,
+      "reason": null,
+      "records_written": 202,
       "source_id": "neura",
-      "status": "failed"
+      "status": "success"
     },
     {
       "acquisition_mode": "existing_provider",
@@ -66,15 +66,15 @@
       "adapter": "existing_provider",
       "company": "SpaceX",
       "coverage_complete": true,
-      "data_changed_at": "2026-10-10T18:01:01.286844Z",
-      "data_hash": "a582db96752b40ba2e4cd341e4dd4970572c4142bb95665be23459fcb6e16a0c",
-      "observed_at": "2026-10-10T18:01:01.286844Z",
+      "data_changed_at": "2026-10-12T18:02:20.606087Z",
+      "data_hash": "acc8bb51a3e7eeb1b98d41076d45662b95375f5de57e85b66826deb7f132cc2a",
+      "observed_at": "2026-10-12T18:02:20.606087Z",
       "provider": "spacex",
       "reason": null,
-      "records_written": 2726,
+      "records_written": 2729,
       "source": "https://boards-api.greenhouse.io/v1/boards/spacex/jobs?content=true",
       "source_id": "spacex",
-      "source_records": 2726,
+      "source_records": 2729,
       "status": "success"
     },
     {
@@ -82,8 +82,8 @@
       "adapter": "greenhouse",
       "company": "Rocket Factory Augsburg",
       "coverage_complete": true,
-      "data_hash": "60826567cd1365b38fdf889adf95858378d1a3073df0cd0c918c366fe4e3a010",
-      "observed_at": "2026-10-10T18:01:20.249860Z",
+      "data_hash": "b6deaf5e1cfe7d29c814c45e6f0dc487ee841efbc501fc02d2fef06e02b36a7f",
+      "observed_at": "2026-10-12T18:02:44.469547Z",
       "reason": null,
       "records_written": 52,
       "source_id": "rocket-factory-augsburg",
@@ -95,7 +95,7 @@
       "company": "Exolaunch",
       "coverage_complete": true,
       "data_hash": "538eeb4318037776c6e2ea8ffbd73055be97ec0648637620958109737b159e3a",
-      "observed_at": "2026-10-10T18:01:20.604769Z",
+      "observed_at": "2026-10-12T18:02:44.766546Z",
       "reason": null,
       "records_written": 11,
       "source_id": "exolaunch",
@@ -106,10 +106,10 @@
       "adapter": "html_job_links",
       "company": "HyImpulse",
       "coverage_complete": true,
-      "data_hash": "e687c649fd0f488295e5a5d23f2f927dd4e42ae71abe554879671736bbc37cab",
-      "observed_at": "2026-10-10T18:01:20.848214Z",
+      "data_hash": "db1bfdeb75cfe4a7575136bc0139cc57b91fdc66d9b5b203efbbbbf2fafa1035",
+      "observed_at": "2026-10-12T18:02:45.132764Z",
       "reason": null,
-      "records_written": 21,
+      "records_written": 20,
       "source_id": "hyimpulse",
       "status": "success"
     }

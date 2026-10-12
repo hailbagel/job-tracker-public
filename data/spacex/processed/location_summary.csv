@@ -1,10 +1,10 @@
 location,count
-"Hawthorne, CA",727
+"Hawthorne, CA",730
 "Bastrop, TX",548
-"Starbase, TX",401
+"Starbase, TX",402
 "Redmond, WA",396
 "Cape Canaveral, FL",116
-"Palo Alto, CA",111
+"Palo Alto, CA",110
 "McGregor, TX",76
 "Woodinville, WA",70
 "Washington, DC",57
@@ -27,12 +27,12 @@ Remote - WA,2
 "Bellevue, WA",2
 Remote - CA,2
 Remote - IL,1
-Remote - FL,1
 Remote - MI,1
+Remote - FL,1
 Remote - OH,1
-Remote - NY,1
 Remote - PA,1
+Remote - NY,1
 Remote - TN,1
 Remote - NC,1
 Remote - CO,1
-TOTAL,2726
+TOTAL,2729

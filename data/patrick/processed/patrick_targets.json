@@ -1,240 +1,105 @@
 {
-  "materially_changed_relevant": [
+  "materially_changed_relevant": [],
+  "metadata": {
+    "counts": {
+      "louisiana_pecan_island": 3,
+      "potentially_relevant": 346,
+      "scanned": 2812,
+      "strong_match": 2
+    },
+    "coverage_complete": true,
+    "generated_at": "2026-10-12T18:02:55.763758Z",
+    "history_limitation": null,
+    "source_coverage": [
+      {
+        "acquisition_mode": "existing_provider",
+        "adapter": "existing_provider",
+        "company": "SpaceX",
+        "coverage_complete": true,
+        "jobs": 2729,
+        "observed_at": "2026-10-12T18:02:20.606087Z",
+        "reason": null,
+        "source_id": "spacex",
+        "status": "success"
+      },
+      {
+        "acquisition_mode": "ats",
+        "adapter": "greenhouse",
+        "company": "Rocket Factory Augsburg",
+        "coverage_complete": true,
+        "jobs": 52,
+        "observed_at": "2026-10-12T18:02:44.469547Z",
+        "reason": null,
+        "source_id": "rocket-factory-augsburg",
+        "status": "success"
+      },
+      {
+        "acquisition_mode": "api",
+        "adapter": "personio_xml",
+        "company": "Exolaunch",
+        "coverage_complete": true,
+        "jobs": 11,
+        "observed_at": "2026-10-12T18:02:44.766546Z",
+        "reason": null,
+        "source_id": "exolaunch",
+        "status": "success"
+      },
+      {
+        "acquisition_mode": "web",
+        "adapter": "html_job_links",
+        "company": "HyImpulse",
+        "coverage_complete": true,
+        "jobs": 20,
+        "observed_at": "2026-10-12T18:02:45.132764Z",
+        "reason": null,
+        "source_id": "hyimpulse",
+        "status": "success"
+      }
+    ]
+  },
+  "new_relevant": [
     {
-      "basic_qualifications": "High school diploma or equivalency certificate 3+ years of quality inspection experience PREFERRED SKILLS AND EXPERIENCE: Understanding of ISO 9001/AS9100 quality management systems Solid computer skills in Microsoft Word, Outlook and Excel Ability to review drawings and identify improper callouts/datum structures, according to ASME Y14.5 Thorough understanding of all layout inspection tools (surface plate, height gage, indicators, calipers, micrometers, gage blocks, thread gages, etc.) DCC (direct computer controlled) CMM with PC-DMIS software experience 1+ years of experience with blueprint reading, shop math or GD&T Experience working in a machine shop",
+      "basic_qualifications": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience driving cross-functional product/tool/process improvement efforts Experience in an operations engineering and/or process development role internal to SpaceX Excellent written and verbal communication skills Ability to work in fast-paced, high-stress environments Master’s degree in an engineering discipline Experience leading cross-functional groups Experience with Lean principles and structured problem-solving/project-management methodologies Experience building reporting tools using SQL, Python, Power BI, Tableau, or similar Demonstrated ability to communicate with and influence stakeholders in higher-level leadership",
       "company": "SpaceX",
-      "degree_rule": null,
-      "department": "Manufacturing - Quality",
+      "degree_rule": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience",
+      "department": "Operations - Facilities",
       "evidence_provenance": {
         "job": {
           "detail_snapshot": null,
           "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8767752002?gh_jid=8767752002"
+          "url": "https://boards.greenhouse.io/spacex/jobs/8880818002?gh_jid=8880818002"
         }
       },
       "experience_in_lieu": null,
-      "first_published": "2026-08-31T21:04:26-04:00",
+      "first_published": "2026-10-12T11:39:21-04:00",
       "fit_reasons": [
         {
-          "job_evidence": "Precision Inspector (Starship) - 2nd Shift",
+          "job_evidence": "Operations Engineer, Spaceport Facilities",
           "reason": "Role family is configured as an interest"
         },
         {
           "job_evidence": [
-            "defects",
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
+            "manufacturing"
           ],
           "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "documentation"
-          ],
-          "reason": "Planning and technical documentation"
         }
       ],
-      "fit_score": 67,
+      "fit_score": 51,
       "hard_gates": [
         {
           "candidate_status": "unknown",
           "gate": "itar",
           "requirement_evidence": {
-            "excerpt": "ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "excerpt": "and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
             "section": "required qualifications",
             "source": "job_posting"
           }
         },
         {
-          "candidate_status": "unknown",
-          "gate": "required_years",
+          "candidate_status": "unsupported",
+          "gate": "degree",
           "requirement_evidence": {
-            "excerpt": "1+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:excel",
-          "requirement_evidence": {
-            "excerpt": "excel",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8767752002",
-      "location": "Hawthorne, CA",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6507763002",
-      "role_family": "QA/QC",
-      "salary": "$26.00 - $32.00/hour; $30.00 - $38.00/hour; $35.00 - $44.00/hour",
-      "shift_expectations": "Precision Inspector (Starship) - 2nd Shift Hawthorne, CA SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not. Today SpaceX is actively developing the technologies to make this possible, with the ultimate g",
-      "soft_gaps": [],
-      "software_requirements": [
-        "excel"
-      ],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Precision Inspector (Starship) - 2nd Shift",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": "2026-10-08T15:59:24-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8767752002?gh_jid=8767752002",
-      "work_authorization_signal": null,
-      "years": 1
-    },
-    {
-      "basic_qualifications": "High school diploma or equivalency certificate 2+ years of inspection experience in an aerospace, military or manufacturing environment PREFERRED SKILLS AND EXPERIENCE: Experience with aerospace standards Experience using calibrated inspection tools Experience with assembling and testing manufactured hardware Experience with quality assurance principles, methods, and processes Intermediate level skill with Microsoft Office (Excel, PowerPoint, Word, Outlook) Intermediate level skill with Windows operating systems Practical experience working within quality management systems (AS9100 and ISO 9001)",
-      "company": "SpaceX",
-      "degree_rule": null,
-      "department": "Manufacturing - Quality",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8639251002?gh_jid=8639251002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-07-17T18:27:40-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Quality Inspector (Starship) - 2nd Shift",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "schedule"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 65,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "r equivalency certificate 2+ years of inspection experience in an aerospace, military or manufacturing environment PREFERRED SKILLS AND EXPERIENCE: Experience with aerospace standards Experience using calibrated inspection t",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "2+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:excel",
-          "requirement_evidence": {
-            "excerpt": "excel",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "r equivalency certificate 2+ years of inspection experience in an aerospace, military or manufacturing environment PREFERRED SKILLS AND EXPERIENCE: Experience with aerospace standards Experience using calibrated inspection t",
-      "job_id": "spacex:8639251002",
-      "location": "Hawthorne, CA",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6450376002",
-      "role_family": "QA/QC",
-      "salary": "$26.00 - $32.00/hour; $30.00 - $38.00/hour; $35.00 - $44.00/hour",
-      "shift_expectations": "Quality Inspector (Starship) - 2nd Shift Hawthorne, CA SpaceX was founded under the belief that a future where humanity is out exploring the stars is fundamentally more exciting than one where we are not. Today SpaceX is actively developing the technologies to make this possible, with the ultimate g",
-      "soft_gaps": [],
-      "software_requirements": [
-        "excel"
-      ],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Quality Inspector (Starship) - 2nd Shift",
-      "trade_requirements": [],
-      "travel_expectations": "ends as needed Must be able to lift up to 25 lbs. unassisted Must be willing to travel up to 10% Must be able to climb ladders, stoop, bend, crawl, and work in tight spaces Must be willing to work in a cleanroom environment, which requires PPE, such as: bunny suit, hair net, beard net, etc. COMPENSATION AND BENEFITS: Pay range: Quality Inspecto",
-      "updated_at": "2026-10-08T15:58:42-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8639251002?gh_jid=8639251002",
-      "work_authorization_signal": null,
-      "years": 2
-    },
-    {
-      "basic_qualifications": "High school diploma or equivalency certificate 3+ years of precision mechanical inspection experience 3+ years of CMM programming, CMM operations, or Faro Arm experience PREFERRED SKILLS AND EXPERIENCE: Aerospace precision inspection experience Practical experience working within quality management systems (AS9100 and ISO 9001) CMM Programming with PC-DMIS software Romer Arm experience with Verisurf software Basic understanding of electronics inspection and propulsion valve operation Solid computer skills in Microsoft Word, Outlook and Excel Statistical process control experience Ability to read and interpret engineering drawings and specification using ASME Y14.5. GD&T and skillful use of metrology tools and gauge Self-motivated, proactive, and capable of managing priorities and tasks as delegated",
-      "company": "SpaceX",
-      "degree_rule": null,
-      "department": "Supply Chain & Logistics - Supply Chain Engineering",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8871075002?gh_jid=8871075002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-10-06T13:48:08-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "CMM Source Inspector",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "documentation"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 57,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "3+ years (general)",
+            "excerpt": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience",
             "section": "required qualifications",
             "source": "job_posting"
           }
@@ -258,890 +123,29 @@
           }
         }
       ],
-      "itar_signal": "ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8871075002",
-      "location": "Hawthorne, CA",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6552042002",
-      "role_family": "QA/QC",
-      "salary": "$30.00 - $38.00/hour; $34.00 - $43.00/hour; $38.00 - $48.00/hour",
-      "shift_expectations": "ble to travel - up to 75% work week travel may be required Position may involve overtime, long hours and weekend work as needed with occasional overnight work may be required when traveling to suppliers Frequent travel to suppliers around Texas area required; valid driver’s license mandatory COMPENSATION AND BENEFITS: Pay range: Source Inspector/",
-      "soft_gaps": [],
-      "software_requirements": [
-        "excel"
-      ],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "CMM Source Inspector",
-      "trade_requirements": [],
-      "travel_expectations": "ate goal of enabling human life on Mars. CMM SOURCE INSPECTOR RESPONSIBILITIES: Travel up to 75% of the time to Texas, to perform visual and dimensional inspections on manufactured parts, assemblies, and/or sub-assemblies at supplier sites Select and utilize standard gauges to ensure quality Inspect feature tolerances by selecting the tool with",
-      "updated_at": "2026-10-09T15:57:14-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8871075002?gh_jid=8871075002",
-      "work_authorization_signal": null,
-      "years": 3
-    },
-    {
-      "basic_qualifications": "Bachelor’s degree in computer science, information systems, or an engineering discipline; OR 3+ years of professional experience in SRE or DevOps in lieu of a degree 1+ years of software development experience Experience with Linux operating systems PREFERRED SKILLS AND EXPERIENCE: Experience with compute, storage, and/or networking infrastructure in production Infrastructure as code (Terraform, Ansible, Puppet, or similar) Containers and virtualization (Docker, Kubernetes, vSphere, QEMU, KVM, etc.) Databases and data modeling (Postgres, Clickhouse, etc.) Ability to translate high-level requirements into implementations from first principles Comfort with mission-critical systems and appropriate urgency and care Skillful communication with customers, peers, and management Comfort operating across multiple sites and manufacturing programs",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree in computer science, information systems, or an engineering discipline",
-      "department": "Engineering - Software & Analytics",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8776746002?gh_jid=8776746002"
-        }
-      },
-      "experience_in_lieu": "experience in SRE or DevOps in lieu",
-      "first_published": "2026-09-02T20:25:10-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Site Reliability Engineer, Platform Infrastructure",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "degree_or_experience",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree in computer science, information systems, or an engineering discipline / experience in SRE or DevOps in lieu",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "1+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8776746002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6510908002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "ltiple sites and manufacturing programs Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Site Reliability Engineer, Platform Infrastructure",
-      "trade_requirements": [],
-      "travel_expectations": "rams Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "updated_at": "2026-10-08T18:22:17-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8776746002?gh_jid=8776746002",
-      "work_authorization_signal": null,
-      "years": 1
-    }
-  ],
-  "metadata": {
-    "counts": {
-      "louisiana_pecan_island": 3,
-      "potentially_relevant": 345,
-      "scanned": 2810,
-      "strong_match": 2
-    },
-    "coverage_complete": true,
-    "generated_at": "2026-10-10T18:01:31.452467Z",
-    "history_limitation": null,
-    "source_coverage": [
-      {
-        "acquisition_mode": "existing_provider",
-        "adapter": "existing_provider",
-        "company": "SpaceX",
-        "coverage_complete": true,
-        "jobs": 2726,
-        "observed_at": "2026-10-10T18:01:01.286844Z",
-        "reason": null,
-        "source_id": "spacex",
-        "status": "success"
-      },
-      {
-        "acquisition_mode": "ats",
-        "adapter": "greenhouse",
-        "company": "Rocket Factory Augsburg",
-        "coverage_complete": true,
-        "jobs": 52,
-        "observed_at": "2026-10-10T18:01:20.249860Z",
-        "reason": null,
-        "source_id": "rocket-factory-augsburg",
-        "status": "success"
-      },
-      {
-        "acquisition_mode": "api",
-        "adapter": "personio_xml",
-        "company": "Exolaunch",
-        "coverage_complete": true,
-        "jobs": 11,
-        "observed_at": "2026-10-10T18:01:20.604769Z",
-        "reason": null,
-        "source_id": "exolaunch",
-        "status": "success"
-      },
-      {
-        "acquisition_mode": "web",
-        "adapter": "html_job_links",
-        "company": "HyImpulse",
-        "coverage_complete": true,
-        "jobs": 21,
-        "observed_at": "2026-10-10T18:01:20.848214Z",
-        "reason": null,
-        "source_id": "hyimpulse",
-        "status": "success"
-      }
-    ]
-  },
-  "new_relevant": [
-    {
-      "basic_qualifications": "Bachelor’s degree in architecture, construction management, or engineering 5+ years of hands-on professional experience in residential architecture, engineering, construction management, or facilities development PREFERRED SKILLS AND EXPERIENCE: Proven track record with residential project management and scheduling tools (e.g., Procore, Primavera, or MS Project) Hands-on design experience in residential or technical building projects Intermediate proficiency in AutoCAD or similar CAD software for residential layouts Deep knowledge of residential permitting processes, building codes, and environmental regulations Expertise across residential development technical disciplines, including civil/site work, structural framing, mechanical/HVAC, electrical systems, plumbing, geotechnical analysis, and surveying Demonstrated success managing large-scale residential construction projects, including estimation and forecasting, scheduling, and subcontractor oversight Skilled in reviewing, interpreting, and approving residential shop drawings, fabrication plans, blueprints, and technical specifications Thrive in high-velocity environments, pivoting roles swiftly while sustaining urgency, precision, and results Exceptional independent thinker and collaborative team player, with initiative, clear communication, and a bias for action",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree in architecture, construction management, or engineering 5+ years of hands-on professional experience in residential architecture, engineering, construction management, o",
-      "department": "Operations - Facilities",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8878018002?gh_jid=8878018002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-10-09T14:30:21-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Sr. Construction Project Manager, Residential (Starbase Development)",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "construction management",
-            "project management"
-          ],
-          "reason": "Industrial construction and project leadership"
-        },
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "MS Project"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 65,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree in architecture, construction management, or engineering 5+ years of hands-on professional experience in residential architecture, engineering, construction management, o",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_domain",
-          "requirement_evidence": {
-            "excerpt": "construction",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_leadership",
-          "requirement_evidence": {
-            "excerpt": "leadership (construction)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:autocad",
-          "requirement_evidence": {
-            "excerpt": "autocad",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:procore",
-          "requirement_evidence": {
-            "excerpt": "procore",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:plumbing",
-          "requirement_evidence": {
-            "excerpt": "plumbing",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:electrical",
-          "requirement_evidence": {
-            "excerpt": "electrical",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:hvac",
-          "requirement_evidence": {
-            "excerpt": "hvac",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8878018002",
-      "location": "Starbase, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6555158002",
-      "role_family": "Construction Project Management",
-      "salary": null,
-      "shift_expectations": "ions for mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card ho",
-      "soft_gaps": [],
-      "software_requirements": [
-        "autocad",
-        "procore"
-      ],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Sr. Construction Project Manager, Residential (Starbase Development)",
-      "trade_requirements": [
-        "plumbing",
-        "electrical",
-        "hvac"
-      ],
-      "travel_expectations": "e, TX and requires being onsite – remote work not considered Must be willing to travel to various SpaceX locations for mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent",
-      "updated_at": "2026-10-09T14:30:21-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8878018002?gh_jid=8878018002",
-      "work_authorization_signal": null,
-      "years": 5
-    },
-    {
-      "basic_qualifications": "Bachelor's degree in an engineering discipline 7+ years of experience with mechanical design and analysis PREFERRED SKILLS AND EXPERIENCE: Experience designing, analyzing, building, and testing high performance, mechanical systems Experience working within interdisciplinary teams to develop solutions to challenging and complex problems Experience with FEA or multiphysics simulation package (e.g. NASTRAN, ABAQUS, ANSYS) Experience designing and executing qualification testing Strong understanding of mechanical first principles and structural analysis methodologies Proficiency in selecting materials and manufacturing methods for mechanical components Analytical/scientific programming experience (i.e. Python, Matlab, Excel) Self-motivated with strong organizational, written, and oral communication skills",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor's degree in an engineering discipline 7+ years of experience with mechanical design and analysis PREFERRED SKILLS AND EXPERIENCE: Experience designing, analyzing, building, and te",
-      "department": "Engineering - Aerospace & Mechanical",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8882551002?gh_jid=8882551002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-10-10T13:57:43-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Principal Mechanical Engineer (Starship)",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "commissioning",
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "schedule"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 61,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Bachelor's degree in an engineering discipline 7+ years of experience with mechanical design and analysis PREFERRED SKILLS AND EXPERIENCE: Experience designing, analyzing, building, and te",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:excel",
-          "requirement_evidence": {
-            "excerpt": "excel",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
       "itar_signal": "and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8882551002",
+      "job_id": "spacex:8880818002",
       "location": "Starbase, TX",
       "potentially_relevant": true,
       "preferred_qualifications": null,
       "recommended_profile_focus": "A",
-      "requisition_id": "6557129002",
-      "role_family": "Mechanical Construction",
+      "requisition_id": "6556419002",
+      "role_family": "Facilities / Infrastructure",
       "salary": null,
-      "shift_expectations": "ten, and oral communication skills Must be available to work extended hours and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national",
+      "shift_expectations": "nt projects Valid driver’s license Must be available to work extended hours and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national",
       "soft_gaps": [],
       "software_requirements": [
         "excel"
       ],
       "source_id": "spacex",
       "status": "RED",
-      "title": "Principal Mechanical Engineer (Starship)",
+      "title": "Operations Engineer, Spaceport Facilities",
       "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": "2026-10-10T13:58:56-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8882551002?gh_jid=8882551002",
+      "travel_expectations": "Starbase, TX and requires being onsite – remote work not considered Occasional travel to support other spaceport development projects Valid driver’s license Must be available to work extended hours and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations,",
+      "updated_at": "2026-10-12T11:39:21-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8880818002?gh_jid=8880818002",
       "work_authorization_signal": null,
-      "years": 7
-    },
-    {
-      "basic_qualifications": "High school diploma or equivalency certificate 5+ years of facilities maintenance experience PREFERRED SKILLS AND EXPERIENCE: Experience in construction, project management, equipment maintenance, and tenant improvements Experience with plumbing systems, backflows, lift stations, sewer machines, and pumps Experience with concrete, forming, and pouring Experience with engineering and construction principles, methods, and codes Experience with industrial compressed air systems and maintenance Experience with carpentry maintenance tasks, including routine sheetrock/drywall installation and/or repair, window replacement, cabinet/countertop replacement, painting/texturing (interior and exterior), and door/hardware installation Ability to read instructions and blueprints Experience with project management software, MS Excel, Word, or other project tracking software Strong written and verbal communication skills - MS Outlook and Teams Ability to understand and follow specific instructions and procedures Self-motivated, works well with others and autonomously Safety training and use of forklifts, scissor lifts, cranes & hoists, and fall protection equipment",
-      "company": "SpaceX",
-      "degree_rule": null,
-      "department": "Operations - Facilities",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8878058002?gh_jid=8878058002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-10-09T14:30:37-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Facilities Technician Level 4/5 - Temporary",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "project management"
-          ],
-          "reason": "Industrial construction and project leadership"
-        },
-        {
-          "job_evidence": [
-            "installation"
-          ],
-          "reason": "Structural steel execution"
-        }
-      ],
-      "fit_score": 57,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "requires being onsite – remote work not considered Valid Texas driver's license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "5+ years (construction)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_domain",
-          "requirement_evidence": {
-            "excerpt": "construction",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:excel",
-          "requirement_evidence": {
-            "excerpt": "excel",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:concrete",
-          "requirement_evidence": {
-            "excerpt": "concrete",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:plumbing",
-          "requirement_evidence": {
-            "excerpt": "plumbing",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "requires being onsite – remote work not considered Valid Texas driver's license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8878058002",
-      "location": "Starbase, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6555179002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "lifts, cranes & hoists, and fall protection equipment Must be able to work all shifts and available for overtime, weekends and holiday as needed Must be willing to travel to various SpaceX locations for mission critical projects This position is based in Starbase, TX and requires being onsite – remote work not considered Valid Texas driver's",
-      "soft_gaps": [],
-      "software_requirements": [
-        "excel"
-      ],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Facilities Technician Level 4/5 - Temporary",
-      "trade_requirements": [
-        "concrete",
-        "plumbing",
-        "electrical",
-        "hvac"
-      ],
-      "travel_expectations": "s and available for overtime, weekends and holiday as needed Must be willing to travel to various SpaceX locations for mission critical projects This position is based in Starbase, TX and requires being onsite – remote work not considered Valid Texas driver's license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant",
-      "updated_at": "2026-10-09T14:30:37-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8878058002?gh_jid=8878058002",
-      "work_authorization_signal": null,
-      "years": 5
-    },
-    {
-      "basic_qualifications": "High school diploma or equivalent certificate 3+ years of professional experience on industrial rotating or fixed mechanical equipment PREFERRED SKILLS AND EXPERIENCE: 6+ years of professional experience on industrial rotating and fixed mechanical equipment Millwright, industrial mechanic, or central-plant background in a manufacturing or heavy-industrial setting Broad working knowledge of pumps, compressors, piping, tubing, fittings, valves, cryogenic fluids, vacuum systems and compressed gas systems Journeyman or master as a pipefitter, millwright, or plumber, or actively progressing toward a journeyman’s license in one of those trades Ability to troubleshoot mechanical systems to the component level; basic electrical troubleshooting a plus Expert ability to read P&IDs and mechanical drawings (GD&T a plus) Experience with rotating equipment shaft alignment, balancing, bearing replacements, seal swaps, precision measurement, and complete overhauls Strong demonstrated piping skills: cutting, fitting, brazing, soldering, welding (stick/TIG), threading, insulation, and tube bending Familiarity with commercial and/or industrial building codes Experience leading or executing reliability improvement and construction projects",
-      "company": "SpaceX",
-      "degree_rule": "master as a pipefitter, millwright, or plumber, or actively progressing toward a journeyman’s license in one of those trades Ability to troubleshoot mechanical systems to the component l",
-      "department": "Operations - Facilities",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8853299002?gh_jid=8853299002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-10-08T16:09:44-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Mechanical Technician, Facilities (Starlink)",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "work at elevated heights (up to 100 feet) Must have a valid US driver’s license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "master as a pipefitter, millwright, or plumber, or actively progressing toward a journeyman’s license in one of those trades Ability to troubleshoot mechanical systems to the component l",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "3+ years (construction)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_domain",
-          "requirement_evidence": {
-            "excerpt": "construction",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_leadership",
-          "requirement_evidence": {
-            "excerpt": "leadership (construction)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:welding",
-          "requirement_evidence": {
-            "excerpt": "welding",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:piping",
-          "requirement_evidence": {
-            "excerpt": "piping",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:electrical",
-          "requirement_evidence": {
-            "excerpt": "electrical",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "work at elevated heights (up to 100 feet) Must have a valid US driver’s license ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8853299002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6543922002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "e goal of enabling human life on Mars. MECHANICAL TECHNICIAN, FACILITIES (NIGHT SHIFT) As a Mechanical Technician at our Starlink Production facility, you will play a crucial role in keeping critical rotating and fixed equipme",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Mechanical Technician, Facilities (Starlink)",
-      "trade_requirements": [
-        "welding",
-        "piping",
-        "electrical"
-      ],
-      "travel_expectations": null,
-      "updated_at": "2026-10-08T16:09:44-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8853299002?gh_jid=8853299002",
-      "work_authorization_signal": null,
-      "years": 3
-    },
-    {
-      "basic_qualifications": "Bachelor’s degree in computer science, information systems, or an engineering discipline; OR 3+ years of professional experience in SRE or DevOps in lieu of a degree 1+ years of software development experience Experience with Linux operating systems PREFERRED SKILLS AND EXPERIENCE: Experience with compute, storage, and/or networking infrastructure in production Infrastructure as code (Terraform, Ansible, Puppet, or similar) Containers and virtualization (Docker, Kubernetes, vSphere, QEMU, KVM, etc.) Databases and data modeling (Postgres, Clickhouse, etc.) Ability to translate high-level requirements into implementations from first principles Comfort with mission-critical systems and appropriate urgency and care Skillful communication with customers, peers, and management Comfort operating across multiple sites and manufacturing programs",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree in computer science, information systems, or an engineering discipline",
-      "department": "Engineering - Software & Analytics",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8880672002?gh_jid=8880672002"
-        }
-      },
-      "experience_in_lieu": "experience in SRE or DevOps in lieu",
-      "first_published": "2026-10-08T18:24:38-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Site Reliability Engineer, Data Center Infrastructure",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "degree_or_experience",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree in computer science, information systems, or an engineering discipline / experience in SRE or DevOps in lieu",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "1+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8880672002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6510908002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "ltiple sites and manufacturing programs Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Site Reliability Engineer, Data Center Infrastructure",
-      "trade_requirements": [],
-      "travel_expectations": "rams Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "updated_at": "2026-10-08T18:24:38-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8880672002?gh_jid=8880672002",
-      "work_authorization_signal": null,
-      "years": 1
-    },
-    {
-      "basic_qualifications": "Bachelor’s degree in computer science, information systems, or an engineering discipline; OR 7+ years of professional experience in SRE or DevOps in lieu of a degree 3+ years of experience with Python and Python-based development frameworks Experience with Linux operating systems PREFERRED SKILLS AND EXPERIENCE: Experience with compute, storage, and/or networking infrastructure in production Infrastructure as code (Terraform, Ansible, Puppet, or similar) Containers and virtualization (Docker, Kubernetes, vSphere, QEMU, KVM, etc.) Databases and data modeling (Postgres, Clickhouse, etc.) Ability to translate high-level requirements into implementations from first principles Comfort with mission-critical systems and appropriate urgency and care Skillful communication with customers, peers, and management Comfort operating across multiple sites and manufacturing programs",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree in computer science, information systems, or an engineering discipline",
-      "department": "Engineering - Software & Analytics",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8882642002?gh_jid=8882642002"
-        }
-      },
-      "experience_in_lieu": "experience in SRE or DevOps in lieu",
-      "first_published": "2026-10-09T21:15:44-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Site Reliability Engineer, Data Center Infrastructure",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "degree_or_experience",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree in computer science, information systems, or an engineering discipline / experience in SRE or DevOps in lieu",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "3+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8882642002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6556394002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "ltiple sites and manufacturing programs Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Site Reliability Engineer, Data Center Infrastructure",
-      "trade_requirements": [],
-      "travel_expectations": "rams Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "updated_at": "2026-10-09T21:15:44-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8882642002?gh_jid=8882642002",
-      "work_authorization_signal": null,
-      "years": 3
-    },
-    {
-      "basic_qualifications": "Bachelor’s degree in computer science, information systems, or an engineering discipline; OR 7+ years of professional experience in SRE or DevOps in lieu of a degree 3+ years of experience with Python and Python-based development frameworks Experience with Linux operating systems PREFERRED SKILLS AND EXPERIENCE: Experience with compute, storage, and/or networking infrastructure in production Infrastructure as code (Terraform, Ansible, Puppet, or similar) Containers and virtualization (Docker, Kubernetes, vSphere, QEMU, KVM, etc.) Databases and data modeling (Postgres, Clickhouse, etc.) Ability to translate high-level requirements into implementations from first principles Comfort with mission-critical systems and appropriate urgency and care Skillful communication with customers, peers, and management Comfort operating across multiple sites and manufacturing programs",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree in computer science, information systems, or an engineering discipline",
-      "department": "Engineering - Software & Analytics",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8880755002?gh_jid=8880755002"
-        }
-      },
-      "experience_in_lieu": "experience in SRE or DevOps in lieu",
-      "first_published": "2026-10-09T20:44:52-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Sr. Site Reliability Engineer, Platform Infrastructure",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "degree_or_experience",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree in computer science, information systems, or an engineering discipline / experience in SRE or DevOps in lieu",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "3+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "ole requires you to be onsite. Remote and/or hybrid work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8880755002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6556394002",
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": "ltiple sites and manufacturing programs Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "UNKNOWN",
-      "title": "Sr. Site Reliability Engineer, Platform Infrastructure",
-      "trade_requirements": [],
-      "travel_expectations": "rams Must be able to work extended hours and weekends as needed Must be able to travel to different sites (Hawthorne, CA; Redmond, WA; Cape Canaveral, FL; Starbase, TX) Ability to pass Air Force background check for Cape Canaveral This role requires you to be",
-      "updated_at": "2026-10-09T20:44:52-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8880755002?gh_jid=8880755002",
-      "work_authorization_signal": null,
-      "years": 3
+      "years": 2
     }
   ],
   "rankings": [
@@ -32066,6 +31070,95 @@
       "years": 2
     },
     {
+      "basic_qualifications": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience driving cross-functional product/tool/process improvement efforts Experience in an operations engineering and/or process development role internal to SpaceX Excellent written and verbal communication skills Ability to work in fast-paced, high-stress environments Master’s degree in an engineering discipline Experience leading cross-functional groups Experience with Lean principles and structured problem-solving/project-management methodologies Experience building reporting tools using SQL, Python, Power BI, Tableau, or similar Demonstrated ability to communicate with and influence stakeholders in higher-level leadership",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience",
+      "department": "Operations - Facilities",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8880818002?gh_jid=8880818002"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": "2026-10-12T11:39:21-04:00",
+      "fit_reasons": [
+        {
+          "job_evidence": "Operations Engineer, Spaceport Facilities",
+          "reason": "Role family is configured as an interest"
+        },
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        }
+      ],
+      "fit_score": 51,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_leadership",
+          "requirement_evidence": {
+            "excerpt": "leadership (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8880818002",
+      "location": "Starbase, TX",
+      "potentially_relevant": true,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6556419002",
+      "role_family": "Facilities / Infrastructure",
+      "salary": null,
+      "shift_expectations": "nt projects Valid driver’s license Must be available to work extended hours and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national",
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Operations Engineer, Spaceport Facilities",
+      "trade_requirements": [],
+      "travel_expectations": "Starbase, TX and requires being onsite – remote work not considered Occasional travel to support other spaceport development projects Valid driver’s license Must be available to work extended hours and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations,",
+      "updated_at": "2026-10-12T11:39:21-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8880818002?gh_jid=8880818002",
+      "work_authorization_signal": null,
+      "years": 2
+    },
+    {
       "basic_qualifications": "High school diploma or equivalency certificate 5+ years of quality inspection experience in a machine shop 1+ years of experience with blueprint reading, shop math and GD&T DCC (direct computer controlled) CMM with PC-DMIS software experience PREFERRED SKILLS AND EXPERIENCE: Understanding of ISO 9001/AS9100 quality management systems Solid computer skills in Microsoft Word, Outlook and Excel Ability to review drawings and identify improper callouts/datum structures, according to ASME Y14.5 Thorough understanding of all layout inspection tools (surface plate, height gage, indicators, calipers, micrometers, gage blocks, thread gages, etc.)",
       "company": "SpaceX",
       "degree_rule": null,
@@ -38617,6 +37710,73 @@
       "travel_expectations": null,
       "updated_at": null,
       "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4979565101",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
+      "basic_qualifications": null,
+      "company": "Rocket Factory Augsburg",
+      "degree_rule": null,
+      "department": "AIT",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/5000289101"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "assembly",
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Augsburg, Bavaria, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 32,
+      "hard_gates": [],
+      "itar_signal": null,
+      "job_id": "rocket-factory-augsburg:5000289101",
+      "location": "Augsburg, Bavaria, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "rocket-factory-augsburg",
+      "status": "RED",
+      "title": "AIT Lead (f/m/d)",
+      "trade_requirements": [],
+      "travel_expectations": "12pt;\">Knowledge of assembly documentation, work instructions, assembly travelers, and configuration control processes.</li> <li style=\"font-size: 12pt;\">Experience implementing Lean Manufacturing, TPM (Total Productive Maintenance), Si",
+      "updated_at": null,
+      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/5000289101",
       "work_authorization_signal": null,
       "years": null
     },
@@ -59302,62 +58462,6 @@
       "years": null
     },
     {
-      "basic_qualifications": null,
-      "company": "Rocket Factory Augsburg",
-      "degree_rule": null,
-      "department": "Propulsion",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4837700101"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": [
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "schedule"
-          ],
-          "reason": "Planning and technical documentation"
-        },
-        {
-          "job_evidence": "Augsburg, Bavaria, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 20,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "rocket-factory-augsburg:4837700101",
-      "location": "Augsburg, Bavaria, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "rocket-factory-augsburg",
-      "status": "RED",
-      "title": "Intern (m/f/d) Propulsion Engineering",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://job-boards.eu.greenhouse.io/rocketfactoryaugsburgag/jobs/4837700101",
-      "work_authorization_signal": null,
-      "years": null
-    },
-    {
       "basic_qualifications": "High school diploma or equivalency certificate 2 years of culinary leadership experience PREFERRED SKILLS AND EXPERIENCE: Degree or certificate in culinary arts High-volume production or catering experience Ability to assist in creating innovative menus Strong ability to perform under pressure in a fast-paced environment Excellent communication and teamwork skills Creative mindset with a desire to contribute to the culinary experience and culture at SpaceX",
       "company": "SpaceX",
       "degree_rule": "Degree or certificate in culinary arts High-volume production or catering experience Ability to assist in creating innovative menus Strong ability to perform under pressure in a fast-pac",
@@ -59909,6 +59013,84 @@
       "travel_expectations": "ay involve long hours and weekend work as needed Position may involve up to 60% travel Position is based in Redmond, WA and requires being onsite COMPENSATION AND BENEFITS: Pay Range: Level 3: $135,000.00 - $190,000.00 Your actual level and base salary will be determined on a case-by-case basis and may vary based on the following considera",
       "updated_at": "2026-09-29T17:52:51-04:00",
       "url": "https://boards.greenhouse.io/spacex/jobs/8589950002?gh_jid=8589950002",
+      "work_authorization_signal": null,
+      "years": 3
+    },
+    {
+      "basic_qualifications": "Bachelor’s degree in an engineering discipline 3+ years of experience in an engineering, supply chain, or quality role PREFERRED SKILLS AND EXPERIENCE: Experience with PCB fabrication, SMT, advanced packaging, electronics manufacturing, and qualification Experience with PPAP (Production Part Approval Process) Master’s degree in engineering or business Lean Manufacturing, Six Sigma, or similar training/experience Experience with capacity modeling, process mapping, and fault analysis Experience with Pareto analysis, root cause, and corrective actions Experience with enterprise resource planning (ERP) and material requirements planning (MRP) systems and software Hands-on experience with electromechanical manufacturing techniques, processes, and equipment Basic proficiency with SQL, Tableau, and other data tools Ability to work in a fast-paced, cross-functional environment, both independently and with a team Ability to quickly and efficiently learn new skills on the job Ability to identify and maintain priorities for tasks and projects Strong communication and technical skills",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor’s degree in an engineering discipline 3+ years of experience in an engineering, supply chain, or quality role PREFERRED SKILLS AND EXPERIENCE: Experience with PCB fabrication, SMT",
+      "department": "Supply Chain & Logistics - Supply Chain Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8883500002?gh_jid=8883500002"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": "2026-10-12T13:15:39-04:00",
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "planning"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree in an engineering discipline 3+ years of experience in an engineering, supply chain, or quality role PREFERRED SKILLS AND EXPERIENCE: Experience with PCB fabrication, SMT",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8883500002",
+      "location": "Hawthorne, CA",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6557593002",
+      "role_family": "Other",
+      "salary": "$135,000.00 - $215,000.00",
+      "shift_expectations": "s Strong communication and technical skills Position may involve long hours and weekend work as needed Position may involve up to 60% travel Position is based in Hawthorne, CA, and requires being onsite, remote work not considered COMPENSATION AND BENEFITS: Pay Range: $135,000.00 - $215,000.00 Your actual level and base salary will be determined",
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Lead Supplier Development Engineer, PCB/PCBA (Starshield)",
+      "trade_requirements": [],
+      "travel_expectations": "ay involve long hours and weekend work as needed Position may involve up to 60% travel Position is based in Hawthorne, CA, and requires being onsite, remote work not considered COMPENSATION AND BENEFITS: Pay Range: $135,000.00 - $215,000.00 Your actual level and base salary will be determined on a case-by-case basis and may vary based on the fo",
+      "updated_at": "2026-10-12T13:15:39-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8883500002?gh_jid=8883500002",
       "work_authorization_signal": null,
       "years": 3
     },
@@ -65829,104 +65011,6 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8808110002?gh_jid=8808110002",
       "work_authorization_signal": null,
       "years": 2
-    },
-    {
-      "basic_qualifications": "Bachelor's degree in materials science, materials engineering, chemical engineering, or a STEM discipline 5+ years of professional experience in wet chemical processing, surface chemistry, semiconductor/PV wafer processing, process materials, or manufacturing materials support PREFERRED SKILLS AND EXPERIENCE: Master's or PhD in materials science, materials engineering, chemical engineering, or in a related technical discipline Proven track record owning silicon wet processes from development through qualification and high-volume production (alkaline and/or mixed-acid etch, RCA or equivalent cleans, HF last, degumming, slurry or diamond-wire coolant chemistry, wafer surface conditioning) Deep hands-on experience owning bath chemistry—concentration control, lifetime optimization, filtration, rinse/dryer performance, and particle control—on wet benches or inline wet tools in a 24/7 manufacturing setting Strong expertise in contamination control (metallic, organic, particulate) and linking surface/chemical state to minority-carrier lifetime and downstream cell performance Strong expertise in materials characterization (e.g., ICP-MS / TXRF / VPD, FTIR, TOC, SEM-EDS, XPS, optical microscopy, surface roughness, particle inspection, four-point probe, QSSPC/PL lifetime) and linking material/process variables to performance Experience partnering with supply chain on technical sourcing, supplier development, dual-sourcing, and reducing single-source risk for critical wet chemicals and consumables Experience with chemical delivery systems, wet-process equipment, pumps, filtration, temperature control, and hazardous chemical handling/abatement; familiarity with scaling wet tools from pilot to high volume Experience with UPW quality requirements and industrial wastewater constraints for PV/semiconductor wet processes (fluoride, silica, metals, COD), including closed-loop/ZLD tradeoffs Demonstrated ability to lead ambiguous, high-scope technical problems; apply first principles, iterate rapidly, and deliver durable solutions under aggressive timelines Hands-on experience in a high-volume manufacturing or fab environment; comfortable on the production floor and partnering closely with operators, process engineers, equipment engineers, and quality teams Comfortable with data analysis (Python, JMP, MATLAB, or equivalent) and SPC for bath and wafer metrics Passion for building, mentoring, and owning outcomes end-to-end; thrives in a fast-paced, scrappy environment with tight timelines and aggressive schedules Thorough, detail-oriented engineer who still acts with urgency and ships solutions Excellent written and interpersonal communication skills; able to influence and convey technical concepts across all levels of the organization Self-motivated with strong organizational skills and a bias toward action",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor's degree in materials science, materials engineering, chemical engineering, or a STEM discipline 5+ years of professional experience in wet chemical processing, surface chemistry,",
-      "department": "Engineering - Materials",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8823913002?gh_jid=8823913002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-09-21T16:54:06-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "schedule"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 20,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "to wear appropriate PPE for lab and electro-chemical manufacturing environments ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Bachelor's degree in materials science, materials engineering, chemical engineering, or a STEM discipline 5+ years of professional experience in wet chemical processing, surface chemistry,",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_leadership",
-          "requirement_evidence": {
-            "excerpt": "leadership (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_software:excel",
-          "requirement_evidence": {
-            "excerpt": "excel",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "to wear appropriate PPE for lab and electro-chemical manufacturing environments ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8823913002",
-      "location": "Bastrop, TX",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6531682002",
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": "n the lab and on the manufacturing floor Willingness to work extended hours and weekends as needed to support manufacturing, tool bring-up, and critical milestones Must be comfortable working in a production and laboratory environment using hazardous chemicals such as acids, alkalis, oxidizers, and solvents Must be able to wear appropriate PPE f",
-      "soft_gaps": [],
-      "software_requirements": [
-        "excel"
-      ],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Sr Materials Engineer, Wet Processing (Ingot/Wafer)",
-      "trade_requirements": [],
-      "travel_expectations": "vated with strong organizational skills and a bias toward action Willingness to travel to other SpaceX sites and/or vendors as needed (up to 25%) Ability to lift up to 25 lbs unassisted Ability to stand/walk for extended periods in the lab and on the manufacturing floor Willingness to work extended hours and weekends as needed to support manufa",
-      "updated_at": "2026-09-29T17:52:51-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8823913002?gh_jid=8823913002",
-      "work_authorization_signal": null,
-      "years": 5
     },
     {
       "basic_qualifications": "Bachelor’s degree in Mechanical Engineering, Electrical Engineering, Chemical Engineering, Materials Science, or related technical discipline 5+ years of hands-on experience owning and maintaining chemical process equipment in a high-volume semiconductor, solar manufacturing, or related environment Experience handling flammable, toxic, corrosive, and/or hazardous chemicals and gases safely PREFERRED SKILLS AND EXPERIENCE: 7+ years of hands-on experience owning and maintaining chemical process equipment in a high-volume semiconductor or solar manufacturing environment Strong technical expertise in chemical delivery systems, wet process equipment, pumps, filtration, temperature control hardware, robotics, and automation Demonstrated success improving equipment uptime and reliability in a 24/7 high-volume production setting Experience with heterojunction (HJT) silicon solar cell manufacturing equipment Previous work at high-volume solar, semiconductor, or display manufacturing facilities (multi-GW or 300mm fab experience is a plus) Deep knowledge of texturing tool architecture and subsystems Experience with chemical concentration control, bath lifetime optimization, rinse systems, dryer systems, and particle control Experience with electro-pneumatic robot and transfer module systems Experience with hazardous chemical delivery, handling, and abatement systems Experience scaling equipment from pilot to very high volume production Proficiency with statistical tools (JMP, Minitab), failure analysis techniques, and reliability engineering principles Strong project management skills with the ability to drive complex equipment installations and qualifications Familiarity with high-reliability manufacturing standards for aerospace applications",
@@ -166630,6 +165714,103 @@
       "years": 5
     },
     {
+      "basic_qualifications": "Bachelor's degree in architecture, interior design, or design discipline 10+ years of experience creating design documents including plans, elevations, specifications, and schedules PREFERRED SKILLS AND EXPERIENCE: Experience in designing spaces that are modern, minimalist, and/or futuristic Experience in designing physical environments or branding for commercial and hospitality spaces Experience in selection of finishes, furniture, fixtures, equipment, and artwork for industrial and commercial projects Experience designing custom art pieces, including murals, sculptures or other exhibitions Proficiency in Revit, Sketchup, Revu Bluebeam, and/or AutoCAD software Proficiency in rendering software (Photoshop, Lumion, D5, Enscape, or similar)",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor's degree in architecture, interior design, or design discipline 10+ years of experience creating design documents including plans, elevations, specifications, and schedules PREFER",
+      "department": "Operations - Facilities",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8822756002?gh_jid=8822756002"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": "2026-09-19T14:31:14-04:00",
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "planning",
+            "schedule"
+          ],
+          "reason": "Planning and technical documentation"
+        }
+      ],
+      "fit_score": 8,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "port design and activation of Spaceport Development projects at other locations ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor's degree in architecture, interior design, or design discipline 10+ years of experience creating design documents including plans, elevations, specifications, and schedules PREFER",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:autocad",
+          "requirement_evidence": {
+            "excerpt": "autocad",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:revit",
+          "requirement_evidence": {
+            "excerpt": "revit",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:bluebeam",
+          "requirement_evidence": {
+            "excerpt": "bluebeam",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "port design and activation of Spaceport Development projects at other locations ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8822756002",
+      "location": "Starbase, TX",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6531152002",
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": "nsite – remote work not considered Must be available to work extended hours and weekends when needed based on project and site operational needs; flexibility required Travel may be required to support design and activation of Spaceport Development projects at other locations ITAR REQ",
+      "soft_gaps": [],
+      "software_requirements": [
+        "autocad",
+        "revit",
+        "bluebeam"
+      ],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Sr. Spaceport Designer, Interior Design",
+      "trade_requirements": [],
+      "travel_expectations": "s when needed based on project and site operational needs; flexibility required Travel may be required to support design and activation of Spaceport Development projects at other locations ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (",
+      "updated_at": "2026-10-11T01:42:54-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8822756002?gh_jid=8822756002",
+      "work_authorization_signal": null,
+      "years": 10
+    },
+    {
       "basic_qualifications": "Bachelor’s degree in mechanical engineering, electrical engineering, electronics engineering or related field. Minimum 2+ years of experience in data center hardware design, integration, or manufacturing. PREFERRED SKILLS AND EXPERIENCE: Master's degree in mechanical engineering, electrical engineering, electronics engineering or related field. 7+ years of experience focused on hyperscale or large-scale data center development and execution of complex rack solutions. Proficiency in statistical data analysis including DOE, significance testing, sample sizes and confidence level using statistical tools such as JMP and Python. Working knowledge of failure analysis techniques such as optical microscopy, SEM, CSAM, FIB, X-ray, cross-sectioning and EDX. Experience in thermal analysis and data center cooling systems.",
       "company": "SpaceX",
       "degree_rule": "Bachelor’s degree in mechanical engineering, electrical engineering, electronics engineering or related field",
@@ -200766,89 +199947,6 @@
       "years": 2
     },
     {
-      "basic_qualifications": "Bachelor’s degree and 6+ years of experience working in one or more of the following; or 10+ years of experience working in one or more of the following in lieu of a degree: Business Supply chain Engineering Procurement Strategy and operations Technology PREFERRED SKILLS AND EXPERIENCE: Technical understanding of AI training data, including annotations, evaluations, research datasets, and how dataset quality affects model performance Experience in fast-paced AI, ML, or data infrastructure environments Background building or managing global supplier networks for services, data, or other high-variability commodities Strong leadership, negotiation, analytical, and cross-functional skills Proven ability to secure supply and manage cost, quality, and delivery against aggressive targets Experience with data analysis, spend analysis, and performance metrics Ability to tackle complex and ambiguous problems with high ownership COMPENSATION AND BENEFITS: Pay Range: $185,000.00 - $260,000.00 Your actual level and base salary will be determined on a case-by-case basis and may vary based on the following considerations: job-related knowledge and skills, education, and experience. Base salary is just one part of your total rewards package at SpaceX. You may also be eligible for long-term incentives, in the form of company stock or long-term cash awards, as well as potential discretionary bonuses and the ability to purchase additional stock at a discount through an Employee Stock Purchase Plan. You will also receive access to comprehensive medical, vision, and dental coverage, access to a 401(k) retirement plan, short and long-term disability insurance, life insurance, paid parental leave, and various other discounts and perks. You may also accrue 3 weeks of paid vacation and will be eligible for 10 or more paid holidays per year. Employees accrue paid sick leave pursuant to Company policy which satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. § 1157, or (iv) Asylee under 8 U.S.C. § 1158, or be eligible to obtain the required authorizations from the U.S. Department of State. Learn more about the ITAR here. SpaceX is an Equal Opportunity Employer; employment with SpaceX is governed on the basis of merit, competence and qualifications and will not be influenced in any manner by race, color, religion, gender, national origin/ethnicity, veteran status, disability status, age, sexual orientation, gender identity, marital status, mental or physical disability or any other legally protected status. Applicants wishing to view a copy of SpaceX’s Affirmative Action Plan for veterans and individuals with disabilities, or applicants requiring reasonable accommodation to the application/interview process should reach out to EEOCompliance@spacex.com.",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree and 6+ years of experience working in one or more of the following",
-      "department": "Supply Chain & Logistics - Sourcing & Planning",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8788270002?gh_jid=8788270002"
-        }
-      },
-      "experience_in_lieu": "experience working in one or more of the following in lieu",
-      "first_published": "2026-09-09T16:24:46-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        }
-      ],
-      "fit_score": 6,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "degree_or_experience",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree and 6+ years of experience working in one or more of the following / experience working in one or more of the following in lieu",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "10+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_leadership",
-          "requirement_evidence": {
-            "excerpt": "leadership (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8788270002",
-      "location": "Palo Alto, CA",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6515846002",
-      "role_family": "Other",
-      "salary": "$185,000.00 - $260,000.00",
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Sr. Manager, Supply Chain (Data Operations)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": "2026-09-29T17:52:51-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8788270002?gh_jid=8788270002",
-      "work_authorization_signal": null,
-      "years": 6
-    },
-    {
       "basic_qualifications": "Bachelor's degree in materials science, electrical engineering, or an engineering degree. 5+ years of experience in microelectronics device research or manufacturing. PREFERRED SKILLS AND EXPERIENCE: Master’s degree or PhD in materials science, electrical engineering, or a related field. Strong background in semiconductor device physics with extensive hands-on CVD, PVD and related device fabrication experience; preferred background in photovoltaics. Expertise in electrical device testing methods (IV, CV, Hall effect, TLM) and optical device characterization (ellipsometry, UV-VIS-IR spectroscopy, PL, EL, QSSPC). Proficiency in microscopy and analytical techniques (SEM/EDS, Raman, XRD, AFM, XPS, SIMS, FTIR, DMA, DSC). Proven cross-functional leadership skills, with experience aligning diverse teams to achieve shared technology goals. Strong communication skills for presenting to stakeholders as well as guiding and mentoring junior engineers.",
       "company": "SpaceX",
       "degree_rule": "Bachelor's degree in materials science, electrical engineering, or an engineering degree",
@@ -212179,45 +211277,6 @@
       "travel_expectations": null,
       "updated_at": null,
       "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021",
-      "work_authorization_signal": null,
-      "years": null
-    },
-    {
-      "basic_qualifications": null,
-      "company": "HyImpulse",
-      "degree_rule": null,
-      "department": "Unknown",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2700685"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [],
-      "fit_score": 0,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "hyimpulse:2700685",
-      "location": "Unknown",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Not relevant",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "hyimpulse",
-      "status": "RED",
-      "title": "APPLY NOW",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2700685",
       "work_authorization_signal": null,
       "years": null
     },
@@ -226174,64 +225233,6 @@
       "travel_expectations": "ith others Current and valid food handler card or equivalent Must be willing to travel to various SpaceX locations for mission critical projects Valid state issued driver's license Must be able to work all shifts and available for overtime, weekends and holiday(s) as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, ap",
       "updated_at": "2026-10-03T02:13:00-04:00",
       "url": "https://boards.greenhouse.io/spacex/jobs/8738298002?gh_jid=8738298002",
-      "work_authorization_signal": null,
-      "years": 1
-    },
-    {
-      "basic_qualifications": "High school diploma or equivalency certificate 1+ years of either restaurant experience, warehouse experience, and/or customer service experience PREFERRED SKILLS AND EXPERIENCE: Restaurant experience Porter experience Inventory experience Self-motivated and works well with others Current and valid food handler card or equivalent",
-      "company": "SpaceX",
-      "degree_rule": null,
-      "department": "Operations - Food Services",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8511194002?gh_jid=8511194002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-04-20T12:27:07-04:00",
-      "fit_reasons": [],
-      "fit_score": 0,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "o work all shifts and available for overtime, weekends and holiday(s) as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "1+ years (general)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "o work all shifts and available for overtime, weekends and holiday(s) as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8511194002",
-      "location": "Starbase, TX",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6399834002",
-      "role_family": "Not relevant",
-      "salary": null,
-      "shift_expectations": "critical projects Valid state issued driver's license Must be able to work all shifts and available for overtime, weekends and holiday(s) as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card ho",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Porter - Temporary",
-      "trade_requirements": [],
-      "travel_expectations": "ith others Current and valid food handler card or equivalent Must be willing to travel to various SpaceX locations for mission critical projects Valid state issued driver's license Must be able to work all shifts and available for overtime, weekends and holiday(s) as needed ITAR REQUIREMENTS: To conform to U.S. Government export regulations, ap",
-      "updated_at": "2026-10-03T02:12:27-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8511194002?gh_jid=8511194002",
       "work_authorization_signal": null,
       "years": 1
     },
@@ -250179,6 +249180,234 @@
       "years": 1
     },
     {
+      "basic_qualifications": "Bachelor’s degree and 1+ years of recruiting experience; or associate degree and 2+ years of experience; or 3+ years of professional experience as a recruiter in lieu of a degree PREFERRED SKILLS AND EXPERIENCE: 2+ years of technical recruiting experience 2+ years of experience recruiting for IT, InfoSec, materials engineering, software engineering, environmental health & safety, construction or physical security Experience with in-house recruiting Experience with high volume recruiting Experience recruiting skilled labor Strong tenure with demonstrated success in recruiting roles Full life cycle recruiting experience, from sourcing to closing Comfort with reviewing, evaluating and reporting on recruiting data Ability to distinguish between the top 50% and the top 5% of talent within their respective fields Demonstrated expertise in non-standard recruiting methods: cold calling candidates and companies, organizing and executing ad hoc networking events, identifying industry experts and finding unique methods to engage with them, creating unique targeted sourcing campaigns, etc. Comfortable interfacing directly with hiring managers including director and VP level technical leaders Ability to build strong relationships with both hiring managers and candidates Ability to accurately present but not oversell candidates to client groups; influence decisions by acting as the subject matter expert on talent but avoid dictating client decisions Ability to multi-task and operate with little direction while still being an active team member",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor’s degree and 1+ years of recruiting experience",
+      "department": "Corporate - Human Resources",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8883355002?gh_jid=8883355002"
+        }
+      },
+      "experience_in_lieu": "experience as a recruiter in lieu",
+      "first_published": "2026-10-12T10:13:27-04:00",
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "degree_or_experience",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree and 1+ years of recruiting experience / experience as a recruiter in lieu",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "2+ years (construction)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_domain",
+          "requirement_evidence": {
+            "excerpt": "construction",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8883355002",
+      "location": "Hawthorne, CA",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6556138002",
+      "role_family": "Not relevant",
+      "salary": "$85,000.00 - $110,000.00; $100,000.00 - $135,000.00",
+      "shift_expectations": "on while still being an active team member Available to work extended hours and weekends as needed This position is based in Hawthorne, CA (Los Angeles area), and requires being onsite full-time – hybrid and remote work will not be considered COMPENSATION AND BENEFITS: Pay Range: Level 1: $85,000.00 - $110,000.00 Level 2: $100,000.00 - $135,000.",
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Technical Recruiter, IT",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": "2026-10-12T10:13:27-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8883355002?gh_jid=8883355002",
+      "work_authorization_signal": null,
+      "years": 1
+    },
+    {
+      "basic_qualifications": "Bachelor’s degree and 1+ years of recruiting experience; or associate degree and 2+ years of experience; or 3+ years of professional experience as a recruiter in lieu of a degree PREFERRED SKILLS AND EXPERIENCE: 2+ years of technical recruiting experience 2+ years of experience recruiting for IT, InfoSec, materials engineering, software engineering, environmental health & safety, construction or physical security Experience with in-house recruiting Experience with high volume recruiting Experience recruiting skilled labor Strong tenure with demonstrated success in recruiting roles Full life cycle recruiting experience, from sourcing to closing Comfort with reviewing, evaluating and reporting on recruiting data Ability to distinguish between the top 50% and the top 5% of talent within their respective fields Demonstrated expertise in non-standard recruiting methods: cold calling candidates and companies, organizing and executing ad hoc networking events, identifying industry experts and finding unique methods to engage with them, creating unique targeted sourcing campaigns, etc. Comfortable interfacing directly with hiring managers including director and VP level technical leaders Ability to build strong relationships with both hiring managers and candidates Ability to accurately present but not oversell candidates to client groups; influence decisions by acting as the subject matter expert on talent but avoid dictating client decisions Ability to multi-task and operate with little direction while still being an active team member",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor’s degree and 1+ years of recruiting experience",
+      "department": "Corporate - Human Resources",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8883358002?gh_jid=8883358002"
+        }
+      },
+      "experience_in_lieu": "experience as a recruiter in lieu",
+      "first_published": "2026-10-12T10:14:14-04:00",
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "requires being onsite full-time – hybrid and remote work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "degree_or_experience",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree and 1+ years of recruiting experience / experience as a recruiter in lieu",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "2+ years (construction)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_domain",
+          "requirement_evidence": {
+            "excerpt": "construction",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "requires being onsite full-time – hybrid and remote work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8883358002",
+      "location": "Bastrop, TX",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6556138002",
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": "on while still being an active team member Available to work extended hours and weekends as needed This position is based in Bastrop, TX (Austin area), and requires being onsite full-time – hybrid and remote work will not be considered ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or na",
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Technical Recruiter, SG&A",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": "2026-10-12T10:14:14-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8883358002?gh_jid=8883358002",
+      "work_authorization_signal": null,
+      "years": 1
+    },
+    {
+      "basic_qualifications": "Bachelor’s degree and 1+ years of recruiting experience; or associate degree and 2+ years of experience; or 3+ years of professional experience as a recruiter in lieu of a degree PREFERRED SKILLS AND EXPERIENCE: 2+ years of technical recruiting experience 2+ years of experience recruiting for IT, InfoSec, materials engineering, software engineering, environmental health & safety, construction or physical security Experience with in-house recruiting Experience with high volume recruiting Experience recruiting skilled labor Strong tenure with demonstrated success in recruiting roles Full life cycle recruiting experience, from sourcing to closing Comfort with reviewing, evaluating and reporting on recruiting data Ability to distinguish between the top 50% and the top 5% of talent within their respective fields Demonstrated expertise in non-standard recruiting methods: cold calling candidates and companies, organizing and executing ad hoc networking events, identifying industry experts and finding unique methods to engage with them, creating unique targeted sourcing campaigns, etc. Comfortable interfacing directly with hiring managers including director and VP level technical leaders Ability to build strong relationships with both hiring managers and candidates Ability to accurately present but not oversell candidates to client groups; influence decisions by acting as the subject matter expert on talent but avoid dictating client decisions Ability to multi-task and operate with little direction while still being an active team member",
+      "company": "SpaceX",
+      "degree_rule": "Bachelor’s degree and 1+ years of recruiting experience",
+      "department": "Corporate - Human Resources",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://boards.greenhouse.io/spacex/jobs/8880126002?gh_jid=8880126002"
+        }
+      },
+      "experience_in_lieu": "experience as a recruiter in lieu",
+      "first_published": "2026-10-12T10:11:46-04:00",
+      "fit_reasons": [],
+      "fit_score": 0,
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "itar",
+          "requirement_evidence": {
+            "excerpt": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "degree_or_experience",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree and 1+ years of recruiting experience / experience as a recruiter in lieu",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "2+ years (construction)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_domain",
+          "requirement_evidence": {
+            "excerpt": "construction",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
+      "job_id": "spacex:8880126002",
+      "location": "Hawthorne, CA",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": "6556138002",
+      "role_family": "Not relevant",
+      "salary": "$85,000.00 - $110,000.00; $100,000.00 - $135,000.00",
+      "shift_expectations": "on while still being an active team member Available to work extended hours and weekends as needed This position is based in Hawthorne, CA (Los Angeles area), and requires being onsite full-time – hybrid and remote work will not be considered COMPENSATION AND BENEFITS: Pay Range: Level 1: $85,000.00 - $110,000.00 Level 2: $100,000.00 - $135,000.",
+      "soft_gaps": [],
+      "software_requirements": [],
+      "source_id": "spacex",
+      "status": "RED",
+      "title": "Technical Recruiter, SG&A",
+      "trade_requirements": [],
+      "travel_expectations": null,
+      "updated_at": "2026-10-12T10:12:58-04:00",
+      "url": "https://boards.greenhouse.io/spacex/jobs/8880126002?gh_jid=8880126002",
+      "work_authorization_signal": null,
+      "years": 1
+    },
+    {
       "basic_qualifications": "Bachelor's degree in Engineering, Physics, Business Analytics or other STEM field 1+ years of experience in technical writing PREFERRED SKILLS AND EXPERIENCE: Demonstratable impact on the outcome of a product or service 2+ years of experience in developing policies that required approval from top management of the organization Experience with Matlab, Python, R, or other programming language for modeling (e.g. Monte Carlo analysis, random variable statistics) Hands on experience with frequency and time domain data Working knowledge of RF transmission, modulation (AM, FM), and digital electronics",
       "company": "SpaceX",
       "degree_rule": "Bachelor's degree in Engineering, Physics, Business Analytics or other STEM field 1+ years of experience in technical writing PREFERRED SKILLS AND EXPERIENCE: Demonstratable impact on the",
@@ -251099,118 +250328,7 @@
       "years": 2
     }
   ],
-  "removed_relevant": [
-    {
-      "basic_qualifications": "Bachelor’s degree and 1+ years of manufacturing scheduling, planning or operations; OR 3+ years of professional experience with manufacturing scheduling, planning or operations. Experience using ERP/MRP systems in a production environment. PREFERRED SKILLS AND EXPERIENCE: Remarkable problem-solving skills with a bias for speed and accuracy. Self-motivated, quick learner, and ability to prioritize efforts to meet customer and company goals. Ability to develop and maintain strong internal and external supplier/customer relationships in a fast-moving and ever-changing environment. Technical knowledge and skills in coding and computer applications (e.g. MS Office Suite, VBA, Smartsheet, SQL, Confluence, JIRA, Power BI, etc.). Strong track record of implementing continuous improvement efforts, ideally using problem solving frameworks including lean principles, six sigma, or Kaizen concepts. Experience leading multi-disciplinary and cross-functional teams working on strategic problems. Project management professional certification.",
-      "company": "SpaceX",
-      "degree_rule": "Bachelor’s degree and 1+ years of manufacturing scheduling, planning or operations",
-      "department": "Manufacturing - Other Manufacturing",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://boards.greenhouse.io/spacex/jobs/8601631002?gh_jid=8601631002"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": "2026-06-19T20:43:18-04:00",
-      "fit_reasons": [
-        {
-          "job_evidence": "Production Scheduler, Starship Components",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "project management"
-          ],
-          "reason": "Industrial construction and project leadership"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "planning",
-            "schedule"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 67,
-      "hard_gates": [
-        {
-          "candidate_status": "unknown",
-          "gate": "itar",
-          "requirement_evidence": {
-            "excerpt": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Bachelor’s degree and 1+ years of manufacturing scheduling, planning or operations",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_years",
-          "requirement_evidence": {
-            "excerpt": "3+ years (project management)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_domain",
-          "requirement_evidence": {
-            "excerpt": "project management",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_leadership",
-          "requirement_evidence": {
-            "excerpt": "leadership (project management)",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": "h satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane",
-      "job_id": "spacex:8601631002",
-      "location": "Hawthorne, CA",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": "6435467002",
-      "role_family": "Project Controls",
-      "salary": "$80,000.00 - $95,000.00; $95,000.00 - $120,000.00",
-      "shift_expectations": "blems. Project management professional certification. Must be available for all shifts, extended hours, and/or weekends as needed. Must be able to lift up to 25 lbs. unassisted. Must be able to stand for extended periods - 8 hours minimum. COMPENSATION AND BENEFITS: Pa",
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "spacex",
-      "status": "RED",
-      "title": "Production Scheduler, Starship Components",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": "2026-09-29T17:52:51-04:00",
-      "url": "https://boards.greenhouse.io/spacex/jobs/8601631002?gh_jid=8601631002",
-      "work_authorization_signal": null,
-      "years": 1
-    }
-  ],
+  "removed_relevant": [],
   "schema_version": "1.0",
   "spacex_louisiana_subset": [
     {
