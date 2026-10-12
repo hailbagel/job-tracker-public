@@ -224,3 +224,58 @@ After that, give me a FINAL REVIEW section containing:
 
 Stop there. Do not commit or push.
 ```
+
+
+---
+
+## Follow-up Prompt — Create Review Branch and Push Only
+
+Use this after the final review reports that the changes are safe to commit.
+
+```text
+The implementation and final validation are complete.
+
+Now prepare the changes for external review, but do not merge anything and do not touch production.
+
+1. Show:
+   git branch --show-current
+   git status --short
+
+2. Create a dedicated feature branch from the current working state if you are currently on main:
+   fix/normalize-provider-data-hyimpulse
+
+3. Stage ONLY the intended implementation/test/documentation files from this task.
+
+4. Explicitly DO NOT stage or commit:
+   - patrick.json
+   - private profile files
+   - credentials
+   - runtime/cache files
+   - generated production datasets
+   - unrelated local files
+
+5. Show the exact staged file list:
+   git diff --cached --name-status
+
+6. Run:
+   git diff --cached --check
+
+7. Commit with this message:
+   Normalize provider outputs and repair HyImpulse acquisition
+
+8. Push the feature branch to origin.
+
+9. Do NOT merge.
+10. Do NOT deploy.
+11. Do NOT modify the production scheduler.
+12. Do NOT create additional unrelated files.
+
+At the end print:
+- branch name
+- commit SHA
+- pushed remote branch
+- exact committed file list
+- confirmation that patrick.json was not committed
+
+Stop after the push so the branch can be reviewed externally.
+```
