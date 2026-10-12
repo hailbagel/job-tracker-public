@@ -1,5 +1,4 @@
 import os
-import sys
 from datetime import datetime
 
 import certifi
@@ -64,9 +63,14 @@ class TeslaScraper(BaseScraper):
 
         try:
             state = response.json()
-        except Exception:
-            print("FEHLER: State API lieferte kein JSON")
-            sys.exit(1)
+        except (TypeError, ValueError) as exc:
+            raise TeslaSourceUnavailable(
+                "upstream_invalid_response", "public State API returned non-JSON content"
+            ) from exc
+        if not isinstance(state, dict):
+            raise TeslaSourceUnavailable(
+                "upstream_invalid_response", "public State API returned malformed JSON"
+            )
 
         listings = state.get("listings") or []
         lookup = state.get("lookup", {})
@@ -76,9 +80,10 @@ class TeslaScraper(BaseScraper):
 
         print(f"Jobs gefunden in State API: {len(listings)}")
 
-        if not listings:
-            print("FEHLER: Keine Listings gefunden")
-            sys.exit(1)
+        if not isinstance(listings, list) or not listings:
+            raise TeslaSourceUnavailable(
+                "upstream_invalid_response", "public State API returned zero valid listings"
+            )
 
         jobs = []
         seen_links = set()

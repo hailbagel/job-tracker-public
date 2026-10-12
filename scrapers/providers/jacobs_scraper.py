@@ -50,6 +50,13 @@ class _JobLinkParser(HTMLParser):
             self.text = []
 
 
+def _looks_like_access_challenge(html):
+    lowered = html.lower()
+    return any(marker in lowered for marker in (
+        "access challenge", "access denied", "captcha", "incapsula", "akamai",
+    ))
+
+
 def _parse_jobs(html, base_url):
     parser = _JobLinkParser()
     parser.feed(html)
@@ -100,6 +107,11 @@ class JacobsScraper(BaseScraper):
                     f"public careers search returned HTTP {response.status_code}",
                 )
 
+            if _looks_like_access_challenge(response.text):
+                raise JacobsSourceUnavailable(
+                    "upstream_access_challenge",
+                    "public careers search returned access-control challenge HTML",
+                )
             page_jobs = _parse_jobs(response.text, url)
             added = 0
             for job in page_jobs:

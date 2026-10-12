@@ -8,6 +8,8 @@ import json
 
 from datetime import datetime
 
+from jobtracker.pipeline_steps import steps_for_company
+
 try:
     tqdm_module = importlib.import_module("tqdm")
     tqdm = tqdm_module.tqdm
@@ -67,28 +69,6 @@ if args.company:
 # PIPELINE STEPS
 # ========================================
 
-steps = [
-
-    {
-        "name": "OVERVIEW SCRAPER",
-        "script": "scrapers/runner.py"
-    },
-
-    {
-        "name": "DETAIL SCRAPER",
-        "script": "scrapers/job_details_scraper.py"
-    },
-
-    {
-        "name": "ANALYSIS PIPELINE",
-        "script": "analysis/analysis.py"
-    },
-
-    {
-        "name": "TXT EXPORT",
-        "script": "analysis/export_txt.py"
-    }
-]
 
 # ========================================
 # START
@@ -145,12 +125,7 @@ for company in active_companies:
     print("========================================")
 
     company_success = True
-    company_steps = list(steps)
-    if company.lower() == "spacex":
-        company_steps.append({
-            "name": "PROFILE RANKING EXPORT",
-            "script": "analysis/profile_ranking.py",
-        })
+    company_steps = steps_for_company(company)
     total_steps = len(company_steps)
 
     pipeline_bar = tqdm(
