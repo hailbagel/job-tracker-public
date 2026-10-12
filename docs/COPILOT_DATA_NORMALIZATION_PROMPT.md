@@ -279,3 +279,111 @@ At the end print:
 
 Stop after the push so the branch can be reviewed externally.
 ```
+
+
+---
+
+## Follow-up Prompt — Fix Review Blockers Before PR
+
+Use this after branch `fix/normalize-provider-data-hyimpulse` was pushed at commit `d286abe10a79a98d6c134b59da013fb00f6f9513`.
+
+```text
+Do not open or merge a PR yet.
+
+An external review of the pushed branch found two concrete behavioral regressions that must be fixed before review.
+
+BRANCH
+fix/normalize-provider-data-hyimpulse
+
+CURRENT COMMIT
+d286abe10a79a98d6c134b59da013fb00f6f9513
+
+First fetch current main and inspect the exact branch diff. The branch is currently behind main by documentation-only commits, so rebase it onto origin/main before making the corrections if the working tree is clean.
+
+BLOCKER 1 — job_changes history can be destroyed
+
+Current flow for an existing_provider is:
+
+provider writes current jobs_latest/job_details
+-> legacy analysis.py updates accumulated history/change log
+-> normalize_existing_provider()
+-> process_success()
+
+normalize_existing_provider() reads jobs_latest AFTER the provider has already overwritten it with the current snapshot. process_success() therefore treats the current snapshot as the previous snapshot for change detection.
+
+It then writes canonical job_changes.csv from that derived result.
+
+This can:
+- produce an empty or incorrect current delta;
+- overwrite the accumulated legacy job_changes.csv;
+- destroy historical NEW/REMOVED/REACTIVATED events that are already tracked.
+
+This is not acceptable.
+
+Required behavior:
+- historical change evidence must not be silently discarded;
+- canonical normalization must preserve existing change history;
+- future successful runs must append/preserve change events deterministically rather than truncate prior history;
+- migration of legacy change rows must be explicit and tested;
+- if a legacy change event has no trustworthy job id, do not invent a false provider-native id. A blank id is preferable to fabricated identity, while source_id/change/title/location/observed_at should be migrated truthfully where possible;
+- rerunning normalization must not duplicate the same migrated historical events.
+
+Add tests that start with a realistic accumulated legacy job_changes.csv and prove that normalization preserves prior rows and adds future changes without duplication.
+
+BLOCKER 2 — SpaceX metadata used by the Patrick feed is silently dropped
+
+The new canonical LATEST_FIELDS currently removes provider fields such as:
+
+- requisition_id
+- first_published
+- updated_at
+
+But analysis/profile_ranking.py::rank_job() explicitly reads these values and publishes them in SpaceX target records.
+
+Normalizing SpaceX with the current branch would therefore silently turn previously available Patrick-feed metadata into null values.
+
+That violates the requirement to preserve existing SpaceX / Patrick-feed behavior.
+
+Fix this without creating a second schema.
+
+Preferred approach:
+- extend the one canonical schema in jobtracker/processing.py with generally useful optional fields required by downstream behavior, including:
+  requisition_id
+  first_published
+  updated_at
+- all providers must still emit the same canonical columns;
+- providers without those values should emit empty strings;
+- preserve the SpaceX values through normalize_existing_provider();
+- do not add a SpaceX-specific second normalized schema.
+
+If inspection finds other fields that an existing downstream consumer demonstrably reads from normalized jobs_latest/job_details, preserve them only when justified by actual current code. Do not expand the schema speculatively.
+
+VALIDATION
+
+After fixing both blockers:
+
+1. Run the focused tests already used for this task.
+2. Add tests proving:
+   - legacy accumulated change history survives normalization;
+   - future change events are appended without duplicating migrated history;
+   - SpaceX requisition_id, first_published and updated_at survive canonical normalization;
+   - profile ranking receives those SpaceX values after normalization;
+   - HyImpulse still returns real titles/locations/departments/details;
+   - canonical headers remain identical across providers.
+3. Run git diff --check.
+4. Run the non-destructive live HyImpulse TemporaryDirectory validation again.
+5. Do not run production.
+6. Do not modify systemd/scheduler/credentials.
+7. Do not stage or commit patrick.json.
+
+Then show a REVIEW FIX SUMMARY:
+- exact files changed since d286abe...
+- tests and results
+- whether both blockers are fixed
+- any remaining risks
+
+If all checks pass, commit the corrections to the SAME feature branch and push it.
+
+Do not merge and do not deploy.
+Stop after pushing the corrected review branch.
+```
