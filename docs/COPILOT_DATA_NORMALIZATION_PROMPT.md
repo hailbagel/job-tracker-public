@@ -160,3 +160,67 @@ Work directly in this VS Code workspace.
    - whether any tracked data migration is required
 
 Do **not** commit, push, merge, create a PR, alter production, or modify credentials. Stop after local code changes and verification so I can review the diff first.
+
+
+---
+
+## Follow-up Prompt — Final Review and Live HyImpulse Validation
+
+Use this after the implementation pass above has completed and before committing anything.
+
+```text
+Before we commit anything, perform the final review/validation pass.
+
+1. Do NOT make additional architectural changes unless required to fix a concrete failure.
+2. Do NOT commit, push, create a PR, or touch production.
+
+First show me the complete git diff summary and review the actual diff for unintended changes:
+
+git status --short
+git diff --stat
+git diff --check
+
+Then inspect every changed file and explicitly confirm:
+- no second competing job schema was introduced;
+- jobtracker/processing.py remains the canonical normalized schema;
+- no production/scheduler/credential files were changed;
+- configs/sources.json changes are limited to what is required for HyImpulse;
+- existing SpaceX, NEURA, RFA, Exolaunch and Patrick-feed behavior is preserved;
+- patrick.json remains untracked and untouched.
+
+Then run ONE non-destructive live HyImpulse validation using temporary storage only.
+
+The validation must:
+- use the current HyImpulse registry configuration and acquisition code;
+- write only to a TemporaryDirectory;
+- not modify data/hyimpulse/processed;
+- not publish;
+- not commit;
+- not push.
+
+Print:
+- total jobs returned;
+- first 10 real job titles;
+- first 10 locations;
+- first 10 departments;
+- number of rows whose title is exactly "APPLY NOW";
+- number of Unknown locations;
+- number of Unknown departments;
+- number of rows with non-empty mission;
+- number of rows with non-empty requirements;
+- number of rows with non-empty benefits.
+
+Fail the validation if:
+- all titles are APPLY NOW;
+- zero jobs are returned;
+- the resulting overview/detail row counts differ.
+
+After that, give me a FINAL REVIEW section containing:
+- changed files;
+- tests passed;
+- live HyImpulse validation result;
+- remaining limitations;
+- whether the changes are safe to commit.
+
+Stop there. Do not commit or push.
+```
