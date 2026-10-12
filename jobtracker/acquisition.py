@@ -72,6 +72,9 @@ def _job(source, native_id, title, location, url, department="", **extra):
         "company": _clean(extra.get("company")) or source["company"],
         "department": _clean(department),
         "link": url,
+        "requisition_id": _clean(extra.get("requisition_id")),
+        "first_published": _clean(extra.get("first_published")),
+        "updated_at": _clean(extra.get("updated_at")),
         "mission": _clean(extra.get("mission")),
         "requirements": _clean(extra.get("requirements")),
         "benefits": _clean(extra.get("benefits")),
@@ -88,6 +91,9 @@ def greenhouse(source, fetch=_get):
             source, item.get("id"), item.get("title"), location, item.get("absolute_url"),
             departments[0].get("name") if departments else "",
             mission=item.get("content"),
+            requisition_id=item.get("requisition_id"),
+            first_published=item.get("first_published"),
+            updated_at=item.get("updated_at"),
         ))
     return AcquisitionResult([job for job in jobs if job["title"] and job["link"]])
 

@@ -77,7 +77,9 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual("Augsburg, Germany", latest[0]["location"])
         self.assertEqual("Engineering", latest[0]["department"])
         self.assertIn("Develop rocket engines", details[0]["mission"])
-        self.assertNotIn("requisition_id", latest[0])
+        self.assertEqual("RFA-73", latest[0]["requisition_id"])
+        self.assertEqual("", latest[0]["first_published"])
+        self.assertEqual("", latest[0]["updated_at"])
 
     def test_success_outputs_and_source_qualified_collision(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -126,6 +128,9 @@ class RegistryTests(unittest.TestCase):
                     rows = list(csv.DictReader(handle))
                 self.assertEqual("", rows[0]["location"])
                 self.assertEqual("", rows[0]["department"])
+                self.assertEqual("", rows[0]["requisition_id"])
+                self.assertEqual("", rows[0]["first_published"])
+                self.assertEqual("", rows[0]["updated_at"])
                 self.assertNotIn("provider_field", rows[0])
                 self.assertNotIn("location_id", rows[0])
 
@@ -163,9 +168,15 @@ class RegistryTests(unittest.TestCase):
 
             with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
                 latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
             self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+            self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
             self.assertEqual("legacy:42", latest[0]["id"])
             self.assertNotIn("location_id", latest[0])
+            self.assertEqual("", latest[0]["requisition_id"])
+            self.assertEqual("", latest[0]["first_published"])
+            self.assertEqual("", latest[0]["updated_at"])
 
             with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
                 history = list(csv.DictReader(handle))
@@ -222,6 +233,83 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual(1, len(history))
         self.assertEqual("2025-12-01", history[0]["first_seen"])
         self.assertEqual("True", history[0]["active"])
+
+    def test_existing_provider_migrates_and_deduplicates_accumulated_change_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="tesla", company="Tesla",
+                acquisition_mode="existing_provider", adapter="existing_provider",
+            )
+            processed = Path(directory) / "tesla/processed"
+            processed.mkdir(parents=True)
+            latest_content = (
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "41,Current Engineer,Berlin,Tesla,Engineering,"
+                "https://tesla.test/jobs/41,2026-01-01\n"
+            )
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Tesla,Engineering,https://tesla.test/jobs/41,"
+                "Build vehicles,Engineering degree,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_changes.csv").write_text(
+                "date,change_type,title,location,timestamp\n"
+                "2025-12-01,NEW,Assembly Engineer,Austin,"
+                "2025-12-01_09-00-00\n"
+                "2025-12-15,REMOVED,Test Engineer,Detroit,"
+                "2025-12-15_11-30-00\n"
+                "2025-12-20,NO_CHANGES,-,-,2025-12-20_08-00-00\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(source_config, directory, "2026-01-02T00:00:00Z")
+            change_path = processed / "job_changes.csv"
+            with change_path.open(newline="", encoding="utf-8") as handle:
+                initial = list(csv.DictReader(handle))
+
+            self.assertEqual(2, len(initial))
+            self.assertEqual(
+                ("", "tesla", "new", "Assembly Engineer", "Austin", "2025-12-01_09-00-00"),
+                tuple(initial[0][field] for field in (
+                    "id", "source_id", "change", "title", "location", "observed_at",
+                )),
+            )
+            self.assertEqual("", initial[1]["id"])
+            self.assertEqual("removed", initial[1]["change"])
+
+            # Legacy analysis concatenates new legacy rows with the canonicalized log.
+            mixed_fields = (
+                "id", "source_id", "change", "title", "location", "observed_at",
+                "date", "change_type", "timestamp",
+            )
+            with change_path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=mixed_fields)
+                writer.writeheader()
+                writer.writerows(initial)
+                writer.writerow({
+                    "date": "2026-01-03",
+                    "change_type": "REACTIVATED",
+                    "title": "Test Engineer",
+                    "location": "Detroit",
+                    "timestamp": "2026-01-03_10-15-00",
+                })
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+
+            normalize_existing_provider(source_config, directory, "2026-01-03T12:00:00Z")
+            normalize_existing_provider(source_config, directory, "2026-01-03T13:00:00Z")
+            with change_path.open(newline="", encoding="utf-8") as handle:
+                final = list(csv.DictReader(handle))
+
+            self.assertEqual(3, len(final))
+            self.assertEqual(
+                [("new", "Assembly Engineer"), ("removed", "Test Engineer"),
+                 ("reactivated", "Test Engineer")],
+                [(row["change"], row["title"]) for row in final],
+            )
+            self.assertTrue(all(row["id"] == "" for row in final))
+            self.assertTrue(all(row["source_id"] == "tesla" for row in final))
 
     def test_reactivated_jobs_keep_history_and_report_reactivation(self):
         with tempfile.TemporaryDirectory() as directory:

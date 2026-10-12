@@ -12,7 +12,11 @@ from pathlib import Path
 from jobtracker.acquisition import acquisition_metadata
 
 
-LATEST_FIELDS = ("id", "source_id", "source_job_id", "title", "location", "company", "department", "link", "scrape_timestamp")
+LATEST_FIELDS = (
+    "id", "source_id", "source_job_id", "title", "location", "company",
+    "department", "link", "requisition_id", "first_published", "updated_at",
+    "scrape_timestamp",
+)
 DETAIL_FIELDS = LATEST_FIELDS + ("mission", "requirements", "benefits")
 COMMON_OUTPUTS = ("jobs_latest.csv", "job_details.csv", "job_history.csv", "job_changes.csv", "department_summary.csv", "location_summary.csv")
 
@@ -86,14 +90,56 @@ def _row_id(source_id, row, ids_by_link=None, native_ids_by_link=None):
     return f"{source_id}:{suffix}"
 
 
-def process_success(data_root, source, result, observed_at=None, *, write_status=True):
+CHANGE_FIELDS = ("id", "source_id", "change", "title", "location", "observed_at")
+
+
+def _canonical_change_rows(source_id, rows):
+    migrated = []
+    for row in rows:
+        change = str(row.get("change") or row.get("change_type") or "").strip()
+        if not change or change.lower() == "no_changes":
+            continue
+        migrated.append({
+            "id": str(row.get("id") or "").strip(),
+            "source_id": str(row.get("source_id") or source_id).strip(),
+            "change": change.lower(),
+            "title": str(row.get("title") or "").strip(),
+            "location": str(row.get("location") or "").strip(),
+            "observed_at": str(
+                row.get("observed_at") or row.get("timestamp") or row.get("date") or ""
+            ).strip(),
+        })
+    return migrated
+
+
+def _deduplicate_changes(rows):
+    unique = []
+    seen = set()
+    for row in rows:
+        key = tuple(str(row.get(field) or "") for field in CHANGE_FIELDS)
+        if key not in seen:
+            seen.add(key)
+            unique.append(dict(zip(CHANGE_FIELDS, key)))
+    return unique
+
+
+def process_success(
+    data_root,
+    source,
+    result,
+    observed_at=None,
+    *,
+    write_status=True,
+    preserve_change_history=False,
+    reset_history=False,
+):
     if not result.coverage_complete or result.status != "success" or not result.jobs:
         raise ValueError("Only non-empty complete acquisitions may update normalized datasets")
     observed_at = observed_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     today = observed_at[:10]
     processed = Path(data_root) / source["id"] / "processed"
-    previous_rows = _read(processed / "jobs_latest.csv")
-    previous_details = _read(processed / "job_details.csv")
+    previous_rows = [] if reset_history else _read(processed / "jobs_latest.csv")
+    previous_details = [] if reset_history else _read(processed / "job_details.csv")
     native_ids_by_link = {}
     for row in previous_details:
         link = str(row.get("link") or "").strip()
@@ -119,7 +165,8 @@ def process_success(data_root, source, result, observed_at=None, *, write_status
         previous[job_id] = row
 
     history = {}
-    for row in _read(processed / "job_history.csv"):
+    history_rows = [] if reset_history else _read(processed / "job_history.csv")
+    for row in history_rows:
         job_id = _row_id(source["id"], row, previous_link_ids)
         if not job_id:
             raise ValueError("Cannot preserve a history record without an id or link")
@@ -154,11 +201,16 @@ def process_success(data_root, source, result, observed_at=None, *, write_status
             changes.append({"id": job_id, "source_id": source["id"], "change": "removed", "title": old.get("title", ""), "location": old.get("location", ""), "observed_at": observed_at})
             if job_id in history:
                 history[job_id]["active"] = "False"
+    if preserve_change_history and not reset_history:
+        changes = _deduplicate_changes(
+            _canonical_change_rows(source["id"], _read(processed / "job_changes.csv"))
+            + changes
+        )
     _write_csv(processed / "jobs_latest.csv", LATEST_FIELDS, latest)
     _write_csv(processed / "job_details.csv", DETAIL_FIELDS, details)
     history_fields = DETAIL_FIELDS + ("first_seen", "last_seen", "active")
     _write_csv(processed / "job_history.csv", history_fields, sorted(history.values(), key=lambda row: row.get("id", "")))
-    _write_csv(processed / "job_changes.csv", ("id", "source_id", "change", "title", "location", "observed_at"), changes)
+    _write_csv(processed / "job_changes.csv", CHANGE_FIELDS, changes)
     for key, filename in (("department", "department_summary.csv"), ("location", "location_summary.csv")):
         counts = Counter(row[key] for row in latest)
         rows = [{key: name, "count": count} for name, count in sorted(counts.items())]

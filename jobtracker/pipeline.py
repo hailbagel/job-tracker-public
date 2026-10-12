@@ -15,7 +15,20 @@ def run_source(source, data_root="data", fetch=None):
     kwargs = {"fetch": fetch} if fetch is not None else {}
     result = acquire(source, **kwargs)
     if result.status == "success" and result.coverage_complete:
-        metadata = process_success(data_root, source, result)
+        reset_from_adapter = source.get("reset_history_on_adapter_change_from")
+        reset_history = False
+        acquisition_path = Path(data_root) / source["id"] / "processed" / "acquisition.json"
+        if reset_from_adapter and acquisition_path.exists():
+            previous_metadata = json.loads(acquisition_path.read_text(encoding="utf-8"))
+            if not isinstance(previous_metadata, dict):
+                raise ValueError(f"Invalid acquisition metadata: {acquisition_path}")
+            reset_history = (
+                previous_metadata.get("adapter") == reset_from_adapter
+                and source.get("adapter") != reset_from_adapter
+            )
+        metadata = process_success(
+            data_root, source, result, reset_history=reset_history
+        )
     else:
         metadata = record_status(data_root, source, result)
     return metadata
@@ -71,6 +84,9 @@ def normalize_existing_provider(source, data_root="data", observed_at=None):
             "company": str(row.get("company") or "").strip() or source["company"],
             "department": str(row.get("department") or "").strip(),
             "link": link,
+            "requisition_id": str(row.get("requisition_id") or details.get("requisition_id") or "").strip(),
+            "first_published": str(row.get("first_published") or details.get("first_published") or "").strip(),
+            "updated_at": str(row.get("updated_at") or details.get("updated_at") or "").strip(),
             "mission": str(details.get("mission") or "").strip(),
             "requirements": str(details.get("requirements") or "").strip(),
             "benefits": str(details.get("benefits") or "").strip(),
@@ -82,6 +98,7 @@ def normalize_existing_provider(source, data_root="data", observed_at=None):
         AcquisitionResult(jobs),
         observed_at,
         write_status=False,
+        preserve_change_history=True,
     )
 
 

@@ -11,6 +11,8 @@ from pathlib import Path
 from unittest.mock import patch
 
 from analysis.profile_ranking import classify_family, generate, rank_job, split_qualifications
+from jobtracker.pipeline import normalize_existing_provider
+from jobtracker.processing import DETAIL_FIELDS, LATEST_FIELDS
 
 
 REQUIRED_KEYS = {
@@ -68,6 +70,36 @@ def write_csv(path, rows):
 
 
 class RankingSemanticsTests(unittest.TestCase):
+    def test_normalized_spacex_metadata_reaches_profile_ranking(self):
+        item = job("55")
+        item.update({
+            "source_id": "spacex",
+            "source_job_id": "55",
+            "requisition_id": "REQ-55",
+            "first_published": "2026-01-01",
+            "updated_at": "2026-01-02",
+        })
+        with tempfile.TemporaryDirectory() as directory:
+            processed = Path(directory) / "spacex/processed"
+            write_csv(processed / "jobs_latest.csv", [item])
+            write_csv(processed / "job_details.csv", [detail(item)])
+            normalize_existing_provider(
+                {"id": "spacex", "company": "SpaceX"},
+                directory,
+                "2026-01-03T00:00:00Z",
+            )
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                normalized_jobs = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                normalized_details = list(csv.DictReader(handle))
+
+        self.assertEqual(LATEST_FIELDS, tuple(normalized_jobs[0]))
+        self.assertEqual(DETAIL_FIELDS, tuple(normalized_details[0]))
+        ranked = rank_job(normalized_jobs[0], normalized_details[0], profile())
+        self.assertEqual("REQ-55", ranked["requisition_id"])
+        self.assertEqual("2026-01-01", ranked["first_published"])
+        self.assertEqual("2026-01-02", ranked["updated_at"])
+
     def test_basic_preferred_and_unknown_gate_cannot_be_green(self):
         item = job()
         basic, preferred, additional = split_qualifications(detail(item)["requirements"])

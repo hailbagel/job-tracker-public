@@ -1,4 +1,5 @@
 import csv
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -154,6 +155,62 @@ class PersonioXMLTests(unittest.TestCase):
             self.assertFalse(metadata["coverage_complete"])
             for filename, content in previous.items():
                 self.assertEqual(content, (processed / filename).read_bytes())
+
+    def test_first_personio_success_resets_bad_html_link_history_once(self):
+        source = get_source("hyimpulse")
+        with tempfile.TemporaryDirectory() as directory:
+            processed = Path(directory) / "hyimpulse/processed"
+            processed.mkdir(parents=True)
+            (processed / "acquisition.json").write_text(
+                json.dumps({"adapter": "html_job_links"}), encoding="utf-8"
+            )
+            (processed / "jobs_latest.csv").write_text(
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "1,APPLY NOW,Unknown,HyImpulse,Unknown,"
+                "https://legacy.test/job/1,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_details.csv").write_text(
+                "id,title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "1,APPLY NOW,Unknown,HyImpulse,Unknown,https://legacy.test/job/1,,,,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_history.csv").write_text(
+                "id,title,location,link,first_seen,last_seen,active\n"
+                "1,APPLY NOW,Unknown,https://legacy.test/job/1,2026-01-01,2026-01-01,True\n",
+                encoding="utf-8",
+            )
+            (processed / "job_changes.csv").write_text(
+                "date,change_type,title,location,timestamp\n"
+                "2026-01-01,NEW,APPLY NOW,Unknown,2026-01-01_00-00-00\n",
+                encoding="utf-8",
+            )
+
+            run_source(source, directory, fetch=lambda _url: PERSONIO_XML)
+
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                first_history = list(csv.DictReader(handle))
+            self.assertEqual(
+                {"Chemical Engineer (m/f/d)", "Software Engineer"},
+                {row["title"] for row in first_history},
+            )
+            self.assertTrue(all(row["location"] != "Unknown" for row in first_history))
+            self.assertTrue(all(row["department"] != "Unknown" for row in first_history))
+            with (processed / "job_changes.csv").open(newline="", encoding="utf-8") as handle:
+                first_changes = list(csv.DictReader(handle))
+            self.assertTrue(all(row["change"] == "new" for row in first_changes))
+            self.assertFalse(any(row["title"] == "APPLY NOW" for row in first_changes))
+
+            first_history[0]["first_seen"] = "2000-01-01"
+            with (processed / "job_history.csv").open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=first_history[0].keys())
+                writer.writeheader()
+                writer.writerows(first_history)
+            run_source(source, directory, fetch=lambda _url: PERSONIO_XML)
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                second_history = list(csv.DictReader(handle))
+
+        self.assertIn("2000-01-01", {row["first_seen"] for row in second_history})
 
 
 if __name__ == "__main__":
