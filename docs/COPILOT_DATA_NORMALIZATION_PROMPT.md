@@ -407,3 +407,71 @@ The historical-change preservation blocker applies to valuable legacy datasets f
 
 Keep the SpaceX metadata preservation requirement unchanged.
 ```
+
+
+---
+
+## Follow-up Prompt — Open Review PR Only
+
+Use this after the corrected branch has been pushed at commit `abda14f6cf89bef9897b113a960eb24734ed2f89`.
+
+```text
+The corrected review branch is ready for pull-request review.
+
+Branch:
+fix/normalize-provider-data-hyimpulse
+
+Current corrected commit:
+abda14f6cf89bef9897b113a960eb24734ed2f89
+
+Do not change implementation code unless creating the PR reveals a concrete branch/repository error.
+
+Before opening the PR:
+
+1. Fetch origin.
+2. Confirm the branch is based on current origin/main and is not behind it.
+3. Confirm the working tree has no unintended staged changes.
+4. Confirm patrick.json is still untracked/private and will not be included.
+5. Show:
+   git status --short
+   git log --oneline origin/main..HEAD
+   git diff --check origin/main...HEAD
+
+Then open ONE pull request from:
+
+fix/normalize-provider-data-hyimpulse -> main
+
+PR title:
+Normalize provider outputs and repair HyImpulse acquisition
+
+PR body must summarize:
+
+- HyImpulse moved from html_job_links to the official public Personio XML feed.
+- Current live validation returned 20 real HyImpulse jobs with:
+  - 0 APPLY NOW titles
+  - 0 Unknown locations
+  - 0 Unknown departments
+  - 20/20 non-empty mission, requirements and benefits
+- Canonical normalized schema remains defined in jobtracker/processing.py.
+- Canonical optional metadata now includes requisition_id, first_published and updated_at to preserve SpaceX/Patrick-feed behavior.
+- Existing-provider normalization preserves and deduplicates useful legacy change history.
+- HyImpulse intentionally discards the known-bad legacy APPLY NOW / Unknown history on the first successful Personio run, then preserves clean history afterwards.
+- 33 focused tests passed.
+- git diff --check passed.
+- Full Windows profile-ranking export suite remains limited locally by the pre-existing directory-symlink privilege requirement; the focused SpaceX metadata-to-ranking regression test passed.
+- No scheduler, Hostinger credential, deployment, production dataset, or private profile change is included.
+
+Do not merge the PR.
+Do not deploy.
+Do not modify the production scheduler.
+Do not commit patrick.json.
+
+At the end return:
+- PR number
+- PR URL
+- head commit SHA
+- base branch
+- confirmation that merge/deployment was not performed
+
+Stop after PR creation.
+```
