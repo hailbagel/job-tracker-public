@@ -20,8 +20,38 @@ class TeslaFailureClassificationTest(unittest.TestCase):
         self.assertIn("HTTP 403", str(raised.exception))
         fetch_state_json.assert_called_once()
 
+    @patch("scrapers.providers.tesla_scraper.os.makedirs")
+    @patch("scrapers.providers.tesla_scraper._fetch_state_json")
+    def test_blocked_html_is_not_successful_zero_job_coverage(
+        self, fetch_state_json, _makedirs
+    ):
+        response = Mock(status_code=200)
+        response.json.side_effect = ValueError("not json")
+        fetch_state_json.return_value = response
+
+        with self.assertRaises(TeslaSourceUnavailable) as raised:
+            TeslaScraper("tesla").run()
+
+        self.assertEqual("upstream_invalid_response", raised.exception.classification)
+
 
 class JacobsFailureClassificationTest(unittest.TestCase):
+    @patch("scrapers.providers.jacobs_scraper._fetch_search_page")
+    @patch("builtins.open")
+    @patch("scrapers.providers.jacobs_scraper.json.load")
+    def test_challenge_html_cannot_count_as_successful_zero_jobs(
+        self, load, _open, fetch_search_page
+    ):
+        load.return_value = {"country_id": 76515, "records_per_page": 100}
+        fetch_search_page.return_value = Mock(
+            status_code=200, text="<html><title>Access challenge</title></html>"
+        )
+
+        with self.assertRaises(JacobsSourceUnavailable) as raised:
+            JacobsScraper("jacobs").run()
+
+        self.assertEqual("upstream_access_challenge", raised.exception.classification)
+
     @patch("scrapers.providers.jacobs_scraper._fetch_search_page")
     @patch("builtins.open")
     @patch("scrapers.providers.jacobs_scraper.json.load")

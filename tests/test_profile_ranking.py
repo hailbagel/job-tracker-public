@@ -422,13 +422,27 @@ class ExportContractTests(unittest.TestCase):
 
 
 class PipelineIntegrationTests(unittest.TestCase):
+    def test_neura_production_dispatch_never_invokes_browser_details(self):
+        from jobtracker.pipeline_steps import steps_for_company
+
+        neura_scripts = [step["script"] for step in steps_for_company("neura")]
+        self.assertIn("scrapers/runner.py", neura_scripts)
+        self.assertIn("analysis/analysis.py", neura_scripts)
+        self.assertIn("analysis/export_txt.py", neura_scripts)
+        self.assertNotIn("scrapers/job_details_scraper.py", neura_scripts)
+        self.assertIn("scrapers/job_details_scraper.py", [
+            step["script"] for step in steps_for_company("tesla")
+        ])
+
     def test_normal_pipeline_exposes_provider_filter_and_profile_stage(self):
         result = subprocess.run([sys.executable, "run_pipeline.py", "--help"], text=True, capture_output=True)
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertIn("--company", result.stdout)
         source = Path("run_pipeline.py").read_text(encoding="utf-8")
-        self.assertIn('"script": "analysis/profile_ranking.py"', source)
-        self.assertIn('company.lower() == "spacex"', source)
+        step_source = Path("jobtracker/pipeline_steps.py").read_text(encoding="utf-8")
+        self.assertIn("steps_for_company(company)", source)
+        self.assertIn('"script": "analysis/profile_ranking.py"', step_source)
+        self.assertIn('company.lower() == "spacex"', step_source)
 
 
 if __name__ == "__main__":
