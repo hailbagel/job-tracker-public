@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import os
 import tempfile
@@ -20,7 +21,7 @@ def _read(path):
     try:
         with path.open(newline="", encoding="utf-8-sig") as handle:
             return list(csv.DictReader(handle))
-    except (FileNotFoundError, csv.Error):
+    except FileNotFoundError:
         return []
 
 
@@ -61,25 +62,92 @@ def record_status(data_root, source, result, observed_at=None):
     return metadata
 
 
-def process_success(data_root, source, result, observed_at=None):
+def _qualified_id(source_id, value):
+    value = str(value or "").strip()
+    if not value:
+        return ""
+    prefix = f"{source_id}:"
+    return value if value.startswith(prefix) else f"{prefix}{value}"
+
+
+def _row_id(source_id, row, ids_by_link=None, native_ids_by_link=None):
+    for field in ("id", "source_job_id", "offer_uuid", "external_id"):
+        value = row.get(field)
+        if str(value or "").strip():
+            return _qualified_id(source_id, value)
+    link = str(row.get("link") or "").strip()
+    if not link:
+        return ""
+    if ids_by_link and link in ids_by_link:
+        return ids_by_link[link]
+    if native_ids_by_link and link in native_ids_by_link:
+        return _qualified_id(source_id, native_ids_by_link[link])
+    suffix = hashlib.sha256(link.encode()).hexdigest()[:16]
+    return f"{source_id}:{suffix}"
+
+
+def process_success(data_root, source, result, observed_at=None, *, write_status=True):
     if not result.coverage_complete or result.status != "success" or not result.jobs:
         raise ValueError("Only non-empty complete acquisitions may update normalized datasets")
     observed_at = observed_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     today = observed_at[:10]
     processed = Path(data_root) / source["id"] / "processed"
-    previous = {row.get("id"): row for row in _read(processed / "jobs_latest.csv")}
-    history = {row.get("id"): row for row in _read(processed / "job_history.csv")}
+    previous_rows = _read(processed / "jobs_latest.csv")
+    previous_details = _read(processed / "job_details.csv")
+    native_ids_by_link = {}
+    for row in previous_details:
+        link = str(row.get("link") or "").strip()
+        native_id = next((
+            str(row.get(field) or "").strip()
+            for field in ("source_job_id", "offer_uuid", "external_id")
+            if str(row.get(field) or "").strip()
+        ), "")
+        if link and native_id:
+            native_ids_by_link[link] = native_id
+    previous_link_ids = {
+        str(row.get("link") or "").strip(): _row_id(
+            source["id"], row, native_ids_by_link=native_ids_by_link
+        )
+        for row in previous_rows
+        if row.get("link")
+    }
+    previous = {}
+    for row in previous_rows:
+        job_id = _row_id(source["id"], row, native_ids_by_link=native_ids_by_link)
+        if not job_id:
+            raise ValueError("Cannot preserve a previous job without an id or link")
+        previous[job_id] = row
+
+    history = {}
+    for row in _read(processed / "job_history.csv"):
+        job_id = _row_id(source["id"], row, previous_link_ids)
+        if not job_id:
+            raise ValueError("Cannot preserve a history record without an id or link")
+        history[job_id] = dict(row, id=job_id)
+
     latest, details, changes = [], [], []
     for job in result.jobs:
-        row = dict(job, scrape_timestamp=observed_at)
+        row = {field: job.get(field, "") for field in DETAIL_FIELDS}
+        row["scrape_timestamp"] = observed_at
+        job_id = _qualified_id(source["id"], row.get("id"))
+        if not job_id or not row["title"] or not row["link"]:
+            raise ValueError("Successful acquisitions require every job to have an id, title, and link")
+        row["id"] = job_id
+        row["source_id"] = source["id"]
         latest.append({field: row.get(field, "") for field in LATEST_FIELDS})
         details.append({field: row.get(field, "") for field in DETAIL_FIELDS})
-        old = previous.get(row["id"])
-        change = "new" if old is None else "changed" if any(old.get(key, "") != str(row.get(key, "")) for key in ("title", "location", "department", "link")) else None
+        old = previous.get(job_id)
+        existing = history.get(job_id, {})
+        if old is None:
+            change = "reactivated" if existing.get("active") == "False" else "new"
+        else:
+            change = "changed" if any(
+                old.get(key, "") != str(row.get(key, ""))
+                for key in ("title", "location", "department", "link")
+            ) else None
         if change:
-            changes.append({"id": row["id"], "source_id": source["id"], "change": change, "title": row["title"], "location": row["location"], "observed_at": observed_at})
-        existing = history.get(row["id"], {})
-        history[row["id"]] = dict(row, first_seen=existing.get("first_seen", today), last_seen=today, active="True")
+            changes.append({"id": job_id, "source_id": source["id"], "change": change, "title": row["title"], "location": row["location"], "observed_at": observed_at})
+        history[job_id] = dict(row, first_seen=existing.get("first_seen", today), last_seen=today, active="True")
     current_ids = {row["id"] for row in latest}
     for job_id, old in previous.items():
         if job_id not in current_ids:
@@ -96,4 +164,6 @@ def process_success(data_root, source, result, observed_at=None):
         rows = [{key: name, "count": count} for name, count in sorted(counts.items())]
         rows.append({key: "TOTAL", "count": len(latest)})
         _write_csv(processed / filename, (key, "count"), rows)
-    return record_status(data_root, source, result, observed_at)
+    if write_status:
+        return record_status(data_root, source, result, observed_at)
+    return None

@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import argparse
+import csv
+import hashlib
 import json
 from pathlib import Path
 
-from jobtracker.acquisition import acquire
+from jobtracker.acquisition import AcquisitionResult, acquire
 from jobtracker.processing import process_success, record_status
 from jobtracker.registry import get_source, sources
 
@@ -17,6 +19,70 @@ def run_source(source, data_root="data", fetch=None):
     else:
         metadata = record_status(data_root, source, result)
     return metadata
+
+
+def normalize_existing_provider(source, data_root="data", observed_at=None):
+    processed = Path(data_root) / source["id"] / "processed"
+    latest_path = processed / "jobs_latest.csv"
+    details_path = processed / "job_details.csv"
+    with latest_path.open(newline="", encoding="utf-8-sig") as handle:
+        latest_rows = list(csv.DictReader(handle))
+    if not latest_rows:
+        raise ValueError(f"Existing provider produced no jobs: {latest_path}")
+
+    if details_path.exists():
+        with details_path.open(newline="", encoding="utf-8-sig") as handle:
+            details_rows = list(csv.DictReader(handle))
+    else:
+        details_rows = []
+    details_by_link = {
+        str(row.get("link") or "").strip(): row
+        for row in details_rows
+        if row.get("link")
+    }
+
+    jobs = []
+    seen_links = set()
+    for row in latest_rows:
+        title = str(row.get("title") or "").strip()
+        link = str(row.get("link") or "").strip()
+        if not title or not link or link in seen_links:
+            raise ValueError(f"Existing provider returned an incomplete or duplicate job: {link!r}")
+        seen_links.add(link)
+        details = details_by_link.get(link, {})
+        native_id = next((
+            str(value).strip()
+            for value in (
+                row.get("source_job_id"), row.get("id"),
+                details.get("source_job_id"), details.get("offer_uuid"),
+                details.get("external_id"),
+            )
+            if str(value or "").strip()
+        ), "")
+        if not native_id:
+            native_id = hashlib.sha256(link.encode()).hexdigest()[:16]
+        job_id = native_id if native_id.startswith(f"{source['id']}:") else f"{source['id']}:{native_id}"
+        jobs.append({
+            "id": job_id,
+            "source_id": source["id"],
+            "source_job_id": native_id.removeprefix(f"{source['id']}:"),
+            "title": title,
+            "location": str(row.get("location") or "").strip(),
+            "company": str(row.get("company") or "").strip() or source["company"],
+            "department": str(row.get("department") or "").strip(),
+            "link": link,
+            "mission": str(details.get("mission") or "").strip(),
+            "requirements": str(details.get("requirements") or "").strip(),
+            "benefits": str(details.get("benefits") or "").strip(),
+        })
+
+    return process_success(
+        data_root,
+        source,
+        AcquisitionResult(jobs),
+        observed_at,
+        write_status=False,
+    )
 
 
 def run_registry(registry_path="configs/sources.json", data_root="data", source_ids=None, fetch=None):

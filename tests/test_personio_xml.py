@@ -1,0 +1,160 @@
+import csv
+import tempfile
+import unittest
+from pathlib import Path
+
+from jobtracker.pipeline import run_source
+from jobtracker.processing import COMMON_OUTPUTS, DETAIL_FIELDS, LATEST_FIELDS
+from jobtracker.registry import get_source
+
+
+PERSONIO_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
+<workzag-jobs>
+  <position>
+    <id>2817230</id>
+    <subcompany>HyImpulse Technologies GmbH</subcompany>
+    <office>Neuenstadt am Kocher</office>
+    <department>Propulsion</department>
+    <name>Chemical Engineer (m/f/d)</name>
+    <jobDescriptions>
+      <jobDescription>
+        <name>Key Responsibilities</name>
+        <value><![CDATA[<ul><li>Develop hybrid rocket motor propellants</li><li>Support engine tests</li></ul>]]></value>
+      </jobDescription>
+      <jobDescription>
+        <name>Basic Qualification</name>
+        <value><![CDATA[<ul><li>Degree in chemistry</li><li>Laboratory experience</li></ul>]]></value>
+      </jobDescription>
+      <jobDescription>
+        <name>Desired Experience</name>
+        <value><![CDATA[<p>Propulsion or aerospace experience</p>]]></value>
+      </jobDescription>
+      <jobDescription>
+        <name>Benefits</name>
+        <value><![CDATA[<ul><li>30 days of vacation</li><li>Flexible working hours</li></ul>]]></value>
+      </jobDescription>
+      <jobDescription>
+        <name>Location</name>
+        <value><![CDATA[Additional regional details that are not the job location]]></value>
+      </jobDescription>
+    </jobDescriptions>
+  </position>
+  <position>
+    <id>2546581</id>
+    <name>Software Engineer</name>
+  </position>
+</workzag-jobs>
+"""
+
+EXOLAUNCH_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
+<workzag-jobs>
+  <position>
+    <id>9001</id>
+    <subcompany>Exolaunch GmbH</subcompany>
+    <office>Berlin</office>
+    <department>Engineering</department>
+    <name>Launch Operations Engineer</name>
+    <url>https://exolaunch.jobs.personio.com/job/9001</url>
+    <jobDescriptions>
+      <jobDescription>
+        <name>Responsibilities</name>
+        <value><![CDATA[<p>Coordinate launch campaign operations</p>]]></value>
+      </jobDescription>
+    </jobDescriptions>
+  </position>
+</workzag-jobs>
+"""
+
+
+class PersonioXMLTests(unittest.TestCase):
+    def test_hyimpulse_acquires_structured_jobs_and_writes_canonical_outputs(self):
+        source = get_source("hyimpulse")
+        self.assertEqual("personio_xml", source["adapter"])
+
+        with tempfile.TemporaryDirectory() as directory:
+            metadata = run_source(
+                source,
+                directory,
+                fetch=lambda url: PERSONIO_XML if url == source["adapter_config"]["url"] else b"",
+            )
+            processed = Path(directory) / "hyimpulse/processed"
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+
+        self.assertEqual("success", metadata["status"])
+        self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+        self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
+        self.assertEqual(2, len(latest))
+        first = latest[0]
+        self.assertEqual("hyimpulse:2817230", first["id"])
+        self.assertEqual("2817230", first["source_job_id"])
+        self.assertEqual("Chemical Engineer (m/f/d)", first["title"])
+        self.assertEqual("Neuenstadt am Kocher", first["location"])
+        self.assertEqual("HyImpulse Technologies GmbH", first["company"])
+        self.assertEqual("Propulsion", first["department"])
+        self.assertNotEqual("APPLY NOW", first["title"])
+        self.assertEqual(
+            "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2817230",
+            first["link"],
+        )
+
+        detailed = details[0]
+        self.assertIn("Develop hybrid rocket motor propellants", detailed["mission"])
+        self.assertIn("Degree in chemistry", detailed["requirements"])
+        self.assertIn("Propulsion or aerospace experience", detailed["requirements"])
+        self.assertIn("30 days of vacation", detailed["benefits"])
+        self.assertNotIn("<li>", detailed["mission"])
+        self.assertNotIn("Additional regional details", detailed["mission"])
+
+        optional = latest[1]
+        self.assertEqual("", optional["location"])
+        self.assertEqual("", optional["department"])
+        self.assertEqual("", details[1]["mission"])
+        self.assertEqual("", details[1]["requirements"])
+        self.assertEqual("", details[1]["benefits"])
+
+    def test_exolaunch_personio_source_still_uses_official_fields(self):
+        source = get_source("exolaunch")
+
+        with tempfile.TemporaryDirectory() as directory:
+            run_source(source, directory, fetch=lambda _url: EXOLAUNCH_XML)
+            processed = Path(directory) / "exolaunch/processed"
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+
+        self.assertEqual("exolaunch:9001", latest[0]["id"])
+        self.assertEqual("Berlin", latest[0]["location"])
+        self.assertEqual("Engineering", latest[0]["department"])
+        self.assertEqual("Launch Operations Engineer", latest[0]["title"])
+        self.assertIn("Coordinate launch campaign operations", details[0]["mission"])
+
+    def test_incomplete_personio_position_preserves_existing_normalized_files(self):
+        source = get_source("hyimpulse")
+        incomplete_xml = b"""<workzag-jobs>
+          <position><id>1</id><name>Real Engineer</name><url>https://jobs.test/1</url></position>
+          <position><id>2</id><url>https://jobs.test/2</url></position>
+        </workzag-jobs>"""
+
+        with tempfile.TemporaryDirectory() as directory:
+            processed = Path(directory) / "hyimpulse/processed"
+            processed.mkdir(parents=True)
+            previous = {}
+            for filename in COMMON_OUTPUTS:
+                target = processed / filename
+                target.write_text(f"prior-good-{filename}\n", encoding="utf-8")
+                previous[filename] = target.read_bytes()
+
+            metadata = run_source(source, directory, fetch=lambda _url: incomplete_xml)
+
+            self.assertEqual("incomplete", metadata["status"])
+            self.assertFalse(metadata["coverage_complete"])
+            for filename, content in previous.items():
+                self.assertEqual(content, (processed / filename).read_bytes())
+
+
+if __name__ == "__main__":
+    unittest.main()
