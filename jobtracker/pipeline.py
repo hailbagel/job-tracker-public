@@ -71,7 +71,11 @@ def normalize_existing_provider(source, data_root="data", observed_at=None):
         if not title or not link or link in seen_links:
             raise ValueError(f"Existing provider returned an incomplete or duplicate job: {link!r}")
         seen_links.add(link)
-        details = details_by_link.get(link, {})
+        if link not in details_by_link:
+            raise ValueError(
+                f"Existing provider {source['id']} is missing a detail row for current job link: {link!r}"
+            )
+        details = details_by_link[link]
         native_id = next((
             str(value).strip()
             for value in (

@@ -189,6 +189,102 @@ class RegistryTests(unittest.TestCase):
             self.assertEqual("False", former["active"])
             self.assertTrue(former["id"].startswith("legacy:"))
 
+    def test_existing_provider_rejects_current_jobs_without_detail_rows(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="legacy", company="Legacy Co", acquisition_mode="existing_provider",
+                adapter="existing_provider",
+            )
+            processed = Path(directory) / "legacy/processed"
+            processed.mkdir(parents=True)
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([{
+                    "id": "legacy:41", "source_id": "legacy", "source_job_id": "41",
+                    "title": "Known Good Engineer", "location": "Berlin",
+                    "company": "Legacy Co", "department": "Engineering",
+                    "link": "https://legacy.test/jobs/41",
+                    "mission": "Known good mission",
+                }]),
+                "2026-01-01T00:00:00Z",
+            )
+            preserved_outputs = {
+                name: (processed / name).read_bytes()
+                for name in (
+                    "job_history.csv", "job_changes.csv",
+                    "department_summary.csv", "location_summary.csv",
+                    "acquisition.json",
+                )
+            }
+            latest_content = (
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "42,Current Engineer,Berlin,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/42,2026-01-01\n"
+                "43,Platform Engineer,Munich,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/43,2026-01-01\n"
+            )
+            details_content = (
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01\n"
+            )
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+            (processed / "job_details.csv").write_text(details_content, encoding="utf-8")
+
+            with self.assertRaisesRegex(
+                ValueError,
+                r"legacy.*https://legacy\.test/jobs/43",
+            ):
+                normalize_existing_provider(
+                    source_config, directory, "2026-01-02T00:00:00Z"
+                )
+
+            self.assertEqual(latest_content, (processed / "jobs_latest.csv").read_text(encoding="utf-8"))
+            self.assertEqual(details_content, (processed / "job_details.csv").read_text(encoding="utf-8"))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                self.assertEqual(1, len(list(csv.DictReader(handle))))
+            for name, content in preserved_outputs.items():
+                self.assertEqual(content, (processed / name).read_bytes())
+
+    def test_existing_provider_normalization_requires_complete_detail_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="legacy", company="Legacy Co", acquisition_mode="existing_provider",
+                adapter="existing_provider",
+            )
+            processed = Path(directory) / "legacy/processed"
+            processed.mkdir(parents=True)
+            (processed / "jobs_latest.csv").write_text(
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "42,Current Engineer,Berlin,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/42,2026-01-01\n"
+                "43,Platform Engineer,Munich,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/43,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01\n"
+                "Platform Engineer,Munich,Legacy Co,Engineering,https://legacy.test/jobs/43,"
+                "Build platform tools,Python experience,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(
+                source_config, directory, "2026-01-02T00:00:00Z"
+            )
+
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+            self.assertEqual(2, len(latest))
+            self.assertEqual(2, len(details))
+            self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+            self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
+
     def test_existing_provider_recovers_native_identity_from_legacy_details(self):
         with tempfile.TemporaryDirectory() as directory:
             source_config = source(
