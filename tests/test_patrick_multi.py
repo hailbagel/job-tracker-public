@@ -61,6 +61,40 @@ class MultiCompanyPatrickTests(unittest.TestCase):
             self.assertEqual("unavailable", coverage["missing"]["status"])
             self.assertFalse(coverage["missing"]["coverage_complete"])
 
+    def test_required_detail_text_gap_blocks_source_publication_without_changing_acquisition_status(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            exolaunch = source("exolaunch", "Exolaunch")
+            exolaunch["require_detail_text"] = True
+            missing_details = result("exolaunch", "Exolaunch", "Berlin")
+            missing_details.jobs[0].update(
+                mission="", requirements="", benefits=""
+            )
+            acquisition = process_success(
+                root, exolaunch, missing_details, "2026-01-01T00:00:00Z"
+            )
+
+            document = generate_multi(
+                "configs/profiles/example.json", [exolaunch], root, root / "patrick",
+                "2026-01-02T00:00:00Z",
+            )
+
+            self.assertEqual("success", acquisition["status"])
+            self.assertTrue(acquisition["coverage_complete"])
+            self.assertFalse(document["metadata"]["coverage_complete"])
+            self.assertEqual([], document["rankings"])
+            coverage = document["metadata"]["source_coverage"][0]
+            self.assertEqual("success", coverage["status"])
+            self.assertFalse(coverage["coverage_complete"])
+            self.assertEqual(0, coverage["jobs"])
+            self.assertEqual(
+                "1 current job(s) lack required detail text", coverage["reason"]
+            )
+            self.assertEqual({
+                "source_id", "company", "status", "coverage_complete", "reason",
+                "jobs", "observed_at", "acquisition_mode", "adapter",
+            }, set(coverage))
+
 
     def test_current_failure_overrides_stale_success_and_prevents_complete_coverage(self):
         with tempfile.TemporaryDirectory() as directory:
