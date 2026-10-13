@@ -260,12 +260,12 @@ Do not return private profile contents, SSH material, tokens, or credentials.
 
 ## One-paste Hostinger launcher (single command)
 
-**If the terminal shows a `>` continuation prompt, press `Ctrl+C` until the normal `root@...#` prompt returns.** Do not paste the previous `bash <<'HOSTINGER'` here-document; its terminator was not recognized in the browser terminal (`HOSTINGER^M`).
+If the terminal is still showing the continuation prompt `>`, press **Ctrl+C** or open a fresh Hostinger root-terminal session first. The earlier here-document paste was corrupted (`HOSTINGER^M` / `^[[200~`); do not paste another command until the regular `root@...#` prompt appears.
 
-With the normal root prompt visible, copy and execute **this exact single command**. Do not break it into multiple commands. It requires a clean Git worktree, fast-forwards `main`, extracts only the **first** fenced bash block from this file, checks that the corrected HyImpulse validation exists, and executes that vetted runbook via `bash` with strict error handling. The primary runbook is the single source of truth.
+Copy **only this one line** into the normal Hostinger root shell. It updates `main` and calls the small versioned launcher `scripts/run_hostinger_pr15.py`, which runs the complete authoritative procedure from this file. It performs only one production attempt.
 
 ```bash
-cd /opt/vutrulabs/job-tracker-public && git switch main && test -z "$(git status --porcelain=v1 --untracked-files=all)" && git pull --ff-only origin main && python3 -c 'from pathlib import Path; import subprocess; text=Path("docs/HOSTINGER_PR15_IMMEDIATE_PRODUCTION_RUN.md").read_text(); parts=text.partition("```bash\n"); assert parts[1], "STOP: main bash block missing"; script=parts[2].split("\n```",1)[0]; assert "HYIMPULSE CONFIG OK" in script and "HYIMPULSE DATA QUALITY OK" in script, "STOP: outdated runbook"; subprocess.run(["bash","-e","-u","-o","pipefail"],input=script,text=True,check=True)'
+cd /opt/vutrulabs/job-tracker-public && git switch main && git pull --ff-only origin main && python3 scripts/run_hostinger_pr15.py
 ```
 
-Do **not** rerun if anything fails. Return the non-secret output for review. A successful Git pull alone is not proof that the production job has run.
+**Stop after any failure.** Do not automatically rerun the production job; capture non-secret output for review.
