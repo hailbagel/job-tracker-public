@@ -1,6 +1,6 @@
 # Patrick Space/Rocket targets
 
-Generated: 2026-10-13T11:26:37.816734Z
+Generated: 2026-10-13T13:46:00.908264Z
 Scanned: 2826 | Potentially relevant: 349 | Strong: 2
 
 ## Source coverage
@@ -180,18 +180,7 @@ Scanned: 2826 | Potentially relevant: 349 | Strong: 2
 
 ## New relevant jobs
 
-- [HyImpulse: Team Lead – Test Facilities (UK) (m/f/d)](https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2822953) — Glasgow — RED 65
-  - Role family: Facilities / Infrastructure
-  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
-  - Hard gates: degree=unsupported, required_trade:electrical=unknown
-  - Soft gaps: []
-  - Recommended profile focus: A
-- [HyImpulse: Structural Design Engineer (m/f/d)](https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021) — Neuenstadt am Kocher — RED 53
-  - Role family: Structural / Steel
-  - Fit reasons: Role family is configured as an interest, Large industrial project execution
-  - Hard gates: degree=unsupported
-  - Soft gaps: []
-  - Recommended profile focus: A
+_None._
 
 ## Materially changed jobs
 

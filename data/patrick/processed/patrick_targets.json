@@ -8,7 +8,7 @@
       "strong_match": 2
     },
     "coverage_complete": true,
-    "generated_at": "2026-10-13T11:26:37.816734Z",
+    "generated_at": "2026-10-13T13:46:00.908264Z",
     "history_limitation": null,
     "source_coverage": [
       {
@@ -17,7 +17,7 @@
         "company": "SpaceX",
         "coverage_complete": true,
         "jobs": 2741,
-        "observed_at": "2026-10-13T11:26:04.932886Z",
+        "observed_at": "2026-10-13T13:45:21.040892Z",
         "reason": null,
         "source_id": "spacex",
         "status": "success"
@@ -28,7 +28,7 @@
         "company": "Rocket Factory Augsburg",
         "coverage_complete": true,
         "jobs": 52,
-        "observed_at": "2026-10-13T11:26:23.354452Z",
+        "observed_at": "2026-10-13T13:45:46.877149Z",
         "reason": null,
         "source_id": "rocket-factory-augsburg",
         "status": "success"
@@ -39,7 +39,7 @@
         "company": "Exolaunch",
         "coverage_complete": true,
         "jobs": 11,
-        "observed_at": "2026-10-13T11:26:23.652756Z",
+        "observed_at": "2026-10-13T13:45:48.813924Z",
         "reason": null,
         "source_id": "exolaunch",
         "status": "success"
@@ -50,160 +50,14 @@
         "company": "HyImpulse",
         "coverage_complete": true,
         "jobs": 22,
-        "observed_at": "2026-10-13T11:26:23.918488Z",
+        "observed_at": "2026-10-13T13:45:49.072994Z",
         "reason": null,
         "source_id": "hyimpulse",
         "status": "success"
       }
     ]
   },
-  "new_relevant": [
-    {
-      "basic_qualifications": "Bachelor´s or Master´s degree in Mechanical Engineering, Aerospace Engineering or a related field Very good understanding of process plants, testing facilities, fluid components, control and data acquisition systems Very good understanding of cryogenic, hydraulic and pneumatic systems and effects related to cryogenic fluids and compressed gases Knowledge of different sensor types and data acquisition systems. Understanding of process plant control and electrical systems Experience in using software for modelling and simulation, CAD, PLM, requirements and system engineering, project planning, MS Office Experience in fluid system design Experience in design of process plants Experience in operations of process plants Practical experience in rocket propulsion testing and handling of cryogenic fluids is a plus",
-      "company": "HyImpulse",
-      "degree_rule": "Bachelor´s or Master´s degree in Mechanical Engineering, Aerospace Engineering or a related field Very good understanding of process plants, testing facilities, fluid components, control a",
-      "department": "Testing Facilities",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2822953"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Team Lead – Test Facilities (UK) (m/f/d)",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "quality"
-          ],
-          "reason": "Structural steel execution"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        },
-        {
-          "job_evidence": [
-            "planning"
-          ],
-          "reason": "Planning and technical documentation"
-        }
-      ],
-      "fit_score": 65,
-      "hard_gates": [
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Bachelor´s or Master´s degree in Mechanical Engineering, Aerospace Engineering or a related field Very good understanding of process plants, testing facilities, fluid components, control a",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        },
-        {
-          "candidate_status": "unknown",
-          "gate": "required_trade:electrical",
-          "requirement_evidence": {
-            "excerpt": "electrical",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": null,
-      "job_id": "hyimpulse:2822953",
-      "location": "Glasgow",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Facilities / Infrastructure",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "hyimpulse",
-      "status": "RED",
-      "title": "Team Lead – Test Facilities (UK) (m/f/d)",
-      "trade_requirements": [
-        "electrical"
-      ],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2822953",
-      "work_authorization_signal": null,
-      "years": null
-    },
-    {
-      "basic_qualifications": "Master’s degree in Aerospace Engineering, Mechanical Engineering, or a related field 5–8 years of experience in mechanical and structural design Strong expertise in carbon-fiber composite structures, including sizing, failure modes, and manufacturing processes Knowledge of structural adhesives and bonded joint design Proactive, pragmatic, and solution-oriented mindset Strong communication and organizational skills Fluent in English Design and sizing of sandwich structures Experience with prepreg composites and automated manufacturing technologies (AFP or filament winding) Understanding of NDI methods, applications, and limitations Proficiency with NX and Teamcenter",
-      "company": "HyImpulse",
-      "degree_rule": "Master’s degree in Aerospace Engineering, Mechanical Engineering, or a related field 5–8 years of experience in mechanical and structural design Strong expertise in carbon-fiber composit",
-      "department": "Structures",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Structural Design Engineer (m/f/d)",
-          "reason": "Role family is configured as an interest"
-        },
-        {
-          "job_evidence": [
-            "manufacturing",
-            "production"
-          ],
-          "reason": "Large industrial project execution"
-        }
-      ],
-      "fit_score": 53,
-      "hard_gates": [
-        {
-          "candidate_status": "unsupported",
-          "gate": "degree",
-          "requirement_evidence": {
-            "excerpt": "Master’s degree in Aerospace Engineering, Mechanical Engineering, or a related field 5–8 years of experience in mechanical and structural design Strong expertise in carbon-fiber composit",
-            "section": "required qualifications",
-            "source": "job_posting"
-          }
-        }
-      ],
-      "itar_signal": null,
-      "job_id": "hyimpulse:2611021",
-      "location": "Neuenstadt am Kocher",
-      "potentially_relevant": true,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Structural / Steel",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "hyimpulse",
-      "status": "RED",
-      "title": "Structural Design Engineer (m/f/d)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021",
-      "work_authorization_signal": null,
-      "years": 8
-    }
-  ],
+  "new_relevant": [],
   "rankings": [
     {
       "basic_qualifications": "Bachelor’s degree 5+ years of professional experience in electrical construction, power systems engineering, substations, industrial/manufacturing electrical infrastructure, BESS, or facilities electrical management PREFERRED SKILLS AND EXPERIENCE: 7+ years of construction project management experience on large-scale electrical infrastructure (substations, manufacturing campuses, BESS, industrial power) Experience managing multiple concurrent vertical/electrical construction projects Strong knowledge of construction sequencing, contractor management, safety programs, and quality control for high-voltage and industrial electrical work Familiarity with jurisdictional permitting, utility interconnection, and inspection processes Working knowledge of electrical systems: high-voltage substations, transformers, switchgear, BESS, UPS, generators, and low-voltage industrial/facility distribution (ability to read one-lines and coordinate with engineers) Proven experience with estimating, cost control, scheduling (Primavera/MS Project or similar), and change-order management Experience reviewing shop drawings, submittals, RFIs, and as-builts Manufacturing campus, launch/test site, BESS, substation, or large-scale industrial/power facility construction experience OSHA 30 or equivalent safety credentials",
@@ -53646,6 +53500,94 @@
       "years": 1
     },
     {
+      "basic_qualifications": "Master’s degree in Mechanical Engineering or similar field. Preferred is a background in mechanism design and mechatronics. At least two years of experience in space hardware vibration testing and space standards (e.g. ECSS), particularly around mechanisms and structures. Testing experience in other industries is also welcomed. Experience in working hands-on with hardware. Excellent written and spoken English. Excellent technical communication skills. Experience in working with CAD software such as Solidworks. Positive and proactive self-starter attitude and ability to work in a highly integrated team setting. Ability to work in a fast-paced and demanding environment. Flexibility for frequent travel, occasionally at short notice. This role is based in Berlin. Candidates must either currently reside in Berlin or be open to relocating.",
+      "company": "Exolaunch",
+      "degree_rule": "Master’s degree in Mechanical Engineering or similar field",
+      "department": "Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2504264"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "manufacturing",
+            "production"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 22,
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Master’s degree in Mechanical Engineering or similar field",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:solidworks",
+          "requirement_evidence": {
+            "excerpt": "solidworks",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": null,
+      "job_id": "exolaunch:2504264",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel",
+        "solidworks"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Test Engineer - Mechanical Space Systems (m/w/d)",
+      "trade_requirements": [],
+      "travel_expectations": "with internal specifications, customer requirements, and applicable standards. Travel to launch sites and international customer facilities to support technical operations. The position requires flexibility for occasional travel, including short-notice trips. You should be comfortable with traveling approximat",
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2504264",
+      "work_authorization_signal": null,
+      "years": null
+    },
+    {
       "basic_qualifications": "High school diploma or equivalency certificate 1+ years of experience creating and/or working with manufacturing design, build, integration or test PREFERRED SKILLS AND EXPERIENCE: Bachelor's Degree in an engineering or STEM discipline or 2+ years of experience in a manufacturing or production environment 5+ years of professional experience designing, building, integrating, and testing complex multi-disciplinary systems Hands-on experience with one or more of the following: launch vehicle or spacecraft integration, composite structure design or testing; test operations with gases/fluids, data acquisition setup, and field measurements Demonstrates technical intuition, critical thinking, and comfort with ambiguity Documentation and configuration management experience Experience writing test plans, procedures and providing go/no-go judgment and rationale Experience interacting with CAD software and basic analysis programs Professional experience testing and operating with or around hazardous systems (high pressure, high energy, hazardous gases/fluids, etc.) Professional experience working with large assembly moves (e.g. crane operations) Ability to communicate clearly and accurately with a wide range of people Ability to work in a fast-paced, autonomously driven, and demanding atmosphere",
       "company": "SpaceX",
       "degree_rule": "Bachelor's Degree in an engineering or STEM discipline or 2+ years of experience in a manufacturing or production environment 5+ years of professional experience designing, building, integ",
@@ -61385,6 +61327,102 @@
       "years": 1
     },
     {
+      "basic_qualifications": "Bachelor’s degree in Mechanical Engineering, Mechanical Design Technology, or an equivalent technical trade background. 3 to 5 years of dedicated mechanical design experience in a product design or manufacturing environment. CAD Expertise: Power-user proficiency in SolidWorks (3D modeling, sheet metal, weldments, and complex assemblies). Certified SolidWorks Professional (CSWP) or Certified SolidWorks Expert (CSWE) a plus. PDM Knowledge: Hands-on experience working within a SolidWorks PDM or similar PLM database environment. Manufacturing Savvy: Solid understanding of core manufacturing methods like machining, injection molding, sheet metal fabrication, or 3D printing. Exceptional organizational skills and the ability to articulate technical concepts clearly to team managers and non-technical stakeholders. Excellent written and spoken English, especially in a technical environment. Written and spoken German is a plus. Strong visual and design judgement, with the ability to create clear, consistent technical documentation and consider both functional and aesthetic aspects of hardware design. Collaborative, hands-on approach and ability to work effectively in a fast-paced environment Nice to have Experience in aerospace, space hardware or another highly regulated engineering environment. Experience with spacecraft structures, mechanical integration or environmental testing. This role is based in Berlin. Candidates must either currently reside in Berlin or be open to relocating.",
+      "company": "Exolaunch",
+      "degree_rule": "Bachelor’s degree in Mechanical Engineering, Mechanical Design Technology, or an equivalent technical trade background",
+      "department": "Launch & Engineering",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2782697"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "manufacturing"
+          ],
+          "reason": "Large industrial project execution"
+        },
+        {
+          "job_evidence": [
+            "documentation"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s degree in Mechanical Engineering, Mechanical Design Technology, or an equivalent technical trade background",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "5+ years (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:solidworks",
+          "requirement_evidence": {
+            "excerpt": "solidworks",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": null,
+      "job_id": "exolaunch:2782697",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel",
+        "solidworks"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Mechanical Design Engineer - EXOtube (CAD Specialist)",
+      "trade_requirements": [],
+      "travel_expectations": "launch configurations and customer proposals. The position may offer occasional travel opportunities, including short-notice trips. Bachelor’s degree in Mechanical Engineering, Mechanical Design Technology, or an equivalent technical trade background. 3 to 5 years of de",
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2782697",
+      "work_authorization_signal": null,
+      "years": 5
+    },
+    {
       "basic_qualifications": "Bachelor's degree in an engineering discipline, physics, or computer science 1+ years of hands-on technical engineering experience PREFERRED SKILLS AND EXPERIENCE: Master’s degree or PhD in an engineering discipline Knowledge of a variety of NDE techniques such as ultrasonic testing, eddy current testing, digital radiography testing, etc. Knowledge of statistical modeling, machine learning, and mathematical optimization Understanding of hardware and software development and validation process Familiarity with JIRA or similar task/feature tracking systems Knowledge of automation, including robotics Experience with software and automation coding (Labview, Python, C#, SQL) Ability to multitask, from developing technologies, project management, and training people throughout the introduction of multiple productive solutions, from inception and R&D to full-volume production Experience with problem solving tools and techniques: Practical Problem Solving, 8D etc. ADDITIONAL REQUIREMENTS: Ability to work flexible hours and occasional weekend support as needed Ability to work at elevated heights occasionally (scissor lifts and articulated boom lifts) Ability to pass Space Force / Air Force background checks for Cape Canaveral and Vandenberg Ability to travel to vendors and other SpaceX sites as needed (up to 25%) COMPENSATION AND BENEFITS: Pay range: NDE Engineer/Level I: $100,000.00 - $115,000.00/per year NDE Engineer/Level II: $110,000.00 - $135,000.00/per year Your actual level and base salary will be determined on a case-by-case basis and may vary based on the following considerations: job-related knowledge and skills, education, and experience. Base salary is just one part of your total rewards package at SpaceX. You may also be eligible for long-term incentives, in the form of company stock or long-term cash awards, as well as potential discretionary bonuses and the ability to purchase additional stock at a discount through an Employee Stock Purchase Plan. You will also receive access to comprehensive medical, vision, and dental coverage, access to a 401(k) retirement plan, short and long-term disability insurance, life insurance, paid parental leave, and various other discounts and perks. You may also accrue 3 weeks of paid vacation and will be eligible for 10 or more paid holidays per year. Employees accrue paid sick leave pursuant to Company policy which satisfies or exceeds the accrual, carryover, and use requirements of the law. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permanent resident (aka green card holder), (iii) Refugee under 8 U.S.C. § 1157, or (iv) Asylee under 8 U.S.C. § 1158, or be eligible to obtain the required authorizations from the U.S. Department of State. Learn more about the ITAR here. SpaceX is an Equal Opportunity Employer; employment with SpaceX is governed on the basis of merit, competence and qualifications and will not be influenced in any manner by race, color, religion, gender, national origin/ethnicity, veteran status, disability status, age, sexual orientation, gender identity, marital status, mental or physical disability or any other legally protected status. Applicants wishing to view a copy of SpaceX’s Affirmative Action Plan for veterans and individuals with disabilities, or applicants requiring reasonable accommodation to the application/interview process should reach out to EEOCompliance@spacex.com.",
       "company": "SpaceX",
       "degree_rule": "Bachelor's degree in an engineering discipline, physics, or computer science 1+ years of hands-on technical engineering experience PREFERRED SKILLS AND EXPERIENCE: Master’s degree or PhD i",
@@ -61470,6 +61508,92 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8512827002?gh_jid=8512827002",
       "work_authorization_signal": null,
       "years": 1
+    },
+    {
+      "basic_qualifications": "Completed commercial training, a degree in business, or an equivalent qualification At least three years of relevant professional experience, ideally in office administration, executive assistance, office management, operations, or a similar role Excellent German and good English skills, both written and spoken Confident working with modern digital tools, including Google Workspace and Slack, and comfortable learning new systems quickly Good practical AI skills and an interest in using AI tools to work faster, research information, structure tasks, and improve everyday processes Strong organisational skills and the ability to independently prioritise and manage multiple tasks A proactive and hands-on working style — you notice what needs to be done and are comfortable getting started without waiting for detailed instructions A solution-oriented mindset and genuine interest in improving processes and the office environment Reliable, resilient, flexible, and comfortable working in a dynamic international environment",
+      "company": "Exolaunch",
+      "degree_rule": "degree in business, or an equivalent qualification At least three years of relevant professional experience, ideally in office administration, executive assistance, office management, op",
+      "department": "Operations",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2571248"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "quality"
+          ],
+          "reason": "Structural steel execution"
+        },
+        {
+          "job_evidence": [
+            "planning"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 20,
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "degree in business, or an equivalent qualification At least three years of relevant professional experience, ideally in office administration, executive assistance, office management, op",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_leadership",
+          "requirement_evidence": {
+            "excerpt": "leadership (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": null,
+      "job_id": "exolaunch:2571248",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Not relevant",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Office Coordinator (m/f/d)",
+      "trade_requirements": [],
+      "travel_expectations": "ical solutions Organising appointments, meetings, internal events, and business travel, and supporting ad-hoc internal projects Acting as an all-round office helper : preparing refreshments, resetting meeting rooms, maintaining kitchen and common areas, and proactively taking care of anything that needs doing Providing backup support for our JF",
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2571248",
+      "work_authorization_signal": null,
+      "years": null
     },
     {
       "basic_qualifications": "Bachelor’s degree in engineering discipline 1+ years of experience in manufacturing, supply chain, logistics, and/or inventory management (including school projects, clubs, or internships) PREFERRED SKILLS AND EXPERIENCE: Master's degree in engineering or supply chain 1+ year of experience with CAD software, SQL, business intelligence tools (e.g. Power BI, Grafana), analysis tools (Python/R, Minitab, Excel, etc.), or discrete event modeling tools Experience as an industrial, operations, quality, process, or manufacturing engineer in a manufacturing environment Proficiency with statistics, data analysis, cost/benefit analysis, and visualization Experience with inventory, production, and capacity planning (including MRP/ERP systems) Proficient in identifying system enhancement opportunities, understanding end-user requirements, and the ability to translate requirement needs into design requirements Experience with Lean, six sigma, and related production principles Experience with data analytics Strong communication skills and the ability to make presentations to engineering teams, internal customers, and leadership",
@@ -86440,6 +86564,97 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8586083002?gh_jid=8586083002",
       "work_authorization_signal": null,
       "years": 1
+    },
+    {
+      "basic_qualifications": "Bachelor’s or Master’s degree in structural, mechanical or space engineering or a similar field. 5+ years of engineering work experience. Experience in customer-facing work and sales work. Excellent written and spoken English. Excellent technical communication skills. Strong experience in working with CAD software such as SolidWorks. Strong sense of style and form to be able to integrate Exolaunch style into documentation and hardware design. Positive attitude and ability to work in a highly integrated team setting. Ability to work in a fast-paced and demanding environment. Flexibility for travel, occasionally at short notice This role is based in Berlin. Candidates must either currently reside in Berlin or be open to relocating.",
+      "company": "Exolaunch",
+      "degree_rule": "Bachelor’s or Master’s degree in structural, mechanical or space engineering or a similar field",
+      "department": "Product Management",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2782501"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation",
+            "planning"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 16,
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "Bachelor’s or Master’s degree in structural, mechanical or space engineering or a similar field",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "5+ years (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:solidworks",
+          "requirement_evidence": {
+            "excerpt": "solidworks",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": null,
+      "job_id": "exolaunch:2782501",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel",
+        "solidworks"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Product Manager - EXOtube",
+      "trade_requirements": [],
+      "travel_expectations": "ivate new business opportunities. The position requires flexibility for regular travel, including short-notice trips. You should be comfortable with traveling approximately at 10-15% of your work time. Bachelor’s or Master’s degree in structural, mechanica",
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2782501",
+      "work_authorization_signal": null,
+      "years": 5
     },
     {
       "basic_qualifications": "High school diploma or equivalency certificate 1+ years of experience in an administrative role PREFERRED SKILLS AND EXPERIENCE: Strong computer skills, familiar with the full suite of MS Office products 1+ years of Inventory experience and experience organizing files and documents Knowledge of MRP/ERP systems Experience in aerospace, automotive, semiconductor, or electronic manufacturing environment SQL and Tableau experience APICS certification",
@@ -117704,6 +117919,97 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8761360002?gh_jid=8761360002",
       "work_authorization_signal": null,
       "years": 1
+    },
+    {
+      "basic_qualifications": "University degree in Electrical Engineering, Electronics Engineering, Aerospace Engineering, or a related technical field. At least 3 years of relevant professional experience in electronics, hardware development, embedded systems, technical product ownership, or a similar technical role. Solid understanding of electronic devices, hardware systems, technical documentation, schematics, testing, and troubleshooting. Ability to understand complex technical topics and translate them into clear explanations for technical and non-technical stakeholders. Experience working with external contractors, suppliers, or engineering partners is a strong plus. Structured, analytical, and hands-on working style, with the ability to work independently and take ownership. Strong organizational skills and the ability to coordinate technical topics across different stakeholders. Team-oriented mindset, curiosity, and willingness to build deep product knowledge over time. Strong interpersonal skills and confidence working with mission management, engineering teams, customers, and external partners. Excellent written and spoken English skills are required; German is considered a plus.",
+      "company": "Exolaunch",
+      "degree_rule": "degree in Electrical Engineering, Electronics Engineering, Aerospace Engineering, or a related technical field",
+      "department": "Electronics",
+      "evidence_provenance": {
+        "job": {
+          "detail_snapshot": null,
+          "source": "public_job_posting",
+          "url": "https://www.exolaunch.com/careers/job/2632283"
+        }
+      },
+      "experience_in_lieu": null,
+      "first_published": null,
+      "fit_reasons": [
+        {
+          "job_evidence": [
+            "documentation"
+          ],
+          "reason": "Planning and technical documentation"
+        },
+        {
+          "job_evidence": "Berlin, Germany",
+          "reason": "Preferred location"
+        }
+      ],
+      "fit_score": 14,
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "degree in Electrical Engineering, Electronics Engineering, Aerospace Engineering, or a related technical field",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "3+ years (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_trade:electrical",
+          "requirement_evidence": {
+            "excerpt": "electrical",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
+      "itar_signal": null,
+      "job_id": "exolaunch:2632283",
+      "location": "Berlin, Germany",
+      "potentially_relevant": false,
+      "preferred_qualifications": null,
+      "recommended_profile_focus": "A",
+      "requisition_id": null,
+      "role_family": "Other",
+      "salary": null,
+      "shift_expectations": null,
+      "soft_gaps": [],
+      "software_requirements": [
+        "excel"
+      ],
+      "source_id": "exolaunch",
+      "status": "RED",
+      "title": "Technical Product Manager, Electronics (m/w/d)",
+      "trade_requirements": [
+        "electrical"
+      ],
+      "travel_expectations": null,
+      "updated_at": null,
+      "url": "https://www.exolaunch.com/careers/job/2632283",
+      "work_authorization_signal": null,
+      "years": 3
     },
     {
       "basic_qualifications": "Bachelor’s degree in mechanical engineering, aerospace engineering, electrical engineering, or other engineering field 1+ years of hands-on experience with mechanical systems, structural systems, propulsion systems, fluid systems, flight hardware, or test operations PREFERRED SKILLS AND EXPERIENCE: 2+ years of hands-on experience with mechanical systems, structural systems, propulsion systems, fluid systems, flight hardware, or test operations Strong interpersonal skills and ability to work effectively in a team environment, accomplishing tasks with limited resources at a rapid pace Knowledge of hazardous systems (cryogenic, flammable, hypergolic, pyrophoric) and high-pressure system design and handling Strong multitasking abilities with a high degree of ownership in project management, consistently driving projects from planning through to successful completion Demonstrated leadership in high-pressure situations, with the ability to provide clear and decisive guidance to fellow teammates during high-risk operations Familiarity with instrumentation and control components (pressure transducers, thermocouples, resistance temperature detectors (RTDs), strain gauges, accelerometers, flow meters, load cells, relays, solenoids, pneumatic valves) Experience using 3D modeling software (Siemens NX, Inventor, CATIA, etc.) Experience with at least one coding language (Python, Matlab, C, C++, Java, Visual Basic) Experience reviewing data from anomalies and identifying root causes Experience writing and maintaining test procedures and hardware work instructions Creative ability to imagine and design from scratch, while retaining low-cost, reliability, efficiency, and maintainability Ability to read, understand, and apply technical manuals, data reports, mechanical schematics, electrical schematics and design specifications Ability to communicate clearly, confidently, and effectively in both individual and group settings – candidates should enjoy working on a team and be able to work efficiently with others, including stressful situations such as rapid pace operations and times of limited resources",
@@ -156296,7 +156602,7 @@
       "years": 2
     },
     {
-      "basic_qualifications": null,
+      "basic_qualifications": "Erfolgreich abgeschlossene technische Ausbildung, z.B. als Industriemechaniker, Mechatroniker, Prüftechniker oder in einem vergleichbaren Berufsfeld; alternativ relevante Berufserfahrung in der technischen Qualitätssicherung oder -kontrolle. Eine Weiterbildung zum Maschinentechniker o.Ä. wirkt sich positiv aus auf den Verantwortungsbereich und Vergütung. Erfahrung im Umgang mit Hardware und Werkzeugen. Gute Deutsch- und Englischkenntnisse in Wort und Schrift. Sicherer Umgang mit Microsoft Office. Kontaktfreudige Persönlichkeit, die die Fähigkeit und den Wunsch zu selbständigem Arbeiten unter Beweis stellen möchte Sehr sorgfältige, strukturierte und pflichtbewusste Arbeitsweise mit Blick fürs Detail. Teamfähig, lernwillig, souverän im Umgang mit konstruktiver Kritik. Führerschein B Kran- oder Staplerführerschein von Vorteil.",
       "company": "Exolaunch",
       "degree_rule": null,
       "department": "Engineering",
@@ -159313,7 +159619,7 @@
       "years": 3
     },
     {
-      "basic_qualifications": null,
+      "basic_qualifications": "Berufserfahrung: Mindestens 4 Jahre fundierte Berufserfahrung in der internationalen Logistik, der operativen Zollabwicklung und der Exportkontrolle. Branchenerfahrung in der Luft- und Raumfahrt oder High-Tech-Logistik ist ein klares Plus, aber keine zwingende Voraussetzung – entscheidend ist deine fachliche Tiefe im Zollwesen. Ausbildung: Erfolgreich abgeschlossene Ausbildung zum Kaufmann (m/w/d) für Spedition und Logistikdienstleistung, geprüfter Fachwirt (m/w/d) für Güterverkehr/Zoll oder ein vergleichbares Studium mit Schwerpunkt Logistik/Außenwirtschaft. System- & Fach-Expertise (ATLAS & ELAN-K2): Nachweisbare, tiefe Praxiskenntnisse in der direkten Anwendung von ATLAS sowie fundierte Erfahrung im Umgang mit dem ELAN-K2-Portal. Zollrechtliches Know-how: Sehr sichere Kenntnisse im deutschen und europäischen Außenwirtschaftsrecht (AWG/AWV, EU-Dual-Use-Verordnung). Umfassendes Wissen im Bereich der Zollverfahren mit wirtschaftlicher Bedeutung (z. B. vorübergehende Verwendung/Einfuhr, Aktive Veredelung). Sprachkenntnisse: Verhandlungssichere Deutschkenntnisse (zwingend erforderlich für die Behördenkommunikation) sowie fließende Englischkenntnisse in Wort und Schrift. Arbeitsweise: Du arbeitest extrem präzise, absolut compliance-konform und risikobewusst. Auch bei zeitkritischen Launch-Terminen oder logistischen Engpässen behältst du stets einen kühlen Kopf und den Überblick.",
       "company": "Exolaunch",
       "degree_rule": null,
       "department": "Logistics & Supply Chain",
@@ -161397,9 +161703,9 @@
       "years": 1
     },
     {
-      "basic_qualifications": null,
+      "basic_qualifications": "Minimum of 5 years of progressive leadership experience in strategic marketing, global brand management, and high-level communications. Proven expertise in luxury branding, premium product positioning, and hands-on brand ownership within high-tech, aerospace, or premium enterprise sectors. Fluency and mastery of the English language with exceptional executive copywriting and storytelling capabilities. Bachelor’s or Master’s degree in Marketing, Communications, Business Administration, or a related field. Real-world experience may be substituted based on past performance. Demonstrated track record of directing complex digital campaigns, media relations strategies, and high-profile global industry events. Strong analytical capability to evaluate marketing ROI, campaign performance metrics, and market trends to drive business growth. Practical understanding of online journalism, blogging, and social media A grasp on vocabulary and concepts in the space and satellite industry, or can quickly learn them A strong love for space/science/technology and willingness to learn the industry, inside and out",
       "company": "Exolaunch",
-      "degree_rule": null,
+      "degree_rule": "mastery of the English language with exceptional executive copywriting and storytelling capabilities",
       "department": "Operations",
       "evidence_provenance": {
         "job": {
@@ -161417,7 +161723,35 @@
         }
       ],
       "fit_score": 8,
-      "hard_gates": [],
+      "hard_gates": [
+        {
+          "candidate_status": "unsupported",
+          "gate": "degree",
+          "requirement_evidence": {
+            "excerpt": "mastery of the English language with exceptional executive copywriting and storytelling capabilities",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_years",
+          "requirement_evidence": {
+            "excerpt": "5+ years (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        },
+        {
+          "candidate_status": "unknown",
+          "gate": "required_leadership",
+          "requirement_evidence": {
+            "excerpt": "leadership (general)",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
       "itar_signal": null,
       "job_id": "exolaunch:2803946",
       "location": "Berlin, Germany",
@@ -161438,7 +161772,7 @@
       "updated_at": null,
       "url": "https://www.exolaunch.com/careers/job/2803946",
       "work_authorization_signal": null,
-      "years": null
+      "years": 5
     },
     {
       "basic_qualifications": "Bachelor’s degree; OR high school diploma or equivalency certificate AND 3+ years of experience in inventory analytics 1+ years of experience in operations, manufacturing, or supply chain PREFERRED SKILLS AND EXPERIENCE: Proficient in use of SQL in operations analysis Experience building and using business intelligence tools such PowerBI or Tableau Proficient in Microsoft Office applications, especially advanced Excel (e.g., pivot tables, VLOOKUP, complex formulas) for data aggregation and analysis Ability to analyze data and check for accuracy/errors based on process and systems knowledge Experience with inventory management and production systems (MRP/ERP systems) Demonstrated capability to manage projects with tight timelines and ambiguous problem statements Understanding of Supply Chain and Inventory Control fundamentals Superior attention to details Experience sharing information effectively and ability to influence decisions Experience with lean, six sigma or related operational efficiency principles Ability to work autonomously or as a team in a highly demanding and fast paced environment Excellent written and communication skills",
@@ -161609,50 +161943,6 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8753709002?gh_jid=8753709002",
       "work_authorization_signal": null,
       "years": 3
-    },
-    {
-      "basic_qualifications": null,
-      "company": "Exolaunch",
-      "degree_rule": null,
-      "department": "Launch & Engineering",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://www.exolaunch.com/careers/job/2782697"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Berlin, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 8,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "exolaunch:2782697",
-      "location": "Berlin, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "exolaunch",
-      "status": "RED",
-      "title": "Mechanical Design Engineer - EXOtube (CAD Specialist)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://www.exolaunch.com/careers/job/2782697",
-      "work_authorization_signal": null,
-      "years": null
     },
     {
       "basic_qualifications": "Bachelor’s degree in materials science, mechanical engineering, electrical engineering, physics, chemical engineering, or other STEM discipline 1+ years of experience in hardware development, failure analysis, or reliability engineering (internships, co-ops, and extracurriculars acceptable) PREFERRED SKILLS AND EXPERIENCE : Master’s degree in STEM discipline Excellent problem-solving, communication, and technical writing skills Experience with electronics, mechanical design, analysis, and knowledge of RF principles Direct experience with hardware failure analysis tools and techniques (SEM, FIB, EDS, cross-sectioning, fault isolation, or equivalent) Experience analyzing complex datasets with Python, AI",
@@ -162478,50 +162768,6 @@
       "years": null
     },
     {
-      "basic_qualifications": null,
-      "company": "Exolaunch",
-      "degree_rule": null,
-      "department": "Operations",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://www.exolaunch.com/careers/job/2571248"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Berlin, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 8,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "exolaunch:2571248",
-      "location": "Berlin, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Not relevant",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "exolaunch",
-      "status": "RED",
-      "title": "Office Coordinator (m/f/d)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://www.exolaunch.com/careers/job/2571248",
-      "work_authorization_signal": null,
-      "years": null
-    },
-    {
       "basic_qualifications": "Bachelor's degree. 1+ years in building and operating metric based dashboards. 1+ years of experience building data structures and query optimizations. PREFERRED SKILLS AND EXPERIENCE: Experience in a manufacturing or engineering environment. Experience working in in a factory or production environment. 3+ years of experience with SQL, Python, C++, Tableau, or PowerBI.",
       "company": "SpaceX",
       "degree_rule": "Bachelor's degree",
@@ -162599,7 +162845,7 @@
       "years": 1
     },
     {
-      "basic_qualifications": null,
+      "basic_qualifications": "Qualifikation: Eine erfolgreich abgeschlossene kaufmännische oder technische Ausbildung (z. B. Industriekaufmann/-frau, technischer Fachwirt) oder eine vergleichbare Qualifikation. Ein gutes technisches Grundverständnis für Hardwarekomponenten ist erforderlich. Erfahrung: Mindestens 4 Jahre einschlägige Berufserfahrung im technischen Einkauf oder in der Materialwirtschaft. Sicherer Umgang mit mehreren parallelen Bestellprozessen sowie Erfahrung in der Koordination von Lieferanten und internen Stakeholdern. Sprachkenntnisse: Fließende Deutsch- und Englischkenntnisse in Wort und Schrift für die Kommunikation in einem internationalen Umfeld. Software: Sehr gute Anwenderkenntnisse in MS Excel oder Google Sheets (inkl. strukturierter Datenpflege und grundlegender Auswertungen). Erfahrung im Umgang mit ERP-Systemen ist von Vorteil. Arbeitsweise: Ein extrem hohes Maß an Detailorientierung sowie eine strukturierte und eigenverantwortliche Arbeitsweise. Proaktive Nachverfolgung von Bestellungen, Lieferterminen und offenen Themen, um Engpässe frühzeitig zu vermeiden. Fähigkeit, Prioritäten zu setzen und auch bei mehreren parallelen Projekten den Überblick zu behalten. Sorgfältiger Umgang mit Daten und Dokumentation, um eine hohe Datenqualität im System sicherzustellen.",
       "company": "Exolaunch",
       "degree_rule": null,
       "department": "Logistics & Supply Chain",
@@ -162619,7 +162865,17 @@
         }
       ],
       "fit_score": 8,
-      "hard_gates": [],
+      "hard_gates": [
+        {
+          "candidate_status": "unknown",
+          "gate": "required_software:excel",
+          "requirement_evidence": {
+            "excerpt": "excel",
+            "section": "required qualifications",
+            "source": "job_posting"
+          }
+        }
+      ],
       "itar_signal": null,
       "job_id": "exolaunch:2570347",
       "location": "Berlin, Germany",
@@ -163075,50 +163331,6 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8601643002?gh_jid=8601643002",
       "work_authorization_signal": null,
       "years": 1
-    },
-    {
-      "basic_qualifications": null,
-      "company": "Exolaunch",
-      "degree_rule": null,
-      "department": "Product Management",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://www.exolaunch.com/careers/job/2782501"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Berlin, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 8,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "exolaunch:2782501",
-      "location": "Berlin, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "exolaunch",
-      "status": "RED",
-      "title": "Product Manager - EXOtube",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://www.exolaunch.com/careers/job/2782501",
-      "work_authorization_signal": null,
-      "years": null
     },
     {
       "basic_qualifications": "High school diploma or equivalency certificate 6+ months working in a production environment 6+ months experience handling or working with machined hardware PREFERRED SKILLS AND EXPERIENCE: 2+ years of machining experience Experience using pallet systems and cells Experience with micron level tolerance parts and how to handle/inspect them Experience working with aluminum and copper",
@@ -169065,50 +169277,6 @@
       "years": 1
     },
     {
-      "basic_qualifications": null,
-      "company": "Exolaunch",
-      "degree_rule": null,
-      "department": "Electronics",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://www.exolaunch.com/careers/job/2632283"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Berlin, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 8,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "exolaunch:2632283",
-      "location": "Berlin, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "exolaunch",
-      "status": "RED",
-      "title": "Technical Product Manager, Electronics (m/w/d)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://www.exolaunch.com/careers/job/2632283",
-      "work_authorization_signal": null,
-      "years": null
-    },
-    {
       "basic_qualifications": "High school diploma or equivalency certificate 1+ years of experience as a technical/on-the-job trainer, conducting hands-on, instructor-led machining or CNC courses PREFERRED SKILLS AND EXPERIENCE: Bachelor’s degree in manufacturing, mechanical engineering, industrial education, or related field 5+ years of hands-on experience in a machine shop environment 5+ years of experience creating training materials and delivering technical training programs Strong knowledge of Okuma mill-turns, mills, and lathes Experience programming and operating Okuma CNC systems (G-code, M-code, tool offsets, work coordinate systems) Proficiency with the development of training programs and materials, including student assessments and hands-on machining exercises Ability to independently analyze, review, and research machining processes and applicable standards In-depth understanding of production machining processes (CNC milling, turning, mill-turn operations, tooling, fixturing, and precision measurement) Excellent oral and written training and communication skills Proficiency with Microsoft Office and experience with video editing or online training module development Demonstrated experience as a team-oriented self-starter, eager to meet and exceed objectives with the ability to handle a multi-project environment Ability to read and interpret engineering drawings, GD&T, and machining specifications",
       "company": "SpaceX",
       "degree_rule": "Bachelor’s degree in manufacturing, mechanical engineering, industrial education, or related field 5+ years of hands-on experience in a machine shop environment 5+ years of experience crea",
@@ -169289,50 +169457,6 @@
       "url": "https://boards.greenhouse.io/spacex/jobs/8790312002?gh_jid=8790312002",
       "work_authorization_signal": null,
       "years": 2
-    },
-    {
-      "basic_qualifications": null,
-      "company": "Exolaunch",
-      "degree_rule": null,
-      "department": "Engineering",
-      "evidence_provenance": {
-        "job": {
-          "detail_snapshot": null,
-          "source": "public_job_posting",
-          "url": "https://www.exolaunch.com/careers/job/2504264"
-        }
-      },
-      "experience_in_lieu": null,
-      "first_published": null,
-      "fit_reasons": [
-        {
-          "job_evidence": "Berlin, Germany",
-          "reason": "Preferred location"
-        }
-      ],
-      "fit_score": 8,
-      "hard_gates": [],
-      "itar_signal": null,
-      "job_id": "exolaunch:2504264",
-      "location": "Berlin, Germany",
-      "potentially_relevant": false,
-      "preferred_qualifications": null,
-      "recommended_profile_focus": "A",
-      "requisition_id": null,
-      "role_family": "Other",
-      "salary": null,
-      "shift_expectations": null,
-      "soft_gaps": [],
-      "software_requirements": [],
-      "source_id": "exolaunch",
-      "status": "RED",
-      "title": "Test Engineer - Mechanical Space Systems (m/w/d)",
-      "trade_requirements": [],
-      "travel_expectations": null,
-      "updated_at": null,
-      "url": "https://www.exolaunch.com/careers/job/2504264",
-      "work_authorization_signal": null,
-      "years": null
     },
     {
       "basic_qualifications": "High school diploma or equivalency certificate 2+ years of experience in production manufacturing or test environments PREFERRED SKILLS AND EXPERIENCE : Able to read engineering blueprints and complete basic math Able to read and interpret fluid and/or electrical schematics Able to work independently and problem-solve efficiently with minimal supervision Willingness to provide constructive feedback to engineering and production teams to improve test system infrastructure, designs, processes, and parts Strong attention to detail and ability to maintain an organized workspace Proficient computer skills; comfortable using email and Microsoft Office suite Experience using CAD to design basic parts",
