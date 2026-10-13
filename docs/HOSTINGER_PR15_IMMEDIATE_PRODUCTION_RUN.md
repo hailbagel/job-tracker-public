@@ -255,3 +255,43 @@ Return only non-secret evidence:
 - next timer execution in UTC
 
 Do not return private profile contents, SSH material, tokens, or credentials.
+
+---
+
+## One-paste Hostinger launcher
+
+Copy the entire block below into a **new Hostinger VPS root terminal**. It checks the clean checkout, updates `main`, confirms the corrected runbook is installed, and executes the **first** fenced bash block from this file (the full preflight, one-time production run and verification). Keep this launcher below the main block to prevent it from extracting itself.
+
+**If any step fails, do not rerun.** Save the non-secret terminal output for investigation.
+
+```bash
+bash <<'HOSTINGER'
+set -euo pipefail
+
+cd /opt/vutrulabs/job-tracker-public
+
+git switch main
+
+if [ -n "$(git status --porcelain=v1 --untracked-files=all)" ]; then
+  echo "STOP: Git worktree is not clean"
+  exit 1
+fi
+
+git pull --ff-only origin main
+
+FILE=docs/HOSTINGER_PR15_IMMEDIATE_PRODUCTION_RUN.md
+
+grep -q 'HYIMPULSE CONFIG OK' "$FILE" || {
+  echo "STOP: Corrected runbook missing"
+  exit 1
+}
+
+grep -q '^```bash$' "$FILE" || {
+  echo "STOP: Runbook command block missing"
+  exit 1
+}
+
+awk '/^```bash$/{run=1;next} run && /^```$/{exit} run{print}' "$FILE" | bash
+
+HOSTINGER
+```
