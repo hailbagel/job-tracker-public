@@ -52,6 +52,8 @@ Before running:
 
 ## Single bounded Hostinger command block
 
+The previous version used whitespace-sensitive `grep` checks and stopped before starting the service because the compact JSON registry uses `"id":"hyimpulse"`. This corrected version parses JSON instead. A successful configuration check alone is **not** proof that the publication ran.
+
 Run as root in the Hostinger VPS terminal:
 
 ```bash
@@ -95,8 +97,18 @@ if [ "$LOCAL_BEFORE" != "$REMOTE_BEFORE" ]; then
 fi
 
 echo "=== VERIFY PR15 CODE PRESENT ==="
-grep -n '"adapter": "personio_xml"' configs/sources.json
-grep -n '"id": "hyimpulse"' configs/sources.json
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+registry = json.loads(Path("configs/sources.json").read_text(encoding="utf-8"))
+hyimpulse = next(source for source in registry["sources"] if source["id"] == "hyimpulse")
+print("hyimpulse_adapter=", hyimpulse.get("adapter"))
+print("hyimpulse_mode=", hyimpulse.get("acquisition_mode"))
+if hyimpulse.get("adapter") != "personio_xml" or hyimpulse.get("acquisition_mode") != "api":
+    raise SystemExit("STOP: HyImpulse Personio XML configuration is not deployed")
+print("HYIMPULSE CONFIG OK")
+PY
 
 echo "=== START ONE PRODUCTION RUN THROUGH SYSTEMD ==="
 set +e
@@ -161,11 +173,22 @@ for row in latest[:10]:
     print(" -", row.get("title", ""))
 
 meta_path = base / "acquisition.json"
-if meta_path.exists():
-    meta = json.loads(meta_path.read_text(encoding="utf-8"))
-    print("acquisition_status=", meta.get("status"))
-    print("acquisition_adapter=", meta.get("adapter"))
-    print("coverage_complete=", meta.get("coverage_complete"))
+if not meta_path.exists():
+    raise SystemExit("STOP: missing HyImpulse acquisition.json")
+meta = json.loads(meta_path.read_text(encoding="utf-8"))
+print("acquisition_status=", meta.get("status"))
+print("acquisition_adapter=", meta.get("adapter"))
+print("coverage_complete=", meta.get("coverage_complete"))
+
+if not latest or len(latest) != len(details):
+    raise SystemExit("STOP: HyImpulse latest/detail row counts are empty or inconsistent")
+if apply_now or unknown_location or unknown_department:
+    raise SystemExit("STOP: HyImpulse data still contains APPLY NOW / Unknown placeholders")
+if not any((row.get("mission") or "").strip() for row in details):
+    raise SystemExit("STOP: HyImpulse detail descriptions are missing")
+if meta.get("adapter") != "personio_xml" or meta.get("status") != "success" or meta.get("coverage_complete") is not True:
+    raise SystemExit("STOP: HyImpulse metadata does not confirm successful Personio collection")
+print("HYIMPULSE DATA QUALITY OK")
 PY
 
 echo "=== FINAL GIT STATE ==="
@@ -208,7 +231,8 @@ The run is accepted only if all of these are true:
 - `apply_now_titles=0`
 - `unknown_locations=0`
 - `unknown_departments=0`
-- acquisition status is successful/complete according to the repository metadata contract
+- `HYIMPULSE CONFIG OK` and `HYIMPULSE DATA QUALITY OK` are present; acquisition uses `personio_xml`, status `success`, and complete coverage
+- at least one detail record contains a non-empty mission description
 - the publication log reports a successful publication/push
 - `local_after == remote_after`
 - `git status --short` is empty
