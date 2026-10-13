@@ -1,14 +1,14 @@
 # Patrick Space/Rocket targets
 
-Generated: 2026-10-13T10:25:55.896258Z
-Scanned: 2824 | Potentially relevant: 347 | Strong: 2
+Generated: 2026-10-13T11:26:37.816734Z
+Scanned: 2826 | Potentially relevant: 349 | Strong: 2
 
 ## Source coverage
 
 - SpaceX (`spacex`): success; complete=true; jobs=2741
 - Rocket Factory Augsburg (`rocket-factory-augsburg`): success; complete=true; jobs=52
 - Exolaunch (`exolaunch`): success; complete=true; jobs=11
-- HyImpulse (`hyimpulse`): success; complete=true; jobs=20
+- HyImpulse (`hyimpulse`): success; complete=true; jobs=22
 
 ## Top 25
 
@@ -180,16 +180,16 @@ Scanned: 2824 | Potentially relevant: 347 | Strong: 2
 
 ## New relevant jobs
 
-- [SpaceX: Construction Project Manager, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8882074002?gh_jid=8882074002) — Starbase, TX — RED 65
-  - Role family: Construction Project Management
-  - Fit reasons: Role family is configured as an interest, Industrial construction and project leadership, Structural steel execution, Planning and technical documentation
-  - Hard gates: itar=unknown, degree=unsupported, required_domain=unknown, required_leadership=unknown, required_software:autocad=unknown, required_software:procore=unknown, required_trade:plumbing=unknown, required_trade:electrical=unknown, required_trade:hvac=unknown
+- [HyImpulse: Team Lead – Test Facilities (UK) (m/f/d)](https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2822953) — Glasgow — RED 65
+  - Role family: Facilities / Infrastructure
+  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
+  - Hard gates: degree=unsupported, required_trade:electrical=unknown
   - Soft gaps: []
   - Recommended profile focus: A
-- [SpaceX: Quality Inspector, Data Center (Starlink)](https://boards.greenhouse.io/spacex/jobs/8872084002?gh_jid=8872084002) — Memphis, TN — UNKNOWN 61
-  - Role family: QA/QC
-  - Fit reasons: Role family is configured as an interest, Structural steel execution, Planning and technical documentation
-  - Hard gates: itar=unknown, required_years=unknown, required_software:excel=unknown
+- [HyImpulse: Structural Design Engineer (m/f/d)](https://hyimpulse-technologies-gmbh.jobs.personio.com/job/2611021) — Neuenstadt am Kocher — RED 53
+  - Role family: Structural / Steel
+  - Fit reasons: Role family is configured as an interest, Large industrial project execution
+  - Hard gates: degree=unsupported
   - Soft gaps: []
   - Recommended profile focus: A
 
@@ -199,12 +199,7 @@ _None._
 
 ## Removed jobs
 
-- [SpaceX: Tooling Inspector (Starship) - Level 4/5](https://boards.greenhouse.io/spacex/jobs/8716792002?gh_jid=8716792002) — Hawthorne, CA — UNKNOWN 65
-  - Role family: QA/QC
-  - Fit reasons: Role family is configured as an interest, Structural steel execution, Large industrial project execution, Planning and technical documentation
-  - Hard gates: itar=unknown, required_years=unknown, required_leadership=unknown, required_software:excel=unknown
-  - Soft gaps: []
-  - Recommended profile focus: A
+_None._
 
 ## SpaceX Louisiana / Pecan Island
 

@@ -1,38 +1,38 @@
 location,count
-"Hawthorne, CA",729
-"Bastrop, TX",550
-"Starbase, TX",409
-"Redmond, WA",396
-"Cape Canaveral, FL",115
-"Palo Alto, CA",110
-"McGregor, TX",77
-"Woodinville, WA",70
-"Washington, DC",57
-"Memphis, TN",43
-"Austin, TX",31
-"Vandenberg, CA",30
-"College Station, TX",25
-"Irvine, CA",21
-"Canandaigua, NY",13
-Flexible - Any SpaceX Site,12
-"Sunnyvale, CA",9
-"Pecan Island, LA",5
-"Bloomfield, CT",5
-"Westminster, MD",5
-"New York City, NY",4
 "Anderson, TX",4
-Remote - TX,3
-"Long Beach, CA",3
-Remote - WA,2
+"Austin, TX",31
+"Bastrop, TX",550
 "Bellevue, WA",2
+"Bloomfield, CT",5
+"Canandaigua, NY",13
+"Cape Canaveral, FL",115
+"College Station, TX",25
+Flexible - Any SpaceX Site,12
+"Hawthorne, CA",729
+"Irvine, CA",21
+"Long Beach, CA",3
+"McGregor, TX",77
+"Memphis, TN",43
+"New York City, NY",4
+"Palo Alto, CA",110
+"Pecan Island, LA",5
+"Redmond, WA",396
 Remote - CA,2
+Remote - CO,1
+Remote - FL,1
 Remote - IL,1
 Remote - MI,1
-Remote - FL,1
-Remote - OH,1
+Remote - NC,1
 Remote - NY,1
+Remote - OH,1
 Remote - PA,1
 Remote - TN,1
-Remote - NC,1
-Remote - CO,1
+Remote - TX,3
+Remote - WA,2
+"Starbase, TX",409
+"Sunnyvale, CA",9
+"Vandenberg, CA",30
+"Washington, DC",57
+"Westminster, MD",5
+"Woodinville, WA",70
 TOTAL,2741

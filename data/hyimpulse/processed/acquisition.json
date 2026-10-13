@@ -1,12 +1,12 @@
 {
-  "acquisition_mode": "web",
-  "adapter": "html_job_links",
+  "acquisition_mode": "api",
+  "adapter": "personio_xml",
   "company": "HyImpulse",
   "coverage_complete": true,
-  "data_hash": "db1bfdeb75cfe4a7575136bc0139cc57b91fdc66d9b5b203efbbbbf2fafa1035",
-  "observed_at": "2026-10-13T10:25:44.861266Z",
+  "data_hash": "5636da90f678c3e72faf336b57ecfd8487c06cd400f735d8ab930640d69f4073",
+  "observed_at": "2026-10-13T11:26:23.918488Z",
   "reason": null,
-  "records_written": 20,
+  "records_written": 22,
   "source_id": "hyimpulse",
   "status": "success"
 }
