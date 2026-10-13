@@ -23,7 +23,7 @@ def check(yes, message):
     if not yes:
         report("FAIL", message)
 
-def read_csv(path, required=()):
+def read_csv(path, required=(), exact=()):
     if not path.is_file():
         raise ValueError(f"missing {path.relative_to(ROOT)}")
     with path.open(newline="", encoding="utf-8-sig") as fh:
@@ -31,6 +31,8 @@ def read_csv(path, required=()):
         header = reader.fieldnames or []
         if not header or len(header) != len(set(header)):
             raise ValueError(f"invalid CSV header: {path.relative_to(ROOT)}")
+        if exact and header != list(exact):
+            raise ValueError(f"unexpected CSV columns: {path.relative_to(ROOT)}")
         if not set(required).issubset(header):
             raise ValueError(f"missing required CSV columns: {path.relative_to(ROOT)}")
         rows = list(reader)
@@ -52,6 +54,18 @@ def verify_summary(source_id, jobs, summary, field):
         found[group] = number
     check(found.pop("TOTAL", None) == len(jobs), f"{source_id}/{field} summary: TOTAL disagrees")
     check(found == dict(actual), f"{source_id}/{field} summary: groups disagree")
+
+def summarize_neura_auxiliary(auxiliary_path, current_path):
+    auxiliary = read_csv(
+        auxiliary_path,
+        exact=("title", "location", "company", "department"),
+    )
+    current = read_csv(current_path, ("title", "link"))
+    return (
+        f"NEURA jobs_structured.csv is a retained four-column legacy snapshot "
+        f"({len(auxiliary)} entries); jobs_latest.csv has {len(current)} current "
+        "entries. Count parity is not expected."
+    )
 
 def check_feed(area, target):
     directory = DATA / area / "processed"
@@ -149,10 +163,13 @@ def main():
                 check(item.get("adapter") == "personio_xml", "hyimpulse: wrong acquisition adapter")
     neura_aux = DATA / "neura/processed/jobs_structured.csv"
     if neura_aux.is_file():
-        old = read_csv(neura_aux)
-        current = read_csv(DATA / "neura/processed/jobs_latest.csv")
-        if len(old) != len(current):
-            report("WARN", f"NEURA auxiliary jobs_structured.csv={len(old)} vs current={len(current)}; review purpose")
+        try:
+            message = summarize_neura_auxiliary(
+                neura_aux, DATA / "neura/processed/jobs_latest.csv"
+            )
+            print(f"[INFO] {message}")
+        except (OSError, UnicodeError, csv.Error, ValueError) as error:
+            report("FAIL", f"NEURA legacy auxiliary data contract: {error}")
     contributors = [s for s in automated if s.get("sector") == "Space/Rocket" and "patrick" in s.get("tags", [])]
     expected_counts = {s["id"]: results[s["id"]]["records_written"] for s in contributors}
     check(all(s["id"] in succeeded for s in contributors), "Patrick source contributor missing/failed")

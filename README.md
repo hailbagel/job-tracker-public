@@ -144,6 +144,13 @@ retain a blank ID, and repeat normalization does not duplicate them. HyImpulse
 starts a clean history when transitioning from the old apply-link adapter to
 Personio, so its placeholder records are not carried into the normalized data.
 
+NEURA's tracked `jobs_structured.csv` is a retained four-column legacy snapshot
+(`title`, `location`, `company`, `department`), not a current acquisition
+output or canonical feed. The current NEURA API scraper writes
+`jobs_latest.csv` and `job_details.csv`; `jobs_latest.csv` is authoritative for
+the current postings. The legacy snapshot remains on the public allowlist, but
+its row count is not expected to match the current feed.
+
 Run selected registry sources with
 `python3 -m jobtracker.pipeline --source <source-id>`. Each source also writes
 `acquisition.json`, and the run writes `data/source_status.json`. Failed,
