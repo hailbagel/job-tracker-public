@@ -75,18 +75,32 @@ def _source_rows(source, data_root):
             "reason": str(exc),
             "jobs": 0,
         }
-    complete = (
+    details = {row.get("link"): row for row in details_rows}
+    acquisition_complete = (
         acquisition.get("status", "success") == "success"
         and acquisition.get("coverage_complete") is True
         and acquisition.get("records_written") == len(jobs)
         and bool(jobs)
     )
+    missing_detail_text = [
+        job for job in jobs
+        if not any(
+            str(details.get(job.get("link"), {}).get(field) or "").strip()
+            for field in ("mission", "requirements", "benefits")
+        )
+    ] if source.get("require_detail_text") else []
+    complete = acquisition_complete and not missing_detail_text
+    reason = acquisition.get("reason")
+    if acquisition_complete and missing_detail_text:
+        reason = (
+            f"{len(missing_detail_text)} current job(s) lack required detail text"
+        )
     coverage = {
         "source_id": source["id"],
         "company": source["company"],
         "status": acquisition.get("status", "success"),
         "coverage_complete": complete,
-        "reason": acquisition.get("reason"),
+        "reason": reason,
         "jobs": len(jobs) if complete else 0,
         "observed_at": acquisition.get("observed_at"),
         "acquisition_mode": source.get("acquisition_mode"),
@@ -94,7 +108,6 @@ def _source_rows(source, data_root):
     }
     if not complete:
         return [], coverage
-    details = {row.get("link"): row for row in details_rows}
     return [(job, details.get(job.get("link"), {})) for job in jobs], coverage
 
 

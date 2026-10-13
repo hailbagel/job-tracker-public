@@ -4,6 +4,7 @@ import hashlib
 import html
 import json
 import re
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
@@ -61,6 +62,75 @@ def _html_text(value):
     )
 
 
+class _JSONLDParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.scripts = []
+        self._script_type = None
+        self._script_parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() == "script":
+            self._script_type = dict(attrs).get("type", "").lower()
+            self._script_parts = []
+
+    def handle_data(self, data):
+        if self._script_type == "application/ld+json":
+            self._script_parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag.lower() == "script" and self._script_type is not None:
+            if self._script_type == "application/ld+json":
+                self.scripts.append("".join(self._script_parts))
+            self._script_type = None
+            self._script_parts = []
+
+
+class _DescriptionSectionsParser(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.sections = []
+        self._heading = ""
+        self._heading_tag = None
+        self._heading_parts = []
+        self._parts = []
+
+    def _finish_section(self):
+        value = _clean(" ".join(self._parts))
+        if self._heading or value:
+            self.sections.append((self._heading, value))
+        self._heading = ""
+        self._parts = []
+
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        if tag in {"h1", "h2", "h3", "h4"}:
+            self._finish_section()
+            self._heading_tag = tag
+            self._heading_parts = []
+        elif tag in _HTMLTextParser.BLOCK_TAGS and self._heading_tag is None:
+            self._parts.append(" ")
+
+    def handle_data(self, data):
+        if self._heading_tag is not None:
+            self._heading_parts.append(data)
+        else:
+            self._parts.append(data)
+
+    def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag == self._heading_tag:
+            self._heading = _clean(" ".join(self._heading_parts))
+            self._heading_tag = None
+            self._heading_parts = []
+        elif tag in _HTMLTextParser.BLOCK_TAGS and self._heading_tag is None:
+            self._parts.append(" ")
+
+    def close(self):
+        super().close()
+        self._finish_section()
+
+
 def _job(source, native_id, title, location, url, department="", **extra):
     native_id = _clean(native_id) or hashlib.sha256(url.encode()).hexdigest()[:16]
     return {
@@ -79,6 +149,64 @@ def _job(source, native_id, title, location, url, department="", **extra):
         "requirements": _clean(extra.get("requirements")),
         "benefits": _clean(extra.get("benefits")),
     }
+
+
+def _add_personio_description(descriptions, name, value, *, from_detail_page=False):
+    name = _clean(name).lower()
+    value = _clean(value)
+    if not value:
+        return
+    if any(term in name for term in ("benefit", "perk", "why us", "warum wir")):
+        section = "benefits"
+    elif any(
+        term in name
+        for term in (
+            "qualification", "qualifikation", "requirement", "anforderung",
+            "experience", "profile", "profil",
+        )
+    ):
+        section = "requirements"
+    elif "location" in name or "equal employment" in name:
+        return
+    elif from_detail_page and any(
+        term in name for term in ("how to apply", "application", "bewerb", "about us")
+    ):
+        return
+    else:
+        section = "mission"
+    descriptions[section].append(value)
+
+
+def _personio_page_descriptions(payload):
+    document = _JSONLDParser()
+    document.feed(
+        payload.decode("utf-8", "replace") if isinstance(payload, bytes) else str(payload)
+    )
+    for script in document.scripts:
+        structured = json.loads(script)
+        entries = structured if isinstance(structured, list) else [structured]
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            job_type = entry.get("@type", [])
+            if not isinstance(job_type, list):
+                job_type = [job_type]
+            description = entry.get("description")
+            if "JobPosting" not in job_type or not description:
+                continue
+            parser = _DescriptionSectionsParser()
+            parser.feed(str(description))
+            parser.close()
+            descriptions = {"mission": [], "requirements": [], "benefits": []}
+            for name, value in parser.sections:
+                _add_personio_description(
+                    descriptions, name, value, from_detail_page=True
+                )
+            return {
+                key: " ".join(values)
+                for key, values in descriptions.items()
+            }
+    return {"mission": "", "requirements": "", "benefits": ""}
 
 
 def greenhouse(source, fetch=_get):
@@ -101,6 +229,7 @@ def greenhouse(source, fetch=_get):
 def personio_xml(source, fetch=_get):
     root = ET.fromstring(fetch(source["adapter_config"]["url"]))
     jobs = []
+    detail_warnings = []
     seen_ids = set()
     positions = root.findall(".//position")
     for item in positions:
@@ -120,19 +249,35 @@ def personio_xml(source, fetch=_get):
         seen_ids.add(_clean(native_id))
         descriptions = {"mission": [], "requirements": [], "benefits": []}
         for description in item.findall("./jobDescriptions/jobDescription"):
-            name = _clean(description.findtext("name")).lower()
+            name = description.findtext("name")
             value = _html_text(description.findtext("value"))
-            if not value:
-                continue
-            if "benefit" in name or "perk" in name:
-                section = "benefits"
-            elif any(term in name for term in ("qualification", "requirement", "experience", "profile")):
-                section = "requirements"
-            elif "location" in name or "equal employment" in name:
-                continue
+            _add_personio_description(descriptions, name, value)
+
+        page_template = source["adapter_config"].get("job_detail_url_template")
+        if page_template and not any(descriptions.values()):
+            page_url = page_template.format(id=_clean(native_id))
+            try:
+                page = fetch(page_url)
+            except (OSError, urllib.error.URLError) as exc:
+                detail_warnings.append(
+                    f"Personio detail page for job {native_id} unavailable "
+                    f"({type(exc).__name__})"
+                )
             else:
-                section = "mission"
-            descriptions[section].append(value)
+                try:
+                    page_descriptions = _personio_page_descriptions(page)
+                except json.JSONDecodeError:
+                    detail_warnings.append(
+                        f"Personio detail page for job {native_id} has invalid structured data"
+                    )
+                else:
+                    for section, value in page_descriptions.items():
+                        if value:
+                            descriptions[section].append(value)
+                    if not any(page_descriptions.values()):
+                        detail_warnings.append(
+                            f"Personio detail page for job {native_id} has no usable description"
+                        )
 
         jobs.append(_job(
             source, native_id, title, item.findtext("office"), url,
@@ -142,7 +287,10 @@ def personio_xml(source, fetch=_get):
             requirements=" ".join(descriptions["requirements"]),
             benefits=" ".join(descriptions["benefits"]),
         ))
-    return AcquisitionResult([job for job in jobs if job["title"] and job["link"]])
+    return AcquisitionResult(
+        [job for job in jobs if job["title"] and job["link"]],
+        reason="; ".join(detail_warnings) if detail_warnings else None,
+    )
 
 
 class _JobLinkParser(HTMLParser):

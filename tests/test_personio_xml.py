@@ -61,10 +61,49 @@ EXOLAUNCH_XML = b"""<?xml version="1.0" encoding="UTF-8"?>
         <name>Responsibilities</name>
         <value><![CDATA[<p>Coordinate launch campaign operations</p>]]></value>
       </jobDescription>
+      <jobDescription>
+        <name>Ihr Profil</name>
+        <value><![CDATA[<p>Erfahrung mit CAD und Raumfahrtsystemen</p>]]></value>
+      </jobDescription>
+      <jobDescription>
+        <name>Warum wir?</name>
+        <value><![CDATA[<p>Flexible working hours</p>]]></value>
+      </jobDescription>
     </jobDescriptions>
   </position>
 </workzag-jobs>
 """
+
+EXOLAUNCH_XML_WITHOUT_DESCRIPTIONS = b"""<?xml version="1.0" encoding="UTF-8"?>
+<workzag-jobs>
+  <position>
+    <id>9002</id>
+    <subcompany>Exolaunch GmbH</subcompany>
+    <office>Berlin</office>
+    <department>Engineering</department>
+    <name>Mechanical Design Engineer</name>
+    <url>https://www.exolaunch.com/careers/job/9002</url>
+  </position>
+</workzag-jobs>
+"""
+
+EXOLAUNCH_DETAIL_HTML = (
+    '<html><script type="application/ld+json">'
+    + json.dumps({
+        "@context": "https://schema.org/",
+        "@type": "JobPosting",
+        "title": "Mechanical Design Engineer",
+        "description": (
+            "<h2>Introduction</h2><p>Design launch vehicle hardware.</p>"
+            "<h2>Your mission</h2><p>Maintain mechanical CAD models.</p>"
+            "<h2>Your profile</h2><ul><li>Three years of CAD experience.</li></ul>"
+            "<h2>Why us?</h2><p>Flexible working hours.</p>"
+            "<h2>How to apply</h2><p>Submit your CV.</p>"
+            "<h2>About us</h2><p>Generic company text.</p>"
+        ),
+    })
+    + "</script></html>"
+).encode("utf-8")
 
 
 class PersonioXMLTests(unittest.TestCase):
@@ -132,6 +171,68 @@ class PersonioXMLTests(unittest.TestCase):
         self.assertEqual("Engineering", latest[0]["department"])
         self.assertEqual("Launch Operations Engineer", latest[0]["title"])
         self.assertIn("Coordinate launch campaign operations", details[0]["mission"])
+        self.assertIn("Erfahrung mit CAD", details[0]["requirements"])
+        self.assertIn("Flexible working hours", details[0]["benefits"])
+
+    def test_exolaunch_fetches_public_personio_details_when_xml_has_none(self):
+        source = get_source("exolaunch")
+        detail_url = source["adapter_config"]["job_detail_url_template"].format(id="9002")
+        requested = []
+
+        def fetch(url):
+            requested.append(url)
+            if url == source["adapter_config"]["url"]:
+                return EXOLAUNCH_XML_WITHOUT_DESCRIPTIONS
+            if url == detail_url:
+                return EXOLAUNCH_DETAIL_HTML
+            raise AssertionError(f"Unexpected Personio request: {url}")
+
+        with tempfile.TemporaryDirectory() as directory:
+            metadata = run_source(source, directory, fetch=fetch)
+            processed = Path(directory) / "exolaunch/processed"
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+
+        self.assertEqual("success", metadata["status"])
+        self.assertTrue(metadata["coverage_complete"])
+        self.assertEqual(
+            ["https://exolaunch.jobs.personio.com/xml", detail_url], requested
+        )
+        self.assertEqual("exolaunch:9002", latest[0]["id"])
+        self.assertEqual(
+            "https://www.exolaunch.com/careers/job/9002", latest[0]["link"]
+        )
+        self.assertIn("Maintain mechanical CAD models", details[0]["mission"])
+        self.assertIn("Three years of CAD experience", details[0]["requirements"])
+        self.assertIn("Flexible working hours", details[0]["benefits"])
+        self.assertNotIn("Submit your CV", details[0]["mission"])
+        self.assertNotIn("Generic company text", details[0]["mission"])
+
+    def test_exolaunch_detail_fetch_failure_keeps_collection_status_distinct(self):
+        source = get_source("exolaunch")
+        detail_url = source["adapter_config"]["job_detail_url_template"].format(id="9002")
+
+        def fetch(url):
+            if url == source["adapter_config"]["url"]:
+                return EXOLAUNCH_XML_WITHOUT_DESCRIPTIONS
+            if url == detail_url:
+                raise TimeoutError("fixture detail timeout")
+            raise AssertionError(f"Unexpected Personio request: {url}")
+
+        with tempfile.TemporaryDirectory() as directory:
+            metadata = run_source(source, directory, fetch=fetch)
+            processed = Path(directory) / "exolaunch/processed"
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+
+        self.assertEqual("success", metadata["status"])
+        self.assertTrue(metadata["coverage_complete"])
+        self.assertIn("Personio detail page for job 9002 unavailable", metadata["reason"])
+        self.assertEqual("", details[0]["mission"])
+        self.assertEqual("", details[0]["requirements"])
+        self.assertEqual("", details[0]["benefits"])
 
     def test_incomplete_personio_position_preserves_existing_normalized_files(self):
         source = get_source("hyimpulse")
