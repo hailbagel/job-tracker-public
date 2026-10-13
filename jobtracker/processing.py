@@ -176,10 +176,32 @@ def process_success(
     history = {}
     history_rows = [] if reset_history else _read(processed / "job_history.csv")
     for row in history_rows:
-        job_id = _row_id(source["id"], row, previous_link_ids)
+        link = str(row.get("link") or "").strip()
+        job_id = (
+            _qualified_id(source["id"], native_ids_by_link[link])
+            if link in native_ids_by_link
+            else _row_id(source["id"], row, previous_link_ids)
+        )
         if not job_id:
             raise ValueError("Cannot preserve a history record without an id or link")
-        history[job_id] = dict(row, id=job_id)
+        migrated = dict(row, id=job_id)
+        existing = history.get(job_id)
+        if existing:
+            first_seen = [
+                value for value in (existing.get("first_seen"), migrated.get("first_seen"))
+                if value
+            ]
+            last_seen = [
+                value for value in (existing.get("last_seen"), migrated.get("last_seen"))
+                if value
+            ]
+            if last_seen and max(last_seen) == migrated.get("last_seen"):
+                existing = migrated
+            existing["first_seen"] = min(first_seen) if first_seen else ""
+            existing["last_seen"] = max(last_seen) if last_seen else ""
+            history[job_id] = existing
+        else:
+            history[job_id] = migrated
 
     latest, details, changes = [], [], []
     for job in result.jobs:

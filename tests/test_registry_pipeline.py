@@ -438,6 +438,138 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual("True", history["demo:7"]["active"])
         self.assertEqual("False", history["demo:8"]["active"])
 
+    def test_reactivated_legacy_history_reconciles_fallback_id_to_native_id(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(id="demo", company="Demo")
+            processed = Path(directory) / "demo/processed"
+            original = {
+                "id": "demo:1", "source_id": "demo", "source_job_id": "1",
+                "title": "Existing Engineer", "location": "Berlin",
+                "company": "Demo", "department": "Engineering",
+                "link": "https://example.test/jobs/1",
+            }
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([original]),
+                "2026-01-01T00:00:00Z",
+            )
+
+            historical_fields = (
+                "id", "title", "location", "company", "department", "link",
+                "first_seen", "last_seen", "active",
+            )
+            historical_rows = [
+                {
+                    "id": "", "title": "Reactivated Engineer", "location": "Berlin",
+                    "company": "Demo", "department": "Engineering",
+                    "link": "https://example.test/jobs/reactivated",
+                    "first_seen": "2024-02-03", "last_seen": "2025-12-20",
+                    "active": "False",
+                },
+                {
+                    "id": "", "title": "Legacy Engineer", "location": "Munich",
+                    "company": "Demo", "department": "Engineering",
+                    "link": "https://example.test/jobs/no-native-id",
+                    "first_seen": "2023-01-02", "last_seen": "2025-11-19",
+                    "active": "False",
+                },
+            ]
+            with (processed / "job_history.csv").open(
+                "w", newline="", encoding="utf-8"
+            ) as handle:
+                writer = csv.DictWriter(handle, fieldnames=historical_fields)
+                writer.writeheader()
+                writer.writerows(historical_rows)
+
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([original]),
+                "2026-01-02T00:00:00Z",
+            )
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                initially_migrated = list(csv.DictReader(handle))
+            fallback_by_link = {
+                row["link"]: row["id"]
+                for row in initially_migrated
+                if row["link"] in {
+                    "https://example.test/jobs/reactivated",
+                    "https://example.test/jobs/no-native-id",
+                }
+            }
+            self.assertEqual(2, len(fallback_by_link))
+            self.assertRegex(
+                fallback_by_link["https://example.test/jobs/reactivated"],
+                r"^demo:[0-9a-f]{16}$",
+            )
+            initially_inactive = next(
+                row for row in initially_migrated
+                if row["link"] == "https://example.test/jobs/reactivated"
+            )
+            self.assertEqual("2024-02-03", initially_inactive["first_seen"])
+            self.assertEqual("2025-12-20", initially_inactive["last_seen"])
+            self.assertEqual("False", initially_inactive["active"])
+
+            reactivated = {
+                "id": "demo:77", "source_id": "demo", "source_job_id": "77",
+                "title": "Reactivated Engineer", "location": "Berlin",
+                "company": "Demo", "department": "Engineering",
+                "link": "https://example.test/jobs/reactivated",
+            }
+            native_detail = {field: "" for field in DETAIL_FIELDS}
+            native_detail.update(reactivated, mission="Current provider details")
+            with (processed / "job_details.csv").open(
+                "w", newline="", encoding="utf-8"
+            ) as handle:
+                writer = csv.DictWriter(handle, fieldnames=DETAIL_FIELDS)
+                writer.writeheader()
+                writer.writerow(native_detail)
+
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([reactivated]),
+                "2026-01-03T00:00:00Z",
+            )
+
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                history = list(csv.DictReader(handle))
+            logical_rows = [
+                row for row in history
+                if row["link"] == "https://example.test/jobs/reactivated"
+            ]
+            self.assertEqual(1, len(logical_rows))
+            self.assertEqual("demo:77", logical_rows[0]["id"])
+            self.assertEqual("2024-02-03", logical_rows[0]["first_seen"])
+            self.assertEqual("2026-01-03", logical_rows[0]["last_seen"])
+            self.assertEqual("True", logical_rows[0]["active"])
+            self.assertFalse(any(
+                row["id"] == fallback_by_link["https://example.test/jobs/reactivated"]
+                for row in history
+            ))
+
+            unresolved_rows = [
+                row for row in history
+                if row["link"] == "https://example.test/jobs/no-native-id"
+            ]
+            self.assertEqual(1, len(unresolved_rows))
+            self.assertEqual(
+                fallback_by_link["https://example.test/jobs/no-native-id"],
+                unresolved_rows[0]["id"],
+            )
+            with (processed / "job_changes.csv").open(newline="", encoding="utf-8") as handle:
+                changes = list(csv.DictReader(handle))
+            reactivation_events = [
+                row for row in changes
+                if row["id"] == "demo:77" and row["change"] == "reactivated"
+            ]
+            self.assertEqual(1, len(reactivation_events))
+            self.assertFalse(any(
+                row["id"] == fallback_by_link["https://example.test/jobs/reactivated"]
+                for row in changes
+            ))
+
     def test_failure_preserves_prior_snapshot_and_reports_status(self):
         with tempfile.TemporaryDirectory() as directory:
             processed = Path(directory) / "demo/processed"
