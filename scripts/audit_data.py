@@ -181,8 +181,11 @@ def main() -> int:
         issue("FAIL", "failed source included in published contributors")
     inspect_feed(DATA / "patrick" / "processed", sum(expected_contributors.values()), expected_contributors, spacex_only=False)
     inspect_feed(DATA / "spacex" / "processed", totals.get("spacex", 0), {"spacex": totals.get("spacex", 0)}, spacex_only=True)
-    # Check even preserved stale legacy files for basic parseability.
-    for file in sorted(DATA.rglob("*")):
+    # Audit tracked public data only; avoid local ignored raw/private runtime files.
+    tracked = subprocess.run(["git", "ls-files", "-z", "--", "data"], cwd=ROOT,
+                             capture_output=True, check=True).stdout
+    paths = [ROOT / name.decode("utf-8") for name in tracked.split(b"\0") if name]
+    for file in sorted(paths):
         if not file.is_file():
             continue
         parts = file.relative_to(DATA).parts
@@ -199,7 +202,7 @@ def main() -> int:
             issue("WARN", f"unexpected file extension: {file.relative_to(ROOT)}")
     errors = sum(level == "FAIL" for level, _ in issues)
     warnings = sum(level == "WARN" for level, _ in issues)
-    print(f"AUDIT_RESULT FAIL={errors} WARN={warnings} CHECKED_FILES={sum(p.is_file() for p in DATA.rglob('*'))}")
+    print(f"AUDIT_RESULT FAIL={errors} WARN={warnings} CHECKED_FILES={len(paths)}")
     return 1 if errors else 0
 
 if __name__ == "__main__":
