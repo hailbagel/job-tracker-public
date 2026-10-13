@@ -1,12 +1,12 @@
 {
   "coverage_complete": true,
-  "data_changed_at": "2026-10-12T18:02:20.606087Z",
-  "data_hash": "acc8bb51a3e7eeb1b98d41076d45662b95375f5de57e85b66826deb7f132cc2a",
-  "observed_at": "2026-10-12T18:02:20.606087Z",
+  "data_changed_at": "2026-10-13T10:25:22.366668Z",
+  "data_hash": "98759a0e247baadb583a54ddf4f933fdc8fac5d57c87eb5554cce19326a53636",
+  "observed_at": "2026-10-13T10:25:22.366668Z",
   "provider": "spacex",
   "reason": null,
-  "records_written": 2729,
+  "records_written": 2741,
   "source": "https://boards-api.greenhouse.io/v1/boards/spacex/jobs?content=true",
-  "source_records": 2729,
+  "source_records": 2741,
   "status": "success"
 }

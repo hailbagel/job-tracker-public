@@ -1,12 +1,12 @@
 # SpaceX targets — Patrick
 
-Generated: 2026-10-12T18:02:50.132063Z
-Source snapshot observed: 2026-10-12T18:02:20.606087Z
-Source data changed: 2026-10-12T18:02:20.606087Z
+Generated: 2026-10-13T10:25:49.764566Z
+Source snapshot observed: 2026-10-13T10:25:22.366668Z
+Source data changed: 2026-10-13T10:25:22.366668Z
 
 Coverage: complete
 
-Scanned: 2729 | Potentially relevant: 343 | Strong: 0 | Louisiana/Pecan Island: 3
+Scanned: 2741 | Potentially relevant: 344 | Strong: 0 | Louisiana/Pecan Island: 3
 
 GREEN requires direct candidate evidence for every detected required gate. UNKNOWN never qualifies as a verified strong target.
 
@@ -190,12 +190,18 @@ _None._
 
 ## New relevant
 
-- [Operations Engineer, Spaceport Facilities](https://boards.greenhouse.io/spacex/jobs/8880818002?gh_jid=8880818002) — Starbase, TX — RED 51 — `8880818002`
-  - Role family: Facilities / Infrastructure
+- [Construction Project Manager, Residential (Starbase Development)](https://boards.greenhouse.io/spacex/jobs/8882074002?gh_jid=8882074002) — Starbase, TX — RED 65 — `8882074002`
+  - Role family: Construction Project Management
   - Profile focus: A
-  - Hard gates: ["itar=unknown (and weekends when needed based on site operational needs; flexibility required ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in an engineering discipline 2+ years of experience working in engineering, operations, manufacturing or facilities management PREFERRED SKILLS AND EXPERIENCE: Experience)","required_leadership=unknown (leadership (general))","required_software:excel=unknown (excel)"]
+  - Hard gates: ["itar=unknown (mission critical projects Must be available to work extended hours and weekends ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","degree=unsupported (Bachelor’s degree in architecture, construction management, or engineering 3+ years of hands-on professional experience in residential architecture, engineering, construction management, o)","required_domain=unknown (construction)","required_leadership=unknown (leadership (construction))","required_software:autocad=unknown (autocad)","required_software:procore=unknown (procore)","required_trade:plumbing=unknown (plumbing)","required_trade:electrical=unknown (electrical)","required_trade:hvac=unknown (hvac)"]
   - Soft gaps: none
-  - Fit reasons: ["Role family is configured as an interest","Large industrial project execution"]
+  - Fit reasons: ["Role family is configured as an interest","Industrial construction and project leadership","Structural steel execution","Planning and technical documentation"]
+- [Quality Inspector, Data Center (Starlink)](https://boards.greenhouse.io/spacex/jobs/8872084002?gh_jid=8872084002) — Memphis, TN — UNKNOWN 61 — `8872084002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (rea data center sites as needed, other SpaceX sites, and potentially suppliers. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (2+ years (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Planning and technical documentation"]
 
 ## Materially changed relevant
 
@@ -203,4 +209,9 @@ _None._
 
 ## Removed relevant
 
-_None._
+- [Tooling Inspector (Starship) - Level 4/5](https://boards.greenhouse.io/spacex/jobs/8716792002?gh_jid=8716792002) — Hawthorne, CA — UNKNOWN 65 — `8716792002`
+  - Role family: QA/QC
+  - Profile focus: A
+  - Hard gates: ["itar=unknown (ks of paid vacation and will be eligible for 10 or more paid holidays per year. ITAR REQUIREMENTS: To conform to U.S. Government export regulations, applicant must be a (i) U.S. citizen or national, (ii) U.S. lawful, permane)","required_years=unknown (5+ years (general))","required_leadership=unknown (leadership (general))","required_software:excel=unknown (excel)"]
+  - Soft gaps: none
+  - Fit reasons: ["Role family is configured as an interest","Structural steel execution","Large industrial project execution","Planning and technical documentation"]
