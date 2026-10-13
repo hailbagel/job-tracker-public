@@ -9,6 +9,18 @@ The code update enables a generic Personio JobPosting JSON-LD detail-page fallba
 
 Codex review was marked Completed with no review findings published; GitHub reported no completed CI check runs. Production acceptance is still required.
 
+## If you already ran the read-only audit (0 failures / 4 warnings)
+
+A terminal that shows only `=== READ-ONLY DATA AUDIT ===` and `0 failures / 4 warnings` did **not** demonstrate a new collection or publication. The audit does not update jobs.
+
+When you are already at the clean `root@...:/opt/vutrulabs/job-tracker-public#` prompt and have **not yet started a production run after PR #18**, use **only** this command, not the audit-only command:
+
+```bash
+python3 scripts/run_hostinger_pr15.py
+```
+
+It should print `RUNNING: versioned Hostinger PR15 single-run procedure`, then `=== PRECHECK SERVICE ===` and later `=== START ONE PRODUCTION RUN THROUGH SYSTEMD ===`. Wait for the command to finish. If it fails, do **not** rerun or start the service manually; capture non-secret output for review. Only after a confirmed successful publication should you run the separate read-only audit to check Exolaunch detail completeness.
+
 ## One controlled production run and read-only audit
 
 Open a **fresh Hostinger root terminal** and ensure the normal `root@...#` prompt is present, not a `>` continuation prompt. Paste exactly this **one line** and press Enter:
