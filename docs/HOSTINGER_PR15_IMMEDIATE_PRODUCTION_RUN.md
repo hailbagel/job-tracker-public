@@ -258,40 +258,14 @@ Do not return private profile contents, SSH material, tokens, or credentials.
 
 ---
 
-## One-paste Hostinger launcher
+## One-paste Hostinger launcher (single command)
 
-Copy the entire block below into a **new Hostinger VPS root terminal**. It checks the clean checkout, updates `main`, confirms the corrected runbook is installed, and executes the **first** fenced bash block from this file (the full preflight, one-time production run and verification). Keep this launcher below the main block to prevent it from extracting itself.
+**If the terminal shows a `>` continuation prompt, press `Ctrl+C` until the normal `root@...#` prompt returns.** Do not paste the previous `bash <<'HOSTINGER'` here-document; its terminator was not recognized in the browser terminal (`HOSTINGER^M`).
 
-**If any step fails, do not rerun.** Save the non-secret terminal output for investigation.
+With the normal root prompt visible, copy and execute **this exact single command**. Do not break it into multiple commands. It requires a clean Git worktree, fast-forwards `main`, extracts only the **first** fenced bash block from this file, checks that the corrected HyImpulse validation exists, and executes that vetted runbook via `bash` with strict error handling. The primary runbook is the single source of truth.
 
 ```bash
-bash <<'HOSTINGER'
-set -euo pipefail
-
-cd /opt/vutrulabs/job-tracker-public
-
-git switch main
-
-if [ -n "$(git status --porcelain=v1 --untracked-files=all)" ]; then
-  echo "STOP: Git worktree is not clean"
-  exit 1
-fi
-
-git pull --ff-only origin main
-
-FILE=docs/HOSTINGER_PR15_IMMEDIATE_PRODUCTION_RUN.md
-
-grep -q 'HYIMPULSE CONFIG OK' "$FILE" || {
-  echo "STOP: Corrected runbook missing"
-  exit 1
-}
-
-grep -q '^```bash$' "$FILE" || {
-  echo "STOP: Runbook command block missing"
-  exit 1
-}
-
-awk '/^```bash$/{run=1;next} run && /^```$/{exit} run{print}' "$FILE" | bash
-
-HOSTINGER
+cd /opt/vutrulabs/job-tracker-public && git switch main && test -z "$(git status --porcelain=v1 --untracked-files=all)" && git pull --ff-only origin main && python3 -c 'from pathlib import Path; import subprocess; text=Path("docs/HOSTINGER_PR15_IMMEDIATE_PRODUCTION_RUN.md").read_text(); parts=text.partition("```bash\n"); assert parts[1], "STOP: main bash block missing"; script=parts[2].split("\n```",1)[0]; assert "HYIMPULSE CONFIG OK" in script and "HYIMPULSE DATA QUALITY OK" in script, "STOP: outdated runbook"; subprocess.run(["bash","-e","-u","-o","pipefail"],input=script,text=True,check=True)'
 ```
+
+Do **not** rerun if anything fails. Return the non-secret output for review. A successful Git pull alone is not proof that the production job has run.
