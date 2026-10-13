@@ -133,6 +133,17 @@ pipeline edit:
 `job_changes.csv`, `department_summary.csv`, and
 `location_summary.csv`.
 
+The legacy `run_pipeline.py` providers keep their provider-specific raw and
+structured files, then write the same six normalized outputs after all pipeline
+stages succeed. Existing processed snapshots are not rewritten in advance.
+Their first successful normalized run converts prior history deterministically,
+using existing identifiers or a URL-derived identifier where the old file had
+none, and retains historical records. Legacy accumulated change rows are
+migrated into the canonical change log; events without a trustworthy job ID
+retain a blank ID, and repeat normalization does not duplicate them. HyImpulse
+starts a clean history when transitioning from the old apply-link adapter to
+Personio, so its placeholder records are not carried into the normalized data.
+
 Run selected registry sources with
 `python3 -m jobtracker.pipeline --source <source-id>`. Each source also writes
 `acquisition.json`, and the run writes `data/source_status.json`. Failed,

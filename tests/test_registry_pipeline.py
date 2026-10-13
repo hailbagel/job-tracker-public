@@ -5,9 +5,9 @@ import unittest
 from pathlib import Path
 
 from jobtracker.acquisition import AcquisitionResult, acquire
-from jobtracker.pipeline import run_source
-from jobtracker.processing import COMMON_OUTPUTS, process_success
-from jobtracker.registry import RegistryError, load_registry
+from jobtracker.pipeline import normalize_existing_provider, run_source
+from jobtracker.processing import COMMON_OUTPUTS, DETAIL_FIELDS, LATEST_FIELDS, process_success
+from jobtracker.registry import RegistryError, get_source, load_registry
 
 
 def source(**overrides):
@@ -51,6 +51,36 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual("success", result.status)
         self.assertEqual("demo:7", result.jobs[0]["id"])
 
+    def test_registered_rfa_greenhouse_adapter_remains_canonical(self):
+        source_config = get_source("rocket-factory-augsburg")
+        payload = json.dumps({"jobs": [{
+            "id": 73,
+            "title": "Propulsion Engineer",
+            "location": {"name": "Augsburg, Germany"},
+            "departments": [{"name": "Engineering"}],
+            "absolute_url": "https://boards.greenhouse.io/rfa/jobs/73",
+            "requisition_id": "RFA-73",
+            "content": "<p>Develop rocket engines</p>",
+        }]}).encode()
+
+        with tempfile.TemporaryDirectory() as directory:
+            run_source(source_config, directory, fetch=lambda _url: payload)
+            processed = Path(directory) / "rocket-factory-augsburg/processed"
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+
+        self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+        self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
+        self.assertEqual("rocket-factory-augsburg:73", latest[0]["id"])
+        self.assertEqual("Augsburg, Germany", latest[0]["location"])
+        self.assertEqual("Engineering", latest[0]["department"])
+        self.assertIn("Develop rocket engines", details[0]["mission"])
+        self.assertEqual("RFA-73", latest[0]["requisition_id"])
+        self.assertEqual("", latest[0]["first_published"])
+        self.assertEqual("", latest[0]["updated_at"])
+
     def test_success_outputs_and_source_qualified_collision(self):
         with tempfile.TemporaryDirectory() as directory:
             result_a = AcquisitionResult([{
@@ -70,13 +100,488 @@ class RegistryTests(unittest.TestCase):
             with (Path(directory) / "beta/processed/jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
                 self.assertEqual("beta:7", next(csv.DictReader(handle))["id"])
 
+    def test_success_outputs_canonical_fields_and_blank_optional_values(self):
+        with tempfile.TemporaryDirectory() as directory:
+            job = {
+                "id": "demo:8", "source_id": "demo", "source_job_id": "8",
+                "title": "Systems Engineer", "link": "https://example.test/8",
+                "company": "Demo", "provider_field": "must not leak",
+                "location_id": "private-provider-value",
+            }
+            process_success(directory, source(), AcquisitionResult([job]), "2026-01-01T00:00:00Z")
+
+            processed = Path(directory) / "demo/processed"
+            expected_headers = {
+                "jobs_latest.csv": LATEST_FIELDS,
+                "job_details.csv": DETAIL_FIELDS,
+                "job_history.csv": DETAIL_FIELDS + ("first_seen", "last_seen", "active"),
+                "job_changes.csv": ("id", "source_id", "change", "title", "location", "observed_at"),
+                "department_summary.csv": ("department", "count"),
+                "location_summary.csv": ("location", "count"),
+            }
+            for filename, fields in expected_headers.items():
+                with (processed / filename).open(newline="", encoding="utf-8") as handle:
+                    self.assertEqual(fields, tuple(csv.DictReader(handle).fieldnames))
+
+            for filename in ("jobs_latest.csv", "job_details.csv", "job_history.csv"):
+                with (processed / filename).open(newline="", encoding="utf-8") as handle:
+                    rows = list(csv.DictReader(handle))
+                self.assertEqual("", rows[0]["location"])
+                self.assertEqual("", rows[0]["department"])
+                self.assertEqual("", rows[0]["requisition_id"])
+                self.assertEqual("", rows[0]["first_published"])
+                self.assertEqual("", rows[0]["updated_at"])
+                self.assertNotIn("provider_field", rows[0])
+                self.assertNotIn("location_id", rows[0])
+
+    def test_existing_provider_normalization_keeps_history_and_drops_legacy_fields(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="legacy", company="Legacy Co", acquisition_mode="existing_provider",
+                adapter="existing_provider",
+            )
+            processed = Path(directory) / "legacy/processed"
+            processed.mkdir(parents=True)
+            (processed / "jobs_latest.csv").write_text(
+                "id,title,location_id,location,company,department,link,scrape_timestamp\n"
+                "42,Current Engineer,loc-1,Berlin,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/42,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_history.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,"
+                "scrape_timestamp,first_seen,last_seen,active\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01,2025-12-01,2026-01-01,True\n"
+                "Former Engineer,Munich,Legacy Co,Engineering,https://legacy.test/jobs/old,"
+                "Old mission,,,2025-11-01,2025-10-01,2025-11-01,False\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(source_config, directory, "2026-01-02T00:00:00Z")
+
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+            self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+            self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
+            self.assertEqual("legacy:42", latest[0]["id"])
+            self.assertNotIn("location_id", latest[0])
+            self.assertEqual("", latest[0]["requisition_id"])
+            self.assertEqual("", latest[0]["first_published"])
+            self.assertEqual("", latest[0]["updated_at"])
+
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                history = list(csv.DictReader(handle))
+            self.assertEqual(2, len(history))
+            preserved = next(row for row in history if row["id"] == "legacy:42")
+            self.assertEqual("2025-12-01", preserved["first_seen"])
+            self.assertEqual("True", preserved["active"])
+            self.assertEqual("Build systems", preserved["mission"])
+            former = next(row for row in history if row["title"] == "Former Engineer")
+            self.assertEqual("False", former["active"])
+            self.assertTrue(former["id"].startswith("legacy:"))
+
+    def test_existing_provider_rejects_current_jobs_without_detail_rows(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="legacy", company="Legacy Co", acquisition_mode="existing_provider",
+                adapter="existing_provider",
+            )
+            processed = Path(directory) / "legacy/processed"
+            processed.mkdir(parents=True)
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([{
+                    "id": "legacy:41", "source_id": "legacy", "source_job_id": "41",
+                    "title": "Known Good Engineer", "location": "Berlin",
+                    "company": "Legacy Co", "department": "Engineering",
+                    "link": "https://legacy.test/jobs/41",
+                    "mission": "Known good mission",
+                }]),
+                "2026-01-01T00:00:00Z",
+            )
+            preserved_outputs = {
+                name: (processed / name).read_bytes()
+                for name in (
+                    "job_history.csv", "job_changes.csv",
+                    "department_summary.csv", "location_summary.csv",
+                    "acquisition.json",
+                )
+            }
+            latest_content = (
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "42,Current Engineer,Berlin,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/42,2026-01-01\n"
+                "43,Platform Engineer,Munich,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/43,2026-01-01\n"
+            )
+            details_content = (
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01\n"
+            )
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+            (processed / "job_details.csv").write_text(details_content, encoding="utf-8")
+
+            with self.assertRaisesRegex(
+                ValueError,
+                r"legacy.*https://legacy\.test/jobs/43",
+            ):
+                normalize_existing_provider(
+                    source_config, directory, "2026-01-02T00:00:00Z"
+                )
+
+            self.assertEqual(latest_content, (processed / "jobs_latest.csv").read_text(encoding="utf-8"))
+            self.assertEqual(details_content, (processed / "job_details.csv").read_text(encoding="utf-8"))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                self.assertEqual(1, len(list(csv.DictReader(handle))))
+            for name, content in preserved_outputs.items():
+                self.assertEqual(content, (processed / name).read_bytes())
+
+    def test_existing_provider_normalization_requires_complete_detail_coverage(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="legacy", company="Legacy Co", acquisition_mode="existing_provider",
+                adapter="existing_provider",
+            )
+            processed = Path(directory) / "legacy/processed"
+            processed.mkdir(parents=True)
+            (processed / "jobs_latest.csv").write_text(
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "42,Current Engineer,Berlin,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/42,2026-01-01\n"
+                "43,Platform Engineer,Munich,Legacy Co,Engineering,"
+                "https://legacy.test/jobs/43,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Legacy Co,Engineering,https://legacy.test/jobs/42,"
+                "Build systems,Five years experience,Health plan,2026-01-01\n"
+                "Platform Engineer,Munich,Legacy Co,Engineering,https://legacy.test/jobs/43,"
+                "Build platform tools,Python experience,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(
+                source_config, directory, "2026-01-02T00:00:00Z"
+            )
+
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_details.csv").open(newline="", encoding="utf-8") as handle:
+                details = list(csv.DictReader(handle))
+            self.assertEqual(2, len(latest))
+            self.assertEqual(2, len(details))
+            self.assertEqual(LATEST_FIELDS, tuple(latest[0].keys()))
+            self.assertEqual(DETAIL_FIELDS, tuple(details[0].keys()))
+
+    def test_existing_provider_recovers_native_identity_from_legacy_details(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="neura", company="NEURA Robotics",
+                acquisition_mode="existing_provider", adapter="existing_provider",
+            )
+            processed = Path(directory) / "neura/processed"
+            processed.mkdir(parents=True)
+            (processed / "jobs_latest.csv").write_text(
+                "title,location,company,department,link,scrape_timestamp\n"
+                "Robotics Engineer,Munich,NEURA Robotics,AI,"
+                "https://neura.test/offer/one,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,offer_uuid,mission,requirements,"
+                "benefits,scrape_timestamp\n"
+                "Robotics Engineer,Munich,NEURA Robotics,AI,https://neura.test/offer/one,"
+                "offer-1,Build robots,Python experience,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_history.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,"
+                "scrape_timestamp,first_seen,last_seen,active\n"
+                "Robotics Engineer,Munich,NEURA Robotics,AI,https://neura.test/offer/one,"
+                "Build robots,Python experience,Health plan,2026-01-01,2025-12-01,2026-01-01,True\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(source_config, directory, "2026-01-02T00:00:00Z")
+
+            with (processed / "jobs_latest.csv").open(newline="", encoding="utf-8") as handle:
+                latest = list(csv.DictReader(handle))
+            with (processed / "job_changes.csv").open(newline="", encoding="utf-8") as handle:
+                changes = list(csv.DictReader(handle))
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                history = list(csv.DictReader(handle))
+
+        self.assertEqual("neura:offer-1", latest[0]["id"])
+        self.assertEqual("offer-1", latest[0]["source_job_id"])
+        self.assertEqual([], changes)
+        self.assertEqual(1, len(history))
+        self.assertEqual("2025-12-01", history[0]["first_seen"])
+        self.assertEqual("True", history[0]["active"])
+
+    def test_existing_provider_migrates_and_deduplicates_accumulated_change_history(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(
+                id="tesla", company="Tesla",
+                acquisition_mode="existing_provider", adapter="existing_provider",
+            )
+            processed = Path(directory) / "tesla/processed"
+            processed.mkdir(parents=True)
+            latest_content = (
+                "id,title,location,company,department,link,scrape_timestamp\n"
+                "41,Current Engineer,Berlin,Tesla,Engineering,"
+                "https://tesla.test/jobs/41,2026-01-01\n"
+            )
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+            (processed / "job_details.csv").write_text(
+                "title,location,company,department,link,mission,requirements,benefits,scrape_timestamp\n"
+                "Current Engineer,Berlin,Tesla,Engineering,https://tesla.test/jobs/41,"
+                "Build vehicles,Engineering degree,Health plan,2026-01-01\n",
+                encoding="utf-8",
+            )
+            (processed / "job_changes.csv").write_text(
+                "date,change_type,title,location,timestamp\n"
+                "2025-12-01,NEW,Assembly Engineer,Austin,"
+                "2025-12-01_09-00-00\n"
+                "2025-12-15,REMOVED,Test Engineer,Detroit,"
+                "2025-12-15_11-30-00\n"
+                "2025-12-20,NO_CHANGES,-,-,2025-12-20_08-00-00\n",
+                encoding="utf-8",
+            )
+
+            normalize_existing_provider(source_config, directory, "2026-01-02T00:00:00Z")
+            change_path = processed / "job_changes.csv"
+            with change_path.open(newline="", encoding="utf-8") as handle:
+                initial = list(csv.DictReader(handle))
+
+            self.assertEqual(2, len(initial))
+            self.assertEqual(
+                ("", "tesla", "new", "Assembly Engineer", "Austin", "2025-12-01_09-00-00"),
+                tuple(initial[0][field] for field in (
+                    "id", "source_id", "change", "title", "location", "observed_at",
+                )),
+            )
+            self.assertEqual("", initial[1]["id"])
+            self.assertEqual("removed", initial[1]["change"])
+
+            # Legacy analysis concatenates new legacy rows with the canonicalized log.
+            mixed_fields = (
+                "id", "source_id", "change", "title", "location", "observed_at",
+                "date", "change_type", "timestamp",
+            )
+            with change_path.open("w", newline="", encoding="utf-8") as handle:
+                writer = csv.DictWriter(handle, fieldnames=mixed_fields)
+                writer.writeheader()
+                writer.writerows(initial)
+                writer.writerow({
+                    "date": "2026-01-03",
+                    "change_type": "REACTIVATED",
+                    "title": "Test Engineer",
+                    "location": "Detroit",
+                    "timestamp": "2026-01-03_10-15-00",
+                })
+            (processed / "jobs_latest.csv").write_text(latest_content, encoding="utf-8")
+
+            normalize_existing_provider(source_config, directory, "2026-01-03T12:00:00Z")
+            normalize_existing_provider(source_config, directory, "2026-01-03T13:00:00Z")
+            with change_path.open(newline="", encoding="utf-8") as handle:
+                final = list(csv.DictReader(handle))
+
+            self.assertEqual(3, len(final))
+            self.assertEqual(
+                [("new", "Assembly Engineer"), ("removed", "Test Engineer"),
+                 ("reactivated", "Test Engineer")],
+                [(row["change"], row["title"]) for row in final],
+            )
+            self.assertTrue(all(row["id"] == "" for row in final))
+            self.assertTrue(all(row["source_id"] == "tesla" for row in final))
+
+    def test_reactivated_jobs_keep_history_and_report_reactivation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first = {
+                "id": "demo:7", "source_id": "demo", "source_job_id": "7",
+                "title": "Engineer", "location": "Berlin", "company": "Demo",
+                "department": "Engineering", "link": "https://example.test/7",
+            }
+            replacement = dict(
+                first,
+                id="demo:8",
+                source_job_id="8",
+                title="Other Engineer",
+                link="https://example.test/8",
+            )
+            process_success(directory, source(), AcquisitionResult([first]), "2026-01-01T00:00:00Z")
+            process_success(directory, source(), AcquisitionResult([replacement]), "2026-01-02T00:00:00Z")
+            process_success(directory, source(), AcquisitionResult([first]), "2026-01-03T00:00:00Z")
+
+            processed = Path(directory) / "demo/processed"
+            with (processed / "job_changes.csv").open(newline="", encoding="utf-8") as handle:
+                changes = list(csv.DictReader(handle))
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                history = {row["id"]: row for row in csv.DictReader(handle)}
+
+        self.assertIn(("demo:7", "reactivated"), {
+            (row["id"], row["change"]) for row in changes
+        })
+        self.assertEqual("2026-01-01", history["demo:7"]["first_seen"])
+        self.assertEqual("True", history["demo:7"]["active"])
+        self.assertEqual("False", history["demo:8"]["active"])
+
+    def test_reactivated_legacy_history_reconciles_fallback_id_to_native_id(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source_config = source(id="demo", company="Demo")
+            processed = Path(directory) / "demo/processed"
+            original = {
+                "id": "demo:1", "source_id": "demo", "source_job_id": "1",
+                "title": "Existing Engineer", "location": "Berlin",
+                "company": "Demo", "department": "Engineering",
+                "link": "https://example.test/jobs/1",
+            }
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([original]),
+                "2026-01-01T00:00:00Z",
+            )
+
+            historical_fields = (
+                "id", "title", "location", "company", "department", "link",
+                "first_seen", "last_seen", "active",
+            )
+            historical_rows = [
+                {
+                    "id": "", "title": "Reactivated Engineer", "location": "Berlin",
+                    "company": "Demo", "department": "Engineering",
+                    "link": "https://example.test/jobs/reactivated",
+                    "first_seen": "2024-02-03", "last_seen": "2025-12-20",
+                    "active": "False",
+                },
+                {
+                    "id": "", "title": "Legacy Engineer", "location": "Munich",
+                    "company": "Demo", "department": "Engineering",
+                    "link": "https://example.test/jobs/no-native-id",
+                    "first_seen": "2023-01-02", "last_seen": "2025-11-19",
+                    "active": "False",
+                },
+            ]
+            with (processed / "job_history.csv").open(
+                "w", newline="", encoding="utf-8"
+            ) as handle:
+                writer = csv.DictWriter(handle, fieldnames=historical_fields)
+                writer.writeheader()
+                writer.writerows(historical_rows)
+
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([original]),
+                "2026-01-02T00:00:00Z",
+            )
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                initially_migrated = list(csv.DictReader(handle))
+            fallback_by_link = {
+                row["link"]: row["id"]
+                for row in initially_migrated
+                if row["link"] in {
+                    "https://example.test/jobs/reactivated",
+                    "https://example.test/jobs/no-native-id",
+                }
+            }
+            self.assertEqual(2, len(fallback_by_link))
+            self.assertRegex(
+                fallback_by_link["https://example.test/jobs/reactivated"],
+                r"^demo:[0-9a-f]{16}$",
+            )
+            initially_inactive = next(
+                row for row in initially_migrated
+                if row["link"] == "https://example.test/jobs/reactivated"
+            )
+            self.assertEqual("2024-02-03", initially_inactive["first_seen"])
+            self.assertEqual("2025-12-20", initially_inactive["last_seen"])
+            self.assertEqual("False", initially_inactive["active"])
+
+            reactivated = {
+                "id": "demo:77", "source_id": "demo", "source_job_id": "77",
+                "title": "Reactivated Engineer", "location": "Berlin",
+                "company": "Demo", "department": "Engineering",
+                "link": "https://example.test/jobs/reactivated",
+            }
+            native_detail = {field: "" for field in DETAIL_FIELDS}
+            native_detail.update(reactivated, mission="Current provider details")
+            with (processed / "job_details.csv").open(
+                "w", newline="", encoding="utf-8"
+            ) as handle:
+                writer = csv.DictWriter(handle, fieldnames=DETAIL_FIELDS)
+                writer.writeheader()
+                writer.writerow(native_detail)
+
+            process_success(
+                directory,
+                source_config,
+                AcquisitionResult([reactivated]),
+                "2026-01-03T00:00:00Z",
+            )
+
+            with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
+                history = list(csv.DictReader(handle))
+            logical_rows = [
+                row for row in history
+                if row["link"] == "https://example.test/jobs/reactivated"
+            ]
+            self.assertEqual(1, len(logical_rows))
+            self.assertEqual("demo:77", logical_rows[0]["id"])
+            self.assertEqual("2024-02-03", logical_rows[0]["first_seen"])
+            self.assertEqual("2026-01-03", logical_rows[0]["last_seen"])
+            self.assertEqual("True", logical_rows[0]["active"])
+            self.assertFalse(any(
+                row["id"] == fallback_by_link["https://example.test/jobs/reactivated"]
+                for row in history
+            ))
+
+            unresolved_rows = [
+                row for row in history
+                if row["link"] == "https://example.test/jobs/no-native-id"
+            ]
+            self.assertEqual(1, len(unresolved_rows))
+            self.assertEqual(
+                fallback_by_link["https://example.test/jobs/no-native-id"],
+                unresolved_rows[0]["id"],
+            )
+            with (processed / "job_changes.csv").open(newline="", encoding="utf-8") as handle:
+                changes = list(csv.DictReader(handle))
+            reactivation_events = [
+                row for row in changes
+                if row["id"] == "demo:77" and row["change"] == "reactivated"
+            ]
+            self.assertEqual(1, len(reactivation_events))
+            self.assertFalse(any(
+                row["id"] == fallback_by_link["https://example.test/jobs/reactivated"]
+                for row in changes
+            ))
+
     def test_failure_preserves_prior_snapshot_and_reports_status(self):
         with tempfile.TemporaryDirectory() as directory:
-            target = Path(directory) / "demo/processed/jobs_latest.csv"
-            target.parent.mkdir(parents=True)
-            target.write_bytes(b"prior-good\n")
+            processed = Path(directory) / "demo/processed"
+            processed.mkdir(parents=True)
+            prior = {}
+            for name in COMMON_OUTPUTS:
+                target = processed / name
+                target.write_bytes(f"prior-good-{name}\n".encode())
+                prior[name] = target.read_bytes()
             metadata = run_source(source(), directory, fetch=lambda _url: (_ for _ in ()).throw(OSError("offline")))
-            self.assertEqual(b"prior-good\n", target.read_bytes())
+            for name, content in prior.items():
+                self.assertEqual(content, (processed / name).read_bytes())
             self.assertEqual("failed", metadata["status"])
             self.assertFalse(metadata["coverage_complete"])
             self.assertEqual(0, metadata["records_written"])

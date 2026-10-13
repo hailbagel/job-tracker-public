@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import re
 import urllib.request
@@ -31,17 +32,49 @@ def _clean(value):
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
-def _job(source, native_id, title, location, url, department="Unknown", **extra):
+class _HTMLTextParser(HTMLParser):
+    BLOCK_TAGS = {"br", "div", "h1", "h2", "h3", "h4", "li", "ol", "p", "ul"}
+
+    def __init__(self):
+        super().__init__()
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag.lower() in self.BLOCK_TAGS:
+            self.parts.append("\n")
+
+    def handle_data(self, data):
+        self.parts.append(data)
+
+
+def _html_text(value):
+    parser = _HTMLTextParser()
+    parser.feed(html.unescape(str(value or "")))
+    return "\n".join(
+        " ".join(line.split())
+        for line in "".join(parser.parts).splitlines()
+        if line.strip()
+    )
+
+
+def _job(source, native_id, title, location, url, department="", **extra):
     native_id = _clean(native_id) or hashlib.sha256(url.encode()).hexdigest()[:16]
     return {
         "id": f"{source['id']}:{native_id}",
         "source_id": source["id"],
         "source_job_id": native_id,
         "title": _clean(title),
-        "location": _clean(location) or "Unknown",
-        "company": source["company"],
-        "department": _clean(department) or "Unknown",
+        "location": _clean(location),
+        "company": _clean(extra.get("company")) or source["company"],
+        "department": _clean(department),
         "link": url,
+        "requisition_id": _clean(extra.get("requisition_id")),
+        "first_published": _clean(extra.get("first_published")),
+        "updated_at": _clean(extra.get("updated_at")),
         "mission": _clean(extra.get("mission")),
         "requirements": _clean(extra.get("requirements")),
         "benefits": _clean(extra.get("benefits")),
@@ -56,8 +89,11 @@ def greenhouse(source, fetch=_get):
         location = (item.get("location") or {}).get("name")
         jobs.append(_job(
             source, item.get("id"), item.get("title"), location, item.get("absolute_url"),
-            departments[0].get("name") if departments else "Unknown",
+            departments[0].get("name") if departments else "",
             mission=item.get("content"),
+            requisition_id=item.get("requisition_id"),
+            first_published=item.get("first_published"),
+            updated_at=item.get("updated_at"),
         ))
     return AcquisitionResult([job for job in jobs if job["title"] and job["link"]])
 
@@ -65,13 +101,46 @@ def greenhouse(source, fetch=_get):
 def personio_xml(source, fetch=_get):
     root = ET.fromstring(fetch(source["adapter_config"]["url"]))
     jobs = []
-    for item in root.findall(".//position"):
+    seen_ids = set()
+    positions = root.findall(".//position")
+    for item in positions:
         native_id = item.findtext("id")
-        url = item.findtext("url") or f"{source['careers_url'].rstrip('/')}/job/{native_id}"
+        title = _clean(item.findtext("name"))
+        url = _clean(item.findtext("url"))
+        if not url and native_id:
+            url_template = source["adapter_config"].get("job_url_template")
+            url = url_template.format(id=_clean(native_id)) if url_template else (
+                f"{source['careers_url'].rstrip('/')}/job/{_clean(native_id)}"
+            )
+        if not _clean(native_id) or not title or not url or _clean(native_id) in seen_ids:
+            return AcquisitionResult(
+                jobs, "incomplete", False,
+                "Personio XML contains a position without a unique id, title, or canonical URL",
+            )
+        seen_ids.add(_clean(native_id))
+        descriptions = {"mission": [], "requirements": [], "benefits": []}
+        for description in item.findall("./jobDescriptions/jobDescription"):
+            name = _clean(description.findtext("name")).lower()
+            value = _html_text(description.findtext("value"))
+            if not value:
+                continue
+            if "benefit" in name or "perk" in name:
+                section = "benefits"
+            elif any(term in name for term in ("qualification", "requirement", "experience", "profile")):
+                section = "requirements"
+            elif "location" in name or "equal employment" in name:
+                continue
+            else:
+                section = "mission"
+            descriptions[section].append(value)
+
         jobs.append(_job(
-            source, native_id, item.findtext("name"), item.findtext("office"), url,
-            item.findtext("department") or "Unknown",
-            mission=" ".join(_clean(node.text) for node in item.findall(".//jobDescriptions/jobDescription/value")),
+            source, native_id, title, item.findtext("office"), url,
+            item.findtext("department"),
+            company=item.findtext("subcompany"),
+            mission=" ".join(descriptions["mission"]),
+            requirements=" ".join(descriptions["requirements"]),
+            benefits=" ".join(descriptions["benefits"]),
         ))
     return AcquisitionResult([job for job in jobs if job["title"] and job["link"]])
 

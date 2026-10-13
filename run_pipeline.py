@@ -8,6 +8,8 @@ import json
 
 from datetime import datetime
 
+from jobtracker.pipeline import normalize_existing_provider
+from jobtracker.registry import get_source
 from jobtracker.pipeline_steps import steps_for_company
 
 try:
@@ -212,6 +214,20 @@ for company in active_companies:
             break
 
     pipeline_bar.close()
+
+    if company_success:
+        try:
+            source = get_source(company)
+            if source["acquisition_mode"] == "existing_provider":
+                normalize_existing_provider(source)
+                print(
+                    "[OK] Wrote canonical normalized outputs for "
+                    f"{company}: data/{company}/processed/"
+                )
+        except Exception as e:
+            print(f"[ERR] Canonical normalization failed for {company}: {e}")
+            company_success = False
+            overall_success = False
 
     # ========================================
     # STATUS PRO FIRMA
