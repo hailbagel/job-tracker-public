@@ -156,7 +156,7 @@ class PersonioXMLTests(unittest.TestCase):
             for filename, content in previous.items():
                 self.assertEqual(content, (processed / filename).read_bytes())
 
-    def test_first_personio_success_resets_bad_html_link_history_once(self):
+    def test_pending_legacy_history_reset_survives_failed_and_incomplete_personio_attempts(self):
         source = get_source("hyimpulse")
         with tempfile.TemporaryDirectory() as directory:
             processed = Path(directory) / "hyimpulse/processed"
@@ -186,7 +186,44 @@ class PersonioXMLTests(unittest.TestCase):
                 encoding="utf-8",
             )
 
+            failed = run_source(
+                source,
+                directory,
+                fetch=lambda _url: (_ for _ in ()).throw(OSError("offline")),
+            )
+            self.assertEqual("failed", failed["status"])
+            self.assertEqual(
+                "html_job_links", failed["pending_history_reset_from"]
+            )
+            failed_metadata = json.loads(
+                (processed / "acquisition.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(
+                "html_job_links", failed_metadata["pending_history_reset_from"]
+            )
+
+            incomplete_xml = b"""<workzag-jobs>
+              <position><id>1</id><name>Real Engineer</name><url>https://jobs.test/1</url></position>
+              <position><id>2</id><url>https://jobs.test/2</url></position>
+            </workzag-jobs>"""
+            incomplete = run_source(
+                source, directory, fetch=lambda _url: incomplete_xml
+            )
+            self.assertEqual("incomplete", incomplete["status"])
+            self.assertEqual(
+                "html_job_links", incomplete["pending_history_reset_from"]
+            )
+            for filename, expected in (
+                ("job_history.csv", "1,APPLY NOW,Unknown"),
+                ("job_changes.csv", "2026-01-01,NEW,APPLY NOW"),
+            ):
+                self.assertIn(expected, (processed / filename).read_text(encoding="utf-8"))
+
             run_source(source, directory, fetch=lambda _url: PERSONIO_XML)
+            successful_metadata = json.loads(
+                (processed / "acquisition.json").read_text(encoding="utf-8")
+            )
+            self.assertNotIn("pending_history_reset_from", successful_metadata)
 
             with (processed / "job_history.csv").open(newline="", encoding="utf-8") as handle:
                 first_history = list(csv.DictReader(handle))

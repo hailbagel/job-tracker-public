@@ -14,23 +14,32 @@ from jobtracker.registry import get_source, sources
 def run_source(source, data_root="data", fetch=None):
     kwargs = {"fetch": fetch} if fetch is not None else {}
     result = acquire(source, **kwargs)
-    if result.status == "success" and result.coverage_complete:
-        reset_from_adapter = source.get("reset_history_on_adapter_change_from")
-        reset_history = False
-        acquisition_path = Path(data_root) / source["id"] / "processed" / "acquisition.json"
-        if reset_from_adapter and acquisition_path.exists():
-            previous_metadata = json.loads(acquisition_path.read_text(encoding="utf-8"))
-            if not isinstance(previous_metadata, dict):
-                raise ValueError(f"Invalid acquisition metadata: {acquisition_path}")
-            reset_history = (
-                previous_metadata.get("adapter") == reset_from_adapter
-                and source.get("adapter") != reset_from_adapter
+    reset_from_adapter = source.get("reset_history_on_adapter_change_from")
+    reset_history = False
+    acquisition_path = Path(data_root) / source["id"] / "processed" / "acquisition.json"
+    if reset_from_adapter and acquisition_path.exists():
+        previous_metadata = json.loads(acquisition_path.read_text(encoding="utf-8"))
+        if not isinstance(previous_metadata, dict):
+            raise ValueError(f"Invalid acquisition metadata: {acquisition_path}")
+        reset_history = (
+            source.get("adapter") != reset_from_adapter
+            and (
+                previous_metadata.get("pending_history_reset_from") == reset_from_adapter
+                or previous_metadata.get("adapter") == reset_from_adapter
             )
+        )
+
+    if result.status == "success" and result.coverage_complete:
         metadata = process_success(
             data_root, source, result, reset_history=reset_history
         )
     else:
-        metadata = record_status(data_root, source, result)
+        metadata = record_status(
+            data_root,
+            source,
+            result,
+            pending_history_reset_from=reset_from_adapter if reset_history else None,
+        )
     return metadata
 
 

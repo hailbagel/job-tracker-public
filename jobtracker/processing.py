@@ -60,8 +60,17 @@ def _write_json(path, document):
         temporary.unlink(missing_ok=True)
 
 
-def record_status(data_root, source, result, observed_at=None):
+def record_status(
+    data_root,
+    source,
+    result,
+    observed_at=None,
+    *,
+    pending_history_reset_from=None,
+):
     metadata = acquisition_metadata(source, result, observed_at)
+    if pending_history_reset_from:
+        metadata["pending_history_reset_from"] = pending_history_reset_from
     _write_json(Path(data_root) / source["id"] / "processed" / "acquisition.json", metadata)
     return metadata
 
