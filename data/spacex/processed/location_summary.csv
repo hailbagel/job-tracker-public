@@ -1,22 +1,22 @@
 location,count
 "Anderson, TX",4
 "Austin, TX",31
-"Bastrop, TX",550
+"Bastrop, TX",542
 "Bellevue, WA",2
 "Bloomfield, CT",5
 "Canandaigua, NY",13
-"Cape Canaveral, FL",115
+"Cape Canaveral, FL",116
 "College Station, TX",25
 Flexible - Any SpaceX Site,12
-"Hawthorne, CA",729
+"Hawthorne, CA",739
 "Irvine, CA",21
-"Long Beach, CA",3
-"McGregor, TX",77
-"Memphis, TN",43
+"Long Beach, CA",4
+"McGregor, TX",75
+"Memphis, TN",44
 "New York City, NY",4
 "Palo Alto, CA",110
 "Pecan Island, LA",5
-"Redmond, WA",396
+"Redmond, WA",400
 Remote - CA,2
 Remote - CO,1
 Remote - FL,1
@@ -27,12 +27,12 @@ Remote - NY,1
 Remote - OH,1
 Remote - PA,1
 Remote - TN,1
-Remote - TX,3
+Remote - TX,4
 Remote - WA,2
-"Starbase, TX",409
+"Starbase, TX",404
 "Sunnyvale, CA",9
 "Vandenberg, CA",30
 "Washington, DC",57
 "Westminster, MD",5
 "Woodinville, WA",70
-TOTAL,2741
+TOTAL,2744

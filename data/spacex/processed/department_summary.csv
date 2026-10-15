@@ -2,42 +2,43 @@ department,count
 College and University - Internships and Co-Ops,12
 Corporate - Customer Support,3
 Corporate - Environmental Health & Safety,85
-Corporate - Finance & Accounting,28
+Corporate - Finance & Accounting,24
 Corporate - Government Affairs,25
-Corporate - Human Resources,70
-Corporate - Legal,19
-Corporate - Marketing & Communications,15
-Corporate - Sales & Business Operations,204
-Engineering - Aerospace & Mechanical,340
+Corporate - Human Resources,74
+Corporate - Legal,28
+Corporate - Marketing & Communications,16
+Corporate - Sales & Business Operations,206
+Engineering - Aerospace & Mechanical,334
 Engineering - Automation & Controls,33
 Engineering - Civil,35
-Engineering - Electrical,187
-Engineering - Industrial & Operations,54
-Engineering - Information Technology,83
-Engineering - Materials,41
-Engineering - Network,30
+Engineering - Electrical,186
+Engineering - Industrial & Operations,55
+Engineering - Information Technology,84
+Engineering - Materials,39
+Engineering - Network,29
 Engineering - Security,67
-Engineering - Silicon,86
-Engineering - Software & Analytics,362
+Engineering - Silicon,88
+Engineering - Software & Analytics,366
 Human Resources,2
 Manufacturing - Assembly & Integration,94
-Manufacturing - Automation & Controls and Maintenance,34
-Manufacturing - Electronics,24
+Manufacturing - Automation & Controls and Maintenance,35
+Manufacturing - Electronics,25
 Manufacturing - Entry Level Manufacturing,15
 Manufacturing - Environmental Health & Safety,4
-Manufacturing - Leadership,51
+Manufacturing - Leadership,46
 Manufacturing - Machining,62
 Manufacturing - NonDestructive Evaluation,12
 Manufacturing - Other Manufacturing,52
-"Manufacturing - PCB, Silicon, and Solar",45
+"Manufacturing - PCB, Silicon, and Solar",46
 Manufacturing - Quality,22
-Manufacturing - Welding,42
-Operations - Construction,61
-Operations - Facilities,99
-Operations - Food Services,43
+Manufacturing - Welding,41
+Operations - Construction,62
+Operations - Facilities,96
+Operations - Food Services,39
+Operations - Marine,1
 Operations - Physical Security,31
 Other - Other,3
 Supply Chain & Logistics - Materials Management & Warehouse,58
-Supply Chain & Logistics - Sourcing & Planning,163
+Supply Chain & Logistics - Sourcing & Planning,164
 Supply Chain & Logistics - Supply Chain Engineering,45
-TOTAL,2741
+TOTAL,2744

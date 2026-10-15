@@ -909,3 +909,9 @@ id,source_id,change,title,location,observed_at
 ,neura,reactivated,Data Operator Intern (Teleops)(human),Munich,2026-10-13_10-25-19
 ,neura,reactivated,Test & System Engineer - Quadruped (human),Riederich,2026-10-13_10-25-19
 ,neura,removed,Data/Robot Operator Intern (Teleops) (human),Metzingen,2026-10-13_11-26-01
+,neura,new,Data Operator (human),Aachen,2026-10-15_13-46-27
+,neura,new,NEURAGym Manager - NEURAGym (human),Berlin,2026-10-15_13-46-27
+,neura,new,"Product Owner - Cloud Platform, NeuraGym (Human)",Riederich,2026-10-15_13-46-27
+,neura,removed,Software Engineer – Fleet Management & Platform Integration (human),Riederich,2026-10-15_13-46-27
+,neura,removed,System Test Engineer - Humanoid (human),Zurich,2026-10-15_13-46-27
+,neura,removed,Facility Support & Logistic - RoboGym (human),Munich,2026-10-15_13-46-27
