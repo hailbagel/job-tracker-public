@@ -100,6 +100,25 @@ date -u && uptime -s && cat /proc/uptime && systemctl show vutrulabs-job-tracker
 
 Read-only: no service runs, no reload/restart, no writes.
 
+## Owner cadence clarification — 19 October 2026
+
+**Proposed policy for the Copilot scheduler design:** the owner prioritizes an approximately 48-hour, restart-safe execution interval without hammering upstream sites. Avoid the wording "strict rolling 48h" for a **once-daily check**, because it can delay actual execution until almost 72 hours after the last success.
+
+For the design PR (not a deployment approval):
+
+1. Use a persistent calendar-triggered **eligibility check every hour** (not an hourly production collection). Keep the eligibility check inexpensive, locally read-only except for necessary durable run bookkeeping, and ensure it cannot trigger multiple publishers concurrently.
+2. Allow the normal production collection only when the recorded last completed **successful run** is at least 48 hours old; on a healthy server the next run should occur approximately 48–49 hours after success. Preserve the distinction between successful data publication and zero-output/no-change runs.
+3. Preserve a durable, atomic and restart-safe last-success timestamp *and* last-attempt/failure timestamp outside public versioned `data/`, with clear ownership, filesystem permissions, and recovery semantics. Avoid duplicate runs on boot, timer restart, time adjustment, DST, or concurrent checks.
+4. **Failure backoff:** If eligible but a production attempt fails, never start a new full collection at every subsequent hourly check. Apply an explicit bounded retry policy (initial recommendation: no more than one automated retry per 6 hours; alert on persistent failure) and ensure failed/incomplete required feed coverage does not count as success. This retry policy requires explicit owner sign-off before live installation.
+5. Clarify whether the target is 48 hours since the last **successful** run vs 48 hours since the last **attempt** and document what happens when the upstream providers remain unavailable. Prefer a credible last-success target with bounded failed-attempt backoff and explicit stale-data alerts over pretending to guarantee freshness through upstream outages.
+6. Existing `vutrulabs-job-tracker-public.service`, publication locks, Git safeguards, permissions and 48-hour production target remain unchanged unless a tested, reviewed modification is strictly necessary.
+7. Include the alternative simpler fixed-calendar 48h design in the PR rationale (and describe its month-boundary/calendar semantics), but recommend the hourly *eligibility-only* approach if the owner requires rolling near-48h execution.
+8. Write all associated unit files, guard code, tests, migration steps, rollback steps and exact Hostinger commands into Git. **Do not merge, activate the timer, or run production during the design task.**
+
+**Owner-facing Copilot custom answer to submit:**
+
+> Choose a restart-safe rolling 48-hour cadence. Check eligibility hourly without collecting any data; run the real publisher only after 48 hours since the last successful completion. Persist last success and last attempt across reboots, prevent concurrent/duplicate runs, and throttle failed attempts (propose a 6-hour minimum retry delay with alerts). Do not use daily eligibility checks that permit ~72-hour gaps. Document and test everything in a feature branch and PR; no Hostinger changes or production runs until I approve.
+
 ## Git workflow
 
 Create a **feature branch + PR** for the reviewed timer repair design and tests. Keep all prompts, units and operating decisions committed. Do not merge/deploy before owner approval. Link the eventual acceptance evidence (journal, service result, fresh data timestamp) in a follow-up documentation commit.
