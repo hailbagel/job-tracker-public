@@ -33,6 +33,44 @@ Further observed facts:
 - No newer successfully pushed dataset exists after 15 October (as of the user's 19 October screenshot).
 - The new SMS group, Midrex, Mesabi Metallics, and Siemens AG registry entries are `manual_discovery`. They are NOT automated and did not cause a publishing failure in the observed output.
 
+## Additional host evidence received 2026-10-19 (read-only)
+
+The requested Hostinger diagnostic returned:
+
+```text
+Mon Oct 19 04:10:34 UTC 2026
+uptime -s: 2026-10-17 13:04:54
+/proc/uptime: 140739.35 126696.97
+NextElapseUSecMonotonic=3d 13h 47min 24.246860s
+LastTriggerUSec=
+LastTriggerUSecMonotonic=0
+ActiveEnterTimestamp=Sat 2026-10-17 13:05:02 UTC
+ActiveEnterTimestampMonotonic=8074892
+```
+
+**Calculated:**
+- Boot at 2026-10-17 13:04:54 UTC; timer activation eight seconds later.
+- `OnActiveSec=48h` would nominally place its first monotonic deadline at approximately 2026-10-19 13:05:02 UTC.
+- Actual next deadline was shown as 2026-10-21 02:52:19 UTC, approximately **37 hours 47 minutes later** than the activation-relative 48h candidate.
+- `NextElapseUSecMonotonic` is a monotonic timestamp relative to boot, not a countdown or an actual service run. It maps to the Oct 21 NEXT time when added to the boot timestamp.
+- `LastTriggerUSecMonotonic=0` and blank `LastTriggerUSec` indicate **no last trigger recorded by this currently active timer instance**. They do not independently prove that no past timer run ever occurred.
+- This result rules out merely misreading the UTC/CEST offset as an explanation. The additional ~37h47m deviation cannot be explained by `AccuracySec=1min` and `RandomizedDelaySec=0`.
+- Still unknown: precise systemd service unit state transitions, `InactiveEnterTimestampMonotonic` and any manager state carried over during the reboot, which may affect `OnUnitInactiveSec` calculations. **Do not claim a fully proven low-level root cause.**
+
+**Preferred engineering direction:** propose fixed wall-clock calendar eligibility checks with `Persistent=true`, plus durable last-success state and a 48h publishing eligibility gate if the owner requires a strict rolling interval. If an *approximately every 48h* fixed-slot policy is sufficient, compare a simpler explicitly scheduled calendar variant. Note that using `OnCalendar=*-*-* ...` on the existing unguarded publishing service would execute the real scraper daily, which is **not acceptable without changing the cadence contract**.
+
+Use the original publisher service and security invariants; do not immediately change the host. Provide the full proposed units, a test against boot/restart and missed schedules, rollback commands and a PR. Include a separate check that identifies when publication is stale even if systemd reports `Result=success` from an earlier run.
+
+### If deeper unit-state correlation is required
+
+Read-only one-liner, run only if needed before finalizing a patch:
+
+```bash
+systemctl show vutrulabs-job-tracker-public.service -p ActiveState -p SubState -p InactiveEnterTimestamp -p InactiveEnterTimestampMonotonic -p ExecMainStatus --no-pager && systemctl show vutrulabs-job-tracker-public.timer -p TimersMonotonic -p NextElapseUSecMonotonic -p ActiveEnterTimestampMonotonic --no-pager
+```
+
+No service start or timer modification is authorized.
+
 ## Technical interpretation to validate
 
 Per `systemd.timer(5)`, `OnActiveSec=` measures time since *timer activation*; `OnUnitInactiveSec=` measures time since the triggered service was last deactivated. Both are monotonic timers. If the timer unit is stopped/restarted, its activation-origin changes. Monotonic timers do not inherently catch up across downtime the same way `OnCalendar=` with `Persistent=true` can. Verify this against the installed systemd version and current systemd state before designing a change.
