@@ -153,6 +153,8 @@ The initial proposed failure backoff is a minimum of six hours after a failed at
 
 The state timestamp represents the last completed successful publisher run. A run that creates and pushes a data commit is reported separately in the existing journal output from a successful no-change run; both are successful completed runs for the 48-hour scheduler interval, but a no-change run is never described as a new data publication. The smoke check labels its timestamp as a publisher execution, while the journal and public data metadata establish whether new data was actually pushed.
 
+The gate applies to systemd starts of the existing service. It does not rewrite or disable the existing publisher CLI; a direct manual Python invocation remains subject to the repository's existing publication lock and Operations approval. Do not use a direct invocation to bypass this cadence policy.
+
 `ExecCondition` requires systemd 243 or newer ([systemd.service(5)](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)). Check `systemd --version` on the actual host before deploying. The installed Hostinger version and the existing service command have not been verified from the evidence supplied, so installation is blocked until both are inspected. The gate uses synchronized UTC wall-clock time; a clock that steps forward can make a run eligible earlier, while a clock that steps backward delays eligibility. Verify time synchronization before enabling the timer.
 
 ### Eligibility bootstrap and catch-up policy
@@ -177,6 +179,8 @@ sudo /usr/bin/python3 /opt/vutrulabs/job-tracker-public/scripts/check_hostinger_
 
 `data/source_status.json` and source `acquisition.json` `observed_at` values remain the separate data-freshness evidence. An optional independent alert may warn when the newest successful automated-source `observed_at` is over 60 hours old; it must not trigger or bypass the publisher.
 
+The smoke check exits nonzero when no successful run has been recorded or its timestamp is over 60 hours old, even if systemd still reports an earlier `Result=success`. It also reports the latest attempt/failure markers. Run it from existing Operations monitoring if available; this PR does not introduce an alerting service or claim to send notifications itself.
+
 ### Pre-deployment verification and acceptance
 
 These commands are for an approved Hostinger deployment window only; they were not run as part of this review. First inspect the real service and confirm that its effective `ExecStart` is still the approved `python3 scripts/publish_public_data.py` command and its current security/lock settings are unchanged:
@@ -194,10 +198,11 @@ After staging the versioned timer/drop-in and initializing state, but before ena
 ```bash
 systemd-analyze verify /etc/systemd/system/vutrulabs-job-tracker-public.timer /etc/systemd/system/vutrulabs-job-tracker-public.service
 systemd-analyze calendar '*-*-* *:00:00 UTC'
+systemd-analyze calendar '*-*-1/2 02:00:00 UTC'
 python3 -c 'from datetime import datetime, timedelta, timezone; now=datetime.now(timezone.utc); first=now.replace(minute=0, second=0, microsecond=0); first += timedelta(hours=(first <= now)); print("NEXT 1:", first.isoformat()); print("NEXT 2:", (first + timedelta(hours=1)).isoformat())'
 ```
 
-The calendar parser must accept the expression. The Python line displays the next two future hourly UTC slots; compare the first with systemd's calculated next elapse. After `systemctl daemon-reload` and the separately approved timer enable/restart, verify the active unit and deadline without starting the service:
+The parser must accept the hourly expression; the second calendar command verifies the alternative fixed-slot syntax and its month-boundary behavior described above. The Python line displays the next two future hourly UTC slots; compare the first with systemd's calculated next elapse. After `systemctl daemon-reload` and the separately approved timer enable/restart, verify the active unit and deadline without starting the service:
 
 ```bash
 systemctl show vutrulabs-job-tracker-public.timer -p ActiveState -p SubState -p LastTriggerUSec -p LastTriggerUSecMonotonic -p NextElapseUSecRealtime -p NextElapseUSecMonotonic -p Persistent --no-pager
@@ -218,7 +223,7 @@ After an approved unattended production run, inspect both unit results and journ
 ```bash
 systemctl show vutrulabs-job-tracker-public.timer -p LastTriggerUSec -p NextElapseUSecRealtime --no-pager
 systemctl show vutrulabs-job-tracker-public.service -p Result -p ExecMainStatus -p ExecMainStartTimestamp -p ExecMainExitTimestamp --no-pager
-journalctl -u vutrulabs-job-tracker-public.timer -u vutrulabs-job-tracker-public.service --since '48 hours ago' --no-pager
+journalctl -o short-iso-precise -u vutrulabs-job-tracker-public.timer -u vutrulabs-job-tracker-public.service --since '48 hours ago' --no-pager
 sudo /usr/bin/python3 /opt/vutrulabs/job-tracker-public/scripts/check_hostinger_scheduler.py
 ```
 
@@ -261,7 +266,7 @@ If the journal cannot establish that timestamp, use a conservative first-run bar
 
 ```bash
 STATE=/var/lib/vutrulabs-job-tracker-public/state.json
-FIRST_RUN_AFTER_UTC=$(date -u -d '+48 hours' +%Y-%m-%dT%H:%M:%SZ)
+FIRST_RUN_AFTER_UTC=$(date -u -d '+48 hours 1 second' +%Y-%m-%dT%H:%M:%SZ)
 /usr/bin/python3 "$REPO/scripts/hostinger_scheduler_state.py" initialize --state-file "$STATE" --first-run-after-utc "$FIRST_RUN_AFTER_UTC"
 ```
 

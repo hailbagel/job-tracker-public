@@ -45,7 +45,7 @@ def read_state(path: Path) -> dict:
         raise SchedulerStateError(
             f"Scheduler state is missing: {path}; initialize it from verified journal evidence"
         ) from exc
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise SchedulerStateError(f"Cannot read scheduler state {path}: {exc}") from exc
 
     if not isinstance(state, dict) or state.get("version") != STATE_VERSION:
