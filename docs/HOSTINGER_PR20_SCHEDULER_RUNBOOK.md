@@ -6,6 +6,28 @@ The proposed policy checks eligibility hourly in systemd, but invokes the real p
 
 The installed Hostinger service currently uses systemd 255, `Type=oneshot`, `Restart=no`, default root user, and a venv Python executable. The complete effective `ExecStart` was not visible in the screenshots. Re-inspect it on-host; do not replace the service command or assume that CI's synthetic unit is a production integration test. The gate uses UTC wall-clock timestamps; a backward clock step detected before outcome recording fails closed, but a forward clock step can make a run eligible early. Confirm NTP synchronization and avoid manual time changes during an active publisher run.
 
+## Journal verification received — 20 October 2026
+
+Hostinger's read-only journal query returned the following last visible production records:
+
+```text
+2026-10-15T13:47:18+00:00 ... Publication committed and pushed: neura=206 spacex=2744 rocket-factory-augsburg=51 exolaunch=11 hyimpulse=23 patrick_complete=True
+2026-10-15T13:47:18+00:00 ... vutrulabs-job-tracker-public.service: Deactivated successfully.
+2026-10-15T13:47:18+00:00 ... Finished vutrulabs-job-tracker-public.service.
+```
+
+No later successful publication or no-change service completion appeared in the **available** matching journal output through 2026-10-20. This establishes `2026-10-15T13:47:18Z` as the *latest journal-observed successful publisher completion* in the checked interval, not a guaranteed lifetime last run when logs might be missing. Rolling 48-hour eligibility began `2026-10-17T13:47:18Z`.
+
+**Owner decision already approved:** Six-hour minimum cooldown after a failed production attempt; one overdue catch-up once this last-success journal evidence is accepted. The catch-up must happen **through the new approved gated timer**, not by bypassing guards or invoking an unreviewed manual scraper. The GitHub PR merge and Hostinger installation remain separate explicit approval steps.
+
+**Immediately before final state initialization**, check whether a later success occurred after this screenshot, particularly if the old timer has fired since the journal inspection. Do not initialize an earlier `last_success_utc` if a fresher completed publisher invocation exists. If matching journal records are incomplete, use the conservative future first-run anchor rather than creating an unearned immediate catch-up.
+
+The last successful completion observed is suitable as the **candidate** exact value for the existing `LAST_SUCCESS_UTC` placeholder in stage 6:
+
+`2026-10-15T13:47:18Z`
+
+No server deployment, activation, or production run was performed during this verification.
+
 ## 1. Read-only host and service preflight
 
 Run each block in a normal Hostinger root shell. Do not redirect output into the repository, paste private output into GitHub, or include credentials/private profile contents in evidence. Stop if the service is active, the worktree is dirty, the systemd version is below 243, time synchronization is not active, or any existing service security setting differs unexpectedly.
