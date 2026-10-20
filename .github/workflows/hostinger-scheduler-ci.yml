@@ -5,8 +5,10 @@ on:
     paths:
       - 'scripts/hostinger_scheduler_state.py'
       - 'scripts/check_hostinger_scheduler.py'
+      - 'scripts/publish_public_data.py'
       - 'scripts/systemd/**'
       - 'tests/test_hostinger_scheduler.py'
+      - 'tests/test_publication.py'
       - '.github/workflows/hostinger-scheduler-ci.yml'
   workflow_dispatch:
 

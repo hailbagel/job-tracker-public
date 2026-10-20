@@ -106,7 +106,7 @@ def write_state(path: Path, state: dict) -> None:
             handle.write("\n")
             handle.flush()
             os.fsync(handle.fileno())
-        os.chmod(temporary_path, 0o644)
+        os.chmod(temporary_path, 0o600)
         os.replace(temporary_path, path)
         if os.name == "posix":
             directory_fd = os.open(path.parent, os.O_RDONLY)
@@ -203,7 +203,10 @@ def record_success(
         or state["last_attempt_invocation_id"] != invocation_id
     ):
         raise SchedulerStateError("Cannot record success without a persisted publisher attempt")
-    timestamp = format_utc(now or datetime.now(timezone.utc))
+    completed_at = now or datetime.now(timezone.utc)
+    if completed_at < parse_utc(state["last_attempt_utc"]):
+        raise SchedulerStateError("Host clock precedes the recorded publisher attempt")
+    timestamp = format_utc(completed_at)
     state["last_success_utc"] = timestamp
     state["first_run_after_utc"] = None
     state["last_attempt_status"] = "success"
@@ -227,7 +230,10 @@ def record_failure(
         or state["last_attempt_invocation_id"] != invocation_id
     ):
         return None
-    timestamp = format_utc(now or datetime.now(timezone.utc))
+    failed_at = now or datetime.now(timezone.utc)
+    if failed_at < parse_utc(state["last_attempt_utc"]):
+        raise SchedulerStateError("Host clock precedes the recorded publisher attempt")
+    timestamp = format_utc(failed_at)
     state["last_failure_utc"] = timestamp
     state["last_attempt_status"] = "failed"
     write_state(path, state)
@@ -264,6 +270,9 @@ def run_command(args: argparse.Namespace) -> int:
     if now < deadline:
         print(f"[WAIT] Publisher not eligible before {format_utc(deadline)}")
         return 1
+    if args.dry_run:
+        print("[OK] Publisher would be eligible; scheduler state was not changed")
+        return 0
     invocation_id = os.environ.get("INVOCATION_ID")
     if not invocation_id:
         raise SchedulerStateError("systemd INVOCATION_ID is unavailable; refusing to run publisher")
@@ -285,6 +294,8 @@ def build_parser() -> argparse.ArgumentParser:
         subparser.add_argument("--state-file", required=True, type=Path)
         if command == "record-success":
             subparser.add_argument("--invocation-id", required=True)
+        else:
+            subparser.add_argument("--dry-run", action="store_true")
     record_outcome = subparsers.add_parser("record-outcome")
     record_outcome.add_argument("--state-file", required=True, type=Path)
     record_outcome.add_argument("--service-result", required=True)

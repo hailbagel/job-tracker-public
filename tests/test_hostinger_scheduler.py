@@ -1,5 +1,6 @@
 import contextlib
 import io
+import argparse
 import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
@@ -136,10 +137,32 @@ class SchedulerStateTests(unittest.TestCase):
         )
         self.assertIsNone(scheduler.read_state(self.state_file)["last_failure_utc"])
 
+    def test_clock_rollback_before_completion_fails_closed(self):
+        self.initialize()
+        attempt_at = self.success + timedelta(hours=48)
+        scheduler.mark_attempt(self.state_file, "clock-test", attempt_at)
+        with self.assertRaisesRegex(scheduler.SchedulerStateError, "Host clock precedes"):
+            scheduler.record_success(
+                self.state_file,
+                "clock-test",
+                attempt_at - timedelta(seconds=1),
+            )
+
     def test_initialization_will_not_overwrite_state(self):
         self.initialize()
         with self.assertRaisesRegex(scheduler.SchedulerStateError, "Refusing to overwrite"):
             self.initialize()
+
+    def test_eligible_dry_run_never_records_an_attempt(self):
+        self.initialize()
+        with patch.dict("os.environ", {"INVOCATION_ID": "must-not-be-used"}):
+            status = scheduler.run_command(argparse.Namespace(
+                command="eligible",
+                state_file=self.state_file,
+                dry_run=True,
+            ))
+        self.assertEqual(0, status)
+        self.assertIsNone(scheduler.read_state(self.state_file)["last_attempt_utc"])
 
     def test_missing_or_invalid_state_fails_closed(self):
         with self.assertRaisesRegex(scheduler.SchedulerStateError, "state is missing"):

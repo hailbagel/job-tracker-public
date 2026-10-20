@@ -147,15 +147,15 @@ These checked-in files are the proposed host configuration. The timer is a compl
 - [`scripts/systemd/vutrulabs-job-tracker-public.service.d/20-scheduler-gate.conf`](../scripts/systemd/vutrulabs-job-tracker-public.service.d/20-scheduler-gate.conf)
 - [`scripts/hostinger_scheduler_state.py`](../scripts/hostinger_scheduler_state.py)
 
-The timer's sole calendar event is `*-*-* *:00:00 UTC`, with `Persistent=true`, `AccuracySec=1min`, and no randomized delay. The service drop-in's `ExecCondition` checks the 48-hour threshold and a six-hour retry backoff, and atomically records an attempt before allowing the unchanged `ExecStart` to run. `ExecStartPost` records the successful completion time only after the existing publisher exits successfully; `ExecStopPost` records a failed attempt from systemd's `SERVICE_RESULT`. Both callbacks must match the active systemd `INVOCATION_ID`, so a skipped hourly check cannot rewrite a previous attempt's failure time. A missing, malformed, unwritable, or incompatible state file fails closed; it is not treated as permission to publish. The state is atomically replaced and fsynced under `/var/lib/vutrulabs-job-tracker-public/`; it contains timestamps and outcome markers only, not credentials.
+The timer's sole calendar event is `*-*-* *:00:00 UTC`, with `Persistent=true`, `AccuracySec=1min`, and no randomized delay. The service drop-in's `ExecCondition` checks the 48-hour threshold and a six-hour retry backoff, and atomically records an attempt before allowing the unchanged `ExecStart` to run. The publisher records success or failure at the end of its existing locked execution; this also gates and records a direct manual CLI invocation when scheduler state is provisioned. `ExecStopPost` is a failure-recovery hook for systemd failures outside the publisher, using `SERVICE_RESULT`; it matches `INVOCATION_ID` so an ineligible skipped hourly check cannot rewrite an earlier attempt's failure time. Per systemd 255, `ExecCondition` exit 1-254 skips the start without marking the unit failed, while exit 255 or abnormal termination fails the unit; `ExecStopPost` runs for condition errors as well as failed starts. `ExecStartPost` is deliberately not used: for `Type=oneshot`, it runs after the `ExecStart` command exits successfully, but publisher-side state recording is needed to cover the manual CLI path too. A missing, malformed, unwritable, or incompatible state file fails closed; it is not treated as permission to publish. The state directory is root-owned mode 0700 and the atomically replaced/fsynced state file is mode 0600 under `/var/lib/vutrulabs-job-tracker-public/`; it contains timestamps and outcome markers only, not credentials.
 
 The initial proposed failure backoff is a minimum of six hours after a failed attempt completes. This prevents hourly retries from repeatedly scraping upstreams. **Owner sign-off on the six-hour retry policy is required before live installation.** The retry does not count as a success and does not reset the rolling 48-hour success target. Persistent failures should raise an operational alert rather than imply fresh data.
 
 The state timestamp represents the last completed successful publisher run. A run that creates and pushes a data commit is reported separately in the existing journal output from a successful no-change run; both are successful completed runs for the 48-hour scheduler interval, but a no-change run is never described as a new data publication. The smoke check labels its timestamp as a publisher execution, while the journal and public data metadata establish whether new data was actually pushed.
 
-The gate applies to systemd starts of the existing service. It does not rewrite or disable the existing publisher CLI; a direct manual Python invocation remains subject to the repository's existing publication lock and Operations approval. Do not use a direct invocation to bypass this cadence policy.
+After scheduler state is provisioned, both systemd starts and direct invocations of the documented publisher CLI enforce the same eligibility gate while holding the existing publication lock. A manual success updates the shared last-success state; a manual failure updates the same retry backoff. Before scheduler state is installed, the publisher retains its existing behavior. The systemd service environment points the publisher to the same state path as the condition helper.
 
-`ExecCondition` requires systemd 243 or newer ([systemd.service(5)](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)). Check `systemd --version` on the actual host before deploying. The installed Hostinger version and the existing service command have not been verified from the evidence supplied, so installation is blocked until both are inspected. The gate uses synchronized UTC wall-clock time; a clock that steps forward can make a run eligible earlier, while a clock that steps backward delays eligibility. Verify time synchronization before enabling the timer.
+`ExecCondition` requires systemd 243 or newer ([systemd.service(5)](https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html)). Check `systemd --version` on the actual host before deploying. The installed Hostinger version and the existing service command have not been verified from the original evidence; the October 20 read-only preflight later confirmed systemd 255 and the oneshot shape, but the full `ExecStart` argv still needs inspection. The gate uses synchronized UTC wall-clock time; a clock that steps forward can make a run eligible earlier. A detected backward step before outcome recording fails closed, and an ordinary backward correction delays eligibility. Verify time synchronization before enabling the timer.
 
 ### Eligibility bootstrap and catch-up policy
 
@@ -165,7 +165,7 @@ Initialize the state exactly once before enabling the timer:
 - If a successful invocation time cannot be established, use `--first-run-after-utc` set to at least 48 hours after deployment. This records no fictitious success and conservatively delays the first run. Do not initialize from the October 15 push alone if later no-change runs cannot be ruled out.
 - Initialization refuses to overwrite state. Never delete or reset this state during routine rollback.
 
-After downtime, `Persistent=true` causes one catch-up activation for missed calendar events, not one activation per missed hour. The gate starts the publisher only if its 48-hour threshold and retry backoff are both met. Otherwise the check skips, and the next opportunity is the next hourly slot. A publisher failure records its attempt/failure time but does not update success; the gate blocks further retries for at least six hours after the failure, then retries at the next hourly slot. After a successful catch-up, the new success timestamp blocks further production executions for 48 hours. The systemd service manager serializes activations of this unit, the invocation ID fences state callbacks to their own service run, and the existing publication lock remains authoritative against concurrent/manual invocations.
+After downtime, `Persistent=true` causes one catch-up activation for missed calendar events, not one activation per missed hour. The gate starts the publisher only if its 48-hour threshold and retry backoff are both met. Otherwise the check skips, and the next opportunity is the next hourly slot. A publisher failure records its attempt/failure time but does not update success; the gate blocks further retries for at least six hours after the failure, then retries at the next hourly slot. If power loss prevents `ExecStopPost` from running, the state remains `started` and blocks the next attempt until at least six hours after the recorded attempt start; actual crash time is unknowable. After a successful catch-up, the new success timestamp blocks further production executions for 48 hours. The systemd service manager serializes activations of this unit, the invocation ID fences systemd callbacks to their own service run, and the existing publication lock remains authoritative against concurrent/manual invocations.
 
 Enabling a persistent timer with an overdue, verified success timestamp may cause an immediate catch-up activation. Review the initialized deadline and approve that possibility before enabling. This PR does not run a manual publication or modify the Hostinger timer. If an immediate catch-up is not approved, use the conservative first-run anchor. No one-time manual publication is required by this rollback plan.
 
@@ -210,10 +210,11 @@ systemctl list-timers --all vutrulabs-job-tracker-public.timer --no-pager
 sudo /usr/bin/python3 /opt/vutrulabs/job-tracker-public/scripts/check_hostinger_scheduler.py
 ```
 
-Use the focused Python test to exercise the 47h59m59s and 48h-minus-one-microsecond rejection, exact 48h eligibility, durable state across process restart, missed hourly slots, catch-up success resetting the interval, six-hour retry backoff after failure, malformed/missing-state fail-closed behavior, and stale state despite `Result=success`:
+Use the focused Python tests to exercise the 47h59m59s and 48h-minus-one-microsecond rejection, exact 48h eligibility, durable state across process restart, missed hourly slots, catch-up success resetting the interval, six-hour retry backoff after failure, malformed/missing-state fail-closed behavior, stale state despite `Result=success`, and integration of the existing direct publisher CLI with scheduler state:
 
 ```powershell
 python -m unittest discover -s tests -p test_hostinger_scheduler.py
+python -m unittest discover -s tests -p test_publication.py
 ```
 
 On a non-production staging host, separately verify `Persistent=true` through a controlled timer stop spanning one or more hourly UTC slots, then reactivation: expect at most one catch-up activation; use a test service there, not the production publisher. Also verify the natural post-reboot case: one catch-up at most, gate skipped if the 48-hour threshold or failure backoff is not met, no duplicate execution during the following hour, and no retries more frequently than once per six hours after a failed completion. A production reboot/timer stop is not authorized by this PR.
@@ -229,75 +230,6 @@ sudo /usr/bin/python3 /opt/vutrulabs/job-tracker-public/scripts/check_hostinger_
 
 Accept only an in-window successful publisher execution and successful state-record message in the journal, a fresh state timestamp, and current data/source status. Confirm Tesla/Jacobs failures remain explicitly reported if they recur; they do not by themselves mean the other validated sources or Patrick feed failed. A no-change run may have no new pushed commit, so do not require a new commit as the sole success signal. Record the journal excerpt, `Result`/exit status, state freshness, and relevant `observed_at` evidence in a follow-up documentation commit.
 
-### Reversible Hostinger deployment and rollback
+### Hostinger operator runbook
 
-Do not run these commands before owner approval, PR review/merge, and the pre-deployment checks above. The GitHub PR versions configuration only; it does not change `/etc/systemd/system` on Hostinger. Run from the existing Hostinger repository checkout after the approved change has been made available there. Replace no service command and do not modify credentials or data.
-
-```bash
-set -eu
-REPO=/opt/vutrulabs/job-tracker-public
-TIMER=/etc/systemd/system/vutrulabs-job-tracker-public.timer
-DROPIN_DIR=/etc/systemd/system/vutrulabs-job-tracker-public.service.d
-DROPIN=$DROPIN_DIR/20-scheduler-gate.conf
-BACKUP=/root/vutrulabs-scheduler-backup-$(date -u +%Y%m%dT%H%M%SZ)
-
-test ! -e "$BACKUP"
-if systemctl is-active --quiet vutrulabs-job-tracker-public.service; then echo "[ERR] Publisher is active; stop and review before deployment"; exit 1; fi
-install -d -m 0700 "$BACKUP"
-cp -a "$TIMER" "$BACKUP/vutrulabs-job-tracker-public.timer"
-if test -e "$DROPIN"; then cp -a "$DROPIN" "$BACKUP/20-scheduler-gate.conf"; else touch "$BACKUP/dropin-was-absent"; fi
-systemctl is-enabled vutrulabs-job-tracker-public.timer > "$BACKUP/timer-enabled" 2>&1 || :
-systemctl is-active vutrulabs-job-tracker-public.timer > "$BACKUP/timer-active" 2>&1 || :
-systemctl stop vutrulabs-job-tracker-public.timer
-install -d -m 0755 "$DROPIN_DIR" /var/lib/vutrulabs-job-tracker-public
-install -m 0644 "$REPO/scripts/systemd/vutrulabs-job-tracker-public.timer" "$TIMER"
-install -m 0644 "$REPO/scripts/systemd/vutrulabs-job-tracker-public.service.d/20-scheduler-gate.conf" "$DROPIN"
-```
-
-Initialize once with the verified latest successful invocation timestamp:
-
-```bash
-STATE=/var/lib/vutrulabs-job-tracker-public/state.json
-LAST_SUCCESS_UTC='YYYY-MM-DDTHH:MM:SSZ'
-/usr/bin/python3 "$REPO/scripts/hostinger_scheduler_state.py" initialize --state-file "$STATE" --last-success-utc "$LAST_SUCCESS_UTC"
-```
-
-If the journal cannot establish that timestamp, use a conservative first-run barrier instead:
-
-```bash
-STATE=/var/lib/vutrulabs-job-tracker-public/state.json
-FIRST_RUN_AFTER_UTC=$(date -u -d '+48 hours 1 second' +%Y-%m-%dT%H:%M:%SZ)
-/usr/bin/python3 "$REPO/scripts/hostinger_scheduler_state.py" initialize --state-file "$STATE" --first-run-after-utc "$FIRST_RUN_AFTER_UTC"
-```
-
-Do not run both initialization alternatives. Continue only after checking the catch-up deadline, obtaining explicit owner sign-off for the six-hour failure retry policy, and approving whether a due persistent catch-up may run immediately:
-
-```bash
-systemd-analyze verify "$TIMER" /etc/systemd/system/vutrulabs-job-tracker-public.service
-systemd-analyze calendar '*-*-* *:00:00 UTC'
-systemctl daemon-reload
-systemctl enable --now vutrulabs-job-tracker-public.timer
-systemctl show vutrulabs-job-tracker-public.timer -p ActiveState -p SubState -p LastTriggerUSec -p NextElapseUSecRealtime -p Persistent --no-pager
-```
-
-Rollback (keep the timestamp state for audit; do not delete it). Set `BACKUP` to the exact directory printed/created during deployment:
-
-```bash
-set -eu
-TIMER=/etc/systemd/system/vutrulabs-job-tracker-public.timer
-DROPIN=/etc/systemd/system/vutrulabs-job-tracker-public.service.d/20-scheduler-gate.conf
-BACKUP=/root/vutrulabs-scheduler-backup-YYYYMMDDTHHMMSSZ
-
-systemctl stop vutrulabs-job-tracker-public.timer
-install -m 0644 "$BACKUP/vutrulabs-job-tracker-public.timer" "$TIMER"
-if test -e "$BACKUP/dropin-was-absent"; then rm -f "$DROPIN"; else install -m 0644 "$BACKUP/20-scheduler-gate.conf" "$DROPIN"; fi
-systemctl daemon-reload
-case "$(cat "$BACKUP/timer-enabled")" in
-    enabled|enabled-runtime|linked|linked-runtime|alias) systemctl enable vutrulabs-job-tracker-public.timer ;;
-    *) systemctl disable vutrulabs-job-tracker-public.timer ;;
-esac
-if test "$(cat "$BACKUP/timer-active")" = active; then systemctl start vutrulabs-job-tracker-public.timer; else systemctl stop vutrulabs-job-tracker-public.timer; fi
-systemctl show vutrulabs-job-tracker-public.timer -p ActiveState -p SubState -p LastTriggerUSec -p NextElapseUSecRealtime --no-pager
-```
-
-Restoring the old monotonic timer resets its activation origin; rollback therefore restores the old scheduling behavior, not the new persistent catch-up guarantee. Verify its next deadline and do not claim the scheduler is fixed after rollback.
+The exact staged preflight, backup, merged-branch synchronization, installation, one-time state bootstrap, dry checks, unit verification, activation, unattended acceptance, and rollback steps are in [`HOSTINGER_PR20_SCHEDULER_RUNBOOK.md`](./HOSTINGER_PR20_SCHEDULER_RUNBOOK.md). It requires distinct owner decisions for the six-hour failure retry, initial success anchor, and immediate catch-up vs conservative wait. It also specifies that a complete code rollback requires a reviewed revert PR; restoring only systemd files does not undo publisher-side state enforcement.
