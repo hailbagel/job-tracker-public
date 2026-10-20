@@ -3,10 +3,10 @@
   "adapter": "personio_xml",
   "company": "HyImpulse",
   "coverage_complete": true,
-  "data_hash": "a9e05daaf5a6115c78ac0d69d080cfcde95cbfe110cfde4745959dae10e4e733",
-  "observed_at": "2026-10-15T13:46:49.660731Z",
+  "data_hash": "2fe46d9a6931203aa17e394fb18168a14e38f867e56c1c5b4925c6044dd9fe34",
+  "observed_at": "2026-10-20T17:29:39.413447Z",
   "reason": null,
-  "records_written": 23,
+  "records_written": 32,
   "source_id": "hyimpulse",
   "status": "success"
 }
