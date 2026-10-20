@@ -22,6 +22,7 @@ Host installation, the timer, repository credentials, and the private Patrick pr
 - Existing provider support for `neura`, `spacex`, `tesla`, and `jacobs` is preserved. Tesla, Jacobs, or NEURA failures do not block a healthy Patrick feed because they are not Patrick contributors.
 - `data/source_status.json` and logs report attempted, successful, failed/incomplete, and published contributor source IDs plus overall Patrick-feed coverage.
 - A nonblocking lock under `.runtime/publication/` serializes invocations.
+- When the Hostinger rolling scheduler state has been installed, both systemd runs and direct invocations of this same command share its 48-hour success gate and six-hour failed-attempt backoff. Successful manual no-change runs update the durable scheduler timestamp; the publication lock remains the concurrency boundary.
 - The command requires a clean worktree on `main` by default, fetches `origin/main`, rejects divergence, and performs only `git pull --ff-only origin main` before collection.
 - Fresh, nonempty, schema-valid and link-coherent processed datasets are required. SpaceX acquisition metadata and the Patrick JSON/CSV/Markdown feed must agree with the collected SpaceX count.
 - Only the explicit `OUTPUT_ALLOWLIST` in `scripts/publish_public_data.py` is staged. Raw snapshots, exports, caches, runtime state, private profiles, sessions, and credentials are excluded.

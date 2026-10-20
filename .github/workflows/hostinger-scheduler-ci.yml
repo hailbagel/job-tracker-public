@@ -1,0 +1,62 @@
+name: Hostinger scheduler Linux review
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/hostinger_scheduler_state.py'
+      - 'scripts/check_hostinger_scheduler.py'
+      - 'scripts/publish_public_data.py'
+      - 'scripts/systemd/**'
+      - 'tests/test_hostinger_scheduler.py'
+      - 'tests/test_publication.py'
+      - '.github/workflows/hostinger-scheduler-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scheduler-linux:
+    name: Scheduler tests and systemd syntax (Ubuntu)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify Python scheduler tests
+        run: |
+          python3 --version
+          python3 -m compileall -q scripts/hostinger_scheduler_state.py scripts/check_hostinger_scheduler.py tests/test_hostinger_scheduler.py
+          python3 -m unittest discover -s tests -p test_hostinger_scheduler.py -v
+
+      - name: Verify calendar expression and systemd unit syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          systemd-analyze --version | head -1
+          systemd-analyze calendar '*-*-* *:00:00 UTC'
+          root="$(mktemp -d)"
+          trap 'rm -rf "$root"' EXIT
+          install -d "$root/vutrulabs-job-tracker-public.service.d"
+          cp scripts/systemd/vutrulabs-job-tracker-public.timer "$root/"
+          cp scripts/systemd/vutrulabs-job-tracker-public.service.d/20-scheduler-gate.conf "$root/vutrulabs-job-tracker-public.service.d/"
+          # Synthetic one-shot unit for static parser validation ONLY.
+          # The actual production service must be separately inspected and validated on Hostinger.
+          cat > "$root/vutrulabs-job-tracker-public.service" <<'SERVICE'
+          [Unit]
+          Description=Synthetic test service, NOT deployed
+          [Service]
+          Type=oneshot
+          ExecStart=/usr/bin/true
+          SERVICE
+          systemd-analyze verify "$root/vutrulabs-job-tracker-public.service" "$root/vutrulabs-job-tracker-public.timer"
+
+      - name: Verify Python publisher regressions (Linux fcntl)
+        run: |
+          python3 -m pip install -r requirements.txt
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Note review limit
+        run: |
+          echo "Linux tests and synthetic service parsing only."
+          echo "No Hostinger service was started or changed."
+          echo "Real systemd integration, bootstrap, retry policy, and unattended run need separate owner approval."

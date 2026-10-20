@@ -3,10 +3,12 @@ import os
 import subprocess
 import tempfile
 import unittest
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
 from scripts import publish_public_data as publication
+from scripts import hostinger_scheduler_state as scheduler
 
 
 def completed(command, returncode=0, stdout=""):
@@ -316,6 +318,115 @@ class OrchestrationTests(unittest.TestCase):
             self.assertEqual(
                 ["rocket-factory-augsburg"], coverage["failed_or_incomplete_sources"]
             )
+
+
+class SchedulerIntegrationTests(unittest.TestCase):
+    def setUp(self):
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp_dir.name)
+        self.runtime = self.root / "runtime"
+        self.runtime.mkdir()
+        self.state_file = self.root / "state" / "state.json"
+        self.state_file.parent.mkdir()
+
+    def tearDown(self):
+        self.temp_dir.cleanup()
+
+    def initialize(self, last_success):
+        scheduler.initialize_state(
+            self.state_file,
+            last_success_utc=scheduler.format_utc(last_success),
+        )
+
+    def run_with_scheduler(self):
+        environment = {
+            "JOB_TRACKER_RUNTIME_DIR": str(self.runtime),
+            "JOB_TRACKER_SCHEDULER_STATE": str(self.state_file),
+        }
+        with patch.dict(os.environ, environment):
+            os.environ.pop("INVOCATION_ID", None)
+            return publication.main()
+
+    @patch.object(publication, "collect_and_publish")
+    def test_manual_publisher_is_rejected_before_48_hours(self, collect):
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=47))
+
+        with self.assertRaisesRegex(publication.PublicationError, "not eligible before"):
+            self.run_with_scheduler()
+
+        collect.assert_not_called()
+        self.assertIsNone(scheduler.read_state(self.state_file)["last_attempt_utc"])
+
+    @patch.object(publication.fcntl, "flock", side_effect=BlockingIOError)
+    @patch.object(publication, "collect_and_publish")
+    def test_existing_publication_lock_rejects_manual_overlap_before_state_change(
+        self,
+        collect,
+        flock,
+    ):
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+
+        with self.assertRaisesRegex(publication.PublicationError, "Another publication run"):
+            self.run_with_scheduler()
+
+        flock.assert_called_once()
+        collect.assert_not_called()
+        self.assertIsNone(scheduler.read_state(self.state_file)["last_attempt_utc"])
+
+    @patch.object(publication, "collect_and_publish", return_value=False)
+    def test_successful_manual_no_change_run_resets_scheduler_interval(self, collect):
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+
+        self.assertEqual(0, self.run_with_scheduler())
+
+        collect.assert_called_once()
+        state = scheduler.read_state(self.state_file)
+        self.assertEqual("success", state["last_attempt_status"])
+        self.assertTrue(state["last_attempt_invocation_id"].startswith("manual-"))
+        self.assertGreaterEqual(
+            scheduler.eligibility_deadline(self.state_file),
+            datetime.now(timezone.utc) + timedelta(hours=47, minutes=59),
+        )
+
+    @patch.object(
+        publication,
+        "collect_and_publish",
+        side_effect=publication.PublicationError("fixture publisher failure"),
+    )
+    def test_failed_manual_run_records_failure_and_applies_retry_backoff(self, collect):
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+
+        with self.assertRaisesRegex(publication.PublicationError, "fixture publisher failure"):
+            self.run_with_scheduler()
+
+        collect.assert_called_once()
+        state = scheduler.read_state(self.state_file)
+        self.assertEqual("failed", state["last_attempt_status"])
+        self.assertIsNotNone(state["last_failure_utc"])
+        self.assertGreater(
+            scheduler.next_attempt_after(self.state_file),
+            datetime.now(timezone.utc) + timedelta(hours=5, minutes=59),
+        )
+
+    @patch.object(publication, "collect_and_publish", return_value=False)
+    def test_systemd_run_uses_matching_attempt_and_records_success_once(self, collect):
+        now = datetime.now(timezone.utc)
+        self.initialize(now - timedelta(hours=49))
+        invocation_id = "test-systemd-invocation"
+        scheduler.mark_attempt(self.state_file, invocation_id, now)
+        environment = {
+            "JOB_TRACKER_RUNTIME_DIR": str(self.runtime),
+            "JOB_TRACKER_SCHEDULER_STATE": str(self.state_file),
+            "INVOCATION_ID": invocation_id,
+        }
+
+        with patch.dict(os.environ, environment):
+            self.assertEqual(0, publication.main())
+
+        collect.assert_called_once()
+        state = scheduler.read_state(self.state_file)
+        self.assertEqual(invocation_id, state["last_attempt_invocation_id"])
+        self.assertEqual("success", state["last_attempt_status"])
 
 
 if __name__ == "__main__":

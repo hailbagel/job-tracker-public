@@ -12,7 +12,8 @@ import subprocess
 import sys
 import tempfile
 import time
-from datetime import datetime
+import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 # Direct script execution adds scripts/ rather than the repository root to
@@ -24,6 +25,7 @@ if str(REPO_ROOT) not in sys.path:
 
 from jobtracker.patrick import generate_multi
 from jobtracker.registry import RegistryError, sources
+from scripts import hostinger_scheduler_state
 
 
 LEGACY_PROVIDERS = ("neura", "spacex", "tesla", "jacobs")
@@ -450,13 +452,74 @@ def main():
     profile = Path(os.environ.get("JOB_TRACKER_PROFILE_PATH", "configs/private_profiles/patrick.json")).resolve()
     expected_branch = os.environ.get("JOB_TRACKER_PUBLISH_BRANCH", "main")
     publish_ref = os.environ.get("JOB_TRACKER_PUBLISH_REF", "main")
+    scheduler_state_path = Path(os.environ.get(
+        "JOB_TRACKER_SCHEDULER_STATE",
+        "/var/lib/vutrulabs-job-tracker-public/state.json",
+    ))
+    scheduler_configured = (
+        "JOB_TRACKER_SCHEDULER_STATE" in os.environ
+        or scheduler_state_path.exists()
+        or scheduler_state_path.parent.exists()
+        or Path("/etc/systemd/system/vutrulabs-job-tracker-public.service").exists()
+    )
     lock_path = runtime / "publication.lock"
     with lock_path.open("a+") as lock:
         try:
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except BlockingIOError as exc:
             raise PublicationError(f"Another publication run holds {lock_path}") from exc
-        collect_and_publish(repo, runtime, profile, expected_branch, publish_ref)
+        scheduler_invocation_id = None
+        if scheduler_configured:
+            try:
+                scheduler_invocation_id = os.environ.get("INVOCATION_ID")
+                if scheduler_invocation_id:
+                    state = hostinger_scheduler_state.read_state(scheduler_state_path)
+                    if (
+                        state["last_attempt_status"] != "started"
+                        or state["last_attempt_invocation_id"] != scheduler_invocation_id
+                    ):
+                        raise PublicationError(
+                            "Systemd invocation has no matching eligible scheduler attempt"
+                        )
+                else:
+                    now = datetime.now(timezone.utc)
+                    deadline = hostinger_scheduler_state.next_attempt_after(scheduler_state_path)
+                    if now < deadline:
+                        raise PublicationError(
+                            "Publisher is not eligible before "
+                            + hostinger_scheduler_state.format_utc(deadline)
+                        )
+                    scheduler_invocation_id = f"manual-{uuid.uuid4().hex}"
+                    hostinger_scheduler_state.mark_attempt(
+                        scheduler_state_path,
+                        scheduler_invocation_id,
+                        now,
+                    )
+            except hostinger_scheduler_state.SchedulerStateError as exc:
+                raise PublicationError(f"Scheduler state check failed: {exc}") from exc
+
+        run_succeeded = False
+        try:
+            collect_and_publish(repo, runtime, profile, expected_branch, publish_ref)
+            run_succeeded = True
+        finally:
+            if scheduler_invocation_id is not None:
+                try:
+                    if run_succeeded:
+                        hostinger_scheduler_state.record_success(
+                            scheduler_state_path,
+                            scheduler_invocation_id,
+                        )
+                    else:
+                        hostinger_scheduler_state.record_failure(
+                            scheduler_state_path,
+                            "publisher-failed",
+                            scheduler_invocation_id,
+                        )
+                except hostinger_scheduler_state.SchedulerStateError as exc:
+                    raise PublicationError(
+                        f"Could not persist scheduler outcome: {exc}"
+                    ) from exc
     return 0
 
 
