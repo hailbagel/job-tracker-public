@@ -54,3 +54,20 @@ systemctl show vutrulabs-job-tracker-public.service -p Type -p ExecStart -p Work
 This displays effective service command and proposed hook presence (without starting anything), and the current timer file. Redact any secrets in the terminal output if additional confidential configuration is displayed. Verify the real `ExecStart` is the approved publisher invocation and all scheduler hooks (`ExecCondition`, `ExecStartPost`, `ExecStopPost`) are presently absent before installing the new drop-in. If any are already configured, stop; do not overwrite them.
 
 **Deployment policy:** after this read-only inspection, explicitly approve the six-hour failed-attempt retry policy, initial last-success timestamp / safe first-run anchor and whether overdue catch-up may run on activation; then review/merge PR #20, and only afterward perform a controlled Hostinger installation with backup and rollback, followed by unattended acceptance.
+
+## Final read-only host service inspection — screenshot
+
+The operator has now run the second read-only preflight. Screenshot confirms:
+
+- `Type=oneshot` and `ActiveState=inactive`.
+- `WorkingDirectory=/opt/vutrulabs/job-tracker-public`.
+- `ExecStart` invokes `/opt/vutrulabs/job-tracker-public/.venv/bin/python` with a `scripts/... ` command; the full argv is cut off at the screen boundary, so do not claim its complete command text was independently read.
+- `User=` and `Group=` are blank: effective default root identity.
+- `StateDirectory=` is blank: new durable state directory has not been installed.
+- No `ExecCondition`, `ExecStartPost` or `ExecStopPost` hooks are shown in the read-only property output. New scheduler hooks are **not deployed**.
+- `systemctl cat ...timer` still returns the original `OnActiveSec=48h` + `OnUnitInactiveSec=48h` configuration.
+- The screenshot shows an ordinary idle root terminal prompt; no deployment command or service start occurred.
+
+**Assessment:** The existing host configuration is consistent with the proposal's assumptions, but `systemctl cat vutrulabs-job-tracker-public.service` (including all drop-ins) must still be reviewed against the proposed additive drop-in and production publisher command before deployment. No additional *timer* diagnosis is required before the controlled change; the unit-state discrepancy is documented separately.
+
+**Review and deployment gates:** Linux CI is passing for PR #20, which remains a draft. Require approval of the six-hour failed-attempt retry policy and of a safe timestamp/first-run bootstrap. Do **not** assume the October 15 Git commit is the last successful execution if later successful no-change runs have not been excluded by journal evidence. Never run a catch-up publication, merge or install implicitly based on this screenshot.
