@@ -142,6 +142,7 @@ class GitPublicationTests(unittest.TestCase):
         ).splitlines())
         expected = {
             ".github/workflows/industrial-source-ci.yml",
+            ".github/workflows/hostinger-scheduler-ci.yml",
             "configs/sources.json",
             "data/source_status.json",
             "data/sms-group/processed/acquisition.json",
