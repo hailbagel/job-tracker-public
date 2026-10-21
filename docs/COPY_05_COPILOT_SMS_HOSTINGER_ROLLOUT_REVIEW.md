@@ -1,15 +1,15 @@
 # KOPIEREN 05 — Copilot bereitet SMS-Hostinger-Aktivierung vor
 
-**STATUS:** [PR #25](https://github.com/hailbagel/job-tracker-public/pull/25) ist gemergt (Commit `daa9a08`); beide Ubuntu-Workflows sind erfolgreich. Der SMS-Adapter ist **standardmäßig ausgeschaltet**, weil auf Hostinger `JOB_TRACKER_ENABLE_SMS_GROUP=1` noch nicht gesetzt wurde.
+**HINWEIS 21.10.2026:** Nicht mehr den verlorenen Chat `Industrial Job Coverage` suchen. Diesen Prompt im neuen Chat `Job Tracker – Development` in einem eigenen VS-Code-Fenster mit ausschließlich dem Ordner `C:\\Users\\minkusp\\Projects\\job-tracker-public` verwenden. Vorher lokale Git-Änderungen prüfen und `main` nur per Fast-Forward synchronisieren; niemals ungesicherte Daten überschreiben.\n\n**STATUS:** [PR #25](https://github.com/hailbagel/job-tracker-public/pull/25) ist gemergt (Commit `daa9a08`); beide Ubuntu-Workflows sind erfolgreich. Der SMS-Adapter ist **standardmäßig ausgeschaltet**, weil auf Hostinger `JOB_TRACKER_ENABLE_SMS_GROUP=1` noch nicht gesetzt wurde.
 
-**WO EINFÜGEN?** Auf dem **Betriebslaptop** → **VS Code → vorhandener Copilot Agent Chat `Industrial Job Coverage`** → Textbox. **Nicht** im Terminal, **nicht** auf Hostinger. Du brauchst die VS-Code-Erweiterung „GitHub Actions“ **nicht** zu installieren.
+**WO EINFÜGEN?** Auf dem **Betriebslaptop** → **VS Code → neuer VS-Code-Copilot-Agent-Chat `Job Tracker – Development`** → Textbox. **Nicht** im Terminal, **nicht** auf Hostinger. Du brauchst die VS-Code-Erweiterung „GitHub Actions“ **nicht** zu installieren.
 
 **WOFÜR?** Copilot erstellt den letzten sicheren Betriebsfahrplan für SMS group: ein schreibgeschützter Hostinger-Preflight, ein kontrollierter Opt-in-Pilot, eine Datenabnahme und ein genau definiertes Rollback. Die Befehle werden als eigene, kommentierte Kopierblöcke in der Repo dokumentiert. Er **führt selbst nichts** auf Hostinger aus. ChatGPT prüft die Ergebnisse und führt die nächsten GitHub-Schritte durch.
 
 ## Gesamten Block hieraus in Copilot Chat kopieren
 
 ```text
-Continue in the SAME VS Code Copilot Agent chat "Industrial Job Coverage" on the WORK laptop.
+Start a NEW VS Code Copilot Agent chat "Job Tracker – Development" on the WORK laptop. The previous chat "Industrial Job Coverage" is not accessible. GitHub main and the referenced repository documentation are the authoritative project context; do not assume previous conversation state.
 
 STATUS VERIFIED: PR #25 was merged into main. Merge commit: daa9a086c9fadda413d38bb66d5168d1c34f98bd. Its source and scheduler/publisher Linux CI both passed. This adds a DEFAULT-OFF SMS group production gate (JOB_TRACKER_ENABLE_SMS_GROUP). It DOES NOT mean SMS acquisition is live on Hostinger. Existing Hostinger systemd publisher must remain intact.
 
