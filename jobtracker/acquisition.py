@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from html.parser import HTMLParser
+from urllib.parse import urlsplit
 
 
 USER_AGENT = "VuTruLabs-public-job-tracker/1.0"
@@ -293,6 +294,181 @@ def personio_xml(source, fetch=_get):
     )
 
 
+def _dvinci_publication_id(url, host):
+    parsed = urlsplit(_clean(url))
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname != host
+        or parsed.port is not None
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.query
+        or parsed.fragment
+    ):
+        return None
+    match = re.fullmatch(
+        r"/([a-z]{2}(?:[-_][a-z]{2})?)/jobs/(\d+)/[^/]+",
+        parsed.path,
+        re.IGNORECASE,
+    )
+    if not match:
+        return None
+    return match.group(1).lower().replace("_", "-"), match.group(2)
+
+
+def _dvinci_display_name(value):
+    if isinstance(value, dict):
+        value = value.get("name")
+    return _clean(value) if isinstance(value, str) else ""
+
+
+def dvinci(source, fetch=_get):
+    config = source["adapter_config"]
+    host = urlsplit(source["careers_url"]).hostname
+    feed_url = config["url"]
+    sitemap_url = config["sitemap_url"]
+    if (
+        not host
+        or urlsplit(feed_url).scheme != "https"
+        or urlsplit(feed_url).hostname != host
+        or urlsplit(sitemap_url).scheme != "https"
+        or urlsplit(sitemap_url).hostname != host
+    ):
+        return AcquisitionResult(
+            [], "incomplete", False,
+            "d.vinci feed and sitemap must use the official careers host",
+        )
+
+    publications = json.loads(fetch(feed_url))
+    if not isinstance(publications, list) or not publications:
+        return AcquisitionResult(
+            [], "incomplete", False,
+            "d.vinci list endpoint returned no publication array",
+        )
+
+    publication_ids = set()
+    publication_urls = set()
+    openings = {}
+    for item in publications:
+        if not isinstance(item, dict):
+            return AcquisitionResult(
+                [], "incomplete", False,
+                "d.vinci list contains a malformed publication",
+            )
+        publication_id = _clean(item.get("id"))
+        opening = item.get("jobOpening")
+        opening_id = _clean(opening.get("id")) if isinstance(opening, dict) else ""
+        language = _clean(item.get("language")).lower().replace("_", "-")
+        link = _clean(item.get("jobPublicationURL"))
+        parsed_link = _dvinci_publication_id(link, host)
+        if (
+            not publication_id.isdigit()
+            or not opening_id.isdigit()
+            or not language
+            or not parsed_link
+            or parsed_link != (language, publication_id)
+            or not isinstance(item.get("position") or item.get("pageTitle"), str)
+            or not _clean(item.get("position") or item.get("pageTitle"))
+        ):
+            return AcquisitionResult(
+                [], "incomplete", False,
+                "d.vinci publication is missing a native ID, locale, title, or canonical URL",
+            )
+        if any(
+            item.get(field) is not None and not isinstance(item.get(field), str)
+            for field in ("introduction", "tasks", "profile", "weOffer")
+        ):
+            return AcquisitionResult(
+                [], "incomplete", False,
+                "d.vinci publication contains a malformed description field",
+            )
+        if publication_id in publication_ids or link in publication_urls:
+            return AcquisitionResult(
+                [], "incomplete", False,
+                "d.vinci list contains a duplicate publication ID or URL",
+            )
+        publication_ids.add(publication_id)
+        publication_urls.add(link)
+        openings.setdefault(opening_id, []).append(item)
+
+    sitemap_root = ET.fromstring(fetch(sitemap_url))
+    if sitemap_root.tag.rsplit("}", 1)[-1] != "urlset":
+        return AcquisitionResult(
+            [], "incomplete", False,
+            "d.vinci sitemap is not a URL set",
+        )
+    sitemap_ids = []
+    for element in sitemap_root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "loc":
+            continue
+        parsed_link = _dvinci_publication_id(element.text or "", host)
+        if not parsed_link:
+            return AcquisitionResult(
+                [], "incomplete", False,
+                "d.vinci sitemap contains a non-canonical job URL",
+            )
+        sitemap_ids.append(parsed_link[1])
+    if (
+        not sitemap_ids
+        or len(sitemap_ids) != len(set(sitemap_ids))
+        or set(sitemap_ids) != publication_ids
+    ):
+        return AcquisitionResult(
+            [], "incomplete", False,
+            "d.vinci publication IDs do not match the public job sitemap "
+            f"(feed={len(publication_ids)}, sitemap={len(sitemap_ids)})",
+        )
+
+    preferred_language = _clean(config.get("preferred_language") or "en").lower()
+    jobs = []
+    for opening_id, variants in openings.items():
+        languages = [item["language"].lower().replace("_", "-") for item in variants]
+        if len(languages) != len(set(languages)):
+            return AcquisitionResult(
+                [], "incomplete", False,
+                f"d.vinci opening {opening_id} has duplicate publications in one locale",
+            )
+        selected = min(
+            variants,
+            key=lambda item: (
+                item["language"].lower().replace("_", "-") != preferred_language,
+                item["language"].lower().replace("_", "-"),
+                str(item["id"]),
+            ),
+        )
+        job_opening = selected["jobOpening"]
+        location = _dvinci_display_name(job_opening.get("location"))
+        if not location:
+            location = _dvinci_display_name(job_opening.get("locations"))
+        mission = " ".join(
+            text for text in (
+                _html_text(selected.get("introduction")),
+                _html_text(selected.get("tasks")),
+            ) if text
+        )
+        descriptions = {
+            "mission": mission,
+            "requirements": _html_text(selected.get("profile")),
+            "benefits": _html_text(selected.get("weOffer")),
+        }
+        jobs.append(_job(
+            source,
+            opening_id,
+            selected.get("position") or selected.get("pageTitle"),
+            location,
+            selected["jobPublicationURL"],
+            _dvinci_display_name(job_opening.get("department")),
+            company=_dvinci_display_name(job_opening.get("company")),
+            requisition_id=job_opening.get("reference"),
+            mission=descriptions["mission"],
+            requirements=descriptions["requirements"],
+            benefits=descriptions["benefits"],
+        ))
+    return AcquisitionResult(
+        sorted(jobs, key=lambda job: job["source_job_id"])
+    )
+
+
 class _JobLinkParser(HTMLParser):
     def __init__(self, pattern):
         super().__init__()
@@ -335,6 +511,7 @@ ADAPTERS = {
     "greenhouse": greenhouse,
     "personio_xml": personio_xml,
     "html_job_links": html_job_links,
+    "dvinci": dvinci,
 }
 
 
@@ -349,7 +526,10 @@ def acquire(source, fetch=_get):
     try:
         result = adapter(source, fetch=fetch)
         if not result.jobs:
-            return AcquisitionResult([], "incomplete", False, "adapter returned zero jobs")
+            status = "incomplete" if result.status == "success" else result.status
+            return AcquisitionResult(
+                [], status, False, result.reason or "adapter returned zero jobs"
+            )
         return result
     except Exception as exc:
         return AcquisitionResult([], "failed", False, f"{type(exc).__name__}: {exc}")
