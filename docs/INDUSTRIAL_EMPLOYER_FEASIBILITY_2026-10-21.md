@@ -2,7 +2,7 @@
 
 **Evidence date:** 2026-10-21
 **Scope:** SMS group, Midrex Technologies, Mesabi Metallics, and Siemens AG
-**Decision:** SMS group is the first implementation candidate. Its source remains `manual_discovery` in production until a separately reviewed output bootstrap and publisher change.
+**Decision:** SMS group is the first implementation candidate. Production collection stays disabled unless the separately controlled `JOB_TRACKER_ENABLE_SMS_GROUP=1` host opt-in is set; tracked bootstrap outputs are explicitly incomplete and contain no job records.
 
 ## Method
 
@@ -23,13 +23,13 @@ This is a point-in-time check of the employers' official career pages, platform 
 - Require a non-empty JSON list of well-formed publications and exact equality between its publication IDs and the IDs in the job sitemap. A missing, extra, duplicate, malformed, or blocked response is incomplete/failed; it must not update normalized job snapshots.
 - Deduplicate localized publication variants by `jobOpening.id`, preferring `en` and then a deterministic locale order. Preserve the source's native opening ID, requisition reference, official publication URL, legal entity, location, and published description text. Do not synthesize missing dates, department, or descriptions.
 - Normalize published HTML `introduction`/`tasks` to mission, `profile` to requirements, and `weOffer` to benefits. Keep absent optional values blank.
-- Keep the existing source ID and `manual_discovery` mode. No industrial data outputs, publisher allowlist changes, or production runs are part of this source PR.
+- Keep the existing source ID. The production publisher has a default-off host opt-in; until it is explicitly enabled, no SMS listing requests are made and bootstrap metadata remains incomplete. No industrial jobs are added to the Space/Rocket ranking.
 
 ## Ranking and production boundary
 
 Industrial and plant-engineering jobs must not be added to the existing Space/Rocket Patrick ranking. A later ranking should be a separate industrial/construction analysis path, filtering on explicit industrial role signals and preserving employment type: only label a role freelance/contract when the source explicitly says so. The current normalized CSV contract does not have a separate category or employment-type column; any schema extension requires its own compatibility review.
 
-Before enabling SMS or another industrial provider in production, separately review and approve: a tracked bootstrap set for its normalized output files and acquisition metadata, the publisher allowlist and source-status behavior, provenance, an end-to-end public-data audit, ranking behavior, and rollback. This report does not enable a source or change the scheduler/publisher.
+Before enabling SMS in production, separately approve adding `JOB_TRACKER_ENABLE_SMS_GROUP=1` to the Hostinger publisher environment after reviewing the tracked bootstrap, publisher allowlist/source-status behavior, provenance, end-to-end public-data audit, and rollback. The value is not set by this change. This report does not enable runtime collection or change the scheduler.
 
 ## Production baseline reference
 

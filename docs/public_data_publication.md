@@ -31,6 +31,14 @@ Host installation, the timer, repository credentials, and the private Patrick pr
 
 The defaults publish `HEAD:main`. `JOB_TRACKER_PUBLISH_BRANCH` changes the required checked-out local branch and `JOB_TRACKER_PUBLISH_REF` changes the remote ref for an explicitly approved branch-based operating model. If GitHub rejects `HEAD:main` because protected `main` disallows this publication actor, preserve the local commit and report that exact policy blocker to the CTO; do not weaken protection or force-push.
 
+## SMS group staged activation
+
+The SMS registry entry is publisher-allowlisted as an API source so its reviewed output paths are tracked and the read-only audit's exact path-set check remains consistent. Collection is separately gated by `JOB_TRACKER_ENABLE_SMS_GROUP=1`; an unset, empty, or other value leaves collection disabled. Do not add this variable to the Hostinger service until Operations has approved the deployment window, source pilot, and rollback plan. A merged code change is automatically pulled by the scheduled publisher, so the default-off gate is required even before an explicit activation.
+
+Before the first verified collection, the tracked SMS CSVs contain headers only and `acquisition.json` plus `data/source_status.json` identify the source as incomplete with `publication_status: awaiting_first_verified_production_run`. These are bootstrap records, not jobs or successful acquisition claims. The publisher requires a fresh, nonempty current dataset and successful, complete acquisition metadata before it will validate and publish an SMS snapshot. A failed or blocked collection retains the previously committed SMS snapshots and records the failure; it does not add SMS to the Space/Rocket or Patrick feeds.
+
+After owner approval, Operations may set `JOB_TRACKER_ENABLE_SMS_GROUP=1` for the publisher service. The next eligible scheduled run will collect SMS, replace the bootstrap with a complete normalized snapshot before publication, and include SMS outputs in the normal tracked allowlist. To stop collection, remove the opt-in or set it to `0`; the last committed SMS data remains intact and is reported stale/incomplete until re-enabled or separately removed through an approved data change. Do not change the timer or run the publisher manually as part of this code rollout.
+
 ## Logs and recovery
 
 Capture stdout and stderr with the host service manager. The command prints stages, validation failures, dataset counts, Git commands, and the local commit SHA after a push failure, but never prints credential values or Patrick profile contents.

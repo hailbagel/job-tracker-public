@@ -92,6 +92,25 @@ def main():
     automated = [s for s in registry["sources"] if s["enabled"] and s["acquisition_mode"] != "manual_discovery"]
     results = {s["source_id"]: s for s in status["sources"]}
     check(set(results) == {s["id"] for s in automated}, "source registry/status mismatch")
+    attempted = {
+        source_id for source_id, result in results.items()
+        if result.get("attempted", True)
+    }
+    check(
+        set(status["publication"]["attempted_sources"]) == attempted,
+        "attempted_sources mismatch",
+    )
+    check(
+        all(
+            result.get("attempted", True)
+            or (
+                result.get("status") != "success"
+                and result.get("coverage_complete") is not True
+            )
+            for result in results.values()
+        ),
+        "unattempted source is marked successful",
+    )
     succeeded = {k for k, v in results.items() if v.get("status") == "success" and v.get("coverage_complete") is True}
     check(set(status["publication"]["successful_sources"]) == succeeded, "successful_sources mismatch")
     check(set(status["publication"]["failed_or_incomplete_sources"]) == set(results) - succeeded,

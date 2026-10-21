@@ -1,7 +1,9 @@
+import csv
 import json
 import os
 import subprocess
 import tempfile
+import time
 import unittest
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -9,6 +11,14 @@ from unittest.mock import patch
 
 from scripts import publish_public_data as publication
 from scripts import hostinger_scheduler_state as scheduler
+from jobtracker.pipeline import run_source
+from jobtracker.processing import (
+    CHANGE_FIELDS,
+    COMMON_OUTPUTS,
+    DETAIL_FIELDS,
+    LATEST_FIELDS,
+)
+from jobtracker.registry import get_source
 
 
 def completed(command, returncode=0, stdout=""):
@@ -99,6 +109,66 @@ class GitPublicationTests(unittest.TestCase):
         with self.assertRaisesRegex(publication.PublicationError, "reviewed and tracked"):
             publication.require_tracked_allowlist()
         self.assertEqual(command.call_args.args[0][:4], ["git", "ls-files", "--error-unmatch", "--"])
+
+    def test_sms_outputs_are_allowlisted_and_tracked_only_for_automated_source(self):
+        repo = Path(__file__).resolve().parents[1]
+        sms_paths = {
+            f"data/sms-group/processed/{name}" for name in COMMON_OUTPUTS
+        } | {"data/sms-group/processed/acquisition.json"}
+        self.assertTrue(sms_paths.issubset(publication.OUTPUT_ALLOWLIST))
+
+        manual_source = dict(get_source("sms-group"), acquisition_mode="manual_discovery")
+        with patch.object(publication, "sources", return_value=[manual_source]):
+            self.assertTrue(
+                sms_paths.isdisjoint(publication.output_allowlist())
+            )
+
+        tracked = set(subprocess.check_output(
+            ["git", "ls-files", "--", "data"], cwd=repo, text=True
+        ).splitlines())
+        expected_data = set(publication.OUTPUT_ALLOWLIST)
+        self.assertEqual(expected_data, tracked)
+
+    @unittest.skipUnless(
+        os.environ.get("GITHUB_EVENT_NAME") == "pull_request",
+        "Pull request path-scope check runs in GitHub Actions",
+    )
+    def test_pull_request_changes_only_reviewed_non_sensitive_paths(self):
+        repo = Path(__file__).resolve().parents[1]
+        changed = set(subprocess.check_output(
+            ["git", "diff", "--name-only", "origin/main...HEAD"],
+            cwd=repo,
+            text=True,
+        ).splitlines())
+        expected = {
+            ".github/workflows/industrial-source-ci.yml",
+            "configs/sources.json",
+            "data/source_status.json",
+            "data/sms-group/processed/acquisition.json",
+            "data/sms-group/processed/department_summary.csv",
+            "data/sms-group/processed/job_changes.csv",
+            "data/sms-group/processed/job_details.csv",
+            "data/sms-group/processed/job_history.csv",
+            "data/sms-group/processed/jobs_latest.csv",
+            "data/sms-group/processed/location_summary.csv",
+            "docs/INDUSTRIAL_EMPLOYER_FEASIBILITY_2026-10-21.md",
+            "docs/public_data_publication.md",
+            "jobtracker/acquisition.py",
+            "scripts/audit_public_data.py",
+            "scripts/publish_public_data.py",
+            "tests/test_dvinci.py",
+            "tests/test_public_data_audit.py",
+            "tests/test_publication.py",
+        }
+        self.assertEqual(expected, changed)
+        sensitive_path_terms = (
+            "private_profiles", "credentials", "secrets", "cookies", "sessions",
+        )
+        self.assertFalse(any(
+            term in path.lower()
+            for path in changed
+            for term in sensitive_path_terms
+        ))
 
 
 class GitPreparationTests(unittest.TestCase):
@@ -318,6 +388,299 @@ class OrchestrationTests(unittest.TestCase):
             self.assertEqual(
                 ["rocket-factory-augsburg"], coverage["failed_or_incomplete_sources"]
             )
+
+
+class SmsPublisherTests(unittest.TestCase):
+    def sms_source(self):
+        return get_source("sms-group")
+
+    def sms_fetch(self):
+        record = {
+            "id": 701,
+            "language": "en",
+            "position": "Plant Reliability Engineer",
+            "jobPublicationURL": (
+                "https://career.sms-group.com/en/jobs/701/"
+                "plant-reliability-engineer"
+            ),
+            "introduction": "<p>Maintain reliable plants.</p>",
+            "tasks": "<p>Support plant operations.</p>",
+            "profile": "<p>Engineering experience.</p>",
+            "weOffer": "<p>Flexible work.</p>",
+            "jobOpening": {
+                "id": 9001,
+                "reference": "SMS-9001",
+                "company": {"name": "SMS group GmbH"},
+                "location": "Duesseldorf",
+                "department": {"name": "Plant Engineering"},
+            },
+        }
+        feed = json.dumps([record]).encode()
+        sitemap = (
+            "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
+            "<url><loc>https://career.sms-group.com/en/jobs/701/"
+            "plant-reliability-engineer</loc></url></urlset>"
+        ).encode()
+
+        def fetch(url):
+            if url == self.sms_source()["adapter_config"]["url"]:
+                return feed
+            if url == self.sms_source()["adapter_config"]["sitemap_url"]:
+                return sitemap
+            raise AssertionError(f"Unexpected URL: {url}")
+
+        return fetch
+
+    def bootstrap_sms(self, repo):
+        processed = repo / "data/sms-group/processed"
+        processed.mkdir(parents=True)
+        fields = {
+            "jobs_latest.csv": LATEST_FIELDS,
+            "job_details.csv": DETAIL_FIELDS,
+            "job_history.csv": DETAIL_FIELDS + ("first_seen", "last_seen", "active"),
+            "job_changes.csv": CHANGE_FIELDS,
+            "department_summary.csv": ("department", "count"),
+            "location_summary.csv": ("location", "count"),
+        }
+        for filename, header in fields.items():
+            with (processed / filename).open(
+                "w", newline="", encoding="utf-8"
+            ) as stream:
+                csv.writer(stream).writerow(header)
+        (processed / "acquisition.json").write_text(
+            json.dumps({
+                "source_id": "sms-group",
+                "status": "incomplete",
+                "coverage_complete": False,
+                "records_written": 0,
+                "publication_status": "awaiting_first_verified_production_run",
+            }),
+            encoding="utf-8",
+        )
+        return processed
+
+    def test_disabled_host_gate_skips_sms_without_blocking_other_sources(self):
+        sms = self.sms_source()
+        spacex = {
+            "id": "spacex",
+            "company": "SpaceX",
+            "acquisition_mode": "existing_provider",
+            "sector": "Space/Rocket",
+            "tags": ["patrick"],
+        }
+        spacex_result = publication.source_result(
+            spacex, "success", True, records_written=3
+        )
+        feed_metadata = {
+            "coverage_complete": True,
+            "source_coverage": [
+                {"source_id": "spacex", "coverage_complete": True},
+            ],
+        }
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.dict(os.environ, {}, clear=True), \
+                patch.object(publication, "git_prepare"), \
+                patch.object(publication, "require_tracked_allowlist"), \
+                patch.object(
+                    publication, "validate_enabled_providers",
+                    return_value=[sms, spacex],
+                ), \
+                patch.object(
+                    publication, "collect_source", return_value=spacex_result,
+                ) as collect, \
+                patch.object(
+                    publication, "publish_patrick_feed",
+                    return_value=(3, feed_metadata),
+                ), \
+                patch.object(
+                    publication, "commit_and_push", return_value=True,
+                ) as commit:
+            processed = self.bootstrap_sms(Path(directory))
+            previous = {
+                path.name: path.read_bytes()
+                for path in processed.iterdir()
+            }
+            result = publication.collect_and_publish(
+                Path(directory), Path(directory) / "runtime",
+                Path(directory) / "profile", "main", "main",
+            )
+            status = json.loads(
+                (Path(directory) / "data/source_status.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            self.assertEqual(previous, {
+                path.name: path.read_bytes() for path in processed.iterdir()
+            })
+
+        self.assertTrue(result)
+        self.assertEqual(["spacex"], [
+            call.args[1]["id"] for call in collect.call_args_list
+        ])
+        sms_status = next(
+            item for item in status["sources"]
+            if item["source_id"] == "sms-group"
+        )
+        self.assertFalse(sms_status["attempted"])
+        self.assertEqual("incomplete", sms_status["status"])
+        self.assertEqual(0, sms_status["records_written"])
+        self.assertEqual(
+            "awaiting_first_verified_production_run",
+            sms_status["publication_status"],
+        )
+        self.assertNotIn("sms-group", status["publication"]["attempted_sources"])
+        self.assertIn(
+            "sms-group", status["publication"]["failed_or_incomplete_sources"]
+        )
+        commit.assert_called_once()
+
+    def test_first_success_replaces_pending_bootstrap_before_publication(self):
+        source = self.sms_source()
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            processed = self.bootstrap_sms(repo)
+            with self.assertRaisesRegex(
+                publication.PublicationError, "Required output is empty"
+            ):
+                publication.validate_source_dataset(
+                    repo, source, collection_started=0
+                )
+            data_root = repo / "data"
+            feed_fetch = self.sms_fetch()
+            commands = []
+
+            def run_source_command(command, check=True):
+                commands.append(command)
+                self.assertEqual(
+                    [
+                        publication.sys.executable, "-m",
+                        "jobtracker.pipeline", "--source", "sms-group",
+                    ],
+                    command,
+                )
+                run_source(source, data_root, fetch=feed_fetch)
+                return completed(command)
+
+            def publish_feed(_repo, _runtime, _profile, counts, results):
+                self.assertEqual({"sms-group": 1}, counts)
+                self.assertEqual("success", results["sms-group"]["status"])
+                with (processed / "jobs_latest.csv").open(
+                    newline="", encoding="utf-8"
+                ) as stream:
+                    current = list(csv.DictReader(stream))
+                self.assertEqual(1, len(current))
+                acquisition = json.loads(
+                    (processed / "acquisition.json").read_text(encoding="utf-8")
+                )
+                self.assertEqual("success", acquisition["status"])
+                self.assertTrue(acquisition["coverage_complete"])
+                return 0, {"coverage_complete": True, "source_coverage": []}
+
+            with patch.dict(
+                os.environ, {"JOB_TRACKER_ENABLE_SMS_GROUP": "1"}
+            ), patch.object(publication, "git_prepare"), \
+                    patch.object(publication, "require_tracked_allowlist"), \
+                    patch.object(
+                        publication, "validate_enabled_providers",
+                        return_value=[source],
+                    ), patch.object(
+                        publication, "run", side_effect=run_source_command
+                    ), patch.object(
+                        publication, "publish_patrick_feed",
+                        side_effect=publish_feed,
+                    ), patch.object(
+                        publication, "commit_and_push", return_value=False,
+                    ):
+                result = publication.collect_and_publish(
+                    repo, repo / "runtime", repo / "profile", "main", "main"
+                )
+
+            self.assertFalse(result)
+            self.assertEqual(1, len(commands))
+            metadata = json.loads(
+                (processed / "acquisition.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual("success", metadata["status"])
+            self.assertEqual(1, metadata["records_written"])
+            self.assertNotIn(
+                "publication_status", metadata,
+                "successful collection must replace the pending bootstrap metadata",
+            )
+            for filename in COMMON_OUTPUTS:
+                with (processed / filename).open(
+                    newline="", encoding="utf-8"
+                ) as stream:
+                    self.assertTrue(list(csv.DictReader(stream)), filename)
+            with patch.object(publication, "sources", return_value=[source]):
+                self.assertEqual([], publication.patrick_contributors(repo))
+
+    def test_blocked_sms_collection_restores_all_last_good_outputs(self):
+        source = self.sms_source()
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            processed = self.bootstrap_sms(repo)
+            for filename in COMMON_OUTPUTS:
+                (processed / filename).write_text(
+                    f"last-good-{filename}\n", encoding="utf-8"
+                )
+            acquisition = processed / "acquisition.json"
+            acquisition.write_text(
+                '{"source_id":"sms-group","status":"success",'
+                '"coverage_complete":true,"records_written":1}\n',
+                encoding="utf-8",
+            )
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            subprocess.run(
+                ["git", "config", "user.email", "test@example.com"],
+                cwd=repo, check=True,
+            )
+            subprocess.run(
+                ["git", "config", "user.name", "Test"],
+                cwd=repo, check=True,
+            )
+            subprocess.run(["git", "add", "data"], cwd=repo, check=True)
+            subprocess.run(
+                ["git", "commit", "-qm", "last good fixture"],
+                cwd=repo, check=True,
+            )
+            previous = {
+                path.name: path.read_bytes()
+                for path in processed.iterdir()
+            }
+            real_run = publication.run
+
+            def fail_collection(command, check=True):
+                if command[:4] == [
+                    publication.sys.executable, "-m",
+                    "jobtracker.pipeline", "--source",
+                ]:
+                    for filename in COMMON_OUTPUTS:
+                        (processed / filename).write_text(
+                            f"partial-{filename}\n", encoding="utf-8"
+                        )
+                    acquisition.write_text(
+                        '{"source_id":"sms-group","status":"failed",'
+                        '"coverage_complete":false,"records_written":0,'
+                        '"reason":"HTTP 403"}\n',
+                        encoding="utf-8",
+                    )
+                    return completed(command, returncode=1)
+                return real_run(command, check=check)
+
+            with patch.object(publication, "run", side_effect=fail_collection):
+                result = publication.collect_source(
+                    repo, source, time.time() - 1
+                )
+
+            self.assertEqual("failed", result["status"])
+            self.assertFalse(result["coverage_complete"])
+            self.assertEqual("HTTP 403", result["reason"])
+            for filename, content in previous.items():
+                if filename != "acquisition.json":
+                    self.assertEqual(content, (processed / filename).read_bytes())
+            failure = json.loads(acquisition.read_text(encoding="utf-8"))
+            self.assertEqual("failed", failure["status"])
+            self.assertFalse(failure["coverage_complete"])
 
 
 class SchedulerIntegrationTests(unittest.TestCase):

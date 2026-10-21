@@ -7,7 +7,11 @@ on:
       - 'jobtracker/acquisition.py'
       - 'jobtracker/pipeline.py'
       - 'jobtracker/processing.py'
+      - 'scripts/publish_public_data.py'
+      - 'scripts/audit_public_data.py'
       - 'tests/test_dvinci.py'
+      - 'tests/test_publication.py'
+      - 'tests/test_public_data_audit.py'
       - 'tests/test_registry_pipeline.py'
       - 'tests/test_personio_xml.py'
       - 'tests/test_neura_typesense.py'
@@ -16,6 +20,9 @@ on:
       - 'tests/test_provider_failures.py'
       - 'tests/test_patrick_multi.py'
       - 'docs/INDUSTRIAL_EMPLOYER_FEASIBILITY_*.md'
+      - 'docs/public_data_publication.md'
+      - 'data/source_status.json'
+      - 'data/sms-group/processed/**'
       - '.github/workflows/industrial-source-ci.yml'
   workflow_dispatch:
 

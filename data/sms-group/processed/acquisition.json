@@ -1,0 +1,12 @@
+{
+  "source_id": "sms-group",
+  "company": "SMS group",
+  "acquisition_mode": "api",
+  "adapter": "dvinci",
+  "status": "incomplete",
+  "reason": "Awaiting the explicitly enabled first verified production collection.",
+  "records_written": 0,
+  "coverage_complete": false,
+  "data_hash": null,
+  "publication_status": "awaiting_first_verified_production_run"
+}
