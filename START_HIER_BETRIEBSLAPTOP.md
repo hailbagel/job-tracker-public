@@ -37,3 +37,9 @@ Hostinger läuft unabhängig weiter mit stündlicher Scheduler-Prüfung und eine
 - [Produktions- und Veröffentlichungsvertrag](docs/public_data_publication.md)
 
 Der nächste Entwicklerauftrag ist unabhängig vom bisherigen Hostinger-Scheduler: **SMS group → Midrex → Mesabi Metallics → Siemens AG**. Jede Quelle benötigt verifizierte öffentliche Erfassung, vollständige Seitenabdeckung, Tests und eine separate Freigabe vor Produktivschaltung.
+
+## Nächster Meilenstein — SMS group (PR #23)
+
+Die SMS-group-d.vinci-Implementierung liegt im [Draft PR #23](https://github.com/hailbagel/job-tracker-public/pull/23), Linux-CI ist erfolgreich. Der PR aktiviert noch keine produktive SMS-Erfassung und darf nur nach ausdrücklicher Freigabe gemergt werden.
+
+**Nach Merge von PR #23:** [KOPIEREN 04 — Copilot-Produktivvorbereitung](docs/COPY_04_COPILOT_SMS_PRODUCTION_READINESS.md) im **bestehenden VS-Code-Copilot-Agent-Chat** (nicht Terminal) einfügen. Dadurch wird der nächste, separat geprüfte PR für Bootstrap/Publisher/Audit und sichere Aktivierung vorbereitet. **Nicht** eigenständig deployen oder Timer ändern.
