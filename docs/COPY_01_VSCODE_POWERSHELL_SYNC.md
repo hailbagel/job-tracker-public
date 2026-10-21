@@ -43,6 +43,8 @@ Write-Output "=== NEXT: docs/COPY_02_COPILOT_INDUSTRIAL_AGENT.md ==="
 
 Am Ende erscheint `=== WORK LAPTOP REPOSITORY READY ===`, gefolgt von `## main...origin/main` und dem neuesten Commit. Der jüngste Commit muss **nicht** derselbe wie auf einem älteren Screenshot sein: der Hostinger-Publisher kann weitere `data/`-Commits erzeugen.
 
+**Spezialfall:** Wenn die einzige lokale Änderung `?? patrick.json` ist, nutze zuerst [COPY_01A_PRIVATE_PATRICK_JSON_FIX.md](COPY_01A_PRIVATE_PATRICK_JSON_FIX.md) **im VS-Code-PowerShell-Terminal**. Diese Anleitung verschiebt die private Profildatei nur nach strengen Sicherheitsprüfungen in einen ignorierten Ordner. Anschließend diesen Schritt 01 erneut ausführen.
+
 **Bei `STOP` nicht weiterklicken, nichts stashen/resetten oder löschen.** Terminalausgabe zur Prüfung schicken.
 
 **DANACH:** [COPY_02_COPILOT_INDUSTRIAL_AGENT.md](COPY_02_COPILOT_INDUSTRIAL_AGENT.md) öffnen. Dessen Text gehört in einen **neuen VS-Code-Copilot-Agent-Chat**.
