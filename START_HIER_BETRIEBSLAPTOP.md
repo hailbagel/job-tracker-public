@@ -51,3 +51,9 @@ Die SMS-group-d.vinci-Implementierung liegt im [Draft PR #23](https://github.com
 **WO EINFÜGEN:** VS Code → **bestehender Copilot Agent Chat `Industrial Job Coverage`**. **Nicht ins VS-Code-PowerShell-Terminal und nicht auf Hostinger.**
 
 **WOFÜR:** Review und Dokumentation von sicheren Hostinger-Kommandos für den späteren SMS-Pilotbetrieb. PR #25 ist bereits gemergt; dessen SMS-Erfassung bleibt ohne Host-Opt-in **ausgeschaltet**. Keine GitHub-Actions-Erweiterung installieren, kein GitKraken erforderlich. Copilot führt keinen Produktionslauf aus.
+
+## Danach — Issue #24: Ranking-Datenintegrität absichern
+
+[**KOPIEREN 06 – Copilot-Task für Issue #24**](docs/COPY_06_COPILOT_ISSUE24_RANKING_INTEGRITY.md)
+
+**WO EINFÜGEN:** Auf dem Betriebslaptop → VS Code → Copilot Agent Chat `Industrial Job Coverage` (NICHT Terminal/Hostinger). **WANN:** Erst nach dem SMS-Hostinger-Runbook-Auftrag 05 oder nach dessen ausdrücklicher Zurückstellung. Es wird ein eigenständiger Draft-PR mit Regressionstests erstellt, keine Änderung am Produktivbetrieb. [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24) bleibt bis zur getesteten Korrektur offen.
