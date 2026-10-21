@@ -26,34 +26,34 @@ class SchedulerStateTests(unittest.TestCase):
             last_success_utc=scheduler.format_utc(self.success),
         )
 
-    def test_rolling_interval_blocks_before_48_hours_and_allows_at_threshold(self):
+    def test_rolling_interval_blocks_before_six_hours_and_allows_at_threshold(self):
         self.initialize()
         self.assertEqual(
-            self.success + timedelta(hours=48),
+            self.success + timedelta(hours=6),
             scheduler.eligibility_deadline(self.state_file),
         )
         self.assertFalse(
             scheduler.is_eligible(
                 self.state_file,
-                self.success + timedelta(hours=47, minutes=59, seconds=59),
+                self.success + timedelta(hours=5, minutes=59, seconds=59),
             )
         )
         self.assertFalse(
             scheduler.is_eligible(
                 self.state_file,
-                self.success + timedelta(hours=48, microseconds=-1),
+                self.success + timedelta(hours=6, microseconds=-1),
             )
         )
         self.assertTrue(
             scheduler.is_eligible(
                 self.state_file,
-                self.success + timedelta(hours=48),
+                self.success + timedelta(hours=6),
             )
         )
 
     def test_durable_state_survives_process_restart_and_missed_hourly_slots(self):
         self.initialize()
-        before_eligibility = self.success + timedelta(hours=47)
+        before_eligibility = self.success + timedelta(hours=5)
         after_missed_slots = self.success + timedelta(days=3)
         restarted_process_state = scheduler.read_state(self.state_file)
         self.assertEqual(scheduler.format_utc(self.success), restarted_process_state["last_success_utc"])
@@ -68,18 +68,18 @@ class SchedulerStateTests(unittest.TestCase):
         self.assertFalse(
             scheduler.is_eligible(
                 self.state_file,
-                catchup_success + timedelta(hours=24),
+                catchup_success + timedelta(hours=5),
             )
         )
         self.assertTrue(
             scheduler.is_eligible(
                 self.state_file,
-                catchup_success + timedelta(hours=48),
+                catchup_success + timedelta(hours=6),
             )
         )
 
     def test_conservative_first_run_anchor_is_not_reported_as_a_success(self):
-        first_run_after = self.success + timedelta(hours=48)
+        first_run_after = self.success + timedelta(hours=6)
         scheduler.initialize_state(
             self.state_file,
             first_run_after_utc=scheduler.format_utc(first_run_after),
@@ -90,17 +90,17 @@ class SchedulerStateTests(unittest.TestCase):
 
     def test_success_record_restarts_the_rolling_interval(self):
         self.initialize()
-        recorded_at = self.success + timedelta(hours=49)
+        recorded_at = self.success + timedelta(hours=7)
         scheduler.mark_attempt(self.state_file, "successful-run", recorded_at - timedelta(minutes=1))
         scheduler.record_success(self.state_file, "successful-run", recorded_at)
         self.assertEqual(
-            recorded_at + timedelta(hours=48),
+            recorded_at + timedelta(hours=6),
             scheduler.eligibility_deadline(self.state_file),
         )
 
     def test_failed_attempt_is_recorded_and_retried_no_sooner_than_six_hours(self):
         self.initialize()
-        attempt_at = self.success + timedelta(hours=48)
+        attempt_at = self.success + timedelta(hours=6)
         scheduler.mark_attempt(self.state_file, "failed-run", attempt_at)
         failure_at = attempt_at + timedelta(minutes=30)
         scheduler.record_failure(self.state_file, "exit-code", "failed-run", failure_at)
@@ -132,14 +132,14 @@ class SchedulerStateTests(unittest.TestCase):
                 self.state_file,
                 "exec-condition",
                 "unrelated-run",
-                self.success + timedelta(hours=48),
+                self.success + timedelta(hours=6),
             )
         )
         self.assertIsNone(scheduler.read_state(self.state_file)["last_failure_utc"])
 
     def test_clock_rollback_before_completion_fails_closed(self):
         self.initialize()
-        attempt_at = self.success + timedelta(hours=48)
+        attempt_at = self.success + timedelta(hours=6)
         scheduler.mark_attempt(self.state_file, "clock-test", attempt_at)
         with self.assertRaisesRegex(scheduler.SchedulerStateError, "Host clock precedes"):
             scheduler.record_success(
