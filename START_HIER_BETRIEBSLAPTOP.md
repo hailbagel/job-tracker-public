@@ -43,3 +43,11 @@ Der nächste Entwicklerauftrag ist unabhängig vom bisherigen Hostinger-Schedule
 Die SMS-group-d.vinci-Implementierung liegt im [Draft PR #23](https://github.com/hailbagel/job-tracker-public/pull/23), Linux-CI ist erfolgreich. Der PR aktiviert noch keine produktive SMS-Erfassung und darf nur nach ausdrücklicher Freigabe gemergt werden.
 
 **Nach Merge von PR #23:** [KOPIEREN 04 — Copilot-Produktivvorbereitung](docs/COPY_04_COPILOT_SMS_PRODUCTION_READINESS.md) im **bestehenden VS-Code-Copilot-Agent-Chat** (nicht Terminal) einfügen. Dadurch wird der nächste, separat geprüfte PR für Bootstrap/Publisher/Audit und sichere Aktivierung vorbereitet. **Nicht** eigenständig deployen oder Timer ändern.
+
+## Nach Merge von PR #25 — SMS Hostinger Pilot vorbereiten
+
+[**KOPIEREN 05 – Copilot: SMS-Hostinger-Preflight, Aktivierung und Rollback als Runbook vorbereiten**](docs/COPY_05_COPILOT_SMS_HOSTINGER_ROLLOUT_REVIEW.md)
+
+**WO EINFÜGEN:** VS Code → **bestehender Copilot Agent Chat `Industrial Job Coverage`**. **Nicht ins VS-Code-PowerShell-Terminal und nicht auf Hostinger.**
+
+**WOFÜR:** Review und Dokumentation von sicheren Hostinger-Kommandos für den späteren SMS-Pilotbetrieb. PR #25 ist bereits gemergt; dessen SMS-Erfassung bleibt ohne Host-Opt-in **ausgeschaltet**. Keine GitHub-Actions-Erweiterung installieren, kein GitKraken erforderlich. Copilot führt keinen Produktionslauf aus.
