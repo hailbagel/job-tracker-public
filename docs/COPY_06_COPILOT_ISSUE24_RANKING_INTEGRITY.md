@@ -6,12 +6,12 @@
 
 **WANN?** Separat NACH der [SMS-Hostinger-Runbook-Aufgabe 05](COPY_05_COPILOT_SMS_HOSTINGER_ROLLOUT_REVIEW.md), oder wenn diese explizit zurueckgestellt wird. Keine Aufgaben vermischen.
 
-**WO EINFUEGEN?** Auf dem BETRIEBSLAPTOP in **VS Code → Copilot → Agent-Chat "Industrial Job Coverage"**; den ganzen folgenden Textblock einfügen. **NICHT in PowerShell / Hostinger**.
+**WO EINFUEGEN?** Auf dem BETRIEBSLAPTOP im separaten Ordner `job-tracker-public` in **VS Code → Copilot → Agent-Chat "Job Tracker – Development"**; den ganzen folgenden Textblock einfügen. **NICHT in PowerShell / Hostinger**.
 
 ## Kompletten Copilot-Auftrag kopieren
 
 ```text
-You are working in the existing VS Code Copilot Agent chat "Industrial Job Coverage" on the company laptop, but this task is a separate narrowly scoped Data Quality work package for GitHub Issue #24:
+You are working in the new VS Code Copilot Agent chat "Job Tracker – Development" on the company laptop; the older chat "Industrial Job Coverage" is unavailable, so use GitHub repo/docs as context, but this task is a separate narrowly scoped Data Quality work package for GitHub Issue #24:
 https://github.com/hailbagel/job-tracker-public/issues/24
 
 DO NOT begin until the SMS group rollout pre-flight/runbook handoff (COPY_05) has been delivered or explicitly paused. Never mix source enablement and data-integrity changes in the same PR.
