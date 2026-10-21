@@ -1,59 +1,45 @@
-# START HIER — Job Tracker auf Betriebslaptop / VS Code
+# START HIER – Job Tracker auf dem Betriebslaptop
 
-**Ziel:** Die Entwicklung an `hailbagel/job-tracker-public` nahtlos auf dem Betriebslaptop fortsetzen, ohne den funktionierenden Hostinger-Produktivbetrieb anzufassen.
+**Aktueller Stand: 21.10.2026.** Diese Anleitung ersetzt die fruehere Reihenfolge fuer PR #23 und PR #25. Beide Pull Requests sind bereits gemergt. Der alte VS-Code-Copilot-Chat `Industrial Job Coverage` ist in der aktuellen Workspace-Ansicht nicht erreichbar; kein Grund, die Arbeit anzuhalten.
 
-## Reihenfolge: nur ZWEI Kopieraktionen
+## 1. Richtigen VS-Code-Workspace oeffnen
 
-| Schritt | GitHub-Datei | Wofür? | WO genau einfügen? |
-|---|---|---|---|
-| **1 — zuerst** | [COPY_01_VSCODE_POWERSHELL_SYNC.md](docs/COPY_01_VSCODE_POWERSHELL_SYNC.md) | Richtige GitHub-Repo prüfen und aktuellen `main` per sicherem Fast-Forward auf den Betriebslaptop holen | **VS Code → bestehendes Projekt `job-tracker-public` öffnen → Terminal → New Terminal → PowerShell.** Dort ausschließlich den PowerShell-Codeblock der Datei kopieren und ausführen. |
-| **2 — danach** | [COPY_02_COPILOT_INDUSTRIAL_AGENT.md](docs/COPY_02_COPILOT_INDUSTRIAL_AGENT.md) | Copilot anweisen, vier Industriequellen zu prüfen und zunächst eine saubere SMS-group-Automatisierung auf neuem Feature-Branch zu entwickeln | **VS Code → Copilot Chat → Agent → New Chat.** Dort ausschließlich den `text`-Codeblock der Datei hineinkopieren und absenden. **Nicht in PowerShell.** |
+**VS Code → File → New Window → File → Open Folder → `C:\Users\minkusp\Projects\job-tracker-public`.**
 
-**Wichtig:** Beide Dateien wurden auf GitHub `main` gespeichert; Du musst die Textbefehle nicht selbst in Dateien anlegen. Eine Änderung von `main` durch den Hostinger-Publisher (neue öffentliche Datensätze) ist normal und wird beim Pull berücksichtigt.
+**Nur diesen einen Projektordner oeffnen.** Nicht `ESP32-Paxcounter_22 (Workspace)`, nicht `copilot-chat-exporter`, nicht einen `Untitled (Workspace)` mit mehreren Projekten. Andere Projekte bleiben in ihren eigenen Ordnern/Fenstern erhalten. Keine alten Chats oder Arbeitsbereiche loeschen.
 
-## Wenn Schritt 1 bei `?? patrick.json` stoppt
+## 2. Lokal sicher mit GitHub synchronisieren
 
-Das ist ein lokales privates Profil, **kein Fehler von GitHub**. Keine Datei löschen, committen oder pushen. Die geprüfte Einmal-Reparatur steht hier:
+[**KOPIEREN 01 – VS-Code-PowerShell-Synchronisierung**](docs/COPY_01_VSCODE_POWERSHELL_SYNC.md).
 
-**[COPY_01A — patrick.json in den lokalen ignorierten Privatordner verschieben](docs/COPY_01A_PRIVATE_PATRICK_JSON_FIX.md)**
+**WO EINFUEGEN:** Im neuen Job-Tracker-Fenster → **Terminal → New Terminal → PowerShell**. Den kompletten PowerShell-Block aus COPY_01 kopieren. Er prueft Repository und lokale Aenderungen und fuehrt nur bei sauberem Arbeitsbaum einen Fast-Forward-Pull von `main` aus. Bei `STOP` nicht resetten, nicht cleanen, nichts staschen oder ueberschreiben; Status pruefen.
 
-**WO einfügen:** VS Code → Terminal → PowerShell, **nicht** Copilot/Hostinger. Der Code verschiebt die lokale Datei nur nach `configs/private_profiles/patrick.json`, wenn genau diese eine unversionierte Datei existiert, keine anderen Änderungen vorliegen, der Zielpfad frei und durch `.gitignore` geschützt ist. Danach nochmals **Schritt 1**, dann Schritt 2 ausführen.
+## 3. Neuen Copilot-Agent-Chat verwenden
 
-## Erwartete Rückmeldungen
+Im **gleichen separaten Job-Tracker-Fenster** rechts **Copilot → Agent → New Chat**. Neuer Sitzungsname: **`Job Tracker – Development`**. Die fruehere Sitzung wird fuer die weiteren Arbeiten nicht gebraucht; die Referenz ist das aktuelle GitHub-Repository.
 
-- Nach Schritt 1: `=== WORK LAPTOP REPOSITORY READY ===`, danach `main...origin/main` und ein Commit-Hash.
-- Nach Schritt 2: Copilot soll `docs/COPILOT_INDUSTRIAL_WORK_LAPTOP_HANDOFF_2026-10-21.md` sowie `docs/COPILOT_INDUSTRIAL_EMPLOYERS_ONBOARDING.md` lesen, die vier Quellen untersuchen und für die erste implementierbare Quelle **einen DRAFT PR** mit Code, Tests und nachgewiesener Quelle pushen.
+**JETZT NAeCHSTER ENTWICKLUNGSAUFTRAG:**
 
-## Keine Aktionen auf Hostinger
+[**KOPIEREN 05 – SMS-Hostinger-Runbook mit sicherem Preflight, Opt-in und Rollback vorbereiten**](docs/COPY_05_COPILOT_SMS_HOSTINGER_ROLLOUT_REVIEW.md).
 
-Hostinger läuft unabhängig weiter mit stündlicher Scheduler-Prüfung und einer vorläufigen **6-Stunden-Mindestfrist** zwischen erfolgreichen Datenveröffentlichungen. Die neueste hier dokumentierte Abnahme vom 21.10.2026 zeigte `0 failures / 2 warnings`. Die zwei bekannten Warnungen gehören zu den gesperrten/fehlerhaften Tesla- und Jacobs-Quellen.
+**WO EINFUEGEN:** Den kompletten `text`-Block **in den neuen Copilot-Agent-Chat**. **NICHT ins Terminal und NICHT auf Hostinger.** Copilot soll Dokumentation, Tests und einen getrennten PR vorbereiten. Kein Merge oder Hostinger-Deploy ohne nachpruefbare Abnahme. Der SMS-Adapter ist durch `JOB_TRACKER_ENABLE_SMS_GROUP` standardmaessig deaktiviert.
 
-**Keinen zweiten Repository-Clone über vorhandene Dateien anlegen, kein `git reset --hard`, `git clean`, Force-Push oder Copilot-Auto-Merge.** Bei `STOP` in Schritt 1 zuerst den Ausgangszustand prüfen, statt Daten zu überschreiben.
+**ANSCHLIESSEND, als separates Arbeitspaket:**
 
-## Fachlicher Kontext (zum Nachlesen, nicht vollständig ins Chat-Feld kopieren)
+[**KOPIEREN 06 – Issue #24: Ranking-IDs gegen aktuelle Quelldaten pruefen**](docs/COPY_06_COPILOT_ISSUE24_RANKING_INTEGRITY.md).
 
-- [Copilot Work-Laptop Handoff](docs/COPILOT_INDUSTRIAL_WORK_LAPTOP_HANDOFF_2026-10-21.md)
-- [Industrial Employers – Originaltask](docs/COPILOT_INDUSTRIAL_EMPLOYERS_ONBOARDING.md)
-- [Produktions- und Veröffentlichungsvertrag](docs/public_data_publication.md)
+**WO EINFUEGEN:** In den Job-Tracker-Copilot-Agent-Chat, nachdem COPY_05 erledigt oder bewusst pausiert wurde. Separater Branch/PR. Keine Aenderung an der Produktiv-Pipeline oder an privaten Profilen.
 
-Der nächste Entwicklerauftrag ist unabhängig vom bisherigen Hostinger-Scheduler: **SMS group → Midrex → Mesabi Metallics → Siemens AG**. Jede Quelle benötigt verifizierte öffentliche Erfassung, vollständige Seitenabdeckung, Tests und eine separate Freigabe vor Produktivschaltung.
+## Verifizierter GitHub-Status zum Zeitpunkt dieser Anleitung
 
-## Nächster Meilenstein — SMS group (PR #23)
+- [PR #23](https://github.com/hailbagel/job-tracker-public/pull/23): Basis fuer SMS d.vinci, bereits gemergt.
+- [PR #25](https://github.com/hailbagel/job-tracker-public/pull/25): SMS mit default-off produktionsseitigem Opt-in vorbereitet und gemergt; **SMS ist dadurch NICHT automatisch live**.
+- [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24): noch offen, betrifft Ranking-ID-Datenqualitaet.
+- Die GitHub-Abfrage am 21.10.2026 zeigte **keinen offenen Pull Request**.
+- Hostinger-Produktivzustand und Live-SMS-Erfassung koennen nicht allein durch den GitHub-Stand verifiziert werden. Ohne extra Freigabe weder Systemd-Scheduler noch Umgebungsvariablen auf Hostinger veraendern.
 
-Die SMS-group-d.vinci-Implementierung liegt im [Draft PR #23](https://github.com/hailbagel/job-tracker-public/pull/23), Linux-CI ist erfolgreich. Der PR aktiviert noch keine produktive SMS-Erfassung und darf nur nach ausdrücklicher Freigabe gemergt werden.
+## Grundregel
 
-**Nach Merge von PR #23:** [KOPIEREN 04 — Copilot-Produktivvorbereitung](docs/COPY_04_COPILOT_SMS_PRODUCTION_READINESS.md) im **bestehenden VS-Code-Copilot-Agent-Chat** (nicht Terminal) einfügen. Dadurch wird der nächste, separat geprüfte PR für Bootstrap/Publisher/Audit und sichere Aktivierung vorbereitet. **Nicht** eigenständig deployen oder Timer ändern.
+**Arbeitsbereiche strikt trennen, aber alle Aufgaben und Copilot-Prompts versioniert im passenden Repository halten.** Kein zusaetzlicher Clone in einen vorhandenen Projektordner; keine lokalen unversionierten Daten in GitHub pushen. `copilot-chat-exporter` und dessen lokale Chat-Backups bleiben eigenstaendig und unberuehrt.
 
-## Nach Merge von PR #25 — SMS Hostinger Pilot vorbereiten
-
-[**KOPIEREN 05 – Copilot: SMS-Hostinger-Preflight, Aktivierung und Rollback als Runbook vorbereiten**](docs/COPY_05_COPILOT_SMS_HOSTINGER_ROLLOUT_REVIEW.md)
-
-**WO EINFÜGEN:** VS Code → **bestehender Copilot Agent Chat `Industrial Job Coverage`**. **Nicht ins VS-Code-PowerShell-Terminal und nicht auf Hostinger.**
-
-**WOFÜR:** Review und Dokumentation von sicheren Hostinger-Kommandos für den späteren SMS-Pilotbetrieb. PR #25 ist bereits gemergt; dessen SMS-Erfassung bleibt ohne Host-Opt-in **ausgeschaltet**. Keine GitHub-Actions-Erweiterung installieren, kein GitKraken erforderlich. Copilot führt keinen Produktionslauf aus.
-
-## Danach — Issue #24: Ranking-Datenintegrität absichern
-
-[**KOPIEREN 06 – Copilot-Task für Issue #24**](docs/COPY_06_COPILOT_ISSUE24_RANKING_INTEGRITY.md)
-
-**WO EINFÜGEN:** Auf dem Betriebslaptop → VS Code → Copilot Agent Chat `Industrial Job Coverage` (NICHT Terminal/Hostinger). **WANN:** Erst nach dem SMS-Hostinger-Runbook-Auftrag 05 oder nach dessen ausdrücklicher Zurückstellung. Es wird ein eigenständiger Draft-PR mit Regressionstests erstellt, keine Änderung am Produktivbetrieb. [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24) bleibt bis zur getesteten Korrektur offen.
+Aeltere Dateien `COPY_02_COPILOT_INDUSTRIAL_AGENT.md` und `COPY_04_COPILOT_SMS_PRODUCTION_READINESS.md` sind historischer Kontext; nicht nochmals als neue Aufgaben ausfuehren.
