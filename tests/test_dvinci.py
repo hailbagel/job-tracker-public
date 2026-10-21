@@ -1,9 +1,11 @@
 import csv
 import json
+import os
 import tempfile
 import unittest
 import urllib.error
 from pathlib import Path
+from unittest.mock import patch
 
 from jobtracker.acquisition import acquire
 from jobtracker.pipeline import run_source
@@ -17,7 +19,7 @@ SITEMAP_URL = "https://career.sms-group.com/sitemap.xml"
 
 def source_for_test():
     source = dict(get_source("sms-group"))
-    source["acquisition_mode"] = "api"
+    source.pop("production_opt_in_env", None)
     return source
 
 
@@ -154,19 +156,36 @@ class DvinciAcquisitionTests(unittest.TestCase):
         self.assertEqual("", result.jobs[1]["requirements"])
         self.assertEqual("", result.jobs[1]["benefits"])
 
-    def test_registry_keeps_sms_manual_until_production_bootstrap_review(self):
+    def test_registry_opt_in_defaults_to_disabled_and_makes_no_requests(self):
         source = get_source("sms-group")
         calls = []
 
-        result = acquire(source, fetch=lambda url: calls.append(url))
+        with patch.dict(os.environ, {source["production_opt_in_env"]: "0"}):
+            result = acquire(source, fetch=lambda url: calls.append(url))
 
         self.assertEqual("dvinci", source["adapter"])
-        self.assertEqual("manual_discovery", source["acquisition_mode"])
+        self.assertEqual("api", source["acquisition_mode"])
+        self.assertEqual(
+            "JOB_TRACKER_ENABLE_SMS_GROUP", source["production_opt_in_env"]
+        )
         self.assertEqual("Industrial/Plant Engineering", source["sector"])
         self.assertNotIn("patrick", source["tags"])
-        self.assertEqual("manual_discovery", result.status)
+        self.assertEqual("incomplete", result.status)
         self.assertFalse(result.coverage_complete)
+        self.assertIn("not enabled", result.reason)
         self.assertEqual([], calls)
+
+    def test_explicit_host_opt_in_runs_the_public_adapter(self):
+        source = dict(get_source("sms-group"))
+        records = fixture_records()
+        fetch, requested = fetch_for(records)
+
+        with patch.dict(os.environ, {source["production_opt_in_env"]: "1"}):
+            result = acquire(source, fetch=fetch)
+
+        self.assertEqual("success", result.status)
+        self.assertTrue(result.coverage_complete)
+        self.assertEqual([FEED_URL, SITEMAP_URL], requested)
 
     def test_partial_valid_listing_and_bad_sitemap_fail_closed(self):
         records = fixture_records()

@@ -11,7 +11,8 @@
     ],
     "failed_or_incomplete_sources": [
       "tesla",
-      "jacobs"
+      "jacobs",
+      "sms-group"
     ],
     "patrick_feed_coverage_complete": true,
     "published_feed_contributors": [
@@ -112,6 +113,18 @@
       "records_written": 32,
       "source_id": "hyimpulse",
       "status": "success"
+    },
+    {
+      "acquisition_mode": "api",
+      "adapter": "dvinci",
+      "attempted": false,
+      "company": "SMS group",
+      "coverage_complete": false,
+      "publication_status": "awaiting_first_verified_production_run",
+      "reason": "Host opt-in JOB_TRACKER_ENABLE_SMS_GROUP is disabled; awaiting the first verified production collection",
+      "records_written": 0,
+      "source_id": "sms-group",
+      "status": "incomplete"
     }
   ]
 }

@@ -23,6 +23,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from jobtracker.acquisition import source_opt_in_enabled
 from jobtracker.patrick import generate_multi
 from jobtracker.registry import RegistryError, sources
 from scripts import hostinger_scheduler_state
@@ -277,13 +278,22 @@ def commit_and_push(counts, feed_count, publish_ref):
     return True
 
 
-def source_result(source, status, coverage_complete, records_written=0, reason=None, metadata=None):
+def source_result(
+    source,
+    status,
+    coverage_complete,
+    records_written=0,
+    reason=None,
+    metadata=None,
+    *,
+    attempted=True,
+):
     result = dict(metadata or {})
     result.update({
         "source_id": source["id"], "company": source["company"],
         "acquisition_mode": source["acquisition_mode"], "adapter": source.get("adapter"),
         "status": status, "coverage_complete": coverage_complete,
-        "records_written": records_written, "reason": reason,
+        "records_written": records_written, "reason": reason, "attempted": attempted,
     })
     return result
 
@@ -359,7 +369,9 @@ def write_publication_status(repo, results, feed_metadata):
     document = {
         "schema_version": 1,
         "publication": {
-            "attempted_sources": list(results),
+            "attempted_sources": [
+                key for key, item in results.items() if item.get("attempted", True)
+            ],
             "successful_sources": [key for key, item in results.items() if item["coverage_complete"]],
             "failed_or_incomplete_sources": [key for key, item in results.items() if not item["coverage_complete"]],
             "published_feed_contributors": [item["source_id"] for item in coverage if item["coverage_complete"]],
@@ -392,10 +404,25 @@ def collect_and_publish(repo, runtime, profile, expected_branch, publish_ref):
         if item["acquisition_mode"] != "manual_discovery"
     ]
     collection_started = time.time()
-    results = {
-        source["id"]: collect_source(repo, source, collection_started)
-        for source in attempted
-    }
+    results = {}
+    for source in attempted:
+        if source_opt_in_enabled(source):
+            results[source["id"]] = collect_source(repo, source, collection_started)
+        else:
+            variable = source["production_opt_in_env"]
+            results[source["id"]] = source_result(
+                source,
+                "incomplete",
+                False,
+                reason=(
+                    f"Host opt-in {variable} is disabled; awaiting the first "
+                    "verified production collection"
+                ),
+                metadata={
+                    "publication_status": "awaiting_first_verified_production_run",
+                },
+                attempted=False,
+            )
     failed = {
         source_id: item for source_id, item in results.items()
         if item.get("status") != "success" or item.get("coverage_complete") is not True

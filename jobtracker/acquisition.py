@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import os
 import re
 import urllib.error
 import urllib.request
@@ -515,9 +516,27 @@ ADAPTERS = {
 }
 
 
+def source_opt_in_enabled(source, environ=None):
+    environment = os.environ if environ is None else environ
+    if "production_opt_in_env" not in source:
+        return True
+    variable = source["production_opt_in_env"]
+    return (
+        isinstance(variable, str)
+        and bool(variable)
+        and environment.get(variable) == "1"
+    )
+
+
 def acquire(source, fetch=_get):
     if not source.get("enabled"):
         return AcquisitionResult([], "disabled", False, "source disabled")
+    if not source_opt_in_enabled(source):
+        variable = source["production_opt_in_env"]
+        return AcquisitionResult(
+            [], "incomplete", False,
+            f"Production opt-in {variable} is not enabled; collection was not attempted",
+        )
     if source["acquisition_mode"] == "manual_discovery":
         return AcquisitionResult([], "manual_discovery", False, source["manual_reason"])
     adapter = ADAPTERS.get(source.get("adapter"))
