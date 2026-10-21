@@ -1,0 +1,60 @@
+name: Industrial source Linux CI
+
+on:
+  pull_request:
+    paths:
+      - 'configs/sources.json'
+      - 'jobtracker/acquisition.py'
+      - 'jobtracker/pipeline.py'
+      - 'jobtracker/processing.py'
+      - 'tests/test_dvinci.py'
+      - 'tests/test_registry_pipeline.py'
+      - 'tests/test_personio_xml.py'
+      - 'tests/test_neura_typesense.py'
+      - 'tests/test_spacex_acquisition.py'
+      - 'tests/test_history_active_consistency.py'
+      - 'tests/test_provider_failures.py'
+      - 'tests/test_patrick_multi.py'
+      - 'docs/INDUSTRIAL_EMPLOYER_FEASIBILITY_*.md'
+      - '.github/workflows/industrial-source-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  python-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install project dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run industrial adapter tests
+        run: python -m unittest discover -s tests -p test_dvinci.py -v
+      - name: Run source and history regressions
+        run: |
+          python -m unittest discover -s tests -p test_registry_pipeline.py -v
+          python -m unittest discover -s tests -p test_personio_xml.py -v
+          python -m unittest discover -s tests -p test_neura_typesense.py -v
+          python -m unittest discover -s tests -p test_spacex_acquisition.py -v
+          python -m unittest discover -s tests -p test_history_active_consistency.py -v
+          python -m unittest discover -s tests -p test_provider_failures.py -v
+          python -m unittest discover -s tests -p test_patrick_multi.py -v
+      - name: Run full project regression suite
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify Python syntax
+        run: python -m compileall -q .
+      - name: Verify pull request whitespace
+        if: github.event_name == 'pull_request'
+        run: git diff --check "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"
+      - name: Verify dispatched commit whitespace
+        if: github.event_name == 'workflow_dispatch'
+        run: git diff --check HEAD^ HEAD
+      - name: Confirm no production deployment
+        run: echo "Code, fixtures, and documentation only; no Hostinger services or public datasets were modified."
