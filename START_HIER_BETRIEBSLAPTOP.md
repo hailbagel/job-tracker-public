@@ -43,3 +43,11 @@ Im **gleichen separaten Job-Tracker-Fenster** rechts **Copilot → Agent → New
 **Arbeitsbereiche strikt trennen, aber alle Aufgaben und Copilot-Prompts versioniert im passenden Repository halten.** Kein zusaetzlicher Clone in einen vorhandenen Projektordner; keine lokalen unversionierten Daten in GitHub pushen. `copilot-chat-exporter` und dessen lokale Chat-Backups bleiben eigenstaendig und unberuehrt.
 
 Aeltere Dateien `COPY_02_COPILOT_INDUSTRIAL_AGENT.md` und `COPY_04_COPILOT_SMS_PRODUCTION_READINESS.md` sind historischer Kontext; nicht nochmals als neue Aufgaben ausfuehren.
+
+## Optional parallel: Paperclip-VuTruLabs Read-only Tasks
+
+[**PAPERCLIP – vier kopierfertige Task-Beschreibungen fuer VuTruLabs (21.10.2026)**](docs/PAPERCLIP_JOB_TRACKER_TASKS_2026-10-21.md).
+
+**WO EINFUEGEN:** Paperclip-Weboberflaeche → VuTruLabs → entsprechendes Projekt → New Task / New Issue → Titel und Beschreibung je Task kopieren; NICHT in PowerShell oder Copilot-Agent-Chat.
+
+**Reihenfolge:** Erst ein read-only Paperclip-Heartbeat als Health Check; nur falls PASS, Job-Tracker-Datenqualitaet und industrielle Quellenrecherche starten. SMS-Readiness nach einem freien Slot. Kein Hostinger-Eingriff und kein Merge. Es wurden hier nur Vorlagen im GitHub-Repo hinterlegt, noch keine Paperclip-Tasks in der Paperclip-Instanz angelegt.
