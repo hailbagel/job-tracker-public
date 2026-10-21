@@ -232,6 +232,15 @@ def process_success(
             changes.append({"id": job_id, "source_id": source["id"], "change": "removed", "title": old.get("title", ""), "location": old.get("location", ""), "observed_at": observed_at})
             if job_id in history:
                 history[job_id]["active"] = "False"
+    # Historical jobs can survive older snapshots and ID migrations without
+    # appearing in previous jobs_latest.csv. That previous-snapshot-only removal
+    # loop cannot deactivate them, so enforce the complete-snapshot invariant.
+    # Keep all historical rows and original last_seen timestamps; do not invent
+    # removal change events for jobs not present in the previous snapshot.
+    for job_id, historical in history.items():
+        if job_id not in current_ids:
+            historical["active"] = "False"
+
     if preserve_change_history and not reset_history:
         changes = _deduplicate_changes(
             _canonical_change_rows(source["id"], _read(processed / "job_changes.csv"))
