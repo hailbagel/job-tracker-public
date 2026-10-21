@@ -1,19 +1,19 @@
 # KOPIEREN 04 — Copilot: SMS-group-Produktivschaltung vorbereiten
 
-**STATUS AM 21.10.2026:** <https://github.com/hailbagel/job-tracker-public/pull/23> liegt als **Draft PR** vor. GitHub Actions Linux-Tests haben bestanden. Der Adapter bleibt bewusst `manual_discovery`. **Erst nach separater Freigabe und Merge von PR #23 diesen Prompt benutzen.**
+**STATUS AM 21.10.2026:** <https://github.com/hailbagel/job-tracker-public/pull/23> wurde **erfolgreich gemergt** (Merge-Commit `b4225af`). Die Linux-CI hat bestanden. Der Adapter bleibt bewusst `manual_discovery`. **Dieser Prompt kann jetzt im bestehenden Copilot-Chat ausgeführt werden.**
 
 **WO EINFÜGEN?** **Betriebslaptop → VS Code → derselbe Copilot-Agent-Chat `Industrial Job Coverage`**, ins Nachrichteneingabefeld. **Nicht** ins VS-Code-PowerShell-Terminal und nicht auf Hostinger.
 
-**WOFÜR?** Copilot soll im nächsten separaten Entwicklungs-PR die technischen Voraussetzungen für echte automatische SMS-Stellenerfassung und Veröffentlichung schaffen (Bootstrap, Publisher-Allowlist, Audit, stufenweise sichere Aktivierung, Tests). **Kein tatsächlicher Produktiv-Rollout und kein Merge**.
+**WOFÜR?** Copilot soll im nächsten separaten Entwicklungs-PR die technischen Voraussetzungen für echte automatische SMS-Stellenerfassung und Veröffentlichung schaffen (Bootstrap, Publisher-Allowlist, Audit, stufenweise sichere Aktivierung, Tests). **Kein tatsächlicher Produktiv-Rollout und kein eigenmächtiger Merge**. ChatGPT bewertet den PR nach Tests und entscheidet selbstständig über nächste Schritte.
 
 ## Text komplett kopieren und an Copilot senden
 
 ```text
 Continue in the SAME VS Code Copilot Agent chat "Industrial Job Coverage" on the work laptop.
 
-This instruction is for AFTER owner-approved merge of PR #23:
+PR #23 HAS ALREADY BEEN MERGED into main. Confirmed merge commit: b4225afacda0afa57054cbcce6e87fe31ecfa317.
 https://github.com/hailbagel/job-tracker-public/pull/23
-DO NOT merge PR #23 yourself. If PR #23 is still open/unmerged, stop and report the blocker.
+Do not re-open or recreate PR #23. First verify that main contains the merge commit; if not, fetch and fast-forward a clean worktree.
 
 MISSION: Prepare a separately reviewable, safe production-enablement change for SMS group; do not perform any production change.
 
@@ -35,9 +35,9 @@ MISSION: Prepare a separately reviewable, safe production-enablement change for 
 
 4. VERIFICATION: On Windows run targeted fixture-based checks and Python syntax checks. Under Ubuntu GitHub Actions run the complete unittest suite, publication integration tests and audit fixtures. Require tests to succeed. Do not call live Hostinger or run its publisher.
 
-5. GIT/APPROVAL: Commit only intentional code/tests/docs and reviewed non-sensitive bootstrap files on the feature branch, push normally (no force), and open ONE DRAFT PR against main using the standard GitHub path, NOT GitKraken authentication. If GitKraken prompts for authentication, cancel and return the feature branch name; PR can be created separately. DO NOT merge. DO NOT enable on Hostinger. DO NOT change or run systemd timer/service. Owner must review a deploy window and rollback first.
+5. GIT/REVIEW: Commit only intentional code/tests/docs and reviewed non-sensitive bootstrap files on the feature branch, push normally (no force), and open ONE DRAFT PR against main using the standard GitHub path, NOT GitKraken authentication. If GitKraken prompts for authentication, cancel and return the feature branch name; PR can be created separately. DO NOT merge. DO NOT enable on Hostinger. DO NOT change or run systemd timer/service. ChatGPT is handling technical release review and merge decisions; return concrete evidence and any production-risk blockers rather than asking the owner to review code. Keep any live-enabling PR unmerged pending explicit deployment validation and an agreed low-risk rollout.
 
-6. DELIVERABLES: Provide proposed source enablement stages, precise GitHub PR link, CI evidence, tracked-output list, pilot success criteria, stop/rollback plan, independent Patrick feed behavior, and any missing items before owner deployment approval.
+6. DELIVERABLES: Provide source enablement stages, precise GitHub PR link (or pushed branch if GitKraken refuses), CI evidence, tracked-output list, pilot success criteria, stop/rollback plan, independent Patrick feed behavior, and blockers. ChatGPT will review the result and decide next steps without routine code-review questions.
 
 If you cannot design a safe atomic rollout because the dynamic allowlist and exact data audit contract conflict, STOP with an evidence-backed plan instead of producing a risky PR.
 ```
@@ -52,6 +52,6 @@ If you cannot design a safe atomic rollout because the dynamic allowlist and exa
 
 ## Vorbedingungen / Referenzen
 
-- [PR #23: SMS d.vinci Adapter](https://github.com/hailbagel/job-tracker-public/pull/23)
+- [Gemergter PR #23: SMS d.vinci Adapter](https://github.com/hailbagel/job-tracker-public/pull/23)
 - [Linux CI #23](https://github.com/hailbagel/job-tracker-public/actions/runs/39566138965)
 - [Industrial Employer Feasibility](https://github.com/hailbagel/job-tracker-public/blob/feature/industrial-sms-source/docs/INDUSTRIAL_EMPLOYER_FEASIBILITY_2026-10-21.md)
