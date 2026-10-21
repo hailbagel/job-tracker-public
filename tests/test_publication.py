@@ -348,8 +348,8 @@ class SchedulerIntegrationTests(unittest.TestCase):
             return publication.main()
 
     @patch.object(publication, "collect_and_publish")
-    def test_manual_publisher_is_rejected_before_48_hours(self, collect):
-        self.initialize(datetime.now(timezone.utc) - timedelta(hours=47))
+    def test_manual_publisher_is_rejected_before_six_hours(self, collect):
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=5))
 
         with self.assertRaisesRegex(publication.PublicationError, "not eligible before"):
             self.run_with_scheduler()
@@ -364,7 +364,7 @@ class SchedulerIntegrationTests(unittest.TestCase):
         collect,
         flock,
     ):
-        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=7))
 
         with self.assertRaisesRegex(publication.PublicationError, "Another publication run"):
             self.run_with_scheduler()
@@ -375,7 +375,7 @@ class SchedulerIntegrationTests(unittest.TestCase):
 
     @patch.object(publication, "collect_and_publish", return_value=False)
     def test_successful_manual_no_change_run_resets_scheduler_interval(self, collect):
-        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=7))
 
         self.assertEqual(0, self.run_with_scheduler())
 
@@ -385,7 +385,7 @@ class SchedulerIntegrationTests(unittest.TestCase):
         self.assertTrue(state["last_attempt_invocation_id"].startswith("manual-"))
         self.assertGreaterEqual(
             scheduler.eligibility_deadline(self.state_file),
-            datetime.now(timezone.utc) + timedelta(hours=47, minutes=59),
+            datetime.now(timezone.utc) + timedelta(hours=5, minutes=59),
         )
 
     @patch.object(
@@ -394,7 +394,7 @@ class SchedulerIntegrationTests(unittest.TestCase):
         side_effect=publication.PublicationError("fixture publisher failure"),
     )
     def test_failed_manual_run_records_failure_and_applies_retry_backoff(self, collect):
-        self.initialize(datetime.now(timezone.utc) - timedelta(hours=49))
+        self.initialize(datetime.now(timezone.utc) - timedelta(hours=7))
 
         with self.assertRaisesRegex(publication.PublicationError, "fixture publisher failure"):
             self.run_with_scheduler()
@@ -411,7 +411,7 @@ class SchedulerIntegrationTests(unittest.TestCase):
     @patch.object(publication, "collect_and_publish", return_value=False)
     def test_systemd_run_uses_matching_attempt_and_records_success_once(self, collect):
         now = datetime.now(timezone.utc)
-        self.initialize(now - timedelta(hours=49))
+        self.initialize(now - timedelta(hours=7))
         invocation_id = "test-systemd-invocation"
         scheduler.mark_attempt(self.state_file, invocation_id, now)
         environment = {
