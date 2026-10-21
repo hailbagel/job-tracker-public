@@ -11,6 +11,14 @@
 
 **Wichtig:** Beide Dateien wurden auf GitHub `main` gespeichert; Du musst die Textbefehle nicht selbst in Dateien anlegen. Eine Änderung von `main` durch den Hostinger-Publisher (neue öffentliche Datensätze) ist normal und wird beim Pull berücksichtigt.
 
+## Wenn Schritt 1 bei `?? patrick.json` stoppt
+
+Das ist ein lokales privates Profil, **kein Fehler von GitHub**. Keine Datei löschen, committen oder pushen. Die geprüfte Einmal-Reparatur steht hier:
+
+**[COPY_01A — patrick.json in den lokalen ignorierten Privatordner verschieben](docs/COPY_01A_PRIVATE_PATRICK_JSON_FIX.md)**
+
+**WO einfügen:** VS Code → Terminal → PowerShell, **nicht** Copilot/Hostinger. Der Code verschiebt die lokale Datei nur nach `configs/private_profiles/patrick.json`, wenn genau diese eine unversionierte Datei existiert, keine anderen Änderungen vorliegen, der Zielpfad frei und durch `.gitignore` geschützt ist. Danach nochmals **Schritt 1**, dann Schritt 2 ausführen.
+
 ## Erwartete Rückmeldungen
 
 - Nach Schritt 1: `=== WORK LAPTOP REPOSITORY READY ===`, danach `main...origin/main` und ein Commit-Hash.
