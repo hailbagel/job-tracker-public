@@ -2,7 +2,7 @@
 
 **ANLASS:** Copilot hat den Branch `feature/industrial-sms-source` gepusht und wollte dann über die GitKraken-Erweiterung einen Pull Request eröffnen. Die optionale GitKraken-Authentifizierung ist nicht erforderlich.
 
-**BEREITS ERLEDIGT:** ChatGPT hat <https://github.com/hailbagel/job-tracker-public/pull/23> als **DRAFT PR #23** erstellt. Die [Linux-CI](https://github.com/hailbagel/job-tracker-public/actions/runs/39566138965) war beim Erstellen dieser Anleitung noch in Bearbeitung.
+**BEREITS ERLEDIGT:** ChatGPT hat <https://github.com/hailbagel/job-tracker-public/pull/23> als **DRAFT PR #23** erstellt. Die [Linux-CI](https://github.com/hailbagel/job-tracker-public/actions/runs/39566138965) ist inzwischen **erfolgreich abgeschlossen** (GitHub Actions: `success`).
 
 ## Schritt 1 — im bestehenden VS Code Copilot Chat
 
@@ -28,7 +28,7 @@ Next tasks:
 1. Confirm you are on the existing feature/industrial-sms-source local branch. Check git status before any edits; never reset, clean, stash, force push or overwrite unrelated files.
 2. Check GitHub Actions CI for PR #23:
 https://github.com/hailbagel/job-tracker-public/actions/runs/39566138965
-The CI was still in progress when this handoff was written. Do not claim success until it is actually green.
+GitHub Actions CI for the submitted commit completed successfully. Independently review the tests and source completeness before considering merge.
 3. Review the pushed changes in the PR, especially whether SMS group d.vinci public JSON + sitemap really provide complete, reproducible current-job coverage, bilingual opening IDs, native job details, fail-closed semantics and preservation of last-good snapshots. Inspect the published feasibility report for all four companies.
 4. If CI fails or significant implementation flaws are found, fix on the SAME source-specific feature branch; rerun tests, commit only code/tests/docs, and git push this branch normally. No duplicate PR.
 5. If CI passes, summarize: four-company feasibility, actual SMS adapter coverage and constraints, test results, what is *not* production-enabled, and the exact additional bootstrap/publisher allowlist and audit steps for a later separately approved SMS production rollout.
