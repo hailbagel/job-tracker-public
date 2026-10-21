@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Persist and enforce the Hostinger publisher's rolling 48-hour eligibility."""
+"""Persist and enforce the Hostinger publisher's rolling six-hour eligibility."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ import tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-MINIMUM_INTERVAL = timedelta(hours=48)
+MINIMUM_INTERVAL = timedelta(hours=6)
 RETRY_INTERVAL = timedelta(hours=6)
 STATE_VERSION = 1
 
