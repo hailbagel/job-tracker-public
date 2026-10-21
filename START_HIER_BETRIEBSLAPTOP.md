@@ -51,3 +51,11 @@ Aeltere Dateien `COPY_02_COPILOT_INDUSTRIAL_AGENT.md` und `COPY_04_COPILOT_SMS_P
 **WO EINFUEGEN:** Paperclip-Weboberflaeche → VuTruLabs → entsprechendes Projekt → New Task / New Issue → Titel und Beschreibung je Task kopieren; NICHT in PowerShell oder Copilot-Agent-Chat.
 
 **Reihenfolge:** Erst ein read-only Paperclip-Heartbeat als Health Check; nur falls PASS, Job-Tracker-Datenqualitaet und industrielle Quellenrecherche starten. SMS-Readiness nach einem freien Slot. Kein Hostinger-Eingriff und kein Merge. Es wurden hier nur Vorlagen im GitHub-Repo hinterlegt, noch keine Paperclip-Tasks in der Paperclip-Instanz angelegt.
+
+## Neuer Entwicklungsauftrag nach Paperclip VUT-319: Mesabi Metallics
+
+[**KOPIEREN 07 – Copilot: Mesabi-JazzHR-Adapter mit Vollstaendigkeitspruefung**](docs/COPY_07_COPILOT_MESABI_JAZZHR_ADAPTER.md) · [Issue #26](https://github.com/hailbagel/job-tracker-public/issues/26)
+
+**WO EINFUEGEN:** Eigenstaendiges VS-Code-Fenster `C:\Users\minkusp\Projects\job-tracker-public` → Copilot-Agent-Chat `Job Tracker – Development`, **nicht** in PowerShell oder Hostinger. Vorher nur bei sauberem Arbeitsbaum `main` fast-forward synchronisieren (KOPIEREN 01).
+
+**WOFUER:** Mesabi Metallics steht nach dem Paperclip-Read-only-Review vor Siemens AG und Midrex. Copilot soll auf separatem Branch einen getesteten JazzHR-Adapter bauen und einen Draft-PR erstellen, **ohne** Mesabi in Produktion einzuschalten. Beobachtete 45 JazzHR-Listings vs. 47 offizielle Suchindex-Listings muessen vor jeder Datenqualitaetsfreigabe aufgeklärt oder als ungesichert markiert werden. Keine Vermischung mit COPY_05 SMS-Rollout und COPY_06 Issue #24.
