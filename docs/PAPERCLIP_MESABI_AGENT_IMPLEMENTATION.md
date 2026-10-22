@@ -1,5 +1,8 @@
 # PAPERCLIP TASK – Mesabi Metallics JazzHR Adapter
 
+> **PRIORITÄTSÄNDERUNG 22.10.2026:** Dieser Mesabi-Adapterauftrag ist **vorläufig nachrangig**, weil [P0 RFA-GREEN-Falschtreffer und weitere Qualitätsmängel](PAPERCLIP_JOB_TRACKER_QUALITY_REMEDIATION_2026-10-22.md) zuerst behoben werden müssen. **Noch nicht gestarteten Mesabi-Task nicht starten.** Bei bereits aktiver Entwicklung keine Arbeit löschen; Branch isoliert halten und nur als Draft-PR vorlegen, nicht mergen/deployen.
+
+
 **Verwendung:** Paperclip → VuTruLabs → Tasks → New Task. Jeden der **vier** `Plain text`-Bloecke mit dem GitHub-Kopiersymbol **einzeln** kopieren und in das entsprechende Paperclip-Feld einfuegen. **Nicht** als einen einzigen Prompt kopieren.
 
 **Task-Typ:** Coding & Tests · **Prioritaet:** High · **Projektbezug:** [GitHub Issue #26](https://github.com/hailbagel/job-tracker-public/issues/26), Paperclip VUT-319 (Feasibility abgeschlossen). **Nicht** in VS Code/Copilot starten.
