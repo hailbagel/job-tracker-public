@@ -1,5 +1,8 @@
 # START HIER – Job Tracker / VuTruLabs
 
+> **AKTUELLE PRIORITÄT 22.10.2026 – QUALITY GATE:** Vor neuen Firmen-Adaptern die belegten F1/F2/F3-Risiken beheben. [Paperclip-Qualitätsaufträge: vier Tasks × vier Copy-Boxen](docs/PAPERCLIP_JOB_TRACKER_QUALITY_REMEDIATION_2026-10-22.md). **P0 zuerst: RFA Pflichtanforderungen / GREEN-Gate (Issue #27)**. Danach 6-h-Monitoring (Issue #28), Ranking-IDs (Issue #24) und unabhängige Top-10-QA. Mesabi (Issue #26) bis zur Qualitätssicherung nicht neu starten oder mergen. Sollte Mesabi bereits in Bearbeitung sein, vorhandene Arbeit nicht zerstören; Agenten-Branch nur als Draft-PR isolieren, Hostinger unverändert.
+
+
 **Arbeitsmodus ab 22.10.2026: Paperclip-Agenten bevorzugt.** Keine doppelte Entwicklung durch Copilot und Paperclip fuer dieselbe Aufgabe.
 
 ## 1. Paperclip-Auftraege – immer exakt vier Kopierbloecke
