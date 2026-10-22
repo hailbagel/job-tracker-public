@@ -1,3 +1,5 @@
+> **Paperclip-first (22.10.2026):** Dieser Copilot-Auftrag ist **derzeit ausgesetzt**, weil die Mesabi-Entwicklung durch den CTO-Agenten in Paperclip ausgefuehrt werden soll. **Nicht parallel Copilot starten.** Stattdessen [PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md](PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md) als Paperclip-Task-Beschreibung verwenden. Nur falls CTO technisch blockiert ist, diesen Copilot-Prompt spaeter separat freigeben.
+
 # KOPIEREN 07 – Mesabi Metallics / JazzHR Adapter
 
 **PAPERCLIP-ERGEBNIS:** VUT-319 (21.10.2026) empfiehlt **Mesabi Metallics** als ersten weiteren Industrial-Adapter, Siemens AG nachrangig, Midrex spaeter. Diese Reihenfolge ist jetzt im [GitHub Issue #26](https://github.com/hailbagel/job-tracker-public/issues/26) erfasst.
