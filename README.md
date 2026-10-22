@@ -1,5 +1,7 @@
 # 🤖 Job Intelligence Pipeline
 
+> **ACTIVE PAPERCLIP WORKFLOW:** [Agent tasks with 4 copy boxes per task](docs/paperclip/README.md). Start with RFA ranking correctness and independent Top-10 QA. Old Copilot documents are archived, not active assignments. No automatic production deploy.
+
 An automated Python-based pipeline for collecting, structuring, and analyzing public job postings — designed for AI-powered hiring intelligence and market research.
 
 This public repository is the source of truth for the working application, reproducible public-data pipeline, approved public datasets and feeds, operating documentation, roadmap, and engineering history. The boundary between versioned public material and prohibited private/runtime material is defined in [PUBLIC_REPOSITORY_POLICY.md](PUBLIC_REPOSITORY_POLICY.md). Current delivery status and evidence are in [ROADMAP.md](ROADMAP.md).

@@ -1,5 +1,7 @@
 # Paperclip – Job Tracker Qualitätsreparatur (22. Oktober 2026)
 
+> **Neuer Einstieg:** [Einzelne Paperclip-Tasks](paperclip/README.md). Diese Sammeldatei dient als historischer Audit-Nachweis, nicht mehr zum bequemen Kopieren.
+
 **Quintessenz:** Priorität 1 ist Ranking-Vertrauen und 6-h-Monitoring. **Neue Quellen (Mesabi, Siemens, Midrex) zunächst zurückstellen**, solange fehlende Anforderungen zu falschen GREEN-Treffern führen. Keine laufenden Arbeitsbereiche eines anderen Agenten ändern. Ein bereits begonnener Mesabi-Draft-PR darf ohne Merge abgeschlossen werden, aber keine Produktivaktivierung.
 
 **WO EINFÜGEN:** Paperclip → VuTruLabs → **New Task**. Pro Task **vier getrennte Copy-Boxen** einzeln kopieren: `Title`, `Assignee`, `Project`, `Prompt`. Projektname entspricht der UI: `Job Tracker Public`. Eine Datei in GitHub erstellt noch keinen Paperclip-Task.

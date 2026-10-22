@@ -1,5 +1,7 @@
 # VERBINDLICHES PAPERCLIP-TASK-FORMAT – VuTruLabs
 
+> Für neue Aufgaben nur [docs/paperclip/](paperclip/README.md) verwenden: eine Task-Datei, **vier Copy-Boxen**, Paperclip-Agent als Ausführung. Kein VS Copilot.
+
 **Regel fuer alle neuen Paperclip-Auftraege:** Jeder Task wird auf GitHub mit exakt **vier separaten Plain-text-Kopierbloecken** vorbereitet, in dieser Reihenfolge: **Title**, **Assignee**, **Project**, **Prompt**. Keine entscheidenden Eingabewerte nur als Markdown-Inline-Text oder in einem grossen Sammelblock verstecken.
 
 **WO EINFUEGEN:** Paperclip → VuTruLabs → Tasks → New Task. Jeder Block wird **einzeln** per Kopiersymbol aus GitHub in sein entsprechendes Feld kopiert.
