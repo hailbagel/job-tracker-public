@@ -1,5 +1,7 @@
 # Job Tracker – Paperclip-Agenten-Aufträge
 
+> **Aktuell 22.10.2026 – VUT-329 / Draft PR #30:** **REVISE statt ACCEPT**. Beide GitHub-Actions-CIs sind rot wegen unverändertem `tests/test_publication.py`-Altfehler. [**Revise-Kommentar zum Kopieren**](VUT329_PR30_REVISE.md). Keine neue Aufgabe, kein Merge/Deploy.
+
 > **LIVE-STATUS, 22.10.2026:** Der RFA-Task ist **bereits angelegt** (Paperclip **VUT-328**, Builder). Die parallele CTO-Koordination **VUT-331** ist abhängig/blockiert. Top-10-QA **VUT-332** ist erledigt. **Keine dieser drei Aufgaben neu erstellen.** Aktueller nächster Schritt: [bestehenden VUT-328 / PR #29 sicher wiederaufnehmen](VUT328_PR29_RECOVERY.md). Der frühere Vorschlag „Jetzt starten“ unten ist nur das ursprüngliche Task-Template, kein Live-Status.
 
 
@@ -9,7 +11,7 @@
 |---|---|---|---|
 | **1** | [RFA-Pflichtanforderungen / falsches GREEN](01_RFA_REQUIREMENTS_CTO.md) | Builder: VUT-328 / CTO: VUT-331 | **BLOCKIERT – PR #29 CI**, keine neue Aufgabe |
 | **2** | [10 Top-Ranking-Stellen gegen Original prüfen](02_TOP10_QA_CHIEF_OF_STAFF.md) | Chief of Staff: VUT-332 | **DONE** – fünf Abweichungen, vier unverifizierbar, ein passender Datensatz (zehn geprüft) |
-| 3 | [6-h-Scheduler-Monitor korrigieren](03_SIX_HOUR_MONITOR_CTO.md) | CTO | Nach 1 |
+| 3 | [6-h-Scheduler-Monitor korrigieren](03_SIX_HOUR_MONITOR_CTO.md) | Engineering Operations: VUT-329 | **IN REVIEW – PR #30 CI rot; bestehende Confirmation revidieren** |
 | 4 | [Ranking-IDs exakt mit aktuellen Quellen abgleichen](04_RANKING_ID_INTEGRITY_CTO.md) | CTO | Nach 1 und 3 |
 | 5 | [Mesabi/JazzHR-Codeadapter](05_MESABI_PAUSED_CTO.md) | CTO | **Pausiert** |
 

@@ -1,5 +1,7 @@
 # START HIER – Job Tracker / PAPERCLIP
 
+> **NEUSTER STAND VUT-329, 22.10.2026:** [PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) noch Draft, **beide Actions rot**, wegen geerbtem SMS-Test. [**Revise im bestehenden Paperclip-Task – kopierfertig**](docs/paperclip/VUT329_PR30_REVISE.md). Kein Hostinger-Deploy oder Merge.
+
 > **Operativer Status 22.10.2026:** **Keine neuen VUT-328/331/332-Tasks erstellen.** Diese existieren bereits. VUT-332 (Top-10-QA) ist abgeschlossen. VUT-328 (Builder) ist wegen einer unklaren Board-Zuständigkeit blockiert; VUT-331 hängt davon ab. GitHub Draft-PR #29 ist implementiert, aber 1 von 120 Linux-Tests schlägt wegen einer veralteten SMS-PR-Dateiliste fehl.
 
 ## JETZT: bestehenden Auftrag wieder aufnehmen
