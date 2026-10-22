@@ -1,5 +1,8 @@
 # Kopieren 02 — GitHub Copilot Agent in VS Code
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **WO EINFÜGEN?** Auf dem **Betriebslaptop**, in VS Code, nach erfolgreichem Schritt 01, rechts im **Chat / Copilot → Agent**. Dafür **einen neuen Copilot-Chat** anlegen mit dem Thema `Job Tracker — Industrial Sources`. Den Text unten vollständig in das Chat-Eingabefeld einfügen und absenden. **Nicht** in PowerShell, Hostinger oder eine Markdown-Datei einfügen.
 
 **WOFÜR?** Startet die technische Analyse und Implementierung für SMS group, Midrex, Mesabi Metallics und Siemens AG, mit eigenem Feature-Branch, Tests und Draft-PR. Der Agent soll die vollständige, bereits versionierte Spezifikation lesen; dieser Startauftrag vermeidet doppelten langen Kontext im Chat.

@@ -1,5 +1,8 @@
 # Copilot — final code review before Hostinger scheduler PR #20 is merged
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Target: [PR #20 — restart-safe Hostinger scheduler](https://github.com/hailbagel/job-tracker-public/pull/20) on branch `fix/hostinger-restart-safe-scheduler`. Repo: `hailbagel/job-tracker-public`.
 
 ## Verified evidence

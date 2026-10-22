@@ -1,3 +1,5 @@
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
 > **Paperclip-first (22.10.2026):** Dieser Copilot-Auftrag ist **derzeit ausgesetzt**, weil die Mesabi-Entwicklung durch den CTO-Agenten in Paperclip ausgefuehrt werden soll. **Nicht parallel Copilot starten.** Stattdessen [PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md](PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md) als Paperclip-Task-Beschreibung verwenden. Nur falls CTO technisch blockiert ist, diesen Copilot-Prompt spaeter separat freigeben.
 
 # KOPIEREN 07 – Mesabi Metallics / JazzHR Adapter

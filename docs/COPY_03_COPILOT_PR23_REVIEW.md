@@ -1,5 +1,8 @@
 # Kopieren 03 — Copilot nach GitKraken-Anmeldeaufforderung fortsetzen
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **ANLASS:** Copilot hat den Branch `feature/industrial-sms-source` gepusht und wollte dann über die GitKraken-Erweiterung einen Pull Request eröffnen. Die optionale GitKraken-Authentifizierung ist nicht erforderlich.
 
 **BEREITS ERLEDIGT:** ChatGPT hat <https://github.com/hailbagel/job-tracker-public/pull/23> als **DRAFT PR #23** erstellt. Die [Linux-CI](https://github.com/hailbagel/job-tracker-public/actions/runs/39566138965) ist inzwischen **erfolgreich abgeschlossen** (GitHub Actions: `success`).

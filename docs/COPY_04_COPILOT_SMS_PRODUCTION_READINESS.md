@@ -1,5 +1,8 @@
 # KOPIEREN 04 — Copilot: SMS-group-Produktivschaltung vorbereiten
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **STATUS AM 21.10.2026:** <https://github.com/hailbagel/job-tracker-public/pull/23> wurde **erfolgreich gemergt** (Merge-Commit `b4225af`). Die Linux-CI hat bestanden. Der Adapter bleibt bewusst `manual_discovery`. **Dieser Prompt kann jetzt im bestehenden Copilot-Chat ausgeführt werden.**
 
 **WO EINFÜGEN?** **Betriebslaptop → VS Code → derselbe Copilot-Agent-Chat `Industrial Job Coverage`**, ins Nachrichteneingabefeld. **Nicht** ins VS-Code-PowerShell-Terminal und nicht auf Hostinger.

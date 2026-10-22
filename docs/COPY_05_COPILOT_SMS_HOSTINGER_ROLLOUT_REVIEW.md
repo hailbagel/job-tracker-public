@@ -1,5 +1,8 @@
 # KOPIEREN 05 — Copilot bereitet SMS-Hostinger-Aktivierung vor
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **HINWEIS 21.10.2026:** Nicht mehr den verlorenen Chat `Industrial Job Coverage` suchen. Diesen Prompt im neuen Chat `Job Tracker – Development` in einem eigenen VS-Code-Fenster mit ausschließlich dem Ordner `C:\\Users\\minkusp\\Projects\\job-tracker-public` verwenden. Vorher lokale Git-Änderungen prüfen und `main` nur per Fast-Forward synchronisieren; niemals ungesicherte Daten überschreiben.\n\n**STATUS:** [PR #25](https://github.com/hailbagel/job-tracker-public/pull/25) ist gemergt (Commit `daa9a08`); beide Ubuntu-Workflows sind erfolgreich. Der SMS-Adapter ist **standardmäßig ausgeschaltet**, weil auf Hostinger `JOB_TRACKER_ENABLE_SMS_GROUP=1` noch nicht gesetzt wurde.
 
 **WO EINFÜGEN?** Auf dem **Betriebslaptop** → **VS Code → neuer VS-Code-Copilot-Agent-Chat `Job Tracker – Development`** → Textbox. **Nicht** im Terminal, **nicht** auf Hostinger. Du brauchst die VS-Code-Erweiterung „GitHub Actions“ **nicht** zu installieren.

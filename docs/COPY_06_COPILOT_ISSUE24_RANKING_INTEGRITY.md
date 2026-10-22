@@ -1,5 +1,8 @@
 # KOPIEREN 06 — Issue #24: Ranking-IDs gegen aktuelle Jobdaten pruefen
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **STATUS:** [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24) ist eine offene Entwicklungsaufgabe, kein laufender Hostinger-Fehler. Der alte [PR #17](https://github.com/hailbagel/job-tracker-public/pull/17) wurde als ueberholt geschlossen; canonical audit: `scripts/audit_public_data.py`.
 
 **WOFUER?** Unabhaengiger Abgleich von Patrick- und SpaceX-Ranking-IDs gegen tatsaechlich aktuelle Quelldaten. Ausgetauschte Stellen bei gleicher Gesamtzahl muessen erkannt werden.

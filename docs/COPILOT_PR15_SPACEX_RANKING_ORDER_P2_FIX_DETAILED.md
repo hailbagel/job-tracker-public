@@ -1,5 +1,8 @@
 # Copilot Prompt — PR #15 P2: Normalize SpaceX Before Ranking
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Aufgaben stehen unter [Paperclip-Tasks: vier Kopierfelder je Agent](paperclip/README.md). Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Use this prompt only in the **hailbagel/job-tracker-public** repository and only on the existing PR #15 branch.
 
 Repository:
