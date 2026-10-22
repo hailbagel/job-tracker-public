@@ -1,26 +1,21 @@
 # Job Tracker – Paperclip-Agenten-Aufträge
 
-> **Aktuell 22.10.2026 – VUT-329 / Draft PR #30:** **REVISE statt ACCEPT**. Beide GitHub-Actions-CIs sind rot wegen unverändertem `tests/test_publication.py`-Altfehler. [**Revise-Kommentar zum Kopieren**](VUT329_PR30_REVISE.md). Keine neue Aufgabe, kein Merge/Deploy.
+> **OPERATIVER STAND 22.10.2026:** [**VUT-329 / PR #30 – konkrete Engineering-Ausführungsanweisung**](VUT329_PR30_REVISE.md). Paperclip hat `Revise` als Review-Ablehnung verbucht, Task ist wieder bei Engineering Operations. **Jetzt denselben Task zur Codekorrektur ausführen**, erst bei grüner CI neues Review. Keine neue Aufgabe.
 
-> **LIVE-STATUS, 22.10.2026:** Der RFA-Task ist **bereits angelegt** (Paperclip **VUT-328**, Builder). Die parallele CTO-Koordination **VUT-331** ist abhängig/blockiert. Top-10-QA **VUT-332** ist erledigt. **Keine dieser drei Aufgaben neu erstellen.** Aktueller nächster Schritt: [bestehenden VUT-328 / PR #29 sicher wiederaufnehmen](VUT328_PR29_RECOVERY.md). Der frühere Vorschlag „Jetzt starten“ unten ist nur das ursprüngliche Task-Template, kein Live-Status.
+## Bestehende Tasks und Reihenfolge
 
-
-**Diese Seite ist der einzige aktive Einstiegspunkt für neue Paperclip-Aufträge.** Keine VS-Copilot-Chats und keine lokalen VS-Code-Workspaces nötig. **Jede Datei hat vier getrennte Kopierboxen für Title, Assignee, Project und Prompt.**
-
-| Reihenfolge | Paperclip-Auftrag | Agent | Status |
+| Priorität | Paperclip-Auftrag | Zuständigkeit | Tatsächlicher Stand |
 |---|---|---|---|
-| **1** | [RFA-Pflichtanforderungen / falsches GREEN](01_RFA_REQUIREMENTS_CTO.md) | Builder: VUT-328 / CTO: VUT-331 | **BLOCKIERT – PR #29 CI**, keine neue Aufgabe |
-| **2** | [10 Top-Ranking-Stellen gegen Original prüfen](02_TOP10_QA_CHIEF_OF_STAFF.md) | Chief of Staff: VUT-332 | **DONE** – fünf Abweichungen, vier unverifizierbar, ein passender Datensatz (zehn geprüft) |
-| 3 | [6-h-Scheduler-Monitor korrigieren](03_SIX_HOUR_MONITOR_CTO.md) | Engineering Operations: VUT-329 | **IN REVIEW – PR #30 CI rot; bestehende Confirmation revidieren** |
-| 4 | [Ranking-IDs exakt mit aktuellen Quellen abgleichen](04_RANKING_ID_INTEGRITY_CTO.md) | CTO | Nach 1 und 3 |
-| 5 | [Mesabi/JazzHR-Codeadapter](05_MESABI_PAUSED_CTO.md) | CTO | **Pausiert** |
+| P0 | [RFA-Pflichtanforderungen / GREEN-Gate](01_RFA_REQUIREMENTS_CTO.md) | VUT-328 Builder / VUT-331 CTO | Draft [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29), CI **grün**, Paperclip-Freigabe ggf. separat |
+| P1 | [6-h-Scheduler-Monitor](03_SIX_HOUR_MONITOR_CTO.md) | VUT-329 Engineering Operations | Draft [PR #30](https://github.com/hailbagel/job-tracker-public/pull/30), **beide CIs rot**, Fix in vorhandenem Task |
+| QA | [Top-10-Quellenprüfung](02_TOP10_QA_CHIEF_OF_STAFF.md) | VUT-332 Chief of Staff | **Done:** 5 Evidenzmängel, 4 unverifizierbar, 1 materiell stimmig (nur 10er-Sample) |
+| Danach | [Ranking-ID-Integrität](04_RANKING_ID_INTEGRITY_CTO.md) | CTO, separater Task nach Abgleich bestehender Tasks | Noch nicht als neuer Task ausführen, bevor laufende Arbeiten sauber zugeordnet |
+| Pausiert | [Mesabi Metallics](05_MESABI_PAUSED_CTO.md) | CTO | Quellenwachstum bis Quality-Gate aufschieben |
 
-## Einfügen
+## Neue Aufgaben in Paperclip
 
-1. **Paperclip → VuTruLabs → Tasks → New Task**.
-2. Aufgabe verlinkt oben öffnen. Per Kopiersymbol **Title** → Task-Titel, **Assignee** → Agent, **Project** → Projekt, **Prompt** → Beschreibung. Vier getrennte Felder.
-3. Task in Paperclip starten. **GitHub-Vorlage allein legt den Task nicht an.** Ergebnisse/CI/PRs in Paperclip/GitHub nachweisen. Wenn Agent Rechte nicht hat, `BLOCKED` melden.
+**Nur wenn eine Aufgabe wirklich noch nicht existiert:** Paperclip → VuTruLabs → Tasks → New Task. Jede eigenständige Task-Datei enthält vier einzeln kopierbare Felder `Title`, `Assignee`, `Project`, `Prompt`. Alte `docs/COPILOT_*.md` sind Archiv und kein aktiver Auftrag.
 
-**Regeln:** Nur eine codierende Instanz je Checkout/Branch, read-only Chief of Staff darf parallel. Keine parallele Copilot-Arbeit, kein automatischer Merge, Hostinger-Eingriff oder Produktiv-Datenimport. Private Kandidatendaten nie ins Repo. Bestehende Tasks nicht duplizieren; VUT-318 war falsch zugeordnet; VUT-319 ist bereits erledigte Mesabi-Feasibility.
+**Bestehende Aufgaben nicht duplizieren.** Änderungen nur in isoliertem Branch/Task. Kein autonomer Merge/Hostinger-Deploy, keine Bewerber-Privatdaten, keine Produktionsveröffentlichung. CI-Abnahme und Hostinger-Betriebsabnahme sind unabhängig.
 
-**Archive:** Alte `docs/COPILOT_*.md` und `docs/COPY_*_COPILOT_*.md` sind historische VS-Copilot-Prompts und keine aktiven Paperclip-Aufträge. [Task-Schema](../PAPERCLIP_TASK_FORMAT.md) · [Audit-Herkunft](../PAPERCLIP_JOB_TRACKER_QUALITY_REMEDIATION_2026-10-22.md).
+[Verbindliches Schema](../PAPERCLIP_TASK_FORMAT.md) · [Ursprünglicher CEO-Audit](../PAPERCLIP_JOB_TRACKER_QUALITY_REMEDIATION_2026-10-22.md).

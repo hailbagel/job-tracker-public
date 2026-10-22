@@ -1,30 +1,39 @@
-# VUT-329 – vorhandenen PR #30 revidieren, kein neuer Task
+# VUT-329 / PR #30 – TECHNISCHE AUSFÜHRUNG, nicht erneut Review beantragen
 
-**Status 22.10.2026:** Nicht auf **Accept code review**, sondern **Revise** klicken. Die lokale Frischeprüfungslogik mit `STALE_AFTER=2*MINIMUM_INTERVAL=12h` besteht ihre 13 Tests. Beide vollständigen Linux-CIs auf Draft-PR #30 sind jedoch fehlgeschlagen, weil `tests/test_publication.py:164` noch die veraltete SMS-Dateiliste erwartet. [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) behebt dies bereits, ist aber noch nicht in `main`.
+**Aktualisiert 22.10.2026:** Paperclip hat die frühere Entscheidung `Revise` als **rejected confirmation** ohne konkrete Änderungsforderung interpretiert. Engineering Operations hat den Task wieder zurück zur Ausführung erhalten. Deshalb **nicht erneut „Revise“ oder „Accept“ wählen und keinen neuen Task erstellen**. Direkt im bestehenden **VUT-329 → Message Engineering Operations** die folgende Anweisung einfügen. Der beauftragte Engineering-Agent soll den bisherigen Builder zur Codeänderung nutzen, falls er selbst keine Schreibrechte hat.
 
-## WO EINFÜGEN?
+**GitHub-Status verifiziert:** [PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) Draft und nicht gemergt, beide CI-Workflows rot ([Run 39791151245](https://github.com/hailbagel/job-tracker-public/actions/runs/39791151245), [Run 39791145578](https://github.com/hailbagel/job-tracker-public/actions/runs/39791145578)). [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) weiterhin Draft, beide CI-Workflows grün. Die Korrektur ist dort bereits in `tests/test_publication.py` vorhanden. **Keine Produktionsfreigabe.**
 
-In Paperclip → VuTruLabs → **bestehender Task VUT-329** → Confirmation Pending → **Revise** → Begründung einfügen. **Nicht** `New Task`. Nur **ein** Copy-Block für die bestehende Review-Revidierung (kein neuer Task mit Title/Assignee/Project).
-
-## Revise – kopieren
+## Nachricht für bestehenden VUT-329 – EINZELN KOPIEREN
 
 ```text
-REVISE — VUT-329 / EXISTING DRAFT PR #30 ONLY
+VUT-329 — EXECUTE THE FIX NOW, NOT ANOTHER REVIEW REQUEST
 
-The code review cannot be accepted yet. Both latest Ubuntu GitHub Actions checks on PR #30 FAILED:
-- Industrial source Linux CI: https://github.com/hailbagel/job-tracker-public/actions/runs/39791151245
-- Hostinger scheduler Linux review: https://github.com/hailbagel/job-tracker-public/actions/runs/39791145578
+The previous "Revise" response was registered as a rejected confirmation without an actionable technical change request. This is the actionable request for the EXISTING task VUT-329 and EXISTING draft PR #30.
 
-Focused 13 scheduler tests, systemd syntax and six-to-twelve-hour staleness boundary tests passed, but BOTH workflows fail the SAME old unscoped tests/test_publication.py:164 assertion, which incorrectly expects an earlier SMS PR's exact changed-file list. The equivalent security test was already repaired in green CI on draft PR #29 (unmerged), so this is a cross-PR integration dependency, not evidence that the scheduler change is broken.
+Engineering Operations: assign the actual code correction to the existing capable Builder through this same task/existing handoff. Do NOT create a new issue, task, branch, or PR. Do NOT request human acceptance again until CI is green.
 
-Please make ONE bounded correction to the EXISTING PR #30 branch. Prefer merging PR #29 only AFTER its separately authorized review/merge, then update PR #30 from main. If PR #29 cannot be merged yet, port ONLY its independently reviewed PR-independent sensitive-path regression test into PR #30, preserving all security checks. Do not remove/skip/weaken the test or substitute a new hard-coded file list. Do not create another task, PR, or branch.
+Repo: hailbagel/job-tracker-public
+PR: https://github.com/hailbagel/job-tracker-public/pull/30
+Branch: fix/vut-329-scheduler-freshness
+Blocking CI runs: 39791151245 and 39791145578
 
-Rerun BOTH GitHub Actions workflows until green, report exact commit SHA and links. Keep PR #30 DRAFT; require independent code acceptance. No Hostinger access/production change is authorized. Effective host revision, persistent scheduler state after reboot and last three independent scheduled six-hour successes remain UNVERIFIED and require separate read-only operator evidence and later operational acceptance.
+CAUSE: PR #30 has only the three expected scheduler files, but tests/test_publication.py:136-164 on the base/main unconditionally asserts a hardcoded list of old SMS PR files. Both Linux workflows fail that one unrelated test. The already reviewed draft PR #29 has the exact PR-independent security-sensitive-path test fix at tests/test_publication.py:136-157, and two passing workflows (39788298467 and 39788298466).
+
+ACTION:
+1. On PR #30's EXISTING branch only, port the reviewed PR-independent sensitive-path regression guard from PR #29's tests/test_publication.py. Keep checks for sensitive path terms (private_profiles, credentials, secrets, cookies, sessions), .env and .env.* excluding .env.example, and private key/cert suffixes (.key/.pem/.p12/.pfx). Remove the unrelated fixed SMS file-list requirement. Do not delete/skip/loosen the safety test.
+2. Preserve the new six-hour-cadence monitor and its 13 focused tests; do not change the production scheduler, systemd units, or any Hostinger configuration.
+3. Run the full Linux test suites on the EXISTING PR #30, compileall and git diff --check; push the correction only to its existing branch. Report new SHA and links to BOTH successful CI runs. If blocked by access/CI, report the exact blocker and stop — do not mark done.
+4. Only AFTER both checks are green, request one independent CODE review of PR #30. Keep PR Draft. Separate operational acceptance still needs real Hostinger journal evidence, installed revision, persistent state and three independent scheduled 6-hour runs. Do not attempt Hostinger, deploy, publish or merge.
+
+This is a concrete engineering execution instruction, not approval for merge or production.
 ```
 
-## Nachweise und Abnahme
+## Wie geht es weiter?
 
-- GitHub: [PR #30](https://github.com/hailbagel/job-tracker-public/pull/30), [Kommentar mit CI-Root-Cause](https://github.com/hailbagel/job-tracker-public/pull/30#issuecomment-6342685150).
-- [Run 39791151245: failed](https://github.com/hailbagel/job-tracker-public/actions/runs/39791151245), [Run 39791145578: failed](https://github.com/hailbagel/job-tracker-public/actions/runs/39791145578).
-- Beide Fehler: alter `test_pull_request_changes_only_reviewed_non_sensitive_paths`, nicht die neuen Scheduler-Tests.
-- Code-Abnahme und Hostinger-Betriebsabnahme sind **unabhängig**. Ohne neue Hostinger-Journale keine Behauptung von 3 geplanten erfolgreichen Sechs-Stunden-Läufen.
+1. In Paperclip den bestehenden Task **VUT-329** öffnen und **oben stehende Nachricht** an **Engineering Operations** senden, nicht in den Board-Confirmation-Dialog.
+2. EO beauftragt seinen vorhandenen Builder oder führt die enge Korrektur selbst aus. **Kein neuer Task, kein neuer PR**.
+3. Beide Ubuntu-CIs vollständig grün => erst dann ein erneutes Code-Review. Die **Hostinger-Abnahme bleibt separat**.
+4. Bei fehlenden Zugriffsrechten, nicht erreichbarem Builder oder erneutem leeren Review-Kreis: **konkreten Blocker melden**, nicht `Done` markieren.
+
+**Hinweis:** Ein Repo-Commit dokumentiert diese Anleitung, übermittelt sie aber nicht automatisch an Paperclip. Eine GitHub-PR-Diskussion allein löst den Paperclip-Task nicht aus.
