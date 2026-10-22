@@ -1,5 +1,8 @@
 # Copilot Prompt — PR #15 P1: Reject Missing Detail Rows
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Use this prompt only in the **hailbagel/job-tracker-public** repository.
 
 > IMPORTANT: If VS Code is currently opened on another repository (for example `ESP32-Paxcounter`), STOP. Do not modify, stage, commit, stash, reset, or discard anything in that other repository. Open the `job-tracker-public` repository first, then run this task.

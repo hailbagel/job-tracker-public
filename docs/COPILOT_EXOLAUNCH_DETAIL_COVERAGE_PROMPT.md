@@ -1,5 +1,8 @@
 # Copilot task — Exolaunch missing detail descriptions (post-production data audit)
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 ## Ground truth — 13 October 2026
 
 Read-only full data audit completed on Hostinger at `/opt/vutrulabs/job-tracker-public`:

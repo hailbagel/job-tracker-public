@@ -1,5 +1,8 @@
 # Copilot task — Automate industrial & plant-engineering employer coverage
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Repository: `hailbagel/job-tracker-public`  
 Priority: P1 (SMS group), P1 (Midrex), P1 (Mesabi Metallics), P2 (Siemens AG).  
 Date: 2026-10-15.

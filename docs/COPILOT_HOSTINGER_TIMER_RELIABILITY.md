@@ -1,5 +1,8 @@
 # Copilot / Engineering Operations — Make Hostinger scheduler restart-safe
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Date: 2026-10-19. Repo: `hailbagel/job-tracker-public`.
 
 ## Decision and confirmed facts

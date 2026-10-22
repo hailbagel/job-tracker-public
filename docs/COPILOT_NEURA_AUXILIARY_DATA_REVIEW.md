@@ -1,5 +1,8 @@
 # Copilot task — NEURA auxiliary CSV classification
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 Repository: `hailbagel/job-tracker-public`  
 Evidence: Hostinger read-only public data audit on 13 October 2026, latest publication commit `21932010b4359d5446453baaf0c450623009d811`.
 

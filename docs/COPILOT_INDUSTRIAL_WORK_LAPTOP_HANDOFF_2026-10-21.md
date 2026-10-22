@@ -1,5 +1,8 @@
 # Work-laptop handoff — industrial employers (21 October 2026)
 
+> **LEGACY / ARCHIV — VS COPILOT (22.10.2026):** Dieser frühere Copilot-Auftrag ist **keine aktuelle Arbeitsanweisung** und gehört **nicht** in Paperclip. Aktive Tasks sind separat in [Paperclip-Tasks – Title / Assignee / Project / Prompt](paperclip/README.md) dokumentiert. Nicht doppelt ausführen; kein Hostinger-Deploy.
+
+
 **Repository:** `hailbagel/job-tracker-public` (PUBLIC)  
 **Audience:** VS Code Copilot coding agent on the Windows work laptop  
 **Canonical base:** GitHub `origin/main` — never assume yesterday's local checkout is current  
