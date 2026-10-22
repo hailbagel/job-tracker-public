@@ -1,20 +1,33 @@
-# Paperclip – Job Tracker Arbeitsauftraege (21.10.2026)
+# Paperclip – Historische Job-Tracker-Tasks (21.10.2026)
 
-**System:** VuTruLabs / Paperclip. **Scope:** `hailbagel/job-tracker-public`.  
-**WO EINFUEGEN:** Paperclip Web UI → VuTruLabs → richtiges Projekt `Job Tracker` (falls vorhanden) → **New Task / New Issue** → je einen Titel und die darunterstehende Beschreibung kopieren → dem zustaendigen Agent zuweisen. Ein GitHub-Issue ist **kein** Paperclip-Task. Die Erstellung in Paperclip erfolgt separat.
+**Status:** VUT-317, VUT-319 und VUT-320 waren in Paperclip bereits als **Done** sichtbar. VUT-318 ist laut Owner falsch zugeordnet und wird **ignoriert**. Diese Datei ist eine **historische, neu formatierte Task-Ablage, keine Aufforderung zur Neuerstellung**.
 
-**Grundsatz:** Maximal **3 Tasks gleichzeitig in Arbeit**. Nach jedem Task nur ein explizit angestossener Heartbeat. Keine automatischen Folgeauftraege, keine Subtasks, keine Agentenrekrutierung, keine Merge-/Publish-/Hostinger-Aktionen. Kein Zugriff auf private Profile, Zugangsdaten, lokale Chat-Backups. Alle Ausgaben als Task-Kommentar oder verlinkte, nicht-vertrauliche GitHub-Dokumentation. Ohne Owner-Freigabe keine Git-Mutationen. Die Aufgaben sind **Vorlagen** und wurden nicht auf Paperclip erstellt oder ausgefuehrt.
+**Aktiver neuer Coding-Auftrag:** [Paperclip CTO – Mesabi JazzHR Adapter](PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md).
 
-## P0 – Zuerst: Paperclip Agent Smoke Test
+**Einheitliches Kopierformat:** [PAPERCLIP_TASK_FORMAT.md](PAPERCLIP_TASK_FORMAT.md). Wo ein Task neu angelegt werden soll: Paperclip → VuTruLabs → Tasks → New Task; jeden der vier Codebloecke einzeln kopieren. Kein Terminal/Copilot. Keine Aufgabe wird durch das Speichern im Repo in Paperclip erzeugt.
 
-**Titel:** `VUT-PAPERCLIP-HEALTH – Read-only agent heartbeat smoke test`  
-**Prioritaet:** Critical / P0  
-**Assignee:** Chief of Staff (sofern konfiguriert); sonst ein bekannter funktionierender Agent.  
-**Projekt:** VuTruLabs Operations / Platform.  
-**Zeitfenster:** Einmaliger Test. Keine automatische Wiederholung.
+---
 
-**Beschreibung in Paperclip kopieren:**
+## VUT-317 – Health Check (bereits Done)
 
+Im Screenshot vom 21.10.2026 als Done zu sehen. Nicht erneut anlegen.
+
+### Title
+```text
+VUT-PAPERCLIP-HEALTH – Read-only agent heartbeat smoke test
+```
+
+### Assignee
+```text
+Chief of Staff
+```
+
+### Project
+```text
+Job Tracker Public
+```
+
+### Prompt
 ```text
 Task: VUT-PAPERCLIP-HEALTH — validate VuTruLabs Paperclip task execution.
 
@@ -30,18 +43,28 @@ Objective: One controlled read-only heartbeat. Confirm this Paperclip instance, 
 Definition of done: An observable heartbeat and a readable single status comment with PASS / BLOCKED / FAIL and evidence. No other changes.
 ```
 
-**Gate:** Nur bei PASS mit den weiteren Tasks beginnen. Bei FAIL nicht im laufenden Job-Tracker/Hostinger-Deployment debuggen; Paperclip gesondert behandeln.
-
 ---
 
-## P1 – Datenqualitaetsanalyse (GitHub Issue #24)
+## VUT-318 – Datenqualitaet (ignorieren)
 
-**Titel:** `JT-DATA-QUALITY – Independent ranking and source audit`  
-**Prioritaet:** High / P1  
-**Assignee:** Quality/Data Agent, falls vorhanden; sonst Chief of Staff.
+Der Owner hat VUT-318 als falsch zugeordnet bezeichnet. **Nicht erneut anlegen oder als belastbares Ergebnis weiterverwenden.**
 
-**Beschreibung in Paperclip kopieren:**
+### Title
+```text
+JT-DATA-QUALITY – Independent ranking and source audit
+```
 
+### Assignee
+```text
+Chief of Staff
+```
+
+### Project
+```text
+Job Tracker Public
+```
+
+### Prompt
 ```text
 Task: JT-DATA-QUALITY — independent READ-ONLY assessment for https://github.com/hailbagel/job-tracker-public/issues/24
 
@@ -58,18 +81,28 @@ Purpose: Review current data quality; do NOT duplicate the separate Copilot impl
 Deliverable: Task comment, concise PASS/RISK/BLOCKED report and a 5-point regression acceptance checklist. No PR or deploy.
 ```
 
-**Nicht ueberlappen:** Copilot-Entwicklung zum [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24) bleibt unabhaengig. Paperclip gibt nur Review-Evidenz.
-
 ---
 
-## P1 – Industrie-Firmenanalyse
+## VUT-319 – Industriequellen (bereits Done)
 
-**Titel:** `JT-INDUSTRIAL-SOURCES – Midrex, Mesabi, Siemens source feasibility`  
-**Prioritaet:** High / P1  
-**Assignee:** Research/Market Intelligence Agent, falls vorhanden; sonst Chief of Staff.
+VUT-319 wurde abgeschlossen und lieferte Mesabi als bevorzugte erste Implementierung. Nicht erneut anlegen.
 
-**Beschreibung in Paperclip kopieren:**
+### Title
+```text
+JT-INDUSTRIAL-SOURCES – Midrex, Mesabi, Siemens source feasibility
+```
 
+### Assignee
+```text
+Chief of Staff
+```
+
+### Project
+```text
+Job Tracker Public
+```
+
+### Prompt
 ```text
 Task: JT-INDUSTRIAL-SOURCES — public, read-only source feasibility review.
 
@@ -88,18 +121,28 @@ No code modification, API keys, production imports, unpublished data writing or 
 Deliver a three-row comparison, uncertainty notes and one next recommended implementation candidate, with separate owner approval needed.
 ```
 
-**Erwartetes Ergebnis:** belastbare Machbarkeitsentscheidung, nicht sofort neue Scraper.
-
 ---
 
-## P2 – SMS group Produktionsfreigabe (spaeter)
+## VUT-320 – SMS Readiness (bereits Done)
 
-**Titel:** `JT-SMS-READINESS – independent rollout checklist`  
-**Prioritaet:** Medium / P2  
-**Assignee:** Engineering Operations / QA Agent, falls vorhanden.
+VUT-320 war in Paperclip als Done markiert. Inhaltliche Abnahme bleibt getrennt; nicht erneut anlegen.
 
-**Beschreibung in Paperclip kopieren:**
+### Title
+```text
+JT-SMS-READINESS – independent rollout checklist
+```
 
+### Assignee
+```text
+Chief of Staff
+```
+
+### Project
+```text
+Job Tracker Public
+```
+
+### Prompt
 ```text
 Task: JT-SMS-READINESS — independent READ-ONLY readiness review.
 
@@ -114,15 +157,8 @@ Deliverable: compact owner decision sheet with prerequisites, risks and source c
 
 ---
 
-## Operativer Ablauf
+## Neue aktive Arbeit
 
-1. **P0 starten** → einmal Heartbeat/Invoke manuell und PASS/FAIL dokumentieren. Wenn FAIL: Rest nicht starten.
-2. **P1 Datenqualitaet** und **P1 Firmenanalyse** starten → separate Tasks, beide read-only, maximal drei Tasks inklusive Health Check.
-3. **P2 SMS** erst nach Abschluss eines P1-Tasks bzw. freiem Agentenslot anlegen.
-4. Paperclip darf Ergebnisse koordinieren; Copilot implementiert codebezogene Aenderungen auf separatem Git-Branch mit CI und Review. Produktionsaktionen bleiben bei einem separaten Owner-Review.
+Die naechste eigenstaendige Paperclip-Aufgabe fuer den CTO ist [JT-MESABI-JAZZHR](PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md); die vorherige VUT-319 war nur die Machbarkeitsrecherche. CTO darf Branch, synthetische Tests und einen Draft-PR erstellen, aber nichts auf Hostinger aktivieren oder mergen.
 
-## Abhaengigkeiten und bekannte Unbekannte
-
-- Das Paperclip-VPS hatte in frueheren Tests einen API-Redirect-/bwrap-Blocker. Der aktuelle Livezustand ist **nicht** durch GitHub nachgewiesen.
-- Issue #24 ist nach aktuellem GitHub-Stand offen; PR #25 ist gemergt, SMS aber default-off.
-- **Keine direkte Paperclip-Verbindung** ist in dieser ChatGPT-Sitzung verfuegbar: Diese Datei ist eine copy-ready Task-Sammlung, keine Bestaetigung, dass Paperclip-Aufgaben erstellt wurden.
+**Praezision:** Fuer historische Tasks sind die Assignee-/Project-Felder als wiederverwendbare Vorgaben aus der aktuellen Job-Tracker-Zuordnung geschrieben; sie bestaetigen nicht zwingend die urspruenglich in Paperclip gespeicherten alten Task-Metadaten. Den tatsächlichen alten Taskstatus ausschliesslich in Paperclip pruefen.
