@@ -1,11 +1,14 @@
 # Job Tracker – Paperclip-Agenten-Aufträge
 
+> **LIVE-STATUS, 22.10.2026:** Der RFA-Task ist **bereits angelegt** (Paperclip **VUT-328**, Builder). Die parallele CTO-Koordination **VUT-331** ist abhängig/blockiert. Top-10-QA **VUT-332** ist erledigt. **Keine dieser drei Aufgaben neu erstellen.** Aktueller nächster Schritt: [bestehenden VUT-328 / PR #29 sicher wiederaufnehmen](VUT328_PR29_RECOVERY.md). Der frühere Vorschlag „Jetzt starten“ unten ist nur das ursprüngliche Task-Template, kein Live-Status.
+
+
 **Diese Seite ist der einzige aktive Einstiegspunkt für neue Paperclip-Aufträge.** Keine VS-Copilot-Chats und keine lokalen VS-Code-Workspaces nötig. **Jede Datei hat vier getrennte Kopierboxen für Title, Assignee, Project und Prompt.**
 
 | Reihenfolge | Paperclip-Auftrag | Agent | Status |
 |---|---|---|---|
-| **1** | [RFA-Pflichtanforderungen / falsches GREEN](01_RFA_REQUIREMENTS_CTO.md) | CTO | **Jetzt starten** |
-| **2** | [10 Top-Ranking-Stellen gegen Original prüfen](02_TOP10_QA_CHIEF_OF_STAFF.md) | Chief of Staff | **Jetzt parallel starten** |
+| **1** | [RFA-Pflichtanforderungen / falsches GREEN](01_RFA_REQUIREMENTS_CTO.md) | Builder: VUT-328 / CTO: VUT-331 | **BLOCKIERT – PR #29 CI**, keine neue Aufgabe |
+| **2** | [10 Top-Ranking-Stellen gegen Original prüfen](02_TOP10_QA_CHIEF_OF_STAFF.md) | Chief of Staff: VUT-332 | **DONE** – fünf Abweichungen, vier unverifizierbar, ein passender Datensatz (zehn geprüft) |
 | 3 | [6-h-Scheduler-Monitor korrigieren](03_SIX_HOUR_MONITOR_CTO.md) | CTO | Nach 1 |
 | 4 | [Ranking-IDs exakt mit aktuellen Quellen abgleichen](04_RANKING_ID_INTEGRITY_CTO.md) | CTO | Nach 1 und 3 |
 | 5 | [Mesabi/JazzHR-Codeadapter](05_MESABI_PAUSED_CTO.md) | CTO | **Pausiert** |

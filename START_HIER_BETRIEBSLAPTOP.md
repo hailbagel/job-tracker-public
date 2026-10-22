@@ -1,15 +1,17 @@
 # START HIER – Job Tracker / PAPERCLIP
 
-> **Aktuelle Arbeitsweise: Paperclip-Agenten statt VS Copilot.**
+> **Operativer Status 22.10.2026:** **Keine neuen VUT-328/331/332-Tasks erstellen.** Diese existieren bereits. VUT-332 (Top-10-QA) ist abgeschlossen. VUT-328 (Builder) ist wegen einer unklaren Board-Zuständigkeit blockiert; VUT-331 hängt davon ab. GitHub Draft-PR #29 ist implementiert, aber 1 von 120 Linux-Tests schlägt wegen einer veralteten SMS-PR-Dateiliste fehl.
 
-## Einziger Einstieg
+## JETZT: bestehenden Auftrag wieder aufnehmen
 
-**[PAPERCLIP TASK-INDEX: 5 Aufgaben, jeweils vier Kopierboxen](docs/paperclip/README.md)**
+[**VUT-328 / PR #29 – exakter Fehler, Board-Entscheidung und Copy-Kommentar**](docs/paperclip/VUT328_PR29_RECOVERY.md)
 
-**JETZT:** [P0 CTO – RFA GREEN-Bewertung reparieren](docs/paperclip/01_RFA_REQUIREMENTS_CTO.md) und parallel [Chief of Staff – Top-10-QA](docs/paperclip/02_TOP10_QA_CHIEF_OF_STAFF.md).
+**NUR nach autorisierter Paperclip-Board-Entscheidung:** Vorhandenen Builder VUT-328 mit PR #29 auf demselben Branch einen engen Korrekturlauf erlauben. **Keinen neuen Task oder PR erstellen, nicht mergen, nicht deployen.**
 
-**DANACH:** [6-h-Scheduler-Monitor](docs/paperclip/03_SIX_HOUR_MONITOR_CTO.md), [Ranking-ID-Abgleich](docs/paperclip/04_RANKING_ID_INTEGRITY_CTO.md), dann [Mesabi-Adapter – pausiert](docs/paperclip/05_MESABI_PAUSED_CTO.md).
+## Weitere Paperclip-Aufträge
 
-In Paperclip → VuTruLabs → Tasks → New Task vier Felder einzeln aus der jeweiligen Datei kopieren: **Title, Assignee, Project, Prompt**. Kein Copilot-Chat und kein VS-Workspace erforderlich. Eine Repo-Datei erstellt keinen Task automatisch.
+[**Paperclip Agent Tasks – Index**](docs/paperclip/README.md) – Aufgaben 3 (6-h-Monitor) und 4 (ID-Audit) folgen nach RFA-Abnahme. [Mesabi](docs/paperclip/05_MESABI_PAUSED_CTO.md) bleibt pausiert.
 
-**Historie:** Dateien `docs/COPILOT_*` und `docs/COPY_*_COPILOT_*` sind ausschließlich alte Arbeitspapiere, **nicht aktiv**. VUT-318 ignorieren. VUT-319 erledigte nur die Vorprüfung. Kein automatischer Merge, Hostinger-Deploy, Publisher-Opt-in oder private Bewerberdaten in GitHub.
+Für **neue** Tasks (nicht VUT-328/331/332) immer vier getrennte Kopierboxen: **Title**, **Assignee**, **Project**, **Prompt**, einzeln nach Paperclip → VuTruLabs → New Task kopieren. Agenten arbeiten selbstständig, nicht über VS Copilot.
+
+Ältere `docs/COPILOT_*`-Dateien sind Archiv. VUT-318 war falsch zugeordnet und wird ignoriert; VUT-319 hatte nur die Mesabi-Feasibility abgeschlossen. Kein Hostinger-Eingriff, keine privaten Profile und kein autonomer Merge.
