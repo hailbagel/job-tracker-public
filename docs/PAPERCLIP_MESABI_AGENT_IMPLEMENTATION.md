@@ -1,14 +1,25 @@
-# Paperclip – Mesabi Metallics JazzHR Adapter durch CTO-Agent
+# PAPERCLIP TASK – Mesabi Metallics JazzHR Adapter
 
-**Ausfuehrungsplattform:** VuTruLabs → Paperclip → **Tasks → New Task** (nicht VS Code/Copilot).  
-**Projekt:** Job Tracker Public  
-**Assignee:** CTO  
-**Titel:** `JT-MESABI-JAZZHR – CTO agent implementation and CI`  
-**Prioritaet:** High  
-**Bezug:** VUT-319 (Research/Feasibility, Done), [GitHub Issue #26](https://github.com/hailbagel/job-tracker-public/issues/26).
+**Verwendung:** Paperclip → VuTruLabs → Tasks → New Task. Jeden der **vier** `Plain text`-Bloecke mit dem GitHub-Kopiersymbol **einzeln** kopieren und in das entsprechende Paperclip-Feld einfuegen. **Nicht** als einen einzigen Prompt kopieren.
 
-## Beschreibung: kompletten Block in das Paperclip-Task-Beschreibungsfeld kopieren
+**Task-Typ:** Coding & Tests · **Prioritaet:** High · **Projektbezug:** [GitHub Issue #26](https://github.com/hailbagel/job-tracker-public/issues/26), Paperclip VUT-319 (Feasibility abgeschlossen). **Nicht** in VS Code/Copilot starten.
 
+## Title
+```text
+JT-MESABI-JAZZHR – CTO agent implementation and CI
+```
+
+## Assignee
+```text
+CTO
+```
+
+## Project
+```text
+Job Tracker Public
+```
+
+## Prompt
 ```text
 Task: JT-MESABI-JAZZHR – implement tested adapter via Paperclip agent (GitHub Issue #26)
 
@@ -39,12 +50,10 @@ DONE means:
 
 ```
 
-## Erwartete Lieferung
+## Status und Sicherheit
 
-- Neues Feature-Branch `feature/mesabi-jazzhr-agent` und **ein Draft-PR** nach automatischer Testvalidierung.
-- Kein Bedarf an VS Code oder Copilot: Die Paperclip-Agenten erledigen Entwicklung und QA auf ihrem eigenen freigegebenen Workspace.
-- Kein direkter Zugriff auf Hostinger, keine Produktionseinschaltung, keine Aenderungen an privaten Profilen oder Ranking-Feeds.
-- Bei fehlendem GitHub-Push/CI-Zugriff: explizit `BLOCKED` mit technischem Grund, nicht `Done`.
-- Nach dem PR erst ein separater QA-/Freigabe-Schritt. Der CTO darf nicht selbst mergen.
-
-**Hinweis:** Dieser Dateiinhalt wurde nach GitHub geschrieben, der Paperclip-Task wird dadurch **nicht automatisch** in der Paperclip-Instanz angelegt. Ein direkter Paperclip-Connector ist in dieser ChatGPT-Sitzung nicht vorhanden.
+- Das ist eine **neue ausfuehrende Paperclip-Aufgabe**, nicht die schon abgeschlossene Analyse VUT-319.
+- Erwartet werden Feature-Branch, Tests, GitHub Actions und genau **ein Draft-PR**; **kein** Merge und **keine** Aktivierung auf Hostinger.
+- Vor Beginn Git-Berechtigungen und dedizierten Workspace verifizieren. Falls nicht vorhanden, `BLOCKED` melden.
+- Die vier Werte stehen nur fuer das **Kopieren in Paperclip** auf GitHub. Noch keine Paperclip-Ausfuehrung bestaetigt.
+- Fuer alle kuenftigen Paperclip-Auftraege gilt die gemeinsame Vorlage [PAPERCLIP_TASK_FORMAT.md](PAPERCLIP_TASK_FORMAT.md).
