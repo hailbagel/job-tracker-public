@@ -1,5 +1,8 @@
 # START HIER – Job Tracker auf dem Betriebslaptop
 
+> **Ausfuehrungsentscheidung 22.10.2026:** Mesabi wird zuerst durch den **Paperclip-CTO-Agenten** auf eigener isolierter Branch umgesetzt. [Paperclip-Auftrag oeffnen](docs/PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md) und in **VuTruLabs → Job Tracker Public → New Task → CTO** kopieren. Der unten erwaehnte Copilot-Auftrag COPY_07 ist fuer dieselbe Arbeit vorlaeufig ausgesetzt, damit keine konkurrierenden Branches entstehen. Kein Produktionsdeploy.
+
+
 **Aktueller Stand: 21.10.2026.** Diese Anleitung ersetzt die fruehere Reihenfolge fuer PR #23 und PR #25. Beide Pull Requests sind bereits gemergt. Der alte VS-Code-Copilot-Chat `Industrial Job Coverage` ist in der aktuellen Workspace-Ansicht nicht erreichbar; kein Grund, die Arbeit anzuhalten.
 
 ## 1. Richtigen VS-Code-Workspace oeffnen
@@ -59,3 +62,7 @@ Aeltere Dateien `COPY_02_COPILOT_INDUSTRIAL_AGENT.md` und `COPY_04_COPILOT_SMS_P
 **WO EINFUEGEN:** Eigenstaendiges VS-Code-Fenster `C:\Users\minkusp\Projects\job-tracker-public` → Copilot-Agent-Chat `Job Tracker – Development`, **nicht** in PowerShell oder Hostinger. Vorher nur bei sauberem Arbeitsbaum `main` fast-forward synchronisieren (KOPIEREN 01).
 
 **WOFUER:** Mesabi Metallics steht nach dem Paperclip-Read-only-Review vor Siemens AG und Midrex. Copilot soll auf separatem Branch einen getesteten JazzHR-Adapter bauen und einen Draft-PR erstellen, **ohne** Mesabi in Produktion einzuschalten. Beobachtete 45 JazzHR-Listings vs. 47 offizielle Suchindex-Listings muessen vor jeder Datenqualitaetsfreigabe aufgeklärt oder als ungesichert markiert werden. Keine Vermischung mit COPY_05 SMS-Rollout und COPY_06 Issue #24.
+
+## Paperclip-first Mesabi Implementierung
+
+[**Paperclip CTO – Mesabi JazzHR Adapter mit Tests und Draft-PR**](docs/PAPERCLIP_MESABI_AGENT_IMPLEMENTATION.md). **WO EINFUEGEN:** Paperclip → VuTruLabs → Job Tracker Public → New Task → CTO; nicht ins VS Code Terminal. **VUT-319 bleibt abgeschlossene Feasibility**, GitHub Issue #26 ist der Entwicklungsauftrag. COPY_07 (Copilot) fuer dieselbe Aufgabe **nicht parallel** starten.
