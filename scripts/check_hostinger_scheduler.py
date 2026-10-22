@@ -13,10 +13,17 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.hostinger_scheduler_state import SchedulerStateError, parse_utc, read_state
+from scripts.hostinger_scheduler_state import (
+    MINIMUM_INTERVAL,
+    SchedulerStateError,
+    parse_utc,
+    read_state,
+)
 
 DEFAULT_STATE_FILE = Path("/var/lib/vutrulabs-job-tracker-public/state.json")
-STALE_AFTER = timedelta(hours=60)
+# A healthy scheduler may have one active cadence interval in flight. A
+# success becomes stale only after it misses the following interval too.
+STALE_AFTER = MINIMUM_INTERVAL * 2
 
 
 def systemd_properties(unit: str, properties: tuple[str, ...]) -> str:
@@ -79,10 +86,11 @@ def run_check(state_file: Path, now: datetime | None = None) -> int:
         )
     if state["last_failure_utc"] is not None:
         print(f"[WARN] Last failed publisher attempt: {state['last_failure_utc']}")
+    stale_after = format_age(STALE_AFTER)
     if age > STALE_AFTER:
-        print("[ERR] Last successful publisher execution is stale (>60h)")
+        print(f"[ERR] Last successful publisher execution is stale (>{stale_after})")
         return 1
-    print("[OK] Last successful publisher execution is within 60h")
+    print(f"[OK] Last successful publisher execution is within {stale_after}")
     return 0
 
 
