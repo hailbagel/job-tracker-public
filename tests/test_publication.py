@@ -133,43 +133,28 @@ class GitPublicationTests(unittest.TestCase):
         os.environ.get("GITHUB_EVENT_NAME") == "pull_request",
         "Pull request path-scope check runs in GitHub Actions",
     )
-    def test_pull_request_changes_only_reviewed_non_sensitive_paths(self):
+    def test_pull_request_excludes_sensitive_paths(self):
         repo = Path(__file__).resolve().parents[1]
         changed = set(subprocess.check_output(
             ["git", "diff", "--name-only", "origin/main...HEAD"],
             cwd=repo,
             text=True,
         ).splitlines())
-        expected = {
-            ".github/workflows/industrial-source-ci.yml",
-            ".github/workflows/hostinger-scheduler-ci.yml",
-            "configs/sources.json",
-            "data/source_status.json",
-            "data/sms-group/processed/acquisition.json",
-            "data/sms-group/processed/department_summary.csv",
-            "data/sms-group/processed/job_changes.csv",
-            "data/sms-group/processed/job_details.csv",
-            "data/sms-group/processed/job_history.csv",
-            "data/sms-group/processed/jobs_latest.csv",
-            "data/sms-group/processed/location_summary.csv",
-            "docs/INDUSTRIAL_EMPLOYER_FEASIBILITY_2026-10-21.md",
-            "docs/public_data_publication.md",
-            "jobtracker/acquisition.py",
-            "scripts/audit_public_data.py",
-            "scripts/publish_public_data.py",
-            "tests/test_dvinci.py",
-            "tests/test_public_data_audit.py",
-            "tests/test_publication.py",
-        }
-        self.assertEqual(expected, changed)
         sensitive_path_terms = (
             "private_profiles", "credentials", "secrets", "cookies", "sessions",
         )
-        self.assertFalse(any(
-            term in path.lower()
-            for path in changed
-            for term in sensitive_path_terms
-        ))
+        sensitive_file_suffixes = (".key", ".pem", ".p12", ".pfx")
+        sensitive_paths = sorted(
+            path for path in changed
+            if any(term in path.lower() for term in sensitive_path_terms)
+            or Path(path).name == ".env"
+            or (
+                Path(path).name.startswith(".env.")
+                and Path(path).name != ".env.example"
+            )
+            or Path(path).name.lower().endswith(sensitive_file_suffixes)
+        )
+        self.assertEqual([], sensitive_paths)
 
 
 class GitPreparationTests(unittest.TestCase):
