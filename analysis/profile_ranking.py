@@ -258,6 +258,17 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
         r"\b(?:leadership|lead|leading|supervis(?:e|ion|ory)|manag(?:e|ing))\b", non_alternative_l
     ))
 
+    credential_rule = _match(
+        required,
+        r"(?:completed\s+)?(?:technical\s+)?(?:vocational training|apprenticeship|"
+        r"professional certification|technical qualification)[^.;\n]{0,100}",
+    )
+    recognized = bool(
+        degree_rule or experience_in_lieu or required_years is not None
+        or required_domains or leadership_required or credential_rule
+        or any(term in required_l for term in SOFTWARE_TERMS + TRADE_TERMS)
+    )
+
     if degree_rule:
         degree = profile["eligibility"].get("degree", {"status": "unknown", "evidence": None})
         alternative_years = None
@@ -288,6 +299,12 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
         item = _claim_status(profile, "experience", required_domain, leadership=True)
         if item["status"] != "verified":
             gates.append(_gate("required_leadership", f"leadership ({required_domain})", item))
+    if credential_rule:
+        item = _claim_status(profile, "trade", "technical qualification")
+        if item["status"] != "verified":
+            gates.append(_gate(
+                "required_credential:technical qualification", credential_rule, item
+            ))
     for software in SOFTWARE_TERMS:
         if software in required_l:
             item = _claim_status(profile, "software", software)
@@ -298,7 +315,7 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
             item = _claim_status(profile, "trade", trade)
             if item["status"] != "verified":
                 gates.append(_gate(f"required_trade:{trade}", trade, item))
-    return gates
+    return gates, recognized
 
 
 def _salary(text):
@@ -331,9 +348,21 @@ def rank_job(job, details, profile):
         _gate("itar", itar_signal, profile["eligibility"]["itar"]),
     ]
     gates = [gate for gate in gates if gate]
-    gates.extend(_required_qualification_gates(
+    qualification_gates, recognized_qualifications = _required_qualification_gates(
         basic, additional, profile, degree_rule, experience_in_lieu
-    ))
+    )
+    gates.extend(qualification_gates)
+    recognized_requirements = bool(work_signal or itar_signal or recognized_qualifications)
+    if relevant and not recognized_requirements:
+        requirement = (
+            "Required qualifications were present but no candidate-verifiable mandatory "
+            "criterion was recognized"
+            if _clean(" ".join(filter(None, (basic, additional))))
+            else "No normalized required qualifications were available"
+        )
+        gates.append(_gate("requirements_evaluation", requirement, {
+            "status": "unknown", "evidence": None,
+        }))
     score, reasons = (45, []) if relevant else (0, [])
     if relevant:
         reasons.append({"reason": "Role family is configured as an interest", "job_evidence": title, "candidate_evidence": {"source": f"profile:{profile['profile_id']}", "evidence_version": profile["evidence_version"]}})
