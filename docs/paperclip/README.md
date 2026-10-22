@@ -1,5 +1,7 @@
 # Job Tracker – Paperclip-Agenten-Aufträge
 
+> **NEUER CODE-REVIEW-FUND zu PR #29 (22.10.2026):** Zwei nachprüfbare Randfälle: zusätzlicher unbekannter Pflichtpunkt trotz erkannter Qualifikation → potenziell falsches GREEN; ausschließlich Preferred-Qualifikationen → fälschliches hartes Gate. [GitHub-Kommentar](https://github.com/hailbagel/job-tracker-public/pull/29#issuecomment-6349563992). **[Genau EIN gezielter Paperclip Builder-Folgeauftrag mit 4 Copy-Boxen](07_RFA_P1_MANDATORY_COVERAGE_BUILDER.md)**. Bestehenden PR #29 korrigieren, nicht neu implementieren. Kein Merge vor unabhängiger Prüfung.
+
 > **NEUE PRIORITÄT – 22.10.2026:** VUT-328/329/331/332 sind laut Paperclip abgeschlossen; PR #29 und PR #30 sind jedoch ungemergt. **PR #30 hat zwei offene P1-Codex-Reviewbefunde trotz 2/2 grüner CI.** [JETZT genau ein neuer Builder-Folgeauftrag für denselben PR](06_SCHEDULER_P1_FOLLOWUP_BUILDER.md). [GitHub-P1-Belege](https://github.com/hailbagel/job-tracker-public/pull/30#issuecomment-6348771538). **Kein Merge/Hostinger-Deploy.**
 
 > **Historischer Stand:** Die frühere VUT-329-Revise-Schleife wurde gelöst; die unten dokumentierten Altstände sind überholt. Aktuelle Freigabekriterien stehen oben.
@@ -17,6 +19,10 @@
 ## Bereits erledigter Agentenauftrag
 
 **[VUT-335 – Scheduler P1 Follow-up](06_SCHEDULER_P1_FOLLOWUP_BUILDER.md)** wurde in Paperclip erstellt und vom Builder am 22.10. als DONE gemeldet. **Nicht erneut erstellen oder kopieren.** Der weitere Gate ist unabhängiger Code-Review / finale CI, dann getrennte Freigabe beider PRs.
+
+## Noch offener PR #29 Quality-Fix
+
+[Task 07 – mandatory coverage + preferred-only parse](07_RFA_P1_MANDATORY_COVERAGE_BUILDER.md). Nur einmal anlegen; der vorherige VUT-328 Task ist abgeschlossen. Kein zweiter GitHub PR. Bei laufender Branch-Bearbeitung zuerst koordinieren.
 
 ## Neue Aufgaben in Paperclip
 
