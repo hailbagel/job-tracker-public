@@ -8,15 +8,15 @@
 
 | Priorität | Paperclip-Auftrag | Zuständigkeit | Tatsächlicher Stand |
 |---|---|---|---|
-| P0 | [RFA-Pflichtanforderungen / GREEN-Gate](01_RFA_REQUIREMENTS_CTO.md) | VUT-328 Builder / VUT-331 CTO | **Done in Paperclip** – PR #29 Draft, 2/2 CI grün, separates unabhängiges PR-Review fehlt |
-| P1 | [6-h-Scheduler-Monitor](03_SIX_HOUR_MONITOR_CTO.md) | VUT-329 Engineering Operations | **Done in Paperclip** – PR #30 offen, 2/2 CI grün, aber 2 offene P1-Reviewbefunde |
+| P0 | [RFA GREEN-Gate – PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) | VUT-328 / VUT-331 Done | **Draft; grüne CI; unabhängiger Codex-Review am 22.10. angefragt, noch keine Freigabe** |
+| P1 | [6-h-Monitor – PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) | VUT-329 Done / VUT-335 Done | **P1-Fixes implementiert; Head `9238944`; unabhängiger Review läuft; nicht gemergt** |
 | QA | [Top-10-Quellenprüfung](02_TOP10_QA_CHIEF_OF_STAFF.md) | VUT-332 Chief of Staff | **Done:** 5 Evidenzmängel, 4 unverifizierbar, 1 materiell stimmig (nur 10er-Sample) |
 | Danach | [Ranking-ID-Integrität](04_RANKING_ID_INTEGRITY_CTO.md) | CTO, separater Task nach Abgleich bestehender Tasks | Noch nicht als neuer Task ausführen, bevor laufende Arbeiten sauber zugeordnet |
 | Pausiert | [Mesabi Metallics](05_MESABI_PAUSED_CTO.md) | CTO | Quellenwachstum bis Quality-Gate aufschieben |
 
-## Nächste neue Aufgabe (nicht VUT-329 duplizieren)
+## Bereits erledigter Agentenauftrag
 
-**[06_SCHEDULER_P1_FOLLOWUP_BUILDER.md](06_SCHEDULER_P1_FOLLOWUP_BUILDER.md)** – Builder folgt den zwei neuen P1-Reviewbefunden im bereits vorhandenen PR #30. **Vier getrennte Kopierfelder**, kein neuer GitHub-PR. Parallel kein weiterer Agent am selben Branch.
+**[VUT-335 – Scheduler P1 Follow-up](06_SCHEDULER_P1_FOLLOWUP_BUILDER.md)** wurde in Paperclip erstellt und vom Builder am 22.10. als DONE gemeldet. **Nicht erneut erstellen oder kopieren.** Der weitere Gate ist unabhängiger Code-Review / finale CI, dann getrennte Freigabe beider PRs.
 
 ## Neue Aufgaben in Paperclip
 
