@@ -162,7 +162,7 @@ def split_qualifications(text):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         key = "preferred" if "preferred" in heading else "additional" if "additional" in heading else "basic"
         sections[key] = _clean(text[match.end():end])
-    return sections.get("basic") or _clean(text), sections.get("preferred"), sections.get("additional")
+    return sections.get("basic"), sections.get("preferred"), sections.get("additional")
 
 
 def classify_family(title, text):
@@ -235,6 +235,33 @@ def _claim_status(profile, kind, name, *, years=None, leadership=False):
     if any(claim.get("status") == "unknown" for claim in claims):
         return {"status": "unknown", "evidence": None}
     return {"status": "unsupported", "evidence": claims[0].get("evidence")}
+
+
+def _mandatory_criteria(*sections):
+    """Return independently evaluable required clauses without inventing requirements."""
+    required = " ".join(filter(None, sections))
+    return [
+        _clean(clause).strip("-–—*;.")
+        for clause in re.split(r"(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
+        if _clean(clause).strip("-–—*;.")
+    ]
+
+
+def _criterion_is_recognized(criterion):
+    criterion_l = criterion.casefold()
+    patterns = (
+        r"authorized to work|work authorization|sponsorship",
+        r"\bitar\b|u\.s\. person|united states person|u\.s\. citizen|lawful permanent resident",
+        r"\b(?:bachelor|master|associate|degree)\b",
+        r"\b\d{1,2}\+?\s+years?\b",
+        r"\b(?:leadership|lead|leading|supervis(?:e|ion|ory)|manag(?:e|ing))\b",
+        r"\b(?:vocational training|apprenticeship|professional certification|technical qualification)\b",
+    )
+    return bool(
+        any(re.search(pattern, criterion_l, re.I) for pattern in patterns)
+        or any(term in criterion_l for term in SOFTWARE_TERMS + TRADE_TERMS)
+        or any(term in criterion_l for term in ("civil construction", "mechanical construction", "construction", "project management"))
+    )
 
 
 def _required_qualification_gates(basic, additional, profile, degree_rule, experience_in_lieu):
@@ -315,7 +342,15 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
             item = _claim_status(profile, "trade", trade)
             if item["status"] != "verified":
                 gates.append(_gate(f"required_trade:{trade}", trade, item))
-    return gates, recognized
+    uncovered = [
+        criterion for criterion in _mandatory_criteria(basic, additional)
+        if not _criterion_is_recognized(criterion)
+    ]
+    for criterion in uncovered:
+        gates.append(_gate("requirements_coverage", criterion, {
+            "status": "unknown", "evidence": None,
+        }))
+    return gates, recognized and not uncovered
 
 
 def _salary(text):
@@ -385,7 +420,7 @@ def rank_job(job, details, profile):
     else:
         status = "YELLOW"
     soft_gaps = [{"requirement": preferred, "source": "job_posting", "section": "preferred qualifications"}] if preferred else []
-    years_found = [int(value) for value in re.findall(r"\b(\d{1,2})\+?\s+years?\b", basic.lower())]
+    years_found = [int(value) for value in re.findall(r"\b(\d{1,2})\+?\s+years?\b", (basic or "").lower())]
     return {
         "job_id": _nullable(job.get("id")) or _nullable(job.get("job_id")) or _clean(job.get("link")),
         "requisition_id": _nullable(job.get("requisition_id")),

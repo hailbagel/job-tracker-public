@@ -104,6 +104,28 @@ class GreenhouseRequirementsTests(unittest.TestCase):
                     {gate["gate"] for gate in result["hard_gates"]},
                 )
 
+    def test_preferred_only_greenhouse_content_stays_soft(self):
+        item = acquire(
+            "preferred-only",
+            "Construction Project Manager",
+            """
+            <h2>Role Mission</h2><p>Lead construction project management.</p>
+            <h2>Preferred Qualifications</h2><p>Bachelor's degree.</p>
+            """,
+        )
+        basic, preferred, additional = split_qualifications(item["requirements"])
+        self.assertIsNone(basic)
+        self.assertIn("Bachelor's degree", preferred)
+        self.assertIsNone(additional)
+
+        result = rank_job(item, item, profile(threshold=1))
+        self.assertEqual("UNKNOWN", result["status"])
+        self.assertEqual(
+            {"requirements_evaluation"},
+            {gate["gate"] for gate in result["hard_gates"]},
+        )
+        self.assertIn("Bachelor's degree", result["soft_gaps"][0]["requirement"])
+
     def test_fully_evidenced_required_criteria_can_still_be_green(self):
         item = acquire(
             "control",

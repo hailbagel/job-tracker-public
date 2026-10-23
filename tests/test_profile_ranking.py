@@ -128,6 +128,46 @@ class RankingSemanticsTests(unittest.TestCase):
         result = rank_job(item, details, profile())
         self.assertNotIn("degree", {gate["gate"] for gate in result["hard_gates"]})
         self.assertIn("Bachelor", result["soft_gaps"][0]["requirement"])
+
+    def test_unrecognized_mandatory_criteria_fail_closed_beside_verified_degree(self):
+        item = job()
+        for requirement in (
+            "Valid driver's license required.",
+            "Active Professional Engineer (PE) license required.",
+            "Must hold a current site-access clearance.",
+        ):
+            with self.subTest(requirement=requirement):
+                details = detail(item)
+                details["requirements"] = (
+                    "BASIC QUALIFICATIONS:\nBachelor's degree.\n" + requirement
+                )
+                result = rank_job(item, details, profile(threshold=1))
+                self.assertEqual("UNKNOWN", result["status"])
+                coverage = [
+                    gate for gate in result["hard_gates"]
+                    if gate["gate"] == "requirements_coverage"
+                ]
+                self.assertEqual(1, len(coverage))
+                self.assertEqual(requirement.rstrip("."), coverage[0]["requirement_evidence"]["excerpt"])
+                self.assertEqual("unknown", coverage[0]["candidate_status"])
+
+    def test_preferred_only_section_is_soft_and_missing_basic_fails_closed(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = "PREFERRED QUALIFICATIONS:\nBachelor's degree."
+        basic, preferred, additional = split_qualifications(details["requirements"])
+        self.assertIsNone(basic)
+        self.assertEqual("Bachelor's degree.", preferred)
+        self.assertIsNone(additional)
+
+        result = rank_job(item, details, profile(threshold=1))
+        self.assertEqual("UNKNOWN", result["status"])
+        self.assertEqual(
+            {"requirements_evaluation"},
+            {gate["gate"] for gate in result["hard_gates"]},
+        )
+        self.assertIn("Bachelor's degree", result["soft_gaps"][0]["requirement"])
+
     def test_required_years_domain_software_trade_and_leadership_are_hard_gates(self):
         item = job()
         details = detail(item)
