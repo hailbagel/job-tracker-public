@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SCHEMA_VERSION = "1.0"
-RUBRIC_VERSION = "2.0"
+RUBRIC_VERSION = "3.0"
 PROFILE_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "configs" / "profiles" / "schema.json"
 ROLE_FAMILIES = (
     "Construction Project Management",
@@ -123,12 +123,21 @@ def validate_profile(profile):
     invalid = sorted(set(profile["role_families"]) - set(ROLE_FAMILIES))
     if invalid:
         raise ValueError(f"Unknown role families: {', '.join(invalid)}")
-    for gate in ("work_authorization", "itar"):
+    for gate in ("work_authorization", "itar", "degree"):
         item = profile["eligibility"].get(gate)
+        if gate == "degree" and item is None:
+            continue
         if not isinstance(item, dict) or item.get("status") not in {"verified", "unsupported", "unknown"}:
             raise ValueError(f"eligibility.{gate}.status must be verified, unsupported, or unknown")
         if item["status"] == "verified" and not item.get("evidence"):
             raise ValueError(f"eligibility.{gate} verified status requires evidence")
+        for field in ("jurisdictions", "fields", "equivalent_fields"):
+            values = item.get(field, [])
+            if (
+                not isinstance(values, list)
+                or any(not isinstance(value, str) or not _clean(value) for value in values)
+            ):
+                raise ValueError(f"eligibility.{gate}.{field} must be a list of non-empty strings")
     for capability in profile["capabilities"]:
         if not capability.get("name") or not capability.get("keywords") or not capability.get("evidence"):
             raise ValueError("Every capability requires name, keywords, and evidence")
@@ -151,7 +160,7 @@ def load_profile(path):
 
 
 def split_qualifications(text):
-    text = str(text or "").replace("\r", "\n")
+    text = re.sub(r"\r\n?", "\n", str(text or ""))
     marker = re.compile(r"(?im)^\s*(?:[-–—*]\s*)?(basic qualifications?|minimum qualifications?|preferred qualifications?|additional requirements?)\s*:?[ \t]*$")
     matches = list(marker.finditer(text))
     if not matches:
@@ -161,8 +170,11 @@ def split_qualifications(text):
         heading = match.group(1).lower()
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         key = "preferred" if "preferred" in heading else "additional" if "additional" in heading else "basic"
-        sections[key] = _clean(text[match.end():end])
-    return sections.get("basic") or _clean(text), sections.get("preferred"), sections.get("additional")
+        sections[key] = "\n".join(
+            cleaned for line in text[match.end():end].splitlines()
+            if (cleaned := _clean(line))
+        ) or None
+    return sections.get("basic"), sections.get("preferred"), sections.get("additional")
 
 
 def classify_family(title, text):
@@ -214,6 +226,63 @@ def _gate(name, requirement, item):
     }
 
 
+def _normalized_terms(values):
+    return {_clean(value).casefold() for value in values or [] if _clean(value)}
+
+
+def _required_jurisdiction(requirement):
+    requirement_l = _clean(requirement).casefold()
+    aliases = {
+        "germany": ("germany", "german"),
+        "united states": ("united states", "u.s.", "usa"),
+    }
+    for canonical, terms in aliases.items():
+        if any(term in requirement_l for term in terms):
+            return canonical
+    match = re.search(
+        r"authorized to work in\s+([a-z][a-z .'-]{1,50}?)(?=\s+(?:without|with|and|or)\b|[.;]|$)",
+        requirement_l,
+        re.I,
+    )
+    return _clean(match.group(1)).casefold() if match else None
+
+
+def _jurisdictional_authorization(requirement, item):
+    jurisdiction = _required_jurisdiction(requirement)
+    if not jurisdiction or item.get("status") != "verified":
+        return item
+    aliases = {
+        "germany": {"germany", "de", "deu"},
+        "united states": {"united states", "us", "usa", "u.s.", "u.s.a."},
+    }
+    verified = _normalized_terms(item.get("jurisdictions"))
+    if verified.intersection(aliases.get(jurisdiction, {jurisdiction})):
+        return item
+    return {"status": "unknown", "evidence": item.get("evidence")}
+
+
+def _required_degree_field(degree_rule):
+    if not degree_rule:
+        return None
+    match = re.search(
+        r"\b(?:degree|bachelor(?:'s)?|master(?:'s)?)\b[^.;\n]{0,80}?\bin\s+(?!lieu\b)"
+        r"([a-z][a-z &/\-]{1,80}?)(?=\s+(?:or\s+(?:a\s+)?similar|or\s+equivalent|preferred|required)\b|[.;]|$)",
+        degree_rule,
+        re.I,
+    )
+    return _clean(match.group(1)).casefold() if match else None
+
+
+def _subject_specific_degree(degree_rule, item):
+    required_field = _required_degree_field(degree_rule)
+    if not required_field or item.get("status") != "verified":
+        return item
+    verified_fields = _normalized_terms(item.get("fields")) | _normalized_terms(item.get("equivalent_fields"))
+    if required_field in verified_fields:
+        return item
+    return {"status": "unknown", "evidence": item.get("evidence")}
+
+
 def _claim_status(profile, kind, name, *, years=None, leadership=False):
     """Return status and provenance only from explicit requirement-specific claims."""
     wanted = _clean(name).casefold()
@@ -237,6 +306,37 @@ def _claim_status(profile, kind, name, *, years=None, leadership=False):
     return {"status": "unsupported", "evidence": claims[0].get("evidence")}
 
 
+def _mandatory_criteria(*sections):
+    """Return independently evaluable required clauses without inventing requirements."""
+    required = "\n".join(filter(None, sections))
+    clauses = re.split(r"\n+|(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
+    atomic = []
+    for clause in clauses:
+        atomic.extend(re.split(r"\s+(?:and|&)\s+(?=[^.;\n]{1,120}\brequired\b)", clause, flags=re.I))
+    return [
+        _clean(clause).strip("-–—*;.")
+        for clause in atomic
+        if _clean(clause).strip("-–—*;.")
+    ]
+
+
+def _criterion_is_recognized(criterion):
+    criterion_l = criterion.casefold()
+    patterns = (
+        r"authorized to work|work authorization|sponsorship",
+        r"\bitar\b|u\.s\. person|united states person|u\.s\. citizen|lawful permanent resident",
+        r"\b(?:bachelor|master|associate|degree)\b",
+        r"\b\d{1,2}\+?\s+years?\b",
+        r"\b(?:leadership|lead|leading|supervis(?:e|ion|ory)|manag(?:e|ing))\b",
+        r"\b(?:vocational training|apprenticeship|professional certification|technical qualification)\b",
+    )
+    return bool(
+        any(re.search(pattern, criterion_l, re.I) for pattern in patterns)
+        or any(term in criterion_l for term in SOFTWARE_TERMS + TRADE_TERMS)
+        or any(term in criterion_l for term in ("civil construction", "mechanical construction", "construction", "project management"))
+    )
+
+
 def _required_qualification_gates(basic, additional, profile, degree_rule, experience_in_lieu):
     required = " ".join(filter(None, (basic, additional)))
     required_l = required.casefold()
@@ -258,8 +358,22 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
         r"\b(?:leadership|lead|leading|supervis(?:e|ion|ory)|manag(?:e|ing))\b", non_alternative_l
     ))
 
+    credential_rule = _match(
+        required,
+        r"(?:completed\s+)?(?:technical\s+)?(?:vocational training|apprenticeship|"
+        r"professional certification|technical qualification)[^.;\n]{0,100}",
+    )
+    recognized = bool(
+        degree_rule or experience_in_lieu or required_years is not None
+        or required_domains or leadership_required or credential_rule
+        or any(term in required_l for term in SOFTWARE_TERMS + TRADE_TERMS)
+    )
+
     if degree_rule:
-        degree = profile["eligibility"].get("degree", {"status": "unknown", "evidence": None})
+        degree = _subject_specific_degree(
+            degree_rule,
+            profile["eligibility"].get("degree", {"status": "unknown", "evidence": None}),
+        )
         alternative_years = None
         if experience_in_lieu:
             alt = re.search(r"\b(\d{1,2})\+?\s+years?", alternative_text, re.I)
@@ -288,6 +402,12 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
         item = _claim_status(profile, "experience", required_domain, leadership=True)
         if item["status"] != "verified":
             gates.append(_gate("required_leadership", f"leadership ({required_domain})", item))
+    if credential_rule:
+        item = _claim_status(profile, "trade", "technical qualification")
+        if item["status"] != "verified":
+            gates.append(_gate(
+                "required_credential:technical qualification", credential_rule, item
+            ))
     for software in SOFTWARE_TERMS:
         if software in required_l:
             item = _claim_status(profile, "software", software)
@@ -298,7 +418,15 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
             item = _claim_status(profile, "trade", trade)
             if item["status"] != "verified":
                 gates.append(_gate(f"required_trade:{trade}", trade, item))
-    return gates
+    uncovered = [
+        criterion for criterion in _mandatory_criteria(basic, additional)
+        if not _criterion_is_recognized(criterion)
+    ]
+    for criterion in uncovered:
+        gates.append(_gate("requirements_coverage", criterion, {
+            "status": "unknown", "evidence": None,
+        }))
+    return gates, recognized and not uncovered
 
 
 def _salary(text):
@@ -327,13 +455,31 @@ def rank_job(job, details, profile):
     relevant = family in profile["role_families"] and family != "Not relevant"
     work_signal, itar_signal, degree_rule, experience_in_lieu = _signals(basic, additional)
     gates = [
-        _gate("work_authorization", work_signal, profile["eligibility"]["work_authorization"]),
+        _gate(
+            "work_authorization",
+            work_signal,
+            _jurisdictional_authorization(
+                work_signal, profile["eligibility"]["work_authorization"]
+            ),
+        ),
         _gate("itar", itar_signal, profile["eligibility"]["itar"]),
     ]
     gates = [gate for gate in gates if gate]
-    gates.extend(_required_qualification_gates(
+    qualification_gates, recognized_qualifications = _required_qualification_gates(
         basic, additional, profile, degree_rule, experience_in_lieu
-    ))
+    )
+    gates.extend(qualification_gates)
+    recognized_requirements = bool(work_signal or itar_signal or recognized_qualifications)
+    if relevant and not recognized_requirements:
+        requirement = (
+            "Required qualifications were present but no candidate-verifiable mandatory "
+            "criterion was recognized"
+            if _clean(" ".join(filter(None, (basic, additional))))
+            else "No normalized required qualifications were available"
+        )
+        gates.append(_gate("requirements_evaluation", requirement, {
+            "status": "unknown", "evidence": None,
+        }))
     score, reasons = (45, []) if relevant else (0, [])
     if relevant:
         reasons.append({"reason": "Role family is configured as an interest", "job_evidence": title, "candidate_evidence": {"source": f"profile:{profile['profile_id']}", "evidence_version": profile["evidence_version"]}})
@@ -356,7 +502,7 @@ def rank_job(job, details, profile):
     else:
         status = "YELLOW"
     soft_gaps = [{"requirement": preferred, "source": "job_posting", "section": "preferred qualifications"}] if preferred else []
-    years_found = [int(value) for value in re.findall(r"\b(\d{1,2})\+?\s+years?\b", basic.lower())]
+    years_found = [int(value) for value in re.findall(r"\b(\d{1,2})\+?\s+years?\b", (basic or "").lower())]
     return {
         "job_id": _nullable(job.get("id")) or _nullable(job.get("job_id")) or _clean(job.get("link")),
         "requisition_id": _nullable(job.get("requisition_id")),

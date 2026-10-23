@@ -35,6 +35,13 @@ def _clean(value):
     return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
+def _clean_multiline(value):
+    return "\n".join(
+        cleaned for line in str(value or "").splitlines()
+        if (cleaned := _clean(line))
+    )
+
+
 class _HTMLTextParser(HTMLParser):
     BLOCK_TAGS = {"br", "div", "h1", "h2", "h3", "h4", "li", "ol", "p", "ul"}
 
@@ -62,6 +69,62 @@ def _html_text(value):
         for line in "".join(parser.parts).splitlines()
         if line.strip()
     )
+
+
+_DESCRIPTION_HEADINGS = {
+    "mission": {
+        "about the role", "about the team", "job description", "responsibilities",
+        "the role", "what you will do", "what you'll do", "your mission", "your tasks",
+    },
+    "requirements": {
+        "basic qualifications", "minimum qualifications", "must-have skills",
+        "must have skills", "qualifications", "required qualifications", "requirements",
+        "what you bring", "what we're looking for", "your profile", "your qualifications",
+    },
+    "preferred": {
+        "nice to have", "nice-to-have", "nice-to-have skills", "nice to have skills", "preferred qualifications",
+        "preferred skills",
+    },
+    "benefits": {
+        "benefits", "perks", "we offer", "what we offer", "why join us",
+    },
+}
+
+
+def _description_heading(line):
+    heading = re.sub(r"\s+", " ", str(line or "")).strip(" :.-").casefold()
+    for section, headings in _DESCRIPTION_HEADINGS.items():
+        if heading in headings:
+            return section
+    return None
+
+
+def _structured_job_description(value):
+    """Split common ATS description headings into the normalized detail contract."""
+    descriptions = {"mission": [], "requirements": [], "benefits": []}
+    section = "mission"
+    requirement_kind = None
+    for line in _html_text(value).splitlines():
+        heading = _description_heading(line)
+        if heading:
+            if heading == "preferred":
+                section, next_kind = "requirements", "preferred"
+            elif heading == "requirements":
+                section, next_kind = "requirements", "basic"
+            else:
+                section, next_kind = heading, None
+            if section == "requirements" and next_kind != requirement_kind:
+                descriptions[section].append(
+                    "PREFERRED QUALIFICATIONS:" if next_kind == "preferred"
+                    else "BASIC QUALIFICATIONS:"
+                )
+            requirement_kind = next_kind
+            continue
+        descriptions[section].append(line)
+    return {
+        key: "\n".join(part for part in parts if part).strip()
+        for key, parts in descriptions.items()
+    }
 
 
 class _JSONLDParser(HTMLParser):
@@ -148,7 +211,7 @@ def _job(source, native_id, title, location, url, department="", **extra):
         "first_published": _clean(extra.get("first_published")),
         "updated_at": _clean(extra.get("updated_at")),
         "mission": _clean(extra.get("mission")),
-        "requirements": _clean(extra.get("requirements")),
+        "requirements": _clean_multiline(extra.get("requirements")),
         "benefits": _clean(extra.get("benefits")),
     }
 
@@ -217,10 +280,11 @@ def greenhouse(source, fetch=_get):
     for item in payload.get("jobs", []):
         departments = item.get("departments") or []
         location = (item.get("location") or {}).get("name")
+        descriptions = _structured_job_description(item.get("content"))
         jobs.append(_job(
             source, item.get("id"), item.get("title"), location, item.get("absolute_url"),
             departments[0].get("name") if departments else "",
-            mission=item.get("content"),
+            **descriptions,
             requisition_id=item.get("requisition_id"),
             first_published=item.get("first_published"),
             updated_at=item.get("updated_at"),

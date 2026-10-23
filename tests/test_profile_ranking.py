@@ -37,7 +37,10 @@ def profile(status="verified", threshold=65):
             {"name": "Controls", "keywords": ["schedule", "cost"], "evidence": {"source": "fixture", "claim_id": "C-2"}},
         ],
         "eligibility": {
-            "work_authorization": {"status": status, "evidence": evidence},
+            "work_authorization": {
+                "status": status, "evidence": evidence,
+                "jurisdictions": ["United States"] if status == "verified" else [],
+            },
             "itar": {"status": status, "evidence": evidence},
             "degree": {"status": status, "evidence": evidence},
         },
@@ -128,6 +131,101 @@ class RankingSemanticsTests(unittest.TestCase):
         result = rank_job(item, details, profile())
         self.assertNotIn("degree", {gate["gate"] for gate in result["hard_gates"]})
         self.assertIn("Bachelor", result["soft_gaps"][0]["requirement"])
+
+    def test_subject_specific_degree_requires_matching_verified_field(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = (
+            "BASIC QUALIFICATIONS:\nBachelor's degree in Aerospace Engineering or similar."
+        )
+        for fields in ([], ["Civil Engineering"]):
+            with self.subTest(fields=fields):
+                candidate = profile(threshold=1)
+                candidate["eligibility"]["degree"]["fields"] = fields
+                result = rank_job(item, details, candidate)
+                self.assertEqual("UNKNOWN", result["status"])
+                self.assertIn("degree", {gate["gate"] for gate in result["hard_gates"]})
+
+        candidate = profile(threshold=1)
+        candidate["eligibility"]["degree"]["fields"] = ["Aerospace Engineering"]
+        result = rank_job(item, details, candidate)
+        self.assertEqual("GREEN", result["status"])
+        self.assertNotIn("degree", {gate["gate"] for gate in result["hard_gates"]})
+
+    def test_country_specific_work_authorization_requires_matching_jurisdiction(self):
+        item = job(location="Augsburg, Germany")
+        details = detail(item)
+        details["requirements"] = (
+            "BASIC QUALIFICATIONS:\nBachelor's degree.\nAuthorized to work in Germany."
+        )
+        us_only = rank_job(item, details, profile(threshold=1))
+        self.assertEqual("UNKNOWN", us_only["status"])
+        self.assertIn("work_authorization", {gate["gate"] for gate in us_only["hard_gates"]})
+
+        germany = profile(threshold=1)
+        germany["eligibility"]["work_authorization"]["jurisdictions"] = ["Germany"]
+        authorized = rank_job(item, details, germany)
+        self.assertEqual("GREEN", authorized["status"])
+        work_gate = next(
+            gate for gate in authorized["hard_gates"] if gate["gate"] == "work_authorization"
+        )
+        self.assertEqual("verified", work_gate["candidate_status"])
+
+    def test_unrecognized_mandatory_criteria_fail_closed_beside_verified_degree(self):
+        item = job()
+        for requirement in (
+            "Valid driver's license required",
+            "Active Professional Engineer (PE) license required",
+            "Must hold a current site-access clearance",
+        ):
+            with self.subTest(requirement=requirement):
+                details = detail(item)
+                details["requirements"] = (
+                    "BASIC QUALIFICATIONS:\nBachelor degree\n" + requirement
+                )
+                result = rank_job(item, details, profile(threshold=1))
+                self.assertEqual("UNKNOWN", result["status"])
+                coverage = [
+                    gate for gate in result["hard_gates"]
+                    if gate["gate"] == "requirements_coverage"
+                ]
+                self.assertEqual(1, len(coverage))
+                self.assertEqual(requirement, coverage[0]["requirement_evidence"]["excerpt"])
+                self.assertEqual("unknown", coverage[0]["candidate_status"])
+
+    def test_combined_degree_and_unverified_license_clause_fails_closed(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = (
+            "BASIC QUALIFICATIONS:\nBachelor's degree AND valid driver's license required"
+        )
+        result = rank_job(item, details, profile(threshold=1))
+        self.assertEqual("UNKNOWN", result["status"])
+        coverage = [gate for gate in result["hard_gates"] if gate["gate"] == "requirements_coverage"]
+        self.assertEqual(1, len(coverage))
+        self.assertEqual("valid driver's license required", coverage[0]["requirement_evidence"]["excerpt"])
+
+        details["requirements"] = "BASIC QUALIFICATIONS:\nBachelor's degree"
+        control = rank_job(item, details, profile(threshold=1))
+        self.assertEqual("GREEN", control["status"])
+
+    def test_preferred_only_section_is_soft_and_missing_basic_fails_closed(self):
+        item = job()
+        details = detail(item)
+        details["requirements"] = "PREFERRED QUALIFICATIONS:\nBachelor's degree."
+        basic, preferred, additional = split_qualifications(details["requirements"])
+        self.assertIsNone(basic)
+        self.assertEqual("Bachelor's degree.", preferred)
+        self.assertIsNone(additional)
+
+        result = rank_job(item, details, profile(threshold=1))
+        self.assertEqual("UNKNOWN", result["status"])
+        self.assertEqual(
+            {"requirements_evaluation"},
+            {gate["gate"] for gate in result["hard_gates"]},
+        )
+        self.assertIn("Bachelor's degree", result["soft_gaps"][0]["requirement"])
+
     def test_required_years_domain_software_trade_and_leadership_are_hard_gates(self):
         item = job()
         details = detail(item)
@@ -278,6 +376,33 @@ class ExportContractTests(unittest.TestCase):
         result = generate(self.profile_path, self.data, self.output, "2026-01-04T00:00:00Z")
         self.assertTrue(result["changed"])
         self.assertEqual("fixture-v2", result["document"]["metadata"]["profile_evidence_version"])
+
+    def test_previous_rubric_cache_is_recomputed_without_stale_false_green(self):
+        generic = profile(threshold=1)
+        self.profile_path.write_text(json.dumps(generic), encoding="utf-8")
+        self.details[0]["requirements"] = (
+            "BASIC QUALIFICATIONS:\nBachelor's degree in Aerospace Engineering or similar."
+        )
+        self._write_snapshot("hash-1", "2026-01-01T00:00:00Z")
+        first = generate(self.profile_path, self.data, self.output, "2026-01-02T00:00:00Z")
+        stale = first["document"]
+        stale["metadata"]["rubric_version"] = "2.0"
+        stale["metadata"]["input_hash"] = hashlib.sha256(json.dumps({
+            "schema_version": "1.0",
+            "profile_schema_hash": stale["metadata"]["profile_schema_hash"],
+            "rubric_version": "2.0",
+            "profile_hash": hashlib.sha256(json.dumps(
+                generic, sort_keys=True, ensure_ascii=False, separators=(",", ":")
+            ).encode()).hexdigest(),
+            "processed_input_hash": stale["metadata"]["processed_input_hash"],
+        }, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+        stale["rankings"][0]["status"] = "GREEN"
+        (self.output / "spacex_targets.json").write_text(json.dumps(stale), encoding="utf-8")
+
+        refreshed = generate(self.profile_path, self.data, self.output, "2026-01-03T00:00:00Z")
+        self.assertTrue(refreshed["changed"])
+        self.assertEqual("3.0", refreshed["document"]["metadata"]["rubric_version"])
+        self.assertEqual("UNKNOWN", refreshed["document"]["rankings"][0]["status"])
 
     def test_actual_schema_semantics_invalidate_cache_and_unchanged_schema_does_not(self):
         with patch("analysis.profile_ranking.PROFILE_SCHEMA_PATH", self.schema_path):
