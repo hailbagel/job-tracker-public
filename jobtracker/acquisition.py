@@ -82,7 +82,7 @@ _DESCRIPTION_HEADINGS = {
         "what you bring", "what we're looking for", "your profile", "your qualifications",
     },
     "preferred": {
-        "nice-to-have skills", "nice to have skills", "preferred qualifications",
+        "nice to have", "nice-to-have", "nice-to-have skills", "nice to have skills", "preferred qualifications",
         "preferred skills",
     },
     "benefits": {

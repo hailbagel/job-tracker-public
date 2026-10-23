@@ -126,6 +126,24 @@ class GreenhouseRequirementsTests(unittest.TestCase):
         )
         self.assertIn("Bachelor's degree", result["soft_gaps"][0]["requirement"])
 
+    def test_plain_nice_to_have_heading_stays_preferred(self):
+        item = acquire(
+            "nice-to-have-heading",
+            "Construction Project Manager",
+            """
+            <h2>Requirements</h2><p>Bachelor's degree.</p>
+            <h2>Nice to Have</h2><p>Valid driver's license.</p>
+            """,
+        )
+        basic, preferred, additional = split_qualifications(item["requirements"])
+        self.assertIn("Bachelor's degree", basic)
+        self.assertIn("Valid driver's license", preferred)
+        self.assertIsNone(additional)
+        result = rank_job(item, item, profile(threshold=1))
+        self.assertEqual("GREEN", result["status"])
+        self.assertEqual([], result["hard_gates"])
+        self.assertIn("Valid driver's license", result["soft_gaps"][0]["requirement"])
+
     def test_fully_evidenced_required_criteria_can_still_be_green(self):
         item = acquire(
             "control",

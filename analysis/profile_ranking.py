@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 SCHEMA_VERSION = "1.0"
-RUBRIC_VERSION = "2.0"
+RUBRIC_VERSION = "3.0"
 PROFILE_SCHEMA_PATH = Path(__file__).resolve().parents[1] / "configs" / "profiles" / "schema.json"
 ROLE_FAMILIES = (
     "Construction Project Management",
@@ -123,12 +123,21 @@ def validate_profile(profile):
     invalid = sorted(set(profile["role_families"]) - set(ROLE_FAMILIES))
     if invalid:
         raise ValueError(f"Unknown role families: {', '.join(invalid)}")
-    for gate in ("work_authorization", "itar"):
+    for gate in ("work_authorization", "itar", "degree"):
         item = profile["eligibility"].get(gate)
+        if gate == "degree" and item is None:
+            continue
         if not isinstance(item, dict) or item.get("status") not in {"verified", "unsupported", "unknown"}:
             raise ValueError(f"eligibility.{gate}.status must be verified, unsupported, or unknown")
         if item["status"] == "verified" and not item.get("evidence"):
             raise ValueError(f"eligibility.{gate} verified status requires evidence")
+        for field in ("jurisdictions", "fields", "equivalent_fields"):
+            values = item.get(field, [])
+            if (
+                not isinstance(values, list)
+                or any(not isinstance(value, str) or not _clean(value) for value in values)
+            ):
+                raise ValueError(f"eligibility.{gate}.{field} must be a list of non-empty strings")
     for capability in profile["capabilities"]:
         if not capability.get("name") or not capability.get("keywords") or not capability.get("evidence"):
             raise ValueError("Every capability requires name, keywords, and evidence")
@@ -217,6 +226,63 @@ def _gate(name, requirement, item):
     }
 
 
+def _normalized_terms(values):
+    return {_clean(value).casefold() for value in values or [] if _clean(value)}
+
+
+def _required_jurisdiction(requirement):
+    requirement_l = _clean(requirement).casefold()
+    aliases = {
+        "germany": ("germany", "german"),
+        "united states": ("united states", "u.s.", "usa"),
+    }
+    for canonical, terms in aliases.items():
+        if any(term in requirement_l for term in terms):
+            return canonical
+    match = re.search(
+        r"authorized to work in\s+([a-z][a-z .'-]{1,50}?)(?=\s+(?:without|with|and|or)\b|[.;]|$)",
+        requirement_l,
+        re.I,
+    )
+    return _clean(match.group(1)).casefold() if match else None
+
+
+def _jurisdictional_authorization(requirement, item):
+    jurisdiction = _required_jurisdiction(requirement)
+    if not jurisdiction or item.get("status") != "verified":
+        return item
+    aliases = {
+        "germany": {"germany", "de", "deu"},
+        "united states": {"united states", "us", "usa", "u.s.", "u.s.a."},
+    }
+    verified = _normalized_terms(item.get("jurisdictions"))
+    if verified.intersection(aliases.get(jurisdiction, {jurisdiction})):
+        return item
+    return {"status": "unknown", "evidence": item.get("evidence")}
+
+
+def _required_degree_field(degree_rule):
+    if not degree_rule:
+        return None
+    match = re.search(
+        r"\b(?:degree|bachelor(?:'s)?|master(?:'s)?)\b[^.;\n]{0,80}?\bin\s+(?!lieu\b)"
+        r"([a-z][a-z &/\-]{1,80}?)(?=\s+(?:or\s+(?:a\s+)?similar|or\s+equivalent|preferred|required)\b|[.;]|$)",
+        degree_rule,
+        re.I,
+    )
+    return _clean(match.group(1)).casefold() if match else None
+
+
+def _subject_specific_degree(degree_rule, item):
+    required_field = _required_degree_field(degree_rule)
+    if not required_field or item.get("status") != "verified":
+        return item
+    verified_fields = _normalized_terms(item.get("fields")) | _normalized_terms(item.get("equivalent_fields"))
+    if required_field in verified_fields:
+        return item
+    return {"status": "unknown", "evidence": item.get("evidence")}
+
+
 def _claim_status(profile, kind, name, *, years=None, leadership=False):
     """Return status and provenance only from explicit requirement-specific claims."""
     wanted = _clean(name).casefold()
@@ -243,9 +309,13 @@ def _claim_status(profile, kind, name, *, years=None, leadership=False):
 def _mandatory_criteria(*sections):
     """Return independently evaluable required clauses without inventing requirements."""
     required = "\n".join(filter(None, sections))
+    clauses = re.split(r"\n+|(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
+    atomic = []
+    for clause in clauses:
+        atomic.extend(re.split(r"\s+(?:and|&)\s+(?=[^.;\n]{1,120}\brequired\b)", clause, flags=re.I))
     return [
         _clean(clause).strip("-–—*;.")
-        for clause in re.split(r"\n+|(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
+        for clause in atomic
         if _clean(clause).strip("-–—*;.")
     ]
 
@@ -300,7 +370,10 @@ def _required_qualification_gates(basic, additional, profile, degree_rule, exper
     )
 
     if degree_rule:
-        degree = profile["eligibility"].get("degree", {"status": "unknown", "evidence": None})
+        degree = _subject_specific_degree(
+            degree_rule,
+            profile["eligibility"].get("degree", {"status": "unknown", "evidence": None}),
+        )
         alternative_years = None
         if experience_in_lieu:
             alt = re.search(r"\b(\d{1,2})\+?\s+years?", alternative_text, re.I)
@@ -382,7 +455,13 @@ def rank_job(job, details, profile):
     relevant = family in profile["role_families"] and family != "Not relevant"
     work_signal, itar_signal, degree_rule, experience_in_lieu = _signals(basic, additional)
     gates = [
-        _gate("work_authorization", work_signal, profile["eligibility"]["work_authorization"]),
+        _gate(
+            "work_authorization",
+            work_signal,
+            _jurisdictional_authorization(
+                work_signal, profile["eligibility"]["work_authorization"]
+            ),
+        ),
         _gate("itar", itar_signal, profile["eligibility"]["itar"]),
     ]
     gates = [gate for gate in gates if gate]
