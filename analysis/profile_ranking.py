@@ -151,7 +151,7 @@ def load_profile(path):
 
 
 def split_qualifications(text):
-    text = str(text or "").replace("\r", "\n")
+    text = re.sub(r"\r\n?", "\n", str(text or ""))
     marker = re.compile(r"(?im)^\s*(?:[-–—*]\s*)?(basic qualifications?|minimum qualifications?|preferred qualifications?|additional requirements?)\s*:?[ \t]*$")
     matches = list(marker.finditer(text))
     if not matches:
@@ -161,7 +161,10 @@ def split_qualifications(text):
         heading = match.group(1).lower()
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         key = "preferred" if "preferred" in heading else "additional" if "additional" in heading else "basic"
-        sections[key] = _clean(text[match.end():end])
+        sections[key] = "\n".join(
+            cleaned for line in text[match.end():end].splitlines()
+            if (cleaned := _clean(line))
+        ) or None
     return sections.get("basic"), sections.get("preferred"), sections.get("additional")
 
 
@@ -239,10 +242,10 @@ def _claim_status(profile, kind, name, *, years=None, leadership=False):
 
 def _mandatory_criteria(*sections):
     """Return independently evaluable required clauses without inventing requirements."""
-    required = " ".join(filter(None, sections))
+    required = "\n".join(filter(None, sections))
     return [
         _clean(clause).strip("-–—*;.")
-        for clause in re.split(r"(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
+        for clause in re.split(r"\n+|(?<=[;!?])\s+|(?<=[a-z0-9])\.\s+(?=[A-Z])|[•]+", required)
         if _clean(clause).strip("-–—*;.")
     ]
 
