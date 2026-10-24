@@ -173,7 +173,27 @@ class SchedulerStateTests(unittest.TestCase):
 
 
 class SchedulerSmokeTestTests(unittest.TestCase):
-    def test_old_success_is_reported_stale_even_when_systemd_result_is_success(self):
+    def run_smoke_check(
+        self,
+        state_file,
+        now,
+        *,
+        timer_state="active",
+        service_state="inactive",
+    ):
+        with patch.object(
+            smoke,
+            "systemd_properties",
+            side_effect=[
+                f"ActiveState={timer_state}\nSubState=waiting",
+                f"ActiveState={service_state}\nResult=success\nExecMainStatus=0",
+            ],
+        ) as systemd, contextlib.redirect_stdout(io.StringIO()) as output:
+            result = smoke.run_check(state_file, now)
+        self.assertEqual(2, systemd.call_count)
+        return result, output.getvalue()
+
+    def test_cadence_aware_freshness_and_state_visibility(self):
         with tempfile.TemporaryDirectory() as directory:
             state_file = Path(directory) / "state.json"
             last_success = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
@@ -181,25 +201,147 @@ class SchedulerSmokeTestTests(unittest.TestCase):
                 state_file,
                 last_success_utc=scheduler.format_utc(last_success),
             )
-            now = last_success + timedelta(hours=61)
+            for age, expected_status in (
+                (smoke.STALE_AFTER - timedelta(microseconds=1), 0),
+                (smoke.STALE_AFTER, 0),
+                (smoke.STALE_AFTER + timedelta(microseconds=1), 1),
+            ):
+                result, output = self.run_smoke_check(state_file, last_success + age)
+                self.assertEqual(expected_status, result)
+            self.assertIn("Result=success", output)
+            self.assertIn("is stale (>12h 0m)", output)
+
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            first_run_after = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                first_run_after_utc=scheduler.format_utc(first_run_after),
+            )
+            scheduler.mark_attempt(state_file, "failed-run", first_run_after)
+            scheduler.record_failure(
+                state_file, "exit-code", "failed-run", first_run_after + timedelta(minutes=1)
+            )
+            result, output = self.run_smoke_check(
+                state_file, first_run_after + timedelta(hours=1)
+            )
+            self.assertEqual(1, result)
+            self.assertIn("No successful publisher execution recorded yet", output)
+            self.assertIn("(failed)", output)
+            self.assertIn("Last failed publisher attempt:", output)
+
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            now = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                last_success_utc=scheduler.format_utc(now + timedelta(seconds=1)),
+            )
+            result, output = self.run_smoke_check(state_file, now)
+            self.assertEqual(2, result)
+            self.assertIn("Host clock precedes", output)
+
+    def test_newer_failed_attempt_makes_recent_success_unhealthy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            last_success = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                last_success_utc=scheduler.format_utc(last_success),
+            )
+            attempt = last_success + timedelta(hours=6)
+            scheduler.mark_attempt(state_file, "failed-run", attempt)
+            scheduler.record_failure(
+                state_file, "exit-code", "failed-run", attempt + timedelta(minutes=1)
+            )
+
+            result, output = self.run_smoke_check(
+                state_file, last_success + timedelta(hours=7)
+            )
+
+        self.assertEqual(1, result)
+        self.assertIn("Latest publisher attempt failed after", output)
+
+    def test_success_after_older_failure_restores_health(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            first_success = datetime(2026, 10, 15, 1, 0, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                last_success_utc=scheduler.format_utc(first_success),
+            )
+            failed_attempt = first_success + timedelta(hours=6)
+            scheduler.mark_attempt(state_file, "failed-run", failed_attempt)
+            scheduler.record_failure(
+                state_file,
+                "exit-code",
+                "failed-run",
+                failed_attempt + timedelta(minutes=1),
+            )
+            successful_attempt = failed_attempt + timedelta(hours=6)
+            scheduler.mark_attempt(state_file, "successful-run", successful_attempt)
+            scheduler.record_success(
+                state_file,
+                "successful-run",
+                successful_attempt + timedelta(minutes=1),
+            )
+
+            result, output = self.run_smoke_check(
+                state_file, successful_attempt + timedelta(hours=1)
+            )
+
+        self.assertEqual(0, result)
+        self.assertIn("[OK] Last successful publisher execution", output)
+
+    def test_non_active_or_unparseable_timer_is_unhealthy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            last_success = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                last_success_utc=scheduler.format_utc(last_success),
+            )
+            for timer_state in ("inactive", "failed", "unexpected"):
+                with self.subTest(timer_state=timer_state):
+                    result, output = self.run_smoke_check(
+                        state_file,
+                        last_success + timedelta(hours=1),
+                        timer_state=timer_state,
+                    )
+                    self.assertEqual(1, result)
+                    self.assertIn("Scheduler timer is not active", output)
+
             with patch.object(
                 smoke,
                 "systemd_properties",
                 side_effect=[
-                    "ActiveState=active\nResult=success",
+                    "SubState=waiting",
                     "ActiveState=inactive\nResult=success\nExecMainStatus=0",
                 ],
-            ) as systemd, contextlib.redirect_stdout(io.StringIO()) as output:
-                result = smoke.run_check(state_file, now)
+            ), contextlib.redirect_stdout(io.StringIO()) as output:
+                result = smoke.run_check(state_file, last_success + timedelta(hours=1))
+            self.assertEqual(1, result)
+            self.assertIn("timer state is unparseable", output.getvalue())
 
-        self.assertEqual(1, result)
-        self.assertIn("Result=success", output.getvalue())
-        self.assertIn("is stale (>60h)", output.getvalue())
-        self.assertEqual(2, systemd.call_count)
-        self.assertEqual(
-            ["vutrulabs-job-tracker-public.timer", "vutrulabs-job-tracker-public.service"],
-            [call.args[0] for call in systemd.call_args_list],
-        )
+    def test_active_timer_and_inactive_oneshot_service_are_healthy(self):
+        with tempfile.TemporaryDirectory() as directory:
+            state_file = Path(directory) / "state.json"
+            last_success = datetime(2026, 10, 15, 13, 47, 18, tzinfo=timezone.utc)
+            scheduler.initialize_state(
+                state_file,
+                last_success_utc=scheduler.format_utc(last_success),
+            )
+
+            result, output = self.run_smoke_check(
+                state_file,
+                last_success + timedelta(hours=1),
+                timer_state="active",
+                service_state="inactive",
+            )
+
+        self.assertEqual(0, result)
+        self.assertIn("ActiveState=inactive", output)
+        self.assertIn("[OK] Last successful publisher execution", output)
 
     def test_systemd_inspection_uses_only_show_operations(self):
         with patch.object(

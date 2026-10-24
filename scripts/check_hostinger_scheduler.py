@@ -13,10 +13,17 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.hostinger_scheduler_state import SchedulerStateError, parse_utc, read_state
+from scripts.hostinger_scheduler_state import (
+    MINIMUM_INTERVAL,
+    SchedulerStateError,
+    parse_utc,
+    read_state,
+)
 
 DEFAULT_STATE_FILE = Path("/var/lib/vutrulabs-job-tracker-public/state.json")
-STALE_AFTER = timedelta(hours=60)
+# A healthy scheduler may have one active cadence interval in flight. A
+# success becomes stale only after it misses the following interval too.
+STALE_AFTER = MINIMUM_INTERVAL * 2
 
 
 def systemd_properties(unit: str, properties: tuple[str, ...]) -> str:
@@ -37,6 +44,17 @@ def format_age(age: timedelta) -> str:
     return f"{seconds // 3600}h {(seconds % 3600) // 60}m"
 
 
+def systemd_property(output: str, property_name: str) -> str:
+    values = []
+    for line in output.splitlines():
+        name, separator, value = line.partition("=")
+        if separator and name == property_name:
+            values.append(value)
+    if len(values) != 1 or not values[0]:
+        raise RuntimeError(f"missing or malformed {property_name} in systemctl output")
+    return values[0]
+
+
 def run_check(state_file: Path, now: datetime | None = None) -> int:
     timer_properties = (
         "ActiveState", "SubState", "LastTriggerUSec",
@@ -47,7 +65,20 @@ def run_check(state_file: Path, now: datetime | None = None) -> int:
         "ExecMainStartTimestamp", "ExecMainExitTimestamp",
     )
     print("[INFO] Timer state")
-    print(systemd_properties("vutrulabs-job-tracker-public.timer", timer_properties))
+    timer_output = systemd_properties(
+        "vutrulabs-job-tracker-public.timer", timer_properties
+    )
+    print(timer_output)
+    health_errors = []
+    try:
+        timer_active_state = systemd_property(timer_output, "ActiveState")
+    except RuntimeError as exc:
+        health_errors.append(f"Scheduler timer state is unparseable: {exc}")
+    else:
+        if timer_active_state != "active":
+            health_errors.append(
+                f"Scheduler timer is not active (ActiveState={timer_active_state})"
+            )
     print("[INFO] Publisher service state")
     print(systemd_properties("vutrulabs-job-tracker-public.service", service_properties))
 
@@ -66,7 +97,8 @@ def run_check(state_file: Path, now: datetime | None = None) -> int:
         return 1
 
     current_time = now or datetime.now(timezone.utc)
-    age = current_time - parse_utc(last_success)
+    last_success_time = parse_utc(last_success)
+    age = current_time - last_success_time
     if age < timedelta(0):
         print(f"[ERR] Host clock precedes the recorded publisher success: {last_success}")
         return 2
@@ -79,10 +111,24 @@ def run_check(state_file: Path, now: datetime | None = None) -> int:
         )
     if state["last_failure_utc"] is not None:
         print(f"[WARN] Last failed publisher attempt: {state['last_failure_utc']}")
+    if (
+        state["last_attempt_status"] == "failed"
+        and parse_utc(state["last_attempt_utc"]) > last_success_time
+    ):
+        health_errors.append(
+            "Latest publisher attempt failed after the last successful execution "
+            f"({state['last_attempt_utc']})"
+        )
+    stale_after = format_age(STALE_AFTER)
     if age > STALE_AFTER:
-        print("[ERR] Last successful publisher execution is stale (>60h)")
+        health_errors.append(
+            f"Last successful publisher execution is stale (>{stale_after})"
+        )
+    if health_errors:
+        for error in health_errors:
+            print(f"[ERR] {error}")
         return 1
-    print("[OK] Last successful publisher execution is within 60h")
+    print(f"[OK] Last successful publisher execution is within {stale_after}")
     return 0
 
 
