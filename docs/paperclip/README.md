@@ -1,6 +1,8 @@
 # Job Tracker – Paperclip-Agenten-Aufträge
 
-> **AKTUELL – 23.10.2026, 14:41 Berlin:** Paperclip **VUT-341** und unabhängige **VUT-344** (RFA mandatory/preferred) erfolgreich; [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) Head `29b03a3`, beide Ubuntu CI grün ([Industrial](https://github.com/hailbagel/job-tracker-public/actions/runs/39954763521), [Hostinger](https://github.com/hailbagel/job-tracker-public/actions/runs/39954763376)). **Noch nicht mergen:** früherer Codex-Review enthält drei P1-Risiken, die im aktuellen Code fortbestehen: Degree-Fachrichtung, Arbeitserlaubnis-Land, Ranking-Cache. [Belege](https://github.com/hailbagel/job-tracker-public/pull/29#issuecomment-6365211451). **[GENAU EIN weiterer Paperclip-Folgeauftrag (vier Copy-Boxen)](08_RFA_FINAL_RELEASE_GATE_BUILDER.md)**. PR #30 Head `9238944` hat nun beide Linux-CIs grün, ist noch ungemergt. Kein Hostinger-Deploy.
+> **STAND 24.10.2026:** Paperclip [VUT-345] und unabhängige [VUT-347] bestätigen die finale RFA-Nachbesserung als **QA PASS** auf [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29), SHA `6af2058`. [Industrial CI PASS](https://github.com/hailbagel/job-tracker-public/actions/runs/39959242638), [Hostinger CI PASS](https://github.com/hailbagel/job-tracker-public/actions/runs/39959241886). **PR #29 wurde auf Ready for review umgestellt**, noch **nicht gemergt**. Fünf historische Codex-Threads sind noch offen zu reconciliieren; [Abnahme-/Limitations-Kommentar](https://github.com/hailbagel/job-tracker-public/pull/29#issuecomment-6381219564). [PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) ist ebenfalls **unmerged**, beide Ubuntu-CIs PASS auf `9238944`. **Keine neue Builder-Aufgabe. Kein Hostinger-Deployment.**
+
+> **Historisch (23.10.):** Der unten erwähnte Task 08 wurde inzwischen als VUT-345 umgesetzt und unabhängig als VUT-347 abgenommen; **nicht erneut erstellen**.
 
 > **Historisch – VUT-341:** [Task 07](07_RFA_P1_MANDATORY_COVERAGE_BUILDER.md) ist umgesetzt und unabhängig durch VUT-344 überprüft, **nicht erneut starten**.
 
@@ -12,8 +14,8 @@
 
 | Priorität | Paperclip-Auftrag | Zuständigkeit | Tatsächlicher Stand |
 |---|---|---|---|
-| P0 | [RFA PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) | VUT-341 + VUT-344 Done | **2/2 CI grün; drei weitere P1 Review-Gates offen; Task 08** |
-| P1 | [6-h-Monitor PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) | VUT-329 + VUT-335 Done | **2/2 CI grün; nicht gemergt; erst nach PR #29 auf main synchronisieren** |
+| P0 | [RFA PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) | VUT-341/344/345/347 Done | **Ready for review, 2/2 CIs PASS; noch nicht gemergt; fünf alte Review-Threads reconciliieren** |
+| P1 | [6-h-Monitor PR #30](https://github.com/hailbagel/job-tracker-public/pull/30) | VUT-329/335 Done | **2/2 CIs PASS auf Head `9238944`; noch nicht gemergt, nach PR #29 neue Integration/CI** |
 | QA | [Top-10-Quellenprüfung](02_TOP10_QA_CHIEF_OF_STAFF.md) | VUT-332 Chief of Staff | **Done:** 5 Evidenzmängel, 4 unverifizierbar, 1 materiell stimmig (nur 10er-Sample) |
 | Danach | [Ranking-ID-Integrität](04_RANKING_ID_INTEGRITY_CTO.md) | CTO, separater Task nach Abgleich bestehender Tasks | Noch nicht als neuer Task ausführen, bevor laufende Arbeiten sauber zugeordnet |
 | Pausiert | [Mesabi Metallics](05_MESABI_PAUSED_CTO.md) | CTO | Quellenwachstum bis Quality-Gate aufschieben |
@@ -22,9 +24,9 @@
 
 **[VUT-335 – Scheduler P1 Follow-up](06_SCHEDULER_P1_FOLLOWUP_BUILDER.md)** wurde in Paperclip erstellt und vom Builder am 22.10. als DONE gemeldet. **Nicht erneut erstellen oder kopieren.** Der weitere Gate ist unabhängiger Code-Review / finale CI, dann getrennte Freigabe beider PRs.
 
-## PR #29 – letzter konkreter Release-Gate-Folgeauftrag
+## Historisch: Task 08 abgeschlossen
 
-**[Task 08 – Fachrichtung / Arbeitserlaubnis / Cache](08_RFA_FINAL_RELEASE_GATE_BUILDER.md)**: Noch nicht als Paperclip Task erstellt, vier Copy-Boxen zum Übernehmen. [Task 07](07_RFA_P1_MANDATORY_COVERAGE_BUILDER.md) wurde von VUT-341 umgesetzt; VUT-344 bestätigte QA. Keine Duplikate und kein neuer GitHub-PR.
+[Task 08](08_RFA_FINAL_RELEASE_GATE_BUILDER.md) wurde als **VUT-345** umgesetzt und durch **VUT-347** unabhängig geprüft (PASS). **Nicht erneut erstellen.** Aktueller nächster Schritt ist Review-Thread-Reconciliation und kontrollierte PR-Integration; kein neuer Builder-Auftrag.
 
 ## Neue Aufgaben in Paperclip
 

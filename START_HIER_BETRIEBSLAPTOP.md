@@ -1,14 +1,11 @@
 # START HIER – Job Tracker / Paperclip
 
-> **Stand 23.10.2026, ca. 14:41 Berlin:** [PR #29](https://github.com/hailbagel/job-tracker-public/pull/29) bleibt Draft/ungemergt; Code-Fixes VUT-341 und unabhängige QA VUT-344 Done, zwei Ubuntu-CIs grün auf SHA `29b03a3`. Drei wesentliche Review-Gates sind im aktuellen Code noch offen: Degree-Fachrichtung, Work-Authorization-Land, Cache-Version. [Evidenz im PR](https://github.com/hailbagel/job-tracker-public/pull/29#issuecomment-6365211451).
+> **Verifizierter Stand 24.10.2026**: RFA PR #29 auf Head `6af2058d055e0d85d999a6f8f526f00ec18c6d3c`. Paperclip VUT-345 done, unabhängige VUT-347 QA PASS (laut Abschlussbericht). Zwei Ubuntu Linux-CIs auf diesem Head grün: [Industrial](https://github.com/hailbagel/job-tracker-public/actions/runs/39959242638), [Scheduler](https://github.com/hailbagel/job-tracker-public/actions/runs/39959241886). **PR #29 ist Ready for review und nicht gemergt.** [Abnahmekommentar/Limitations](https://github.com/hailbagel/job-tracker-public/pull/29#issuecomment-6381219564). Fünf ältere Codex-Review-Threads sind noch offen markiert: konkret gegen neuen Code + Tests prüfen, nicht blind abnicken, aber auch keine weiteren pauschalen Refactor-Schleifen.
 
-## JETZT in Paperclip
-**[Task 08: Vier Copy-Boxen, vorhandenen PR #29 abschließen](docs/paperclip/08_RFA_FINAL_RELEASE_GATE_BUILDER.md)**. Eine neue, eng begrenzte Builder-Aufgabe; **kein neuer GitHub-PR**. Task 07/VUT-341 bereits Done, **nicht wiederholen**. Keine andere parallele Branch-Bearbeitung.
+## NÄCHSTE SCHRITTE (keine neuen Paperclip Tasks)
+1. PR #29: Auf aktuellem Head Review-Threads abschließend reconciliieren, Merge-Voraussetzungen bestätigen; **separater Merge-Entscheid**. Kein Code/Hostinger-Deploy ohne Freigabe.
+2. PR #30: 6h-Monitor auf Head `9238944`, [Industrial CI grün](https://github.com/hailbagel/job-tracker-public/actions/runs/39837694307), [Hostinger CI grün](https://github.com/hailbagel/job-tracker-public/actions/runs/39837694272). Erst nach PR #29 kontrolliert auf neues `main` synchronisieren, beide CIs erneut laufen lassen, Review-Threads prüfen, gesonderte Merge-Entscheidung.
+3. Danach Hostinger-Laufzeitstand nachweisen: installierte Revision, Timer-Journal, persistenter State, drei getrennte erfolgreiche planmäßige 6h-Läufe. Kein Produktionszugriff in einem reinen PR-Review.
+4. Ranking-ID-Audit [Issue #24](https://github.com/hailbagel/job-tracker-public/issues/24) abschließen; erst dann wieder Quelleinbindung/SMS/Mesabi priorisieren.
 
-## Zweiter PR
-[PR #30 – 6-Stunden-Scheduler](https://github.com/hailbagel/job-tracker-public/pull/30) Head `9238944`, beide Ubuntu-CIs mittlerweile grün. PR bleibt ungemergt. **Erst PR #29 Qualität/Review/Merge, dann PR #30 Branch aktualisieren, erneut CI+Code-Review und gesonderte Mergefreigabe.**
-
-## Produktionsabnahme
-**Kein Hostinger-Deployment jetzt:** Betriebsversion + Journale, persistenter Zustand und drei voneinander unabhängige erfolgreiche geplante 6-h-Läufe müssen später nachgewiesen werden.
-
-[Zentraler Paperclip-Index](docs/paperclip/README.md). Alte Copilot-Prompts bleiben Archiv. Neue Paperclip Tasks immer mit vier separat kopierbaren Feldern.
+**Abgeschlossene Paperclip Tasks nicht duplizieren**: VUT-328,329,331,332,335,341,344,345,347. [Taskindex](docs/paperclip/README.md) ist das Archiv mit getrennten Kopierfeldern. PR #29: nur sachlich belegte neue P1-Risiken rechtfertigen weiteren Builder-Auftrag.
